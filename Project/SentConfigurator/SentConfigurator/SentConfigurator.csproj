@@ -36,11 +36,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IrisSkin4">
-      <HintPath>..\..\..\CommonLibrary2019\CommonUtils\CommonUtils\Lib\IrisSkin4_73skin\IrisSkin4.dll</HintPath>
-    </Reference>
     <Reference Include="LEDLib">
-      <HintPath>..\..\..\CommonLibrary2019\CommonUtils\CommonUtils\Lib\LEDLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\CommonRepository\MyCommonLibrary001\CommonUtils\CommonUtils\Lib\LEDLib.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -238,8 +235,8 @@
     <None Include="Resources\figkey.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CommonLibrary\CommonUtils\CommonUtils\CommonUtils.csproj">
-      <Project>{ebfca1b5-23f1-4f94-928a-db1a7b98eed6}</Project>
+    <ProjectReference Include="..\..\..\..\..\CommonRepository\MyCommonLibrary001\CommonUtils\CommonUtils\CommonUtils.csproj">
+      <Project>{5c32467d-d861-4721-87c7-42f8b903fffb}</Project>
       <Name>CommonUtils</Name>
     </ProjectReference>
   </ItemGroup>

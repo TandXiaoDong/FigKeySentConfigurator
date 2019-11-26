@@ -22,8 +22,9 @@ using SentConfigurator.Controls;
 using CommonUtils.Logger;
 using CommonUtils.ByteHelper;
 using CommonUtils.FileHelper;
+using CommonUtils.CalculateAndString;
 using LEDLib;
-using Sunisoft.IrisSkin;
+//using Sunisoft.IrisSkin;
 using SentConfigurator.Model;
 
 
@@ -46,7 +47,7 @@ namespace SentConfigurator
         private SignalConfig signalConfig;
         private CommandConfig comandCfg;
         private int groupNum;
-        private SkinEngine skinEng;
+        //private SkinEngine skinEng;
         private List<string> skinList;
 
         private SentConfig sentConfig;
@@ -174,15 +175,15 @@ namespace SentConfigurator
         /// </summary>
         private void LoadSkin()
         {
-            skinEng = new SkinEngine();
-            skinList = new List<string>();
-            string path = Application.StartupPath + @"\Skins\mp10pink.ssk";
-            skinList = Directory.GetFiles(Application.StartupPath + @"\Skins\", "*.ssk").ToList();
-            skinEng.Active = true;
-            skinEng.SkinAllForm = true;
-            skinEng.SkinDialogs = true;
-            skinEng.Enable3rdControl = true;
-            skinEng.SkinFile = skinList[23];
+            //skinEng = new SkinEngine();
+            //skinList = new List<string>();
+            //string path = Application.StartupPath + @"\Skins\mp10pink.ssk";
+            //skinList = Directory.GetFiles(Application.StartupPath + @"\Skins\", "*.ssk").ToList();
+            //skinEng.Active = true;
+            //skinEng.SkinAllForm = true;
+            //skinEng.SkinDialogs = true;
+            //skinEng.Enable3rdControl = true;
+            //skinEng.SkinFile = skinList[23];
             //ThemeResolutionService.ApplicationThemeName = office2013DarkTheme1.ThemeName;
         }
         #endregion
@@ -1734,7 +1735,7 @@ namespace SentConfigurator
             {
                 if (MessageBox.Show("配置已修改，是否保存当前配置", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    userAsPath = FileSelect.SaveAs("ini file|*.ini");
+                    userAsPath = FileSelect.SaveAs("ini file|*.ini","D:\\");
                     SaveSentConfig();
                 }
                 else
@@ -2015,13 +2016,13 @@ namespace SentConfigurator
         /// <param name="e"></param>
         private void Tool_saveas_Click(object sender, EventArgs e)
         {
-            userAsPath = FileSelect.SaveAs("ini file|*.ini");
+            userAsPath = FileSelect.SaveAs("ini file|*.ini","D:\\");
             SaveSentConfig();
         }
 
         private void Menu_save_as_Click(object sender, EventArgs e)
         {
-            userAsPath = FileSelect.SaveAs("ini file|*.ini");
+            userAsPath = FileSelect.SaveAs("ini file|*.ini","D:\\");
             SaveSentConfig();
         }
         #endregion
