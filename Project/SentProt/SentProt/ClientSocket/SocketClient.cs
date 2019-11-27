@@ -14,19 +14,21 @@ namespace SentProt.ClientSocket
     {
         public Socket socketClient { get; set; }
 
+        public string ServerIP { get; set; }
+
+        public int ServerPort { get; set; }
+
         public void StartSocket()
         {
             //创建实例
             socketClient = new Socket(SocketType.Stream, ProtocolType.Tcp);
             IPAddress ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint point = new IPEndPoint(ip, 10050);
+            IPEndPoint point = new IPEndPoint(ip, 10002);
             //进行连接
             socketClient.Connect(point);
 
-            //不停的接收服务器端发送的消息
-            Thread thread = new Thread(ReciveMsg);
-            thread.IsBackground = true;
-            thread.Start();
+            Task task = new Task(ReciveMsg);
+            task.Start();
         }
 
         /// <summary>
