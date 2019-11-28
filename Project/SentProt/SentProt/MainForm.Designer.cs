@@ -39,38 +39,39 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
+            this.menu_connectServer = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
             this.breezeTheme1 = new Telerik.WinControls.Themes.BreezeTheme();
-            this.menu_connectServer = new Telerik.WinControls.UI.RadMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.tool_connectServer = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.grid_stentCompleteSignal = new Telerik.WinControls.UI.RadGridView();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
             this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
+            this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
+            this.grid_stentSlowSignal = new Telerik.WinControls.UI.RadGridView();
             this.splitPanel3 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
-            this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
+            this.grid_stentQuickSignal = new Telerik.WinControls.UI.RadGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.radRadioButton1 = new Telerik.WinControls.UI.RadRadioButton();
             this.radRadioButton2 = new Telerik.WinControls.UI.RadRadioButton();
-            this.grid_stentSlowSignal = new Telerik.WinControls.UI.RadGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.grid_stentQuickSignal = new Telerik.WinControls.UI.RadGridView();
+            this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -82,19 +83,19 @@
             this.splitPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).BeginInit();
             this.splitPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
+            this.radGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).BeginInit();
             this.splitPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
-            this.radGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal.MasterTemplate)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentQuickSignal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentQuickSignal.MasterTemplate)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +107,21 @@
             this.radMenuItem6});
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "操作";
+            // 
+            // menu_connectServer
+            // 
+            this.menu_connectServer.Name = "menu_connectServer";
+            this.menu_connectServer.Text = "创建连接";
+            // 
+            // radMenuItem5
+            // 
+            this.radMenuItem5.Name = "radMenuItem5";
+            this.radMenuItem5.Text = "断开连接";
+            // 
+            // radMenuItem6
+            // 
+            this.radMenuItem6.Name = "radMenuItem6";
+            this.radMenuItem6.Text = "退出";
             // 
             // radMenuItem2
             // 
@@ -138,22 +154,22 @@
             this.radMenu1.TabIndex = 1;
             this.radMenu1.ThemeName = "Breeze";
             // 
+            // radMenuItem7
+            // 
+            this.radMenuItem7.Name = "radMenuItem7";
+            this.radMenuItem7.Text = "关于";
+            // 
             // radMenuItem4
             // 
             this.radMenuItem4.Name = "radMenuItem4";
             this.radMenuItem4.Text = "连接服务器";
             this.radMenuItem4.UseCompatibleTextRendering = false;
             // 
-            // menu_connectServer
-            // 
-            this.menu_connectServer.Name = "menu_connectServer";
-            this.menu_connectServer.Text = "创建连接";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.tool_connectServer,
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4,
@@ -168,51 +184,13 @@
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // radMenuItem5
+            // tool_connectServer
             // 
-            this.radMenuItem5.Name = "radMenuItem5";
-            this.radMenuItem5.Text = "断开连接";
-            // 
-            // radMenuItem6
-            // 
-            this.radMenuItem6.Name = "radMenuItem6";
-            this.radMenuItem6.Text = "退出";
-            // 
-            // radMenuItem7
-            // 
-            this.radMenuItem7.Name = "radMenuItem7";
-            this.radMenuItem7.Text = "关于";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(79, 24);
-            this.toolStripLabel1.Text = "显示数量：";
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(79, 24);
-            this.toolStripLabel2.Text = "数据类型：";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 27);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::SentProt.Properties.Resources.ServerMode_16x16;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(85, 24);
-            this.toolStripButton1.Text = "创建连接";
+            this.tool_connectServer.Image = global::SentProt.Properties.Resources.ServerMode_16x16;
+            this.tool_connectServer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_connectServer.Name = "tool_connectServer";
+            this.tool_connectServer.Size = new System.Drawing.Size(85, 24);
+            this.tool_connectServer.Text = "创建连接";
             // 
             // toolStripButton2
             // 
@@ -238,6 +216,29 @@
             this.toolStripButton4.Size = new System.Drawing.Size(57, 24);
             this.toolStripButton4.Text = "停止";
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(79, 24);
+            this.toolStripLabel1.Text = "显示数量：";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(79, 24);
+            this.toolStripLabel2.Text = "数据类型：";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 27);
+            // 
             // toolStripButton5
             // 
             this.toolStripButton5.Image = global::SentProt.Properties.Resources.Export_16x16;
@@ -248,6 +249,7 @@
             // 
             // grid_stentCompleteSignal
             // 
+            this.grid_stentCompleteSignal.AllowDrop = true;
             this.grid_stentCompleteSignal.BackColor = System.Drawing.Color.Lavender;
             this.grid_stentCompleteSignal.Cursor = System.Windows.Forms.Cursors.Default;
             this.grid_stentCompleteSignal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -278,7 +280,7 @@
             this.grid_stentCompleteSignal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.grid_stentCompleteSignal.Size = new System.Drawing.Size(1058, 276);
             this.grid_stentCompleteSignal.TabIndex = 9;
-            this.grid_stentCompleteSignal.ThemeName = "Breeze";
+            this.grid_stentCompleteSignal.ThemeName = "TelerikMetro";
             // 
             // radSplitContainer1
             // 
@@ -332,37 +334,6 @@
             this.splitPanel2.Text = "splitPanel2";
             this.splitPanel2.ThemeName = "Breeze";
             // 
-            // splitPanel3
-            // 
-            this.splitPanel3.Controls.Add(this.radGroupBox1);
-            this.splitPanel3.Location = new System.Drawing.Point(0, 439);
-            this.splitPanel3.Name = "splitPanel3";
-            // 
-            // 
-            // 
-            this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(1058, 127);
-            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.1051884F);
-            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -55);
-            this.splitPanel3.TabIndex = 2;
-            this.splitPanel3.TabStop = false;
-            this.splitPanel3.Text = "splitPanel3";
-            this.splitPanel3.ThemeName = "Breeze";
-            // 
-            // radGroupBox1
-            // 
-            this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this.radGroupBox1.Controls.Add(this.grid_stentQuickSignal);
-            this.radGroupBox1.Controls.Add(this.panel1);
-            this.radGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radGroupBox1.HeaderText = "快信号";
-            this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(1058, 127);
-            this.radGroupBox1.TabIndex = 0;
-            this.radGroupBox1.Text = "快信号";
-            this.radGroupBox1.ThemeName = "Breeze";
-            // 
             // radGroupBox2
             // 
             this.radGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
@@ -375,22 +346,6 @@
             this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "慢信号";
             this.radGroupBox2.ThemeName = "Breeze";
-            // 
-            // radRadioButton1
-            // 
-            this.radRadioButton1.Location = new System.Drawing.Point(64, 20);
-            this.radRadioButton1.Name = "radRadioButton1";
-            this.radRadioButton1.Size = new System.Drawing.Size(127, 18);
-            this.radRadioButton1.TabIndex = 0;
-            this.radRadioButton1.Text = "高位在前，低位在后";
-            // 
-            // radRadioButton2
-            // 
-            this.radRadioButton2.Location = new System.Drawing.Point(258, 20);
-            this.radRadioButton2.Name = "radRadioButton2";
-            this.radRadioButton2.Size = new System.Drawing.Size(127, 18);
-            this.radRadioButton2.TabIndex = 1;
-            this.radRadioButton2.Text = "低位在前，高位在后";
             // 
             // grid_stentSlowSignal
             // 
@@ -424,17 +379,38 @@
             this.grid_stentSlowSignal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.grid_stentSlowSignal.Size = new System.Drawing.Size(1054, 135);
             this.grid_stentSlowSignal.TabIndex = 10;
-            this.grid_stentSlowSignal.ThemeName = "Breeze";
+            this.grid_stentSlowSignal.ThemeName = "TelerikMetro";
             // 
-            // panel1
+            // splitPanel3
             // 
-            this.panel1.Controls.Add(this.radRadioButton1);
-            this.panel1.Controls.Add(this.radRadioButton2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(2, 18);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1054, 47);
-            this.panel1.TabIndex = 3;
+            this.splitPanel3.Controls.Add(this.radGroupBox1);
+            this.splitPanel3.Location = new System.Drawing.Point(0, 439);
+            this.splitPanel3.Name = "splitPanel3";
+            // 
+            // 
+            // 
+            this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.splitPanel3.Size = new System.Drawing.Size(1058, 127);
+            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.1051884F);
+            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -55);
+            this.splitPanel3.TabIndex = 2;
+            this.splitPanel3.TabStop = false;
+            this.splitPanel3.Text = "splitPanel3";
+            this.splitPanel3.ThemeName = "Breeze";
+            // 
+            // radGroupBox1
+            // 
+            this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox1.Controls.Add(this.grid_stentQuickSignal);
+            this.radGroupBox1.Controls.Add(this.panel1);
+            this.radGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radGroupBox1.HeaderText = "快信号";
+            this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
+            this.radGroupBox1.Name = "radGroupBox1";
+            this.radGroupBox1.Size = new System.Drawing.Size(1058, 127);
+            this.radGroupBox1.TabIndex = 0;
+            this.radGroupBox1.Text = "快信号";
+            this.radGroupBox1.ThemeName = "Breeze";
             // 
             // grid_stentQuickSignal
             // 
@@ -447,6 +423,32 @@
             this.grid_stentQuickSignal.Name = "grid_stentQuickSignal";
             this.grid_stentQuickSignal.Size = new System.Drawing.Size(1054, 60);
             this.grid_stentQuickSignal.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radRadioButton1);
+            this.panel1.Controls.Add(this.radRadioButton2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(2, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1054, 47);
+            this.panel1.TabIndex = 3;
+            // 
+            // radRadioButton1
+            // 
+            this.radRadioButton1.Location = new System.Drawing.Point(64, 20);
+            this.radRadioButton1.Name = "radRadioButton1";
+            this.radRadioButton1.Size = new System.Drawing.Size(127, 18);
+            this.radRadioButton1.TabIndex = 0;
+            this.radRadioButton1.Text = "高位在前，低位在后";
+            // 
+            // radRadioButton2
+            // 
+            this.radRadioButton2.Location = new System.Drawing.Point(258, 20);
+            this.radRadioButton2.Name = "radRadioButton2";
+            this.radRadioButton2.Size = new System.Drawing.Size(127, 18);
+            this.radRadioButton2.TabIndex = 1;
+            this.radRadioButton2.Text = "低位在前，高位在后";
             // 
             // MainForm
             // 
@@ -478,20 +480,20 @@
             this.splitPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).EndInit();
             this.splitPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
+            this.radGroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).EndInit();
             this.splitPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
-            this.radGroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal.MasterTemplate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grid_stentSlowSignal)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentQuickSignal.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentQuickSignal)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -510,7 +512,7 @@
         private Telerik.WinControls.UI.RadMenuItem radMenuItem4;
         private Telerik.WinControls.Themes.BreezeTheme breezeTheme1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tool_connectServer;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem5;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem6;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem7;
@@ -534,5 +536,6 @@
         private Telerik.WinControls.UI.RadGridView grid_stentSlowSignal;
         private Telerik.WinControls.UI.RadGridView grid_stentQuickSignal;
         private System.Windows.Forms.Panel panel1;
+        private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
     }
 }

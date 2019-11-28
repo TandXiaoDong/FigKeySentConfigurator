@@ -16,15 +16,15 @@ namespace SentProt.ClientSocket.AppBase
         /// |  (2)  | n |                               |
         /// |       |(2)|                               |
         /// +-------+---+-------------------------------+
-        public MyReceiveFilter() : base(4)//2-header + 2-dataLen
+        public MyReceiveFilter() : base(2)//2-header + 2-dataLen
         {
         }
 
         protected override int GetBodyLengthFromHeader(IBufferStream bufferStream, int length)
         {
             ArraySegment<byte> buffers = bufferStream.Buffers[0];
-            byte[] array = buffers.ToArray();
-            int len = array[length - 2] * 256 + array[length - 1];
+            byte[] array = buffers.Reverse().ToArray();
+            int len = array[length - 2] * 256 + array[length - 1];//高位在前
             //int len = (int)array[buffers.Offset + 2] * 256 + (int)array[buffers.Offset + 3];
             return len;
         }
