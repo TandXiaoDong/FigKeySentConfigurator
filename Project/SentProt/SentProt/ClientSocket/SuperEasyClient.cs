@@ -22,7 +22,7 @@ namespace SentProt.ClientSocket
         public static event NoticeConnect NoticeConnectEvent;
         public static event NoticeMessage NoticeMessageEvent;
 
-        private static EasyClient<MyPackageInfo> client;
+        public static EasyClient<MyPackageInfo> client;
 
         private static void SendNoticeMessage(MyPackageInfo packageInfo)
         {

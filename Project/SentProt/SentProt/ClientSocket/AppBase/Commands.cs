@@ -13,7 +13,9 @@ namespace SentProt.ClientSocket.AppBase
         Login = 1,
         [Description("请求数据头")]
         RequestHead = 0Xff,
+        [Description("请求发送数据")]
         RequestData = 0Xaa01,
+        [Description("请求停止发送数据")]
         StopData = 0Xaa00
     }
 
