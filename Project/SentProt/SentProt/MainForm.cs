@@ -13,6 +13,8 @@ using SentProt.ClientSocket.AppBase;
 using CommonUtils.Logger;
 using WindowsFormTelerik.ControlCommon;
 using CommonUtils.ByteHelper;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace SentProt
 {
@@ -37,6 +39,8 @@ namespace SentProt
         private List<string> cacheDataPerFrame;
         private List<string> cacheFirstBitValue = new List<string>();
         private MessageFormatType currentFrameType  = MessageFormatType.StandardFrame;
+        private int slowSignalCount = 0;
+        private bool IsFirstReceive = true;
 
         private enum MessageFormatType
         {
@@ -49,6 +53,7 @@ namespace SentProt
            /// </summary>
             ExtendedFrame,
 
+            Other
         }
 
         public MainForm()
@@ -64,11 +69,18 @@ namespace SentProt
             actions = new Actions(RefreshGridData);
             this.menu_connectServer.Click += Menu_connectServer_Click;
             this.tool_connectServer.Click += Tool_connectServer_Click;
+            this.tool_disconnect.Click += Tool_disconnect_Click;
             this.tool_start.Click += Tool_start_Click;
             this.tool_stop.Click += Tool_stop_Click;
+            this.cb_dataType.SelectedIndexChanged += Cb_dataType_SelectedIndexChanged;
             this.rb_highBefore.CheckStateChanged += Rb_highBefore_CheckStateChanged;
             SuperEasyClient.NoticeMessageEvent += SuperEasyClient_NoticeMessageEvent;
             //this.dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows[dataGridView1.Rows.Count-1].Index;
+        }
+
+        private void Cb_dataType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AnalysisQuickSignal();
         }
 
         private void Rb_highBefore_CheckStateChanged(object sender, EventArgs e)
@@ -97,6 +109,10 @@ namespace SentProt
             ConnectServerView();
         }
 
+        private void Tool_disconnect_Click(object sender, EventArgs e)
+        {
+            SuperEasyClient.client.Close();
+        }
         private void SuperEasyClient_NoticeMessageEvent(MyPackageInfo packageInfo)
         {
             this.grid_stentCompleteSignal.BeginInvoke(actions, packageInfo);
@@ -112,24 +128,38 @@ namespace SentProt
             AnalysisUsualSignal(packageInfo);
         }
 
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            
+        }
+
         private void AnalysisUsualSignal(MyPackageInfo packageInfo)
         {
             int count = packageInfo.Data.Length  / 8;
             if (count == 0)
                 return;//长度不足
-            for (int i = 0; i < count * 8; i += 8)
+            Task task = new Task(()=>
             {
-                var iData = ConvertReceiveData(packageInfo,i);
-                this.grid_stentCompleteSignal.Rows.AddNew();
-                this.grid_stentCompleteSignal.Rows[revCount].Cells[0].Value = revCount + 1;
-                this.grid_stentCompleteSignal.Rows[revCount].Cells[1].Value = packageInfo.Data.Length;
-                this.grid_stentCompleteSignal.Rows[revCount].Cells[2].Value = iData;
-                this.grid_stentCompleteSignal.Rows[revCount].IsSelected = true;
-                this.grid_stentCompleteSignal.TableElement.ScrollToRow(this.grid_stentCompleteSignal.Rows.Count);
-                revCount++;
-                System.Threading.Thread.Sleep(100);
-            }
-            AnalysisQuickSignal();
+                for (int i = 0; i < count * 8; i += 8)
+                {
+                    this.grid_stentCompleteSignal.Invoke(new Action(() =>
+                    {
+                        var iData = ConvertReceiveData(packageInfo, i);
+                        this.grid_stentCompleteSignal.BeginEdit();
+                        this.grid_stentCompleteSignal.Rows.AddNew();
+                        this.grid_stentCompleteSignal.Rows[revCount].Cells[0].Value = revCount + 1;
+                        this.grid_stentCompleteSignal.Rows[revCount].Cells[1].Value = iData;
+                        this.grid_stentCompleteSignal.Rows[revCount].IsSelected = true;
+                        this.grid_stentCompleteSignal.TableElement.ScrollToRow(this.grid_stentCompleteSignal.Rows.Count);
+                        this.grid_stentCompleteSignal.EndEdit();
+                        this.grid_stentCompleteSignal.Update();
+                    }));
+                    revCount++;
+                    Thread.Sleep(100);
+                }
+                AnalysisQuickSignal();
+            });
+            task.Start();
         }
 
         private string ConvertReceiveData(MyPackageInfo packageInfo,int index)
@@ -138,8 +168,17 @@ namespace SentProt
             if (this.tool_dataType.SelectedIndex == 0)
             {
                 iData = packageInfo.Data[index].ToString("X2") + "-" + packageInfo.Data[index + 1].ToString("X2") + "-" + packageInfo.Data[index + 2].ToString("X2") + "-" + packageInfo.Data[index + 3].ToString("X2") + "-" + packageInfo.Data[index + 4].ToString("X2") + "-" + packageInfo.Data[index + 5].ToString("X2") + "-" + packageInfo.Data[index + 6].ToString("X2") + "-" + packageInfo.Data[index + 7].ToString("X2");
-                var firstByteString = Convert.ToString(packageInfo.Data[index],2);
+                var firstByteString = Convert.ToString(packageInfo.Data[index],2).PadLeft(4,'0');
                 var firstBit = firstByteString.Substring(firstByteString.Length - 4,1);//从右往左数，起始位为0，第3位
+                if (IsFirstReceive)
+                {
+                    IsFirstReceive = false;
+                    if (firstBit != "1")
+                    {
+                        IsFirstReceive = true;
+                        return iData;
+                    }
+                }
                 cacheFirstBitValue.Add(firstBit);
                 cacheDataPerFrame.Add(iData);
                 //开始判断数据类型：标准帧类/扩展帧类型
@@ -156,15 +195,105 @@ namespace SentProt
                         //第一位为1，第2/3/4位为0
                         currentFrameType = MessageFormatType.StandardFrame;
                     }
+                    else
+                    {
+                        currentFrameType = MessageFormatType.Other;
+                        cacheDataPerFrame.Clear();
+                        cacheFirstBitValue.Clear();
+                    }
                     //数据帧类型判断结束
+
                     if (currentFrameType == MessageFormatType.ExtendedFrame)
                     {
                         //扩展帧为18帧为一完整包
-                        if (cacheFirstBitValue[7] == "0")
+                        if (cacheDataPerFrame.Count >= 18)
                         {
-                        }
-                        else if (cacheFirstBitValue[7] == "1")
-                        { 
+                            //起始位为0的第二位与第三位
+                            var messageID = "";
+                            var data = "";
+                            var dataMessageID = "";//message id剩余部分
+                            int count = 0;
+                            var sumCRC = "";
+                            var crcValue = "";
+                            foreach (var signalData in this.cacheDataPerFrame)
+                            {
+                                var bitData = Convert.ToString(Convert.ToByte(signalData.Substring(0,2), 16), 2).PadLeft(4,'0');
+                                if (cacheFirstBitValue[7] == "0")
+                                {
+                                    //this is 12-bit-data and 8-bit-message-id
+                                    //index:6-17
+                                    if (count >= 6 && count <= 17)
+                                    {
+                                        data += bitData.Substring(bitData.Length - 3,1);
+                                        if (count >= 8 && count <= 11)
+                                        {
+                                            messageID += bitData.Substring(bitData.Length - 4, 1);
+                                        }
+                                        else if (count >= 13 && count <= 16)
+                                        {
+                                            messageID += bitData.Substring(bitData.Length - 4, 1);
+                                        }
+                                    }
+                                }
+                                else if (cacheFirstBitValue[7] == "1")
+                                {
+                                    //this is 16-bit-data and 4-bit-message-id
+                                    if (count >= 6 && count <= 17)
+                                    {
+                                        data += bitData.Substring(bitData.Length - 3, 1);
+                                        if (count >= 8 && count <= 11)
+                                        {
+                                            messageID += bitData.Substring(bitData.Length - 4, 1);
+                                        }
+                                        else if (count >= 13 && count <= 16)
+                                        {
+                                            dataMessageID += bitData.Substring(bitData.Length - 4,1);
+                                        }
+                                    }
+                                }
+                                //计算CRC
+                                if (count >= 0 && count <= 5)
+                                {
+                                    crcValue += bitData.Substring(bitData.Length - 3, 1);
+                                }
+                                if (count >= 6 && count >= 17)
+                                {
+                                    sumCRC += bitData.Substring(bitData.Length - 3, 1) + bitData.Substring(bitData.Length - 4, 1);
+                                }
+                                count++;
+                            }
+                            data += dataMessageID;
+                            data = "0X"+string.Format("{0:x2}", Convert.ToInt32(data, 2));
+                            messageID = "0X"+string.Format("{0:x2}",Convert.ToInt32(messageID,2));
+                            crcValue = string.Format("{0:x2}",Convert.ToInt32(crcValue,2));
+                            var sumCRCCal = Crc6_Cal(AddBit2Array(sumCRC));
+                            if (Convert.ToInt32(crcValue) == sumCRCCal)
+                            {
+                                LogHelper.Log.Info("【扩展帧】CRC校验成功 "+sumCRCCal);
+                            }
+                            else
+                            {
+                                LogHelper.Log.Info($"【扩展帧】CRC校验失败 sumCRCCal={sumCRCCal} crcValue={crcValue}");
+                            }
+                            //一包数据解析完成
+                            //开始显示一包数据
+                            this.grid_stentSlowSignal.Invoke(new Action(() =>
+                            {
+                                this.grid_stentSlowSignal.Rows.AddNew();
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[0].Value = slowSignalCount + 1;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[1].Value = "扩展帧";
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[2].Value = messageID;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[3].Value = data;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
+                                this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
+                                this.grid_stentSlowSignal.Update();
+                            }));
+
+                            //清空缓存
+                            cacheDataPerFrame.Clear();
+                            cacheFirstBitValue.Clear();
+                            IsFirstReceive = true;
+                            slowSignalCount++;
                         }
                     }
                     else if (currentFrameType == MessageFormatType.StandardFrame)
@@ -172,13 +301,15 @@ namespace SentProt
                         //标准帧为16帧为一个完整包
                         if (cacheDataPerFrame.Count >= 16)
                         {
-                            //获取message ID 与data
+                            //获取message ID 与data  起始位为0的第2位
                             var messageID = "";
                             var data = "";
                             int count = 0;
+                            var sumCRC = "";
+                            var crcValue = "";
                             foreach (var signalData in this.cacheDataPerFrame)
                             {
-                                var bitData = Convert.ToString(Convert.ToByte(signalData,16),2);//4位bit
+                                var bitData = Convert.ToString(Convert.ToByte(signalData.Substring(0, 2), 16), 2).PadLeft(4,'0');//4位bit
                                 if (count <= 3)
                                 {
                                     messageID += bitData.Substring(bitData.Length - 3, 1);
@@ -187,20 +318,46 @@ namespace SentProt
                                 {
                                     data += bitData.Substring(bitData.Length - 3,1);
                                 }
+                                if (count >= 0 && count <= 11)
+                                {
+                                    sumCRC += bitData.Substring(bitData.Length - 3, 1);
+                                }
+                                if (count >= 12 && count <= 15)
+                                {
+                                    crcValue += bitData.Substring(bitData.Length - 3, 1);
+                                }
                                 count++;
+                            }
+                            data = "0X"+string.Format("{0:x2}", Convert.ToInt32(data, 2));
+                            messageID = "0X"+string.Format("{0:x2}", Convert.ToInt32(messageID, 2));
+                            sumCRC = string.Format("{0:x2}",Convert.ToInt32(sumCRC, 2));
+                            crcValue = string.Format("{0:x2}",Convert.ToInt32(crcValue));
+                            if (sumCRC == crcValue)
+                            {
+                                LogHelper.Log.Info("【标准帧】校验成功 "+sumCRC);
+                            }
+                            else
+                            {
+                                LogHelper.Log.Info("【标准帧】校验失败 " + crcValue);
                             }
                             //一包数据解析完成
                             //开始显示一包数据
-                            this.grid_stentSlowSignal.Rows.AddNew();
-                            this.grid_stentSlowSignal.Rows[revCount].Cells[0].Value = revCount + 1;
-                            this.grid_stentSlowSignal.Rows[revCount].Cells[1].Value = packageInfo.Data.Length;
-                            this.grid_stentSlowSignal.Rows[revCount].Cells[2].Value = messageID;
-                            this.grid_stentSlowSignal.Rows[revCount].Cells[3].Value = data;
-                            this.grid_stentSlowSignal.Rows[revCount].IsSelected = true;
-                            this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
+                            this.grid_stentSlowSignal.Invoke(new Action(() =>
+                            {
+                                this.grid_stentSlowSignal.Rows.AddNew();
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[0].Value = slowSignalCount + 1;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[1].Value = "标准帧";
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[2].Value = messageID;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[3].Value = data;
+                                this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
+                                this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
+                                this.grid_stentSlowSignal.Update();
+                            }));
                             //清空缓存
                             cacheDataPerFrame.Clear();
                             cacheFirstBitValue.Clear();
+                            IsFirstReceive = true;
+                            slowSignalCount++;
                         }
                     }
                 }
@@ -225,7 +382,10 @@ namespace SentProt
         private void AnalysisQuickSignal()
         {
             //将显示数据最新一条数据，按高低位排序显示
-            var latestValue = this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[2].Value.ToString();
+            ChangeQuickDataShowType();
+            if (this.grid_stentCompleteSignal.RowCount < 1)
+                return;
+            var latestValue = this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[1].Value.ToString();
             byte[] latestByte = ConvertByte.HexToByte(latestValue,2,2);
             byte[] data1 = new byte[3];
             byte[] data2 = new byte[3];
@@ -240,11 +400,29 @@ namespace SentProt
                 data1 = data1.Reverse().ToArray();
                 data2 = data2.Reverse().ToArray();
             }
-            if(this.grid_stentQuickSignal.Rows.Count < 1)
-                this.grid_stentQuickSignal.Rows.AddNew();
-            this.grid_stentQuickSignal.Rows[0].Cells[0].Value = 1;
-            this.grid_stentQuickSignal.Rows[0].Cells[1].Value = 6;
-            this.grid_stentQuickSignal.Rows[0].Cells[2].Value = BitConverter.ToString(data1) + BitConverter.ToString(data2);
+            this.grid_stentQuickSignal.Invoke(new Action(()=>
+            {
+                if (this.cb_dataType.SelectedIndex == 0)
+                {
+                    //只显示数据1
+                    if (this.grid_stentQuickSignal.Rows.Count < 1)
+                        this.grid_stentQuickSignal.Rows.AddNew();
+                    var data = BitConverter.ToString(data1).Replace("0","").Replace("-","");
+                    this.grid_stentQuickSignal.Rows[0].Cells[0].Value = data;
+                    this.grid_stentQuickSignal.Rows[0].IsSelected = true;
+                    this.grid_stentQuickSignal.Update();
+                }
+                else
+                {
+                    //显示数据1与数据2
+                    if (this.grid_stentQuickBoth.Rows.Count < 1)
+                        this.grid_stentQuickBoth.Rows.AddNew();
+                    this.grid_stentQuickBoth.Rows[0].Cells[0].Value = BitConverter.ToString(data1).Replace("0","").Replace("-","");
+                    this.grid_stentQuickBoth.Rows[0].Cells[1].Value = BitConverter.ToString(data2).Replace("0","").Replace("-","");
+                    this.grid_stentQuickBoth.Rows[0].IsSelected = true;
+                    this.grid_stentQuickBoth.Update();
+                }
+            }));
         }
 
         private void ConnectServerView()
@@ -253,11 +431,46 @@ namespace SentProt
             addConnection.ShowDialog();
         }
 
+        private int[] AddBit2Array(string crcSum)
+        {
+            if (crcSum.Length != 24)
+                return new int[] { };
+            int[] crcArray = new int[4];
+            crcArray[0] = Convert.ToInt32(crcSum.Substring(0, 6));
+            crcArray[0] = Convert.ToInt32(crcSum.Substring(6, 6));
+            crcArray[0] = Convert.ToInt32(crcSum.Substring(12, 6));
+            crcArray[0] = Convert.ToInt32(crcSum.Substring(18, 6));
+            return crcArray;
+        }
+
+        private int Crc6_Cal(int[] dataResult)/*data位6位nibble块的值，len为数据块的数量*/
+        {
+            /*crc初始值*/
+            var result = 0x15;
+            /*查表地址*/
+            var tableNo = 0;
+
+            /*对额外添加的6个0进行查表计算crc*/
+            tableNo = result ^ 0;
+            result = dataResult[tableNo];
+
+            /*对数组数据查表计算crc*/
+            for (int i = 0; i < dataResult.Length; i++)
+            {
+                tableNo = result ^ dataResult[i];
+                result = dataResult[tableNo];
+            }
+
+            /*返回最终的crc值*/
+            return result;
+        }
+
         private void Init()
         {
             RadGridViewProperties.SetRadGridViewProperty(this.grid_stentCompleteSignal,false);
             RadGridViewProperties.SetRadGridViewProperty(this.grid_stentSlowSignal,false);
             RadGridViewProperties.SetRadGridViewProperty(this.grid_stentQuickSignal,false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentQuickBoth, false);
             this.grid_stentCompleteSignal.ReadOnly = true;
             this.grid_stentQuickSignal.ReadOnly = true;
             this.grid_stentSlowSignal.ReadOnly = true;
@@ -266,6 +479,24 @@ namespace SentProt
             this.tool_dataType.SelectedIndex = 0;
             this.rb_highBefore.CheckState = CheckState.Checked;
             cacheDataPerFrame = new List<string>();
+            this.cb_dataType.SelectedIndex = 1;
+            ChangeQuickDataShowType();
+        }
+
+        private void ChangeQuickDataShowType()
+        {
+            if (this.cb_dataType.SelectedIndex == 0)
+            {
+                this.grid_stentQuickBoth.Visible = false;
+                this.grid_stentQuickSignal.Visible = true;
+                this.grid_stentQuickSignal.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                this.grid_stentQuickSignal.Visible = false;
+                this.grid_stentQuickBoth.Visible = true;
+                this.grid_stentQuickBoth.Dock = DockStyle.Fill;
+            }
         }
     }
 }

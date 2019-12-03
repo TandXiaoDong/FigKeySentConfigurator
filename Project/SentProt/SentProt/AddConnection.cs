@@ -28,7 +28,7 @@ namespace SentProt
         private void Init()
         {
             this.tb_hostname.Text = "127.0.0.1";
-            this.tb_port.Text = "10002";
+            this.tb_port.Text = "10010";
         }
 
         private void EventHandlers()
@@ -57,11 +57,13 @@ namespace SentProt
 
         private void SendMessage()
         {
-            SuperEasyClient.SendMessage(StentSignalEnum.RequestData, new byte[0]);
+            //SuperEasyClient.SendMessage(StentSignalEnum.RequestData, new byte[0]);
         }
 
         private void Btn_connect_Click(object sender, EventArgs e)
         {
+            SuperEasyClient.serverUrl = this.tb_hostname.Text;
+            SuperEasyClient.serverPort = this.tb_port.Text;
             SuperEasyClient.ConnectServer();
         }
 

@@ -23,6 +23,8 @@ namespace SentProt.ClientSocket
         public static event NoticeMessage NoticeMessageEvent;
 
         public static EasyClient<MyPackageInfo> client;
+        public static string serverUrl = "";
+        public static string serverPort = "";
 
         private static void SendNoticeMessage(MyPackageInfo packageInfo)
         {
@@ -51,9 +53,9 @@ namespace SentProt.ClientSocket
             client.Error += OnClientError;
             client.Closed += OnClientClosed;
 
-            var webSocketUrl = System.Configuration.ConfigurationManager.AppSettings["WebSocketURL"].ToString();//ip
-            var webSocketPort = System.Configuration.ConfigurationManager.AppSettings["WebSocketPort"].ToString();//port
-            var connected = await client.ConnectAsync(new IPEndPoint(IPAddress.Parse(webSocketUrl), int.Parse(webSocketPort)));
+            //var webSocketUrl = System.Configuration.ConfigurationManager.AppSettings["WebSocketURL"].ToString();//ip
+            //var webSocketPort = System.Configuration.ConfigurationManager.AppSettings["WebSocketPort"].ToString();//port
+            var connected = await client.ConnectAsync(new IPEndPoint(IPAddress.Parse(serverUrl), int.Parse(serverPort)));
         }
 
         private static void OnClientClosed(object sender, EventArgs e)

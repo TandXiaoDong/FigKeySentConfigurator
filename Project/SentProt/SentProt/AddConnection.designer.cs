@@ -57,7 +57,7 @@
             this.tb_hostname.RootElement.BorderHighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.tb_hostname.Size = new System.Drawing.Size(385, 38);
             this.tb_hostname.TabIndex = 4;
-            this.tb_hostname.Text = "127.0.0.1";
+            this.tb_hostname.Text = "192.168.1.100";
             this.tb_hostname.ThemeName = "Material";
             // 
             // radLabel2
@@ -81,7 +81,7 @@
             this.tb_port.RootElement.BorderHighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.tb_port.Size = new System.Drawing.Size(385, 38);
             this.tb_port.TabIndex = 7;
-            this.tb_port.Text = "10002";
+            this.tb_port.Text = "1001";
             this.tb_port.ThemeName = "Material";
             // 
             // radLabel3
