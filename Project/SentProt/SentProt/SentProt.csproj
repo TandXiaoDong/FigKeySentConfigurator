@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SentProt</RootNamespace>
     <AssemblyName>SentProt</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -171,6 +172,14 @@
       <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R1 2019\Bin40\Telerik.WinControls.UI.Design.dll</HintPath>
     </Reference>
     <Reference Include="TelerikCommon, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="TelerikData, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R1 2019\Bin40\TelerikData.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikExport, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R1 2019\Bin40\TelerikExport.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddConnection.cs">
