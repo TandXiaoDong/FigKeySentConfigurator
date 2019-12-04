@@ -52,6 +52,7 @@ namespace SentProt
         private void RefreshControls()
         {
             SendMessage();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

@@ -184,6 +184,12 @@
     <Compile Include="ClientSocket\AppBase\MyReceiveFilter.cs" />
     <Compile Include="ClientSocket\SocketClient.cs" />
     <Compile Include="ClientSocket\SuperEasyClient.cs" />
+    <Compile Include="FrameShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameShow.Designer.cs">
+      <DependentUpon>FrameShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddConnection.resx">
       <DependentUpon>AddConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrameShow.resx">
+      <DependentUpon>FrameShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -251,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Export_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefinedPrintStyle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

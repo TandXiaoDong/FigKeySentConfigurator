@@ -73,6 +73,16 @@ namespace SentProt.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap DefinedPrintStyle {
+            get {
+                object obj = ResourceManager.GetObject("DefinedPrintStyle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Export_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Export_16x16", resourceCulture);

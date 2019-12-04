@@ -49,7 +49,7 @@
             // 
             this.tb_hostname.BackColor = System.Drawing.Color.White;
             this.tb_hostname.Font = new System.Drawing.Font("华文中宋", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_hostname.Location = new System.Drawing.Point(48, 91);
+            this.tb_hostname.Location = new System.Drawing.Point(48, 62);
             this.tb_hostname.Name = "tb_hostname";
             // 
             // 
@@ -62,7 +62,7 @@
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(48, 64);
+            this.radLabel2.Location = new System.Drawing.Point(48, 35);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(74, 21);
             this.radLabel2.TabIndex = 3;
@@ -73,7 +73,7 @@
             // 
             this.tb_port.BackColor = System.Drawing.Color.White;
             this.tb_port.Font = new System.Drawing.Font("华文中宋", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_port.Location = new System.Drawing.Point(48, 212);
+            this.tb_port.Location = new System.Drawing.Point(48, 146);
             this.tb_port.Name = "tb_port";
             // 
             // 
@@ -86,7 +86,7 @@
             // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(48, 184);
+            this.radLabel3.Location = new System.Drawing.Point(48, 118);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(34, 21);
             this.radLabel3.TabIndex = 6;
@@ -95,7 +95,7 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(48, 323);
+            this.btn_connect.Location = new System.Drawing.Point(48, 231);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(133, 33);
             this.btn_connect.TabIndex = 14;
@@ -104,7 +104,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(297, 323);
+            this.btn_cancel.Location = new System.Drawing.Point(297, 231);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(136, 33);
             this.btn_cancel.TabIndex = 16;
@@ -116,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(451, 383);
+            this.ClientSize = new System.Drawing.Size(455, 297);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.tb_port);
@@ -129,7 +129,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "AddConnection";
-            this.ThemeName = "Breeze";
+            this.ThemeName = "Material";
             ((System.ComponentModel.ISupportInitialize)(this.tb_hostname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_port)).EndInit();

@@ -1,0 +1,191 @@
+
+[2019/12/1 10:49:21 857]  通信猫调试软件    2019/12/1
+[2019/12/1 10:49:21 859]  http://tongxinmao.com
+[2019/12/1 10:49:24 167]  
+
+[2019/12/1 10:49:54 611]  正在连接MQTT服务器...
+[2019/12/1 10:49:59 202]  MQTT连接成功
+[2019/12/1 10:50:20 856]  正在连接MQTT服务器...
+[2019/12/1 10:50:53 220]  正在连接MQTT服务器...
+[2019/12/1 10:51:01 740]  通信猫调试软件    2019/12/1
+[2019/12/1 10:51:01 766]  http://tongxinmao.com
+[2019/12/1 10:51:02 457]  
+
+[2019/12/1 10:51:20 786]  正在连接MQTT服务器...
+[2019/12/1 10:51:20 809]  MQTT连接成功
+[2019/12/1 10:51:23 250]  MQTT主题订阅成功
+[2019/12/1 11:54:15 778]  正在连接MQTT服务器...
+[2019/12/1 11:54:15 860]  MQTT连接成功
+[2019/12/1 11:54:17 361]  MQTT主题订阅成功
+[2019/12/1 11:54:25 881]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 11:54:25 905]  122
+[2019/12/1 12:00:40 144]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 12:00:40 167]  send message
+[2019/12/1 15:38:30 019]  正在连接MQTT服务器...
+[2019/12/1 15:38:30 104]  MQTT连接成功
+[2019/12/1 15:38:32 473]  MQTT主题订阅成功
+[2019/12/1 15:38:33 961]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 15:38:33 999]  send message
+[2019/12/1 15:38:34 941]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 15:38:35 016]  send message
+[2019/12/1 15:38:35 882]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 15:38:35 923]  send message
+[2019/12/1 21:19:33 438]  正在连接MQTT服务器...
+[2019/12/1 21:20:29 818]  正在连接MQTT服务器...
+[2019/12/1 21:20:47 131]  通信猫调试软件    2019/12/1
+[2019/12/1 21:20:47 171]  http://tongxinmao.com
+[2019/12/1 21:20:48 167]  
+
+[2019/12/1 21:22:34 842]  正在连接MQTT服务器...
+[2019/12/1 21:22:34 865]  MQTT连接成功
+[2019/12/1 21:23:20 543]  MQTT主题订阅成功
+[2019/12/1 21:23:42 812]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 21:23:42 835]  send message
+[2019/12/1 21:23:48 284]  正在连接MQTT服务器...
+[2019/12/1 21:23:48 307]  MQTT连接成功
+[2019/12/1 21:23:49 414]  MQTT主题订阅成功
+[2019/12/1 21:23:50 759]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 21:23:50 781]  send message
+[2019/12/1 21:23:58 846]  正在连接MQTT服务器...
+[2019/12/1 21:23:58 868]  MQTT连接成功
+[2019/12/1 21:24:00 850]  MQTT主题订阅成功
+[2019/12/1 21:24:01 727]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 21:24:01 750]  1111
+[2019/12/1 21:29:02 853]  通信猫调试软件    2019/12/1
+[2019/12/1 21:29:02 876]  http://tongxinmao.com
+[2019/12/1 21:29:04 237]  
+
+[2019/12/1 21:31:41 151]  正在连接MQTT服务器...
+[2019/12/1 21:31:41 177]  MQTT连接成功
+[2019/12/1 21:31:48 160]  正在连接MQTT服务器...
+[2019/12/1 21:41:55 369]  正在连接MQTT服务器...
+[2019/12/1 21:42:04 108]  通信猫调试软件    2019/12/1
+[2019/12/1 21:42:04 132]  http://tongxinmao.com
+[2019/12/1 21:42:05 346]  
+
+[2019/12/1 21:42:12 987]  正在连接MQTT服务器...
+[2019/12/1 21:42:28 041]  正在连接MQTT服务器...
+[2019/12/1 21:42:36 286]  通信猫调试软件    2019/12/1
+[2019/12/1 21:42:36 312]  http://tongxinmao.com
+[2019/12/1 21:42:36 956]  
+
+[2019/12/1 21:42:58 459]  正在连接MQTT服务器...
+[2019/12/1 21:42:58 483]  MQTT连接成功
+[2019/12/1 21:43:00 232]  MQTT主题订阅成功
+[2019/12/1 21:43:10 304]  MQTT主题订阅成功
+[2019/12/1 21:43:46 877]  MQTT发送文本消息,主题：publi/test 长度：45字节：
+[2019/12/1 21:43:46 901]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 21:44:03 914]  正在连接MQTT服务器...
+[2019/12/1 21:44:03 947]  MQTT连接成功
+[2019/12/1 21:44:07 282]  MQTT主题订阅成功
+[2019/12/1 21:44:54 232]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 21:44:54 259]  8888
+[2019/12/1 21:51:34 932]  通信猫调试软件    2019/12/1
+[2019/12/1 21:51:34 955]  http://tongxinmao.com
+[2019/12/1 21:51:44 752]  未连接MQTT服务器
+[2019/12/1 21:51:47 672]  正在连接MQTT服务器...
+[2019/12/1 21:51:47 703]  MQTT连接成功
+[2019/12/1 21:51:49 043]  MQTT主题订阅成功
+[2019/12/1 21:52:07 776]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:07 801]  999
+[2019/12/1 21:52:09 887]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:09 912]  999
+[2019/12/1 21:52:10 988]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:11 011]  999
+[2019/12/1 21:52:11 843]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:11 869]  999
+[2019/12/1 21:52:12 658]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:12 681]  999
+[2019/12/1 21:52:15 770]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:15 801]  999
+[2019/12/1 21:52:16 505]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:16 539]  999
+[2019/12/1 21:52:17 053]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:17 080]  999
+[2019/12/1 21:52:17 871]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:17 896]  999
+[2019/12/1 21:52:18 079]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:18 105]  999
+[2019/12/1 21:52:18 384]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 21:52:18 409]  999
+[2019/12/1 21:52:24 826]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收10字节: 
+[2019/12/1 21:52:24 856]  999ghuhihi
+[2019/12/1 21:52:25 450]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收10字节: 
+[2019/12/1 21:52:25 473]  999ghuhihi
+[2019/12/1 21:52:25 955]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收10字节: 
+[2019/12/1 21:52:25 979]  999ghuhihi
+[2019/12/1 21:52:26 492]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收10字节: 
+[2019/12/1 21:52:26 525]  999ghuhihi
+[2019/12/1 21:52:54 864]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 21:52:54 889]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 21:53:02 618]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 21:53:02 641]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 21:53:07 986]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 21:53:08 018]  send message
+[2019/12/1 22:02:21 805]  正在连接MQTT服务器...
+[2019/12/1 22:02:21 829]  MQTT连接成功
+[2019/12/1 22:02:23 393]  MQTT主题订阅成功
+[2019/12/1 22:02:24 369]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:02:24 399]  4334
+[2019/12/1 22:02:31 406]  正在连接MQTT服务器...
+[2019/12/1 22:02:31 431]  MQTT连接成功
+[2019/12/1 22:02:34 165]  正在连接MQTT服务器...
+[2019/12/1 22:02:34 194]  MQTT连接成功
+[2019/12/1 22:02:35 106]  MQTT主题订阅成功
+[2019/12/1 22:02:36 186]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:02:36 209]  4334
+[2019/12/1 22:02:55 376]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:02:55 402]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:02:57 924]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:02:57 949]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:09:52 491]  正在连接MQTT服务器...
+[2019/12/1 22:09:52 519]  MQTT连接成功
+[2019/12/1 22:09:53 353]  MQTT主题订阅成功
+[2019/12/1 22:09:54 761]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:09:54 786]  99ji
+[2019/12/1 22:10:25 424]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:10:25 448]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:10:26 927]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:10:26 950]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:10:39 219]  正在连接MQTT服务器...
+[2019/12/1 22:10:39 242]  MQTT连接成功
+[2019/12/1 22:10:40 559]  MQTT主题订阅成功
+[2019/12/1 22:10:41 869]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 22:10:41 893]  888
+[2019/12/1 22:10:42 685]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 22:10:42 710]  888
+[2019/12/1 22:10:43 402]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 22:10:43 427]  888
+[2019/12/1 22:10:44 112]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 22:10:44 135]  888
+[2019/12/1 22:10:45 328]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收3字节: 
+[2019/12/1 22:10:45 351]  888
+[2019/12/1 22:10:51 492]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:10:51 518]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:10:52 134]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:10:52 171]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:10:52 667]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:10:52 691]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:13:16 485]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收12字节: 
+[2019/12/1 22:13:16 518]  send message
+[2019/12/1 22:46:39 844]  正在连接MQTT服务器...
+[2019/12/1 22:46:39 868]  MQTT连接成功
+[2019/12/1 22:46:42 947]  MQTT主题订阅成功
+[2019/12/1 22:46:43 779]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:46:43 818]  9999
+[2019/12/1 22:46:48 792]  正在连接MQTT服务器...
+[2019/12/1 22:46:48 819]  MQTT连接成功
+[2019/12/1 22:46:50 331]  MQTT主题订阅成功
+[2019/12/1 22:46:51 227]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:46:51 250]  9999
+[2019/12/1 22:47:07 661]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:47:07 685]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:47:08 549]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:47:08 572]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:47:09 037]  MQTT发送文本消息,主题：test 长度：45字节：
+[2019/12/1 22:47:09 061]  mqttserver and tool: http://mq.tongxinmao.com
+[2019/12/1 22:47:20 407]  正在连接MQTT服务器...
+[2019/12/1 22:47:20 437]  MQTT连接成功
+[2019/12/1 22:47:24 903]  MQTT主题订阅成功
+[2019/12/1 22:47:26 552]  MQTT[TOPIC:topic/logger/config/defaultCFile]接收4字节: 
+[2019/12/1 22:47:26 575]  9999
