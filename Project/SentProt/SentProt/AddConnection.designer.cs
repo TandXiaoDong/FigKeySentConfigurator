@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddConnection));
             this.tb_hostname = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.tb_port = new Telerik.WinControls.UI.RadTextBox();
@@ -49,20 +50,20 @@
             // 
             this.tb_hostname.BackColor = System.Drawing.Color.White;
             this.tb_hostname.Font = new System.Drawing.Font("华文中宋", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_hostname.Location = new System.Drawing.Point(48, 62);
+            this.tb_hostname.Location = new System.Drawing.Point(48, 55);
             this.tb_hostname.Name = "tb_hostname";
             // 
             // 
             // 
             this.tb_hostname.RootElement.BorderHighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.tb_hostname.Size = new System.Drawing.Size(385, 38);
+            this.tb_hostname.Size = new System.Drawing.Size(314, 38);
             this.tb_hostname.TabIndex = 4;
             this.tb_hostname.Text = "192.168.1.100";
             this.tb_hostname.ThemeName = "Material";
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(48, 35);
+            this.radLabel2.Location = new System.Drawing.Point(48, 28);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(74, 21);
             this.radLabel2.TabIndex = 3;
@@ -73,20 +74,20 @@
             // 
             this.tb_port.BackColor = System.Drawing.Color.White;
             this.tb_port.Font = new System.Drawing.Font("华文中宋", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_port.Location = new System.Drawing.Point(48, 146);
+            this.tb_port.Location = new System.Drawing.Point(48, 139);
             this.tb_port.Name = "tb_port";
             // 
             // 
             // 
             this.tb_port.RootElement.BorderHighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.tb_port.Size = new System.Drawing.Size(385, 38);
+            this.tb_port.Size = new System.Drawing.Size(314, 38);
             this.tb_port.TabIndex = 7;
             this.tb_port.Text = "1001";
             this.tb_port.ThemeName = "Material";
             // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(48, 118);
+            this.radLabel3.Location = new System.Drawing.Point(48, 111);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(34, 21);
             this.radLabel3.TabIndex = 6;
@@ -95,20 +96,22 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(48, 231);
+            this.btn_connect.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_connect.Location = new System.Drawing.Point(48, 200);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(133, 33);
+            this.btn_connect.Size = new System.Drawing.Size(107, 33);
             this.btn_connect.TabIndex = 14;
-            this.btn_connect.Text = "Create Connection";
+            this.btn_connect.Text = "开始连接";
             this.btn_connect.ThemeName = "Breeze";
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(297, 231);
+            this.btn_cancel.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_cancel.Location = new System.Drawing.Point(251, 200);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(136, 33);
+            this.btn_cancel.Size = new System.Drawing.Size(111, 33);
             this.btn_cancel.TabIndex = 16;
-            this.btn_cancel.Text = "Cancel Connection";
+            this.btn_cancel.Text = "取消连接";
             this.btn_cancel.ThemeName = "Breeze";
             // 
             // AddConnection
@@ -116,13 +119,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(455, 297);
+            this.ClientSize = new System.Drawing.Size(383, 253);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.tb_port);
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.tb_hostname);
             this.Controls.Add(this.radLabel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddConnection";
             // 
             // 

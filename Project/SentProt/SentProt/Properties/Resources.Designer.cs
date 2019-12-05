@@ -73,6 +73,16 @@ namespace SentProt.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ClearGrid {
+            get {
+                object obj = ResourceManager.GetObject("ClearGrid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap DefinedPrintStyle {
             get {
                 object obj = ResourceManager.GetObject("DefinedPrintStyle", resourceCulture);
@@ -96,6 +106,26 @@ namespace SentProt.Properties {
         internal static System.Drawing.Bitmap Play_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Play_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Properties_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Properties_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SendAgain {
+            get {
+                object obj = ResourceManager.GetObject("SendAgain", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

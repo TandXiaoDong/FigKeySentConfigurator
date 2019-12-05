@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrameShow));
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.tb_frameNumber = new Telerik.WinControls.UI.RadTextBox();
             this.btn_apply = new Telerik.WinControls.UI.RadButton();
@@ -85,6 +86,7 @@
             this.Controls.Add(this.btn_apply);
             this.Controls.Add(this.tb_frameNumber);
             this.Controls.Add(this.radLabel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrameShow";
             // 
             // 

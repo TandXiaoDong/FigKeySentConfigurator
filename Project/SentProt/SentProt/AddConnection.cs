@@ -9,6 +9,7 @@ using Telerik.WinControls;
 using SentProt.ClientSocket;
 using SentProt.ClientSocket.AppBase;
 using CommonUtils.ByteHelper;
+using System.Threading.Tasks;
 
 namespace SentProt
 {
@@ -16,19 +17,18 @@ namespace SentProt
     {
         private delegate void Actions();
         private Actions actions;
-        public AddConnection()
+        private bool IsConnect;
+        public static string serverIP;
+        public static int serverPort;
+        public AddConnection(string ip,int port)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             this.MaximizeBox = false;
-            Init();
+            this.MinimizeBox = false;
+            serverIP = ip;
+            serverPort = port;
             EventHandlers();
-        }
-
-        private void Init()
-        {
-            this.tb_hostname.Text = "127.0.0.1";
-            this.tb_port.Text = "10010";
         }
 
         private void EventHandlers()
@@ -63,9 +63,37 @@ namespace SentProt
 
         private void Btn_connect_Click(object sender, EventArgs e)
         {
-            SuperEasyClient.serverUrl = this.tb_hostname.Text;
-            SuperEasyClient.serverPort = this.tb_port.Text;
+            if (this.tb_hostname.Text != "")
+                serverIP = this.tb_hostname.Text;
+            else
+            {
+                MessageBox.Show("请输入服务器地址！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.tb_hostname.Focus();
+                return;
+            }
+            if (this.tb_port.Text != "")
+                int.TryParse(this.tb_port.Text.Trim(), out serverPort);
+            else
+            {
+                MessageBox.Show("请输入正确的端口号！","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                this.tb_port.Focus();
+                return;
+            }
+            SuperEasyClient.serverUrl = serverIP;
+            SuperEasyClient.serverPort = serverPort.ToString();
             SuperEasyClient.ConnectServer();
+            if (!IsConnect)
+            {
+                this.btn_connect.Text = "正在连接...";
+                this.btn_connect.BackColor = Color.Gray;
+                IsConnect = !IsConnect;
+            }
+            else
+            {
+                this.btn_connect.Text = "开始连接";
+                this.btn_connect.BackColor = Color.RoyalBlue;
+                IsConnect = !IsConnect;
+            }
         }
 
         private void Btn_cancel_Click(object sender, EventArgs e)
@@ -75,7 +103,14 @@ namespace SentProt
 
         private void AddConnection_Load(object sender, EventArgs e)
         {
-            
+            if (serverIP != "")
+                this.tb_hostname.Text = serverIP;
+            else
+                this.tb_hostname.Text = "127.0.0.1";
+            if (serverPort != 0)
+                this.tb_port.Text = serverPort.ToString();
+            else
+                this.tb_port.Text = "1001";
         }
     }
 }

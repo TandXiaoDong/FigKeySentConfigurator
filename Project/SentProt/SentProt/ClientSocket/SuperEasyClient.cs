@@ -61,14 +61,15 @@ namespace SentProt.ClientSocket
         private static void OnClientClosed(object sender, EventArgs e)
         {
             int attmpts = 1;
-            do
-            {
-                LogHelper.Log.Info("已断开与服务的连接...");
-                LogHelper.Log.Info("尝试重新连接，重连次数为"+attmpts);
-                Thread.Sleep(3000);
-                ConnectServer();
-                attmpts++;
-            } while (!client.IsConnected && attmpts > 3);
+            SendNoticeConnect(client.IsConnected);
+            LogHelper.Log.Info("已断开与服务的连接...");
+            //do
+            //{
+            //    LogHelper.Log.Info("尝试重新连接，重连次数为"+attmpts);
+            //    Thread.Sleep(3000);
+            //    ConnectServer();
+            //    attmpts++;
+            //} while (!client.IsConnected && attmpts > 3);
             LogHelper.Log.Info("重新连接成功，退出循环");
         }
 

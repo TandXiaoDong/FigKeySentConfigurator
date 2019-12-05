@@ -31,10 +31,20 @@ namespace SentProt.ClientSocket.AppBase
 
         public override MyPackageInfo ResolvePackage(IBufferStream bufferStream)
         {
+
+            //获取接收到的完整数据，包括头和尾
+            var body = bufferStream.ReadByte();
+            //掐头去尾，只返回中间的数据
+            //body = body.Remove(body.Length - end.Length, end.Length);
+            //body = body.Remove(0, begin.Length);
+
+
             //第三个参数用0,1都可以
             byte[] header =bufferStream.Buffers[0].Reverse().ToArray();
             byte[] bodyBuffer = bufferStream.Buffers[1].ToArray();
             //byte[] allBuffer = bufferStream.Buffers[0].Array.CloneRange(0, (int)bufferStream.Length);
+            //合并所有buffer
+            //byte[] allBuffer
             return new MyPackageInfo(header, bodyBuffer);
         }
     }

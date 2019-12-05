@@ -28,43 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn18 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn19 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn20 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn21 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn25 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn26 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn27 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn28 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn29 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn30 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn31 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn32 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn33 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn34 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn35 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn36 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTheme1 = new Telerik.WinControls.Themes.MaterialTheme();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_connectServer = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
-            this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
+            this.menu_disconnect = new Telerik.WinControls.UI.RadMenuItem();
+            this.menu_exit = new Telerik.WinControls.UI.RadMenuItem();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.tool_help = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
             this.breezeTheme1 = new Telerik.WinControls.Themes.BreezeTheme();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.tool_dataType = new System.Windows.Forms.ToolStripComboBox();
+            this.tool_exportType = new System.Windows.Forms.ToolStripComboBox();
             this.grid_stentCompleteSignal = new Telerik.WinControls.UI.RadGridView();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
@@ -82,15 +79,17 @@
             this.rb_highBefore1 = new Telerik.WinControls.UI.RadRadioButton();
             this.rb_lowerBefore1 = new Telerik.WinControls.UI.RadRadioButton();
             this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.menu_export = new Telerik.WinControls.UI.RadMenuItem();
             this.tool_connectServer = new System.Windows.Forms.ToolStripButton();
             this.tool_disconnect = new System.Windows.Forms.ToolStripButton();
             this.tool_start = new System.Windows.Forms.ToolStripButton();
             this.tool_stop = new System.Windows.Forms.ToolStripButton();
+            this.tool_sendSet = new System.Windows.Forms.ToolStripButton();
             this.tool_cacheFrameAmount = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tool_export = new System.Windows.Forms.ToolStripButton();
+            this.tool_clearGrid = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentCompleteSignal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentCompleteSignal.MasterTemplate)).BeginInit();
@@ -117,6 +116,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,8 +124,9 @@
             // 
             this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.menu_connectServer,
-            this.radMenuItem5,
-            this.radMenuItem6});
+            this.menu_disconnect,
+            this.menu_export,
+            this.menu_exit});
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "操作";
             // 
@@ -134,25 +135,15 @@
             this.menu_connectServer.Name = "menu_connectServer";
             this.menu_connectServer.Text = "创建连接";
             // 
-            // radMenuItem5
+            // menu_disconnect
             // 
-            this.radMenuItem5.Name = "radMenuItem5";
-            this.radMenuItem5.Text = "断开连接";
+            this.menu_disconnect.Name = "menu_disconnect";
+            this.menu_disconnect.Text = "断开连接";
             // 
-            // radMenuItem6
+            // menu_exit
             // 
-            this.radMenuItem6.Name = "radMenuItem6";
-            this.radMenuItem6.Text = "退出";
-            // 
-            // radMenuItem2
-            // 
-            this.radMenuItem2.Name = "radMenuItem2";
-            this.radMenuItem2.Text = "查看";
-            // 
-            // radMenuItem3
-            // 
-            this.radMenuItem3.Name = "radMenuItem3";
-            this.radMenuItem3.Text = "窗口";
+            this.menu_exit.Name = "menu_exit";
+            this.menu_exit.Text = "退出";
             // 
             // radStatusStrip1
             // 
@@ -162,23 +153,10 @@
             this.radStatusStrip1.TabIndex = 3;
             this.radStatusStrip1.ThemeName = "Material";
             // 
-            // radMenu1
+            // tool_help
             // 
-            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radMenuItem1,
-            this.radMenuItem2,
-            this.radMenuItem3,
-            this.radMenuItem7});
-            this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(1062, 26);
-            this.radMenu1.TabIndex = 1;
-            this.radMenu1.ThemeName = "Breeze";
-            // 
-            // radMenuItem7
-            // 
-            this.radMenuItem7.Name = "radMenuItem7";
-            this.radMenuItem7.Text = "关于";
+            this.tool_help.Name = "tool_help";
+            this.tool_help.Text = "帮助";
             // 
             // radMenuItem4
             // 
@@ -194,11 +172,12 @@
             this.tool_disconnect,
             this.tool_start,
             this.tool_stop,
+            this.tool_sendSet,
             this.tool_cacheFrameAmount,
             this.toolStripLabel2,
-            this.tool_dataType,
-            this.toolStripButton5,
-            this.toolStripButton1});
+            this.tool_exportType,
+            this.tool_export,
+            this.tool_clearGrid});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1062, 27);
@@ -209,12 +188,12 @@
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(79, 24);
-            this.toolStripLabel2.Text = "数据类型：";
+            this.toolStripLabel2.Text = "导出格式：";
             // 
-            // tool_dataType
+            // tool_exportType
             // 
-            this.tool_dataType.Name = "tool_dataType";
-            this.tool_dataType.Size = new System.Drawing.Size(121, 27);
+            this.tool_exportType.Name = "tool_exportType";
+            this.tool_exportType.Size = new System.Drawing.Size(121, 27);
             // 
             // grid_stentCompleteSignal
             // 
@@ -229,61 +208,61 @@
             // 
             // 
             // 
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.HeaderText = "序号";
-            gridViewTextBoxColumn1.Name = "grid_order";
-            gridViewTextBoxColumn1.Width = 70;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.HeaderText = "STATUS";
-            gridViewTextBoxColumn2.Name = "grid_status";
-            gridViewTextBoxColumn2.Width = 84;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.HeaderText = "DATA1";
-            gridViewTextBoxColumn3.Name = "grid_data1";
-            gridViewTextBoxColumn3.Width = 76;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.HeaderText = "DATA2";
-            gridViewTextBoxColumn4.Name = "grid_data2";
-            gridViewTextBoxColumn4.Width = 70;
-            gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.HeaderText = "DATA3";
-            gridViewTextBoxColumn5.Name = "grid_data3";
-            gridViewTextBoxColumn5.Width = 66;
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.HeaderText = "DATA4";
-            gridViewTextBoxColumn6.Name = "grid_data4";
-            gridViewTextBoxColumn6.Width = 66;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.HeaderText = "DATA5";
-            gridViewTextBoxColumn7.Name = "grid_data5";
-            gridViewTextBoxColumn7.Width = 66;
-            gridViewTextBoxColumn8.EnableExpressionEditor = false;
-            gridViewTextBoxColumn8.HeaderText = "DATA6";
-            gridViewTextBoxColumn8.Name = "grid_data6";
-            gridViewTextBoxColumn8.Width = 64;
-            gridViewTextBoxColumn9.EnableExpressionEditor = false;
-            gridViewTextBoxColumn9.HeaderText = "CRC";
-            gridViewTextBoxColumn9.Name = "grid_crc";
-            gridViewTextBoxColumn9.Width = 66;
-            gridViewTextBoxColumn10.EnableExpressionEditor = false;
-            gridViewTextBoxColumn10.HeaderText = "CAL_CRC";
-            gridViewTextBoxColumn10.Name = "grid_cal_crc";
-            gridViewTextBoxColumn10.Width = 64;
+            gridViewTextBoxColumn19.EnableExpressionEditor = false;
+            gridViewTextBoxColumn19.HeaderText = "序号";
+            gridViewTextBoxColumn19.Name = "grid_order";
+            gridViewTextBoxColumn19.Width = 70;
+            gridViewTextBoxColumn20.EnableExpressionEditor = false;
+            gridViewTextBoxColumn20.HeaderText = "STATUS";
+            gridViewTextBoxColumn20.Name = "grid_status";
+            gridViewTextBoxColumn20.Width = 84;
+            gridViewTextBoxColumn21.EnableExpressionEditor = false;
+            gridViewTextBoxColumn21.HeaderText = "DATA1";
+            gridViewTextBoxColumn21.Name = "grid_data1";
+            gridViewTextBoxColumn21.Width = 76;
+            gridViewTextBoxColumn22.EnableExpressionEditor = false;
+            gridViewTextBoxColumn22.HeaderText = "DATA2";
+            gridViewTextBoxColumn22.Name = "grid_data2";
+            gridViewTextBoxColumn22.Width = 70;
+            gridViewTextBoxColumn23.EnableExpressionEditor = false;
+            gridViewTextBoxColumn23.HeaderText = "DATA3";
+            gridViewTextBoxColumn23.Name = "grid_data3";
+            gridViewTextBoxColumn23.Width = 66;
+            gridViewTextBoxColumn24.EnableExpressionEditor = false;
+            gridViewTextBoxColumn24.HeaderText = "DATA4";
+            gridViewTextBoxColumn24.Name = "grid_data4";
+            gridViewTextBoxColumn24.Width = 66;
+            gridViewTextBoxColumn25.EnableExpressionEditor = false;
+            gridViewTextBoxColumn25.HeaderText = "DATA5";
+            gridViewTextBoxColumn25.Name = "grid_data5";
+            gridViewTextBoxColumn25.Width = 66;
+            gridViewTextBoxColumn26.EnableExpressionEditor = false;
+            gridViewTextBoxColumn26.HeaderText = "DATA6";
+            gridViewTextBoxColumn26.Name = "grid_data6";
+            gridViewTextBoxColumn26.Width = 64;
+            gridViewTextBoxColumn27.EnableExpressionEditor = false;
+            gridViewTextBoxColumn27.HeaderText = "CRC";
+            gridViewTextBoxColumn27.Name = "grid_crc";
+            gridViewTextBoxColumn27.Width = 66;
+            gridViewTextBoxColumn28.EnableExpressionEditor = false;
+            gridViewTextBoxColumn28.HeaderText = "CAL_CRC";
+            gridViewTextBoxColumn28.Name = "grid_cal_crc";
+            gridViewTextBoxColumn28.Width = 64;
             this.grid_stentCompleteSignal.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10});
-            this.grid_stentCompleteSignal.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            gridViewTextBoxColumn19,
+            gridViewTextBoxColumn20,
+            gridViewTextBoxColumn21,
+            gridViewTextBoxColumn22,
+            gridViewTextBoxColumn23,
+            gridViewTextBoxColumn24,
+            gridViewTextBoxColumn25,
+            gridViewTextBoxColumn26,
+            gridViewTextBoxColumn27,
+            gridViewTextBoxColumn28});
+            this.grid_stentCompleteSignal.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.grid_stentCompleteSignal.Name = "grid_stentCompleteSignal";
             this.grid_stentCompleteSignal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentCompleteSignal.Size = new System.Drawing.Size(1062, 277);
+            this.grid_stentCompleteSignal.Size = new System.Drawing.Size(1062, 273);
             this.grid_stentCompleteSignal.TabIndex = 9;
             this.grid_stentCompleteSignal.ThemeName = "TelerikMetro";
             // 
@@ -301,9 +280,10 @@
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
             this.radSplitContainer1.Size = new System.Drawing.Size(1062, 568);
+            this.radSplitContainer1.SplitterWidth = 8;
             this.radSplitContainer1.TabIndex = 10;
             this.radSplitContainer1.TabStop = false;
-            this.radSplitContainer1.ThemeName = "Breeze";
+            this.radSplitContainer1.ThemeName = "Material";
             // 
             // splitPanel1
             // 
@@ -314,13 +294,13 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(1062, 277);
-            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.1612903F);
+            this.splitPanel1.Size = new System.Drawing.Size(1062, 273);
+            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.1612319F);
             this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 85);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
-            this.splitPanel1.ThemeName = "Breeze";
+            this.splitPanel1.ThemeName = "Material";
             // 
             // splitPanel2
             // 
@@ -331,13 +311,13 @@
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(1062, 131);
-            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.09856632F);
-            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -54);
+            this.splitPanel2.Size = new System.Drawing.Size(1062, 159);
+            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.04528987F);
+            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -25);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
-            this.splitPanel2.ThemeName = "Breeze";
+            this.splitPanel2.ThemeName = "Material";
             // 
             // radGroupBox2
             // 
@@ -347,7 +327,7 @@
             this.radGroupBox2.HeaderText = "慢信号";
             this.radGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(1062, 131);
+            this.radGroupBox2.Size = new System.Drawing.Size(1062, 159);
             this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "慢信号";
             this.radGroupBox2.ThemeName = "Breeze";
@@ -364,60 +344,60 @@
             // 
             // 
             // 
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.HeaderText = "序号";
-            gridViewTextBoxColumn11.Name = "grid_order";
-            gridViewTextBoxColumn11.Width = 73;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.HeaderText = "帧类型";
-            gridViewTextBoxColumn12.Name = "grid_slow_frameType";
-            gridViewTextBoxColumn12.Width = 98;
-            gridViewTextBoxColumn13.EnableExpressionEditor = false;
-            gridViewTextBoxColumn13.HeaderText = "MessageID";
-            gridViewTextBoxColumn13.Name = "grid_slow_messageID";
-            gridViewTextBoxColumn13.Width = 106;
-            gridViewTextBoxColumn14.EnableExpressionEditor = false;
-            gridViewTextBoxColumn14.HeaderText = "DATA";
-            gridViewTextBoxColumn14.Name = "grid_slow_data";
-            gridViewTextBoxColumn14.Width = 100;
-            gridViewTextBoxColumn15.EnableExpressionEditor = false;
-            gridViewTextBoxColumn15.HeaderText = "CRC";
-            gridViewTextBoxColumn15.Name = "grid_slow_crc";
-            gridViewTextBoxColumn15.Width = 99;
-            gridViewTextBoxColumn16.EnableExpressionEditor = false;
-            gridViewTextBoxColumn16.HeaderText = "CAL_CRC";
-            gridViewTextBoxColumn16.Name = "grid_slow_cal_crc";
-            gridViewTextBoxColumn16.Width = 94;
+            gridViewTextBoxColumn29.EnableExpressionEditor = false;
+            gridViewTextBoxColumn29.HeaderText = "序号";
+            gridViewTextBoxColumn29.Name = "grid_order";
+            gridViewTextBoxColumn29.Width = 73;
+            gridViewTextBoxColumn30.EnableExpressionEditor = false;
+            gridViewTextBoxColumn30.HeaderText = "帧类型";
+            gridViewTextBoxColumn30.Name = "grid_slow_frameType";
+            gridViewTextBoxColumn30.Width = 98;
+            gridViewTextBoxColumn31.EnableExpressionEditor = false;
+            gridViewTextBoxColumn31.HeaderText = "MessageID";
+            gridViewTextBoxColumn31.Name = "grid_slow_messageID";
+            gridViewTextBoxColumn31.Width = 106;
+            gridViewTextBoxColumn32.EnableExpressionEditor = false;
+            gridViewTextBoxColumn32.HeaderText = "DATA";
+            gridViewTextBoxColumn32.Name = "grid_slow_data";
+            gridViewTextBoxColumn32.Width = 100;
+            gridViewTextBoxColumn33.EnableExpressionEditor = false;
+            gridViewTextBoxColumn33.HeaderText = "CRC";
+            gridViewTextBoxColumn33.Name = "grid_slow_crc";
+            gridViewTextBoxColumn33.Width = 99;
+            gridViewTextBoxColumn34.EnableExpressionEditor = false;
+            gridViewTextBoxColumn34.HeaderText = "CAL_CRC";
+            gridViewTextBoxColumn34.Name = "grid_slow_cal_crc";
+            gridViewTextBoxColumn34.Width = 94;
             this.grid_stentSlowSignal.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12,
-            gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14,
-            gridViewTextBoxColumn15,
-            gridViewTextBoxColumn16});
-            this.grid_stentSlowSignal.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            gridViewTextBoxColumn29,
+            gridViewTextBoxColumn30,
+            gridViewTextBoxColumn31,
+            gridViewTextBoxColumn32,
+            gridViewTextBoxColumn33,
+            gridViewTextBoxColumn34});
+            this.grid_stentSlowSignal.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.grid_stentSlowSignal.Name = "grid_stentSlowSignal";
             this.grid_stentSlowSignal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentSlowSignal.Size = new System.Drawing.Size(1058, 111);
+            this.grid_stentSlowSignal.Size = new System.Drawing.Size(1058, 139);
             this.grid_stentSlowSignal.TabIndex = 10;
             this.grid_stentSlowSignal.ThemeName = "TelerikMetro";
             // 
             // splitPanel3
             // 
             this.splitPanel3.Controls.Add(this.radGroupBox1);
-            this.splitPanel3.Location = new System.Drawing.Point(0, 416);
+            this.splitPanel3.Location = new System.Drawing.Point(0, 448);
             this.splitPanel3.Name = "splitPanel3";
             // 
             // 
             // 
             this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(1062, 152);
-            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.06272402F);
-            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -31);
+            this.splitPanel3.Size = new System.Drawing.Size(1062, 120);
+            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.115942F);
+            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -60);
             this.splitPanel3.TabIndex = 2;
             this.splitPanel3.TabStop = false;
             this.splitPanel3.Text = "splitPanel3";
-            this.splitPanel3.ThemeName = "Breeze";
+            this.splitPanel3.ThemeName = "Material";
             // 
             // radGroupBox1
             // 
@@ -428,7 +408,7 @@
             this.radGroupBox1.HeaderText = "快信号";
             this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(1062, 152);
+            this.radGroupBox1.Size = new System.Drawing.Size(1062, 120);
             this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "快信号";
             this.radGroupBox1.ThemeName = "Breeze";
@@ -445,21 +425,21 @@
             // 
             // 
             // 
-            gridViewTextBoxColumn17.EnableExpressionEditor = false;
-            gridViewTextBoxColumn17.HeaderText = "DATA1";
-            gridViewTextBoxColumn17.Name = "grid_quick_data1";
-            gridViewTextBoxColumn17.Width = 128;
-            gridViewTextBoxColumn18.EnableExpressionEditor = false;
-            gridViewTextBoxColumn18.HeaderText = "DATA2";
-            gridViewTextBoxColumn18.Name = "grid_quick_data2";
-            gridViewTextBoxColumn18.Width = 127;
+            gridViewTextBoxColumn35.EnableExpressionEditor = false;
+            gridViewTextBoxColumn35.HeaderText = "DATA1";
+            gridViewTextBoxColumn35.Name = "grid_quick_data1";
+            gridViewTextBoxColumn35.Width = 128;
+            gridViewTextBoxColumn36.EnableExpressionEditor = false;
+            gridViewTextBoxColumn36.HeaderText = "DATA2";
+            gridViewTextBoxColumn36.Name = "grid_quick_data2";
+            gridViewTextBoxColumn36.Width = 127;
             this.grid_stentQuickBoth.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn17,
-            gridViewTextBoxColumn18});
-            this.grid_stentQuickBoth.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            gridViewTextBoxColumn35,
+            gridViewTextBoxColumn36});
+            this.grid_stentQuickBoth.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.grid_stentQuickBoth.Name = "grid_stentQuickBoth";
             this.grid_stentQuickBoth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentQuickBoth.Size = new System.Drawing.Size(1058, 85);
+            this.grid_stentQuickBoth.Size = new System.Drawing.Size(1058, 53);
             this.grid_stentQuickBoth.TabIndex = 5;
             this.grid_stentQuickBoth.ThemeName = "TelerikMetro";
             // 
@@ -529,6 +509,22 @@
             this.rb_lowerBefore1.TabIndex = 1;
             this.rb_lowerBefore1.Text = "低位在前，高位在后";
             // 
+            // radMenu1
+            // 
+            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem1,
+            this.tool_help});
+            this.radMenu1.Location = new System.Drawing.Point(0, 0);
+            this.radMenu1.Name = "radMenu1";
+            this.radMenu1.Size = new System.Drawing.Size(1062, 26);
+            this.radMenu1.TabIndex = 1;
+            this.radMenu1.ThemeName = "Breeze";
+            // 
+            // menu_export
+            // 
+            this.menu_export.Name = "menu_export";
+            this.menu_export.Text = "另存为";
+            // 
             // tool_connectServer
             // 
             this.tool_connectServer.Image = global::SentProt.Properties.Resources.ServerMode_16x16;
@@ -551,7 +547,7 @@
             this.tool_start.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_start.Name = "tool_start";
             this.tool_start.Size = new System.Drawing.Size(57, 24);
-            this.tool_start.Text = "启动";
+            this.tool_start.Text = "发送";
             // 
             // tool_stop
             // 
@@ -561,6 +557,14 @@
             this.tool_stop.Size = new System.Drawing.Size(57, 24);
             this.tool_stop.Text = "停止";
             // 
+            // tool_sendSet
+            // 
+            this.tool_sendSet.Image = global::SentProt.Properties.Resources.SendAgain;
+            this.tool_sendSet.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_sendSet.Name = "tool_sendSet";
+            this.tool_sendSet.Size = new System.Drawing.Size(85, 24);
+            this.tool_sendSet.Text = "自动发送";
+            // 
             // tool_cacheFrameAmount
             // 
             this.tool_cacheFrameAmount.Image = global::SentProt.Properties.Resources.DefinedPrintStyle;
@@ -569,22 +573,21 @@
             this.tool_cacheFrameAmount.Size = new System.Drawing.Size(85, 24);
             this.tool_cacheFrameAmount.Text = "显示帧数";
             // 
-            // toolStripButton5
+            // tool_export
             // 
-            this.toolStripButton5.Image = global::SentProt.Properties.Resources.Export_16x16;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(57, 24);
-            this.toolStripButton5.Text = "导出";
+            this.tool_export.Image = global::SentProt.Properties.Resources.Export_16x16;
+            this.tool_export.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_export.Name = "tool_export";
+            this.tool_export.Size = new System.Drawing.Size(57, 24);
+            this.tool_export.Text = "导出";
             // 
-            // toolStripButton1
+            // tool_clearGrid
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(41, 24);
-            this.toolStripButton1.Text = "设置";
+            this.tool_clearGrid.Image = global::SentProt.Properties.Resources.ClearGrid;
+            this.tool_clearGrid.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_clearGrid.Name = "tool_clearGrid";
+            this.tool_clearGrid.Size = new System.Drawing.Size(57, 24);
+            this.tool_clearGrid.Text = "清空";
             // 
             // MainForm
             // 
@@ -597,6 +600,7 @@
             this.Controls.Add(this.radStatusStrip1);
             this.Controls.Add(this.radMenu1);
             this.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             // 
             // 
@@ -605,7 +609,6 @@
             this.Text = "STENT";
             this.ThemeName = "Material";
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_stentCompleteSignal.MasterTemplate)).EndInit();
@@ -635,6 +638,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -646,23 +650,20 @@
         private Telerik.WinControls.Themes.MaterialTheme materialTheme1;
         private Telerik.WinControls.UI.RadStatusStrip radStatusStrip1;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem1;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem2;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem3;
         private Telerik.WinControls.UI.RadMenuItem menu_connectServer;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem4;
         private Telerik.WinControls.Themes.BreezeTheme breezeTheme1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tool_connectServer;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem5;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem6;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem7;
+        private Telerik.WinControls.UI.RadMenuItem menu_disconnect;
+        private Telerik.WinControls.UI.RadMenuItem menu_exit;
+        private Telerik.WinControls.UI.RadMenuItem tool_help;
         private System.Windows.Forms.ToolStripButton tool_disconnect;
         private System.Windows.Forms.ToolStripButton tool_start;
         private System.Windows.Forms.ToolStripButton tool_stop;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripComboBox tool_dataType;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripComboBox tool_exportType;
+        private System.Windows.Forms.ToolStripButton tool_export;
         private Telerik.WinControls.UI.RadGridView grid_stentCompleteSignal;
         private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
         private Telerik.WinControls.UI.SplitPanel splitPanel1;
@@ -675,12 +676,15 @@
         private Telerik.WinControls.UI.RadGridView grid_stentSlowSignal;
         private System.Windows.Forms.Panel panel1;
         private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tool_clearGrid;
         private Telerik.WinControls.UI.RadGridView grid_stentQuickBoth;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private Telerik.WinControls.UI.RadRadioButton rb_highBefore2;
         private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore2;
         private System.Windows.Forms.ToolStripButton tool_cacheFrameAmount;
+        private System.Windows.Forms.ToolStripButton tool_sendSet;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.RadMenuItem menu_export;
     }
 }

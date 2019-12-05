@@ -42,6 +42,14 @@ namespace SentProt
                 MessageBox.Show("请输入正整数的显示帧数！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            else
+            {
+                if (frameNumber <= 0)
+                {
+                    MessageBox.Show("请输入大于0的显示帧数！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
