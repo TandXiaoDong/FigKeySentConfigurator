@@ -38,8 +38,6 @@ namespace SentProt
     {
         private int revCount;
         private int slowSignalCount = 0;
-        private delegate void Actions(MyPackageInfo packageInfo);
-        private Actions actions;
         private List<string> cacheDataPerFrame;
         private List<int> cacheFirstBitValue = new List<int>();
         private int cacheFrameNumber;
@@ -56,6 +54,11 @@ namespace SentProt
         private const string STENT_CONFIG_SERVER_URL = "serverIP";
         private const string STENT_CONFIG_SERVER_PORT = "port";
         private System.Timers.Timer timer;
+        private Queue<MyPackageInfo> receivePackageInfoQueue;
+        private Queue<MyPackageInfo> packageInfoQueueTemp;
+        private bool IsAnalysisComplete;
+        private bool IsFirstReceive = true;
+
 
         public MainForm()
         {
@@ -69,7 +72,6 @@ namespace SentProt
         {
             timer = new System.Timers.Timer();
             timer.Elapsed += Timer_Elapsed;
-            actions = new Actions(RefreshGridData);
             this.menu_connectServer.Click += Menu_connectServer_Click;
             this.menu_exit.Click += Menu_exit_Click;
             this.menu_disconnect.Click += Menu_disconnect_Click;
@@ -143,6 +145,8 @@ namespace SentProt
                 {
                     this.tool_connectServer.Enabled = true;
                     this.tool_disconnect.Enabled = false;
+                    this.tool_start.Enabled = false;
+                    this.tool_stop.Enabled = false;
                 }
             }));
         }
@@ -253,7 +257,11 @@ namespace SentProt
 
         private void SuperEasyClient_NoticeMessageEvent(MyPackageInfo packageInfo)
         {
-            this.grid_stentCompleteSignal.BeginInvoke(actions, packageInfo);
+            //this.grid_stentCompleteSignal.BeginInvoke(actions, packageInfo);
+            this.grid_stentCompleteSignal.BeginInvoke(new Action(()=>
+            {
+                RefreshGridData(packageInfo);
+            }));
         }
 
         private void Menu_connectServer_Click(object sender, EventArgs e)
@@ -261,17 +269,49 @@ namespace SentProt
             ConnectServerView();
         }
 
-        private void RefreshGridData(MyPackageInfo packageInfo)
+        private async void RefreshGridData(MyPackageInfo packageInfo)
         {
-            AnalysisUsualSignal(packageInfo);
+            await Task.Run(()=>
+            {
+                receivePackageInfoQueue.Enqueue(packageInfo);
+                while (packageInfoQueueTemp.Count <= 0)
+                {
+                    if (receivePackageInfoQueue.Count > 0)
+                    {
+                        packageInfoQueueTemp.Enqueue(receivePackageInfoQueue.Dequeue());
+                        if (IsFirstReceive)
+                        {
+                            IsFirstReceive = !IsFirstReceive;
+                            AnalysisUsualSignal(packageInfoQueueTemp.Dequeue());
+                        }
+                        else
+                        {
+                            while (true)
+                            {
+                                //等待任务完成执行
+                                if (IsAnalysisComplete)
+                                {
+                                    IsAnalysisComplete = !IsAnalysisComplete;
+                                    AnalysisUsualSignal(packageInfoQueueTemp.Dequeue());
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        break;
+                    }
+                }
+            });
         }
 
-        private void AnalysisUsualSignal(MyPackageInfo packageInfo)
+        private async Task<bool> AnalysisUsualSignal(MyPackageInfo packageInfo)
         {
-            int count = packageInfo.Data.Length  / 8;
+            int count = packageInfo.Data.Length / 8;
             if (count == 0)
-                return;//长度不足
-            Task task = new Task(()=>
+                return false;//长度不足
+            await Task.Run(()=>
             {
                 for (int i = 0; i < count * 8; i += 8)
                 {
@@ -310,10 +350,11 @@ namespace SentProt
                     }));
                     AnalysisQuickSignal();
                     revCount++;
-                    Task.Delay(2);
+                    //Task.Delay(2);
                 }
             });
-            task.Start();
+            IsAnalysisComplete = true;
+            return true;
         }
 
         private bool IsStentStandardFrameType(List<int> result)
@@ -424,7 +465,7 @@ namespace SentProt
                     }
                     count++;
                 }
-                data += dataMessageID;
+                dataMessageID += data;
                 data = "0X" + string.Format("{0:x2}", Convert.ToInt32(data, 2));
                 messageID = "0X" + string.Format("{0:x2}", Convert.ToInt32(messageID, 2));
                 crcValue = string.Format("{0:X4}", Convert.ToInt32(crcValue, 2));
@@ -446,6 +487,7 @@ namespace SentProt
                         this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
                         this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
                         this.grid_stentSlowSignal.Update();
+                        slowSignalCount++;
                     }));
                 }
                 else
@@ -455,7 +497,6 @@ namespace SentProt
                 //清空缓存
                 cacheDataPerFrame.Clear();
                 cacheFirstBitValue.Clear();
-                slowSignalCount++;
             }
             else if (cacheFirstBitValue.Count >= 16 && IsStentStandardFrameType(cacheFirstBitValue))
             {
@@ -505,6 +546,7 @@ namespace SentProt
                     //开始显示一包数据
                     this.grid_stentSlowSignal.Invoke(new Action(() =>
                     {
+                        this.grid_stentSlowSignal.BeginEdit();
                         this.grid_stentSlowSignal.Rows.AddNew();
                         this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[0].Value = slowSignalCount + 1;
                         this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[1].Value = "标准帧";
@@ -514,7 +556,9 @@ namespace SentProt
                         this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[5].Value = sumCRCValue;
                         this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
                         this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
+                        this.grid_stentSlowSignal.EndEdit();
                         this.grid_stentSlowSignal.Update();
+                        slowSignalCount++;
                     }));
                 }
                 else
@@ -524,7 +568,6 @@ namespace SentProt
                 //清空缓存
                 cacheDataPerFrame.Clear();
                 cacheFirstBitValue.Clear();
-                slowSignalCount++;
             }
 
             //二进制位iData = Convert.ToString(packageInfo.Data[index], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 1], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 2], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 3], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 4], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 5], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 6], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 7], 2).PadLeft(4, '0');
@@ -557,6 +600,8 @@ namespace SentProt
         {
             //将显示数据最新一条数据，按高低位排序显示
             if (this.grid_stentCompleteSignal.RowCount < 1)
+                return;
+            if (this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[2].Value == null)
                 return;
             var latestValue = this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[2].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[3].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[4].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[5].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[6].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[7].Value.ToString();
             byte[] latestByte = ConvertByte.HexToByte(latestValue);
@@ -705,6 +750,8 @@ namespace SentProt
             this.rb_highBefore1.CheckState = CheckState.Checked;
             this.rb_highBefore2.CheckState = CheckState.Checked;
             cacheDataPerFrame = new List<string>();
+            receivePackageInfoQueue = new Queue<MyPackageInfo>();
+            packageInfoQueueTemp = new Queue<MyPackageInfo>();
             this.tool_start.Enabled = false;
             this.tool_stop.Enabled = false;
             this.tool_exportType.Items.Add(GridViewExport.ExportFormat.EXCEL);

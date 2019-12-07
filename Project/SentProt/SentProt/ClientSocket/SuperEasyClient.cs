@@ -70,7 +70,7 @@ namespace SentProt.ClientSocket
             //    ConnectServer();
             //    attmpts++;
             //} while (!client.IsConnected && attmpts > 3);
-            LogHelper.Log.Info("重新连接成功，退出循环");
+            //LogHelper.Log.Info("重新连接成功，退出循环");
         }
 
         private static void OnClientError(object sender, ErrorEventArgs e)
@@ -81,8 +81,8 @@ namespace SentProt.ClientSocket
         private static void OnPagckageReceived(object sender, PackageEventArgs<MyPackageInfo> e)
         {
             SendNoticeMessage(e.Package);
-            LogHelper.Log.Info($"收到文本下行:{e.Package.Body}");
-            LogHelper.Log.Info("收到服务消息【Byte】:"+"head:"+BitConverter.ToString(e.Package.Header)+" body:"+BitConverter.ToString(e.Package.Data));
+            //LogHelper.Log.Info($"收到文本下行:{e.Package.Body}");
+            //LogHelper.Log.Info("收到服务消息【Byte】:"+"head:"+BitConverter.ToString(e.Package.Header)+" body:"+BitConverter.ToString(e.Package.Data));
         }
 
         private static void OnClientConnected(object sender, EventArgs e)

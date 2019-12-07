@@ -18,6 +18,7 @@ namespace SentProt.ClientSocket.AppBase
         /// +-------+---+-------------------------------+
         public MyReceiveFilter() : base(2)//2-header + 2-dataLen
         {
+            
         }
 
         protected override int GetBodyLengthFromHeader(IBufferStream bufferStream, int length)
@@ -31,14 +32,6 @@ namespace SentProt.ClientSocket.AppBase
 
         public override MyPackageInfo ResolvePackage(IBufferStream bufferStream)
         {
-
-            //获取接收到的完整数据，包括头和尾
-            var body = bufferStream.ReadByte();
-            //掐头去尾，只返回中间的数据
-            //body = body.Remove(body.Length - end.Length, end.Length);
-            //body = body.Remove(0, begin.Length);
-
-
             //第三个参数用0,1都可以
             byte[] header =bufferStream.Buffers[0].Reverse().ToArray();
             byte[] bodyBuffer = bufferStream.Buffers[1].ToArray();
