@@ -19,6 +19,7 @@ using System.Threading;
 using System.IO;
 using WindowsFormTelerik.GridViewExportData;
 using WindowsFormTelerik.CommonUI;
+using SentProt.Model;
 
 namespace SentProt
 {
@@ -36,30 +37,30 @@ namespace SentProt
      */
     public partial class MainForm : RadForm
     {
-        private int revCount;
-        private int slowSignalCount = 0;
-        private List<string> cacheDataPerFrame;
-        private List<int> cacheFirstBitValue = new List<int>();
-        private int cacheFrameNumber;
-        private int autoSendTimeInternal;
-        private bool IsAutoSend;
+        #region 公有变量
         private string serverIP;
         private int serverPort;
         private string stentConfigDirectory;
+        private int cacheFrameNumber;//显示帧数
+        #endregion
+
+        #region 常量
         private const string STENT_CONFIG_FILE = "stentConfig.ini";
         private const string STENT_CONFIG_SECTION = "STENT";
+        private const string STENT_CONFIG_SECTION_CH1 = "CHANNEL1";
+        private const string STENT_CONFIG_SECTION_CH2 = "CHANNEL2";
         private const string STENT_CONFIG_FRAME_COUNT_KEY = "frameCount";
         private const string STENT_CONFIG_IS_AUTO_KEY = "IsAutoSend";
         private const string STENT_CONFIG_TIME_INTERNAL = "autoSendTimeInternal";
         private const string STENT_CONFIG_SERVER_URL = "serverIP";
         private const string STENT_CONFIG_SERVER_PORT = "port";
-        private System.Timers.Timer timer;
-        private Queue<MyPackageInfo> receivePackageInfoQueue;
-        private Queue<MyPackageInfo> packageInfoQueueTemp;
-        private bool IsAnalysisComplete;
-        private bool IsFirstReceive = true;
+        #endregion
 
+        private System.Timers.Timer timerCh1;
+        private System.Timers.Timer timerCh2;
 
+        private ChannelData channelDataCh1;
+        private ChannelData channelDataCh2;
         public MainForm()
         {
             InitializeComponent();
@@ -70,28 +71,142 @@ namespace SentProt
 
         private void EventHandlers()
         {
-            timer = new System.Timers.Timer();
-            timer.Elapsed += Timer_Elapsed;
+            timerCh1 = new System.Timers.Timer();
+            timerCh2 = new System.Timers.Timer();
+            timerCh1.Elapsed += TimerCh1_Elapsed;
+            timerCh2.Elapsed += TimerCh2_Elapsed;
             this.menu_connectServer.Click += Menu_connectServer_Click;
             this.menu_exit.Click += Menu_exit_Click;
             this.menu_disconnect.Click += Menu_disconnect_Click;
             this.menu_export.Click += Menu_export_Click;
+            this.menu_channel1.Click += Menu_channel1_Click;
+            this.menu_channel2.Click += Menu_channel2_Click;
+            this.menu_allChannel.Click += Menu_allChannel_Click;
             this.tool_connectServer.Click += Tool_connectServer_Click;
             this.tool_disconnect.Click += Tool_disconnect_Click;
-            this.tool_start.Click += Tool_start_Click;
-            this.tool_stop.Click += Tool_stop_Click;
-            this.tool_clearGrid.Click += Tool_clearGrid_Click;
+            this.tool_continue.Click += Tool_continue_Click;
+            this.tool_pause.Click += Tool_pause_Click;
             this.tool_cacheFrameAmount.Click += Tool_cacheFrameAmount_Click;
-            this.tool_sendSet.Click += Tool_sendSet_Click;
-            this.tool_export.Click += Tool_export_Click;
             this.tool_help.Click += Tool_help_Click;
-            this.rb_highBefore1.CheckStateChanged += Rb_highBefore_CheckStateChanged;
-            this.rb_highBefore2.CheckStateChanged += Rb_highBefore2_CheckStateChanged;
+            this.tool_channel1Send.Click += Tool_channel1Send_Click;
+            this.tool_channel2Send.Click += Tool_channel2Send_Click;
+            this.tool_channel1stop.Click += Tool_channel1stop_Click;
+            this.tool_channel2Stop.Click += Tool_channel2Stop_Click;
+            this.tool_channel1Clear.Click += Tool_channel1Clear_Click;
+            this.tool_channel2Clear.Click += Tool_channel2Clear_Click;
+            this.tool_channel1AutoSend.Click += Tool_channel1AutoSend_Click;
+            this.tool_channel2AutoSend.Click += Tool_channel2AutoSend_Click;
+            this.tool_channel1Export.Click += Tool_channel1Export_Click;
+            this.tool_channel2Export.Click += Tool_channel2Export_Click;
+            this.rb_highBefore1Ch1.CheckStateChanged += Rb_highBefore_CheckStateChanged;
+            this.rb_highBefore2Ch1.CheckStateChanged += Rb_highBefore2_CheckStateChanged;
+            this.rb_highBefore1Ch2.CheckStateChanged += Rb_highBefore1Ch2_CheckStateChanged;
+            this.rb_highBefore2Ch2.CheckStateChanged += Rb_highBefore2Ch2_CheckStateChanged;
             SuperEasyClient.NoticeConnectEvent += SuperEasyClient_NoticeConnectEvent;
             SuperEasyClient.NoticeMessageEvent += SuperEasyClient_NoticeMessageEvent;
             this.FormClosed += MainForm_FormClosed;
-
             //this.dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows[dataGridView1.Rows.Count-1].Index;
+        }
+
+        private void Menu_allChannel_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Menu_channel2_Click(object sender, EventArgs e)
+        {
+            this.radDock1.ActiveWindow = this.documentChannel2;
+        }
+
+        private void Menu_channel1_Click(object sender, EventArgs e)
+        {
+            this.radDock1.AddDocument(this.documentChannel1);
+            this.documentChannel1.Show();
+            this.radDock1.ActiveWindow = this.documentChannel1;
+        }
+
+        private void TimerCh1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            SendMessageCh1();
+        }
+
+        private void TimerCh2_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            SendMessageCh2();
+        }
+
+        private void Tool_channel2Export_Click(object sender, EventArgs e)
+        {
+            ExportGridData(this.grid_stentCompleteSignalCh2, this.tool_channel2ExportFormat);
+        }
+
+        private void Tool_channel1Export_Click(object sender, EventArgs e)
+        {
+            ExportGridData(this.grid_stentCompleteSignalCh1,this.tool_channel1ExportFormat);
+        }
+
+        private void Tool_channel2AutoSend_Click(object sender, EventArgs e)
+        {
+            SetAutoSendSet();
+        }
+
+        private void Tool_channel1AutoSend_Click(object sender, EventArgs e)
+        {
+            SetAutoSendSet();
+        }
+
+        private void Tool_channel2Clear_Click(object sender, EventArgs e)
+        {
+            this.grid_stentCompleteSignalCh2.Rows.Clear();
+            this.grid_stentQuickBothCh2.Rows.Clear();
+            this.grid_stentSlowSignalCh2.Rows.Clear();
+            channelDataCh2.RevCount = 0;
+            channelDataCh2.SlowSignalCount = 0;
+        }
+
+        private void Tool_channel1Clear_Click(object sender, EventArgs e)
+        {
+            this.grid_stentCompleteSignalCh1.Rows.Clear();
+            this.grid_stentQuickBothCh1.Rows.Clear();
+            this.grid_stentSlowSignalCh1.Rows.Clear();
+            channelDataCh1.RevCount = 0;
+            channelDataCh1.SlowSignalCount = 0;
+        }
+
+        private void Tool_channel2Stop_Click(object sender, EventArgs e)
+        {
+            if (!SuperEasyClient.client.IsConnected)
+                return;
+            //请求停止发送数据
+            SuperEasyClient.SendMessage(StentSignalEnum.StopDataCh1, new byte[] { });
+        }
+
+        private void Tool_channel1stop_Click(object sender, EventArgs e)
+        {
+            if (!SuperEasyClient.client.IsConnected)
+                return;
+            //请求停止发送数据
+            SuperEasyClient.SendMessage(StentSignalEnum.StopDataCh2, new byte[] { });
+        }
+
+        private void Tool_channel2Send_Click(object sender, EventArgs e)
+        {
+            SendMessage(StentSignalEnum.RequestDataCh2);
+        }
+
+        private void Tool_channel1Send_Click(object sender, EventArgs e)
+        {
+            SendMessage(StentSignalEnum.RequestDataCh1);
+        }
+
+        private void SendMessage(StentSignalEnum stentSignalEnum)
+        {
+            if (SuperEasyClient.client == null)
+                return;
+            if (!SuperEasyClient.client.IsConnected)
+                return;
+            //请求发送数据
+            SuperEasyClient.SendMessage(stentSignalEnum, new byte[] { });
         }
 
         private void Menu_exit_Click(object sender, EventArgs e)
@@ -105,31 +220,29 @@ namespace SentProt
             helper.Show();
         }
 
-        private void Tool_export_Click(object sender, EventArgs e)
-        {
-            ExportGridData();
-        }
-
         private void Menu_export_Click(object sender, EventArgs e)
         {
-            ExportGridData();
+            if(this.radDock1.ActiveWindow == this.documentChannel1)
+                ExportGridData(this.grid_stentCompleteSignalCh1, this.tool_channel1ExportFormat);
+            else if(this.radDock1.ActiveWindow == this.documentChannel2)
+                ExportGridData(this.grid_stentCompleteSignalCh2, this.tool_channel2ExportFormat);
         }
 
-        private void ExportGridData()
+        private void ExportGridData(RadGridView radGridView,ToolStripComboBox cbFormat)
         {
-            if (this.grid_stentCompleteSignal.RowCount < 1)
+            if (this.grid_stentCompleteSignalCh1.RowCount < 1)
             {
                 MessageBox.Show("没有可以导出的数据!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             GridViewExport.ExportFormat currentExportType = GridViewExport.ExportFormat.EXCEL;
-            if (this.tool_exportType.SelectedItem == null)
+            if (cbFormat.SelectedItem == null)
             {
                 MessageBox.Show("请选择导出格式!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            Enum.TryParse(this.tool_exportType.SelectedItem.ToString(), out currentExportType);
-            GridViewExport.ExportGridViewData(currentExportType, this.grid_stentCompleteSignal);
+            Enum.TryParse(cbFormat.SelectedItem.ToString(), out currentExportType);
+            GridViewExport.ExportGridViewData(currentExportType, radGridView);
         }
 
         private void SuperEasyClient_NoticeConnectEvent(bool IsConnect)
@@ -145,24 +258,10 @@ namespace SentProt
                 {
                     this.tool_connectServer.Enabled = true;
                     this.tool_disconnect.Enabled = false;
-                    this.tool_start.Enabled = false;
-                    this.tool_stop.Enabled = false;
+                    this.tool_continue.Enabled = false;
+                    this.tool_pause.Enabled = false;
                 }
             }));
-        }
-
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            SendMessage();
-        }
-
-        private void Tool_clearGrid_Click(object sender, EventArgs e)
-        {
-            this.grid_stentCompleteSignal.Rows.Clear();
-            this.grid_stentQuickBoth.Rows.Clear();
-            this.grid_stentSlowSignal.Rows.Clear();
-            this.revCount = 0;
-            this.slowSignalCount = 0;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -170,22 +269,51 @@ namespace SentProt
             SaveStentConfig();
         }
 
-        private void Tool_sendSet_Click(object sender, EventArgs e)
+        private void SetAutoSendSet()
         {
+            int autoSendTimeInternal = 0;
+            bool IsAutoSend = false;
+            if (this.radDock1.ActiveWindow == this.documentChannel1)
+            {
+                autoSendTimeInternal = channelDataCh1.AutoSendTimeInternal;
+                IsAutoSend = channelDataCh1.IsAutoSend;
+            }
+            else if (this.radDock1.ActiveWindow == this.documentChannel2)
+            {
+                autoSendTimeInternal = channelDataCh2.AutoSendTimeInternal;
+                IsAutoSend = channelDataCh2.IsAutoSend;
+            }
             SendSet sendSet = new SendSet(autoSendTimeInternal,IsAutoSend);
             if (sendSet.ShowDialog() == DialogResult.OK)
             {
-                autoSendTimeInternal = SendSet.autoSendTimerInternal;
-                IsAutoSend = SendSet.IsApplyAutoSend;
-                //已设置自动发送
-                if (IsAutoSend)
+                if (this.radDock1.ActiveWindow == this.documentChannel1)
                 {
-                    timer.Interval = autoSendTimeInternal;
-                    timer.Start();
+                    channelDataCh1.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
+                    channelDataCh1.IsAutoSend = SendSet.IsApplyAutoSend;
+                }
+                else if (this.radDock1.ActiveWindow == this.documentChannel2)
+                {
+                    channelDataCh2.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
+                    channelDataCh2.IsAutoSend = SendSet.IsApplyAutoSend;
+                }
+                //已设置自动发送
+                if (channelDataCh1.IsAutoSend)
+                {
+                    timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
+                    timerCh1.Start();
                 }
                 else
                 {
-                    timer.Stop();
+                    timerCh1.Stop();
+                }
+                if (channelDataCh2.IsAutoSend)
+                {
+                    timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
+                    timerCh2.Start();
+                }
+                else
+                {
+                    timerCh2.Stop();
                 }
             }
         }
@@ -199,30 +327,34 @@ namespace SentProt
             }
         }
 
+        private void Rb_highBefore2Ch2_CheckStateChanged(object sender, EventArgs e)
+        {
+            AnalysisQuickSignalCh2();
+        }
+
+        private void Rb_highBefore1Ch2_CheckStateChanged(object sender, EventArgs e)
+        {
+            AnalysisQuickSignalCh2();
+        }
+
         private void Rb_highBefore_CheckStateChanged(object sender, EventArgs e)
         {
-            AnalysisQuickSignal();
+            AnalysisQuickSignalCh1();
         }
 
         private void Rb_highBefore2_CheckStateChanged(object sender, EventArgs e)
         {
-            AnalysisQuickSignal();
+            AnalysisQuickSignalCh1();
         }
 
-        private void Tool_stop_Click(object sender, EventArgs e)
+        private void Tool_pause_Click(object sender, EventArgs e)
         {
-            if (!SuperEasyClient.client.IsConnected)
-                return;
-            //请求停止发送数据
-            SuperEasyClient.SendMessage(StentSignalEnum.StopData,new byte[] { });
+            //暂停显示
         }
 
-        private void Tool_start_Click(object sender, EventArgs e)
+        private void Tool_continue_Click(object sender, EventArgs e)
         {
-            if (!SuperEasyClient.client.IsConnected)
-                return;
-            //请求发送数据
-            SuperEasyClient.SendMessage(StentSignalEnum.RequestData,new byte[] { });
+            //继续显示
         }
 
         private void Tool_connectServer_Click(object sender, EventArgs e)
@@ -250,15 +382,15 @@ namespace SentProt
                 //已断开连接
                 this.tool_disconnect.Enabled = false;
                 this.tool_connectServer.Enabled = true;
-                this.tool_start.Enabled = false;
-                this.tool_stop.Enabled = false;
+                this.tool_continue.Enabled = false;
+                this.tool_pause.Enabled = false;
             }
         }
 
         private void SuperEasyClient_NoticeMessageEvent(MyPackageInfo packageInfo)
         {
             //this.grid_stentCompleteSignal.BeginInvoke(actions, packageInfo);
-            this.grid_stentCompleteSignal.BeginInvoke(new Action(()=>
+            this.grid_stentCompleteSignalCh1.BeginInvoke(new Action(()=>
             {
                 RefreshGridData(packageInfo);
             }));
@@ -273,40 +405,76 @@ namespace SentProt
         {
             await Task.Run(()=>
             {
-                receivePackageInfoQueue.Enqueue(packageInfo);
-                while (packageInfoQueueTemp.Count <= 0)
+                if (BitConverter.ToInt32(packageInfo.Header, 0) == (int)StentSignalEnum.RequestDataCh1)
                 {
-                    if (receivePackageInfoQueue.Count > 0)
+                    channelDataCh1.ReceivePackageInfoQueue.Enqueue(packageInfo);
+                    while (channelDataCh1.PackageInfoQueueTemp.Count <= 0)
                     {
-                        packageInfoQueueTemp.Enqueue(receivePackageInfoQueue.Dequeue());
-                        if (IsFirstReceive)
+                        if (channelDataCh1.ReceivePackageInfoQueue.Count > 0)
                         {
-                            IsFirstReceive = !IsFirstReceive;
-                            AnalysisUsualSignal(packageInfoQueueTemp.Dequeue());
-                        }
-                        else
-                        {
-                            while (true)
+                            channelDataCh1.PackageInfoQueueTemp.Enqueue(channelDataCh1.ReceivePackageInfoQueue.Dequeue());
+                            if (channelDataCh1.IsFirstReceive)
                             {
-                                //等待任务完成执行
-                                if (IsAnalysisComplete)
+                                channelDataCh1.IsFirstReceive = !channelDataCh1.IsFirstReceive;
+                                AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
+                            }
+                            else
+                            {
+                                while (true)
                                 {
-                                    IsAnalysisComplete = !IsAnalysisComplete;
-                                    AnalysisUsualSignal(packageInfoQueueTemp.Dequeue());
-                                    break;
+                                    //等待任务完成执行
+                                    if (channelDataCh1.IsAnalysisComplete)
+                                    {
+                                        channelDataCh1.IsAnalysisComplete = !channelDataCh1.IsAnalysisComplete;
+                                        AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
+                                        break;
+                                    }
                                 }
                             }
                         }
+                        else
+                        {
+                            break;
+                        }
                     }
-                    else 
+                }
+                else if (BitConverter.ToInt32(packageInfo.Header, 0) == (int)StentSignalEnum.RequestDataCh2)
+                {
+                    channelDataCh2.ReceivePackageInfoQueue.Enqueue(packageInfo);
+                    while (channelDataCh2.PackageInfoQueueTemp.Count <= 0)
                     {
-                        break;
+                        if (channelDataCh2.ReceivePackageInfoQueue.Count > 0)
+                        {
+                            channelDataCh2.PackageInfoQueueTemp.Enqueue(channelDataCh2.ReceivePackageInfoQueue.Dequeue());
+                            if (channelDataCh2.IsFirstReceive)
+                            {
+                                channelDataCh2.IsFirstReceive = !channelDataCh2.IsFirstReceive;
+                                AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
+                            }
+                            else
+                            {
+                                while (true)
+                                {
+                                    //等待任务完成执行
+                                    if (channelDataCh2.IsAnalysisComplete)
+                                    {
+                                        channelDataCh2.IsAnalysisComplete = !channelDataCh2.IsAnalysisComplete;
+                                        AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
             });
         }
 
-        private async Task<bool> AnalysisUsualSignal(MyPackageInfo packageInfo)
+        private async Task<bool> AnalysisUsualSignalCh1(MyPackageInfo packageInfo)
         {
             int count = packageInfo.Data.Length / 8;
             if (count == 0)
@@ -315,45 +483,94 @@ namespace SentProt
             {
                 for (int i = 0; i < count * 8; i += 8)
                 {
-                    this.grid_stentCompleteSignal.Invoke(new Action(() =>
+                    this.grid_stentCompleteSignalCh1.Invoke(new Action(() =>
                     {
-                        var iData = AnalysisSlowSignalData(packageInfo, i);
-                        this.grid_stentCompleteSignal.BeginEdit();
-                        this.grid_stentCompleteSignal.Rows.AddNew();
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[0].Value = revCount + 1;
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[1].Value = packageInfo.Data[i].ToString("X2");//status
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[2].Value = packageInfo.Data[i + 1].ToString("X2");//data1
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[3].Value = packageInfo.Data[i + 2].ToString("X2");//data2
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[4].Value = packageInfo.Data[i + 3].ToString("X2");//data3
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[5].Value = packageInfo.Data[i + 4].ToString("X2");//data4
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[6].Value = packageInfo.Data[i + 5].ToString("X2");//data5
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[7].Value = packageInfo.Data[i + 6].ToString("X2");//data6
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[8].Value = packageInfo.Data[i + 7].ToString("X2");//crc
+                        var iData = AnalysisSlowSignalData(packageInfo, i,channelDataCh1);
+                        this.grid_stentCompleteSignalCh1.BeginEdit();
+                        this.grid_stentCompleteSignalCh1.Rows.AddNew();
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[0].Value = channelDataCh1.RevCount + 1;
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[1].Value = packageInfo.Data[i].ToString("X2");//status
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[2].Value = packageInfo.Data[i + 1].ToString("X2");//data1
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[3].Value = packageInfo.Data[i + 2].ToString("X2");//data2
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[4].Value = packageInfo.Data[i + 3].ToString("X2");//data3
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[5].Value = packageInfo.Data[i + 4].ToString("X2");//data4
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[6].Value = packageInfo.Data[i + 5].ToString("X2");//data5
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[7].Value = packageInfo.Data[i + 6].ToString("X2");//data6
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[8].Value = packageInfo.Data[i + 7].ToString("X2");//crc
                         int[] crcList = new int[] { packageInfo.Data[i + 1], packageInfo.Data[i + 2], packageInfo.Data[i + 3], packageInfo.Data[i + 4], packageInfo.Data[i + 5], packageInfo.Data[i + 6] };
-                        this.grid_stentCompleteSignal.Rows[revCount].Cells[9].Value = Crc4_Cal(crcList);
-                        this.grid_stentCompleteSignal.EndEdit();
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].Cells[9].Value = Crc4_Cal(crcList);
+                        this.grid_stentCompleteSignalCh1.EndEdit();
                         //清除数据到最大缓存
-                        if (this.grid_stentCompleteSignal.RowCount > cacheFrameNumber)
+                        if (channelDataCh1.IsAutoSend && this.grid_stentCompleteSignalCh1.RowCount > cacheFrameNumber)
                         {
-                            this.grid_stentCompleteSignal.Rows[0].Delete();
-                            revCount -= 1;
+                            this.grid_stentCompleteSignalCh1.Rows[0].Delete();
+                            channelDataCh1.RevCount -= 1;
                             int id = 1;
-                            foreach (var rowInfo in this.grid_stentCompleteSignal.Rows)
+                            foreach (var rowInfo in this.grid_stentCompleteSignalCh1.Rows)
                             {
                                 rowInfo.Cells[0].Value = id;
                                 id++;
                             }
                         }
-                        this.grid_stentCompleteSignal.Rows[revCount].IsSelected = true;
-                        this.grid_stentCompleteSignal.TableElement.ScrollToRow(this.grid_stentCompleteSignal.Rows.Count);
-                        this.grid_stentCompleteSignal.Update();
+                        this.grid_stentCompleteSignalCh1.Rows[channelDataCh1.RevCount].IsSelected = true;
+                        this.grid_stentCompleteSignalCh1.TableElement.ScrollToRow(this.grid_stentCompleteSignalCh1.Rows.Count);
+                        this.grid_stentCompleteSignalCh1.Update();
                     }));
-                    AnalysisQuickSignal();
-                    revCount++;
-                    //Task.Delay(2);
+                    AnalysisQuickSignalCh1();
+                    channelDataCh1.RevCount++;
                 }
             });
-            IsAnalysisComplete = true;
+            channelDataCh1.IsAnalysisComplete = true;
+            return true;
+        }
+
+        private async Task<bool> AnalysisUsualSignalCh2(MyPackageInfo packageInfo)
+        {
+            int count = packageInfo.Data.Length / 8;
+            if (count == 0)
+                return false;//长度不足
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < count * 8; i += 8)
+                {
+                    this.grid_stentCompleteSignalCh2.Invoke(new Action(() =>
+                    {
+                        var iData = AnalysisSlowSignalData(packageInfo, i,channelDataCh2);
+                        this.grid_stentCompleteSignalCh2.BeginEdit();
+                        this.grid_stentCompleteSignalCh2.Rows.AddNew();
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[0].Value = channelDataCh2.RevCount + 1;
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[1].Value = packageInfo.Data[i].ToString("X2");//status
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[2].Value = packageInfo.Data[i + 1].ToString("X2");//data1
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[3].Value = packageInfo.Data[i + 2].ToString("X2");//data2
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[4].Value = packageInfo.Data[i + 3].ToString("X2");//data3
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[5].Value = packageInfo.Data[i + 4].ToString("X2");//data4
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[6].Value = packageInfo.Data[i + 5].ToString("X2");//data5
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[7].Value = packageInfo.Data[i + 6].ToString("X2");//data6
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[8].Value = packageInfo.Data[i + 7].ToString("X2");//crc
+                        int[] crcList = new int[] { packageInfo.Data[i + 1], packageInfo.Data[i + 2], packageInfo.Data[i + 3], packageInfo.Data[i + 4], packageInfo.Data[i + 5], packageInfo.Data[i + 6] };
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].Cells[9].Value = Crc4_Cal(crcList);
+                        this.grid_stentCompleteSignalCh2.EndEdit();
+                        //清除数据到最大缓存
+                        if (channelDataCh2.IsAutoSend && this.grid_stentCompleteSignalCh2.RowCount > cacheFrameNumber)
+                        {
+                            this.grid_stentCompleteSignalCh2.Rows[0].Delete();
+                            channelDataCh2.RevCount -= 1;
+                            int id = 1;
+                            foreach (var rowInfo in this.grid_stentCompleteSignalCh2.Rows)
+                            {
+                                rowInfo.Cells[0].Value = id;
+                                id++;
+                            }
+                        }
+                        this.grid_stentCompleteSignalCh2.Rows[channelDataCh2.RevCount].IsSelected = true;
+                        this.grid_stentCompleteSignalCh2.TableElement.ScrollToRow(this.grid_stentCompleteSignalCh2.Rows.Count);
+                        this.grid_stentCompleteSignalCh2.Update();
+                    }));
+                    AnalysisQuickSignalCh2();
+                    channelDataCh2.RevCount++;
+                }
+            });
+            channelDataCh2.IsAnalysisComplete = true;
             return true;
         }
 
@@ -389,26 +606,26 @@ namespace SentProt
             return true;
         }
 
-        private string AnalysisSlowSignalData(MyPackageInfo packageInfo,int index)
+        private string AnalysisSlowSignalData(MyPackageInfo packageInfo,int index,ChannelData channelData)
         {
             var iData = packageInfo.Data[index].ToString("X2") + "-" + packageInfo.Data[index + 1].ToString("X2") + "-" + packageInfo.Data[index + 2].ToString("X2") + "-" + packageInfo.Data[index + 3].ToString("X2") + "-" + packageInfo.Data[index + 4].ToString("X2") + "-" + packageInfo.Data[index + 5].ToString("X2") + "-" + packageInfo.Data[index + 6].ToString("X2") + "-" + packageInfo.Data[index + 7].ToString("X2");
             var firstByteString = Convert.ToString(packageInfo.Data[index], 2).PadLeft(4, '0');
             var firstBit = firstByteString.Substring(firstByteString.Length - 4, 1);//从右往左数，起始位为0，第3位
-            cacheFirstBitValue.Add(int.Parse(firstBit));
-            cacheDataPerFrame.Add(iData);
+            channelData.CacheFirstBitValue.Add(int.Parse(firstBit));
+            channelData.CacheDataPerFrame.Add(iData);
             //当小于16帧或18帧时，如果既不满足标准帧，也不满足扩展帧，全部缓存清零
-            if (cacheFirstBitValue.Count <= 18)
+            if (channelData.CacheFirstBitValue.Count <= 18)
             {
-                if (!IsStentStandardFrameType(cacheFirstBitValue) && !IsStentExtentFrameType(cacheFirstBitValue))
+                if (!IsStentStandardFrameType(channelData.CacheFirstBitValue) && !IsStentExtentFrameType(channelData.CacheFirstBitValue))
                 {
-                    ClearCacheSignal();
+                    ClearCacheSignal(channelData);
                     return iData;//不足一个完整包，return
                 }
             }
             //当大于16帧时，判断是否是标准帧，开始向下处理
             //开始判断数据类型：标准帧类/扩展帧类型
 
-            if (cacheFirstBitValue.Count >= 18 && IsStentExtentFrameType(cacheFirstBitValue))
+            if (channelData.CacheFirstBitValue.Count >= 18 && IsStentExtentFrameType(channelData.CacheFirstBitValue))
             {
                 //扩展帧为18帧为一完整包
                 //起始位为0的第二位与第三位
@@ -418,10 +635,10 @@ namespace SentProt
                 int count = 0;
                 var sumCRC = "";
                 var crcValue = "";
-                foreach (var signalData in this.cacheDataPerFrame)
+                foreach (var signalData in channelData.CacheDataPerFrame)
                 {
                     var bitData = Convert.ToString(Convert.ToByte(signalData.Substring(0, 2), 16), 2).PadLeft(4, '0');
-                    if (cacheFirstBitValue[7] == 0)
+                    if (channelData.CacheFirstBitValue[7] == 0)
                     {
                         //this is 12-bit-data and 8-bit-message-id
                         //index:6-17
@@ -438,7 +655,7 @@ namespace SentProt
                             }
                         }
                     }
-                    else if (cacheFirstBitValue[7] == 1)
+                    else if (channelData.CacheFirstBitValue[7] == 1)
                     {
                         //this is 16-bit-data and 4-bit-message-id
                         if (count >= 6 && count <= 17)
@@ -475,19 +692,19 @@ namespace SentProt
                     LogHelper.Log.Info("【扩展帧】CRC校验成功 " + sumCRCCal);
                     //一包数据解析完成
                     //开始显示一包数据
-                    this.grid_stentSlowSignal.Invoke(new Action(() =>
+                    this.grid_stentSlowSignalCh1.Invoke(new Action(() =>
                     {
-                        this.grid_stentSlowSignal.Rows.AddNew();
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[0].Value = slowSignalCount + 1;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[1].Value = "扩展帧";
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[2].Value = messageID;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[3].Value = data;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[4].Value = crcValue;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[5].Value = sumCRCCal;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
-                        this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
-                        this.grid_stentSlowSignal.Update();
-                        slowSignalCount++;
+                        this.grid_stentSlowSignalCh1.Rows.AddNew();
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "扩展帧";
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCCal;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].IsSelected = true;
+                        this.grid_stentSlowSignalCh1.TableElement.ScrollToRow(this.grid_stentSlowSignalCh1.Rows.Count);
+                        this.grid_stentSlowSignalCh1.Update();
+                        channelData.SlowSignalCount++;
                     }));
                 }
                 else
@@ -495,10 +712,10 @@ namespace SentProt
                     LogHelper.Log.Info($"【扩展帧】CRC校验失败 sumCRCCal={sumCRCCal} crcValue={crcValue}");
                 }
                 //清空缓存
-                cacheDataPerFrame.Clear();
-                cacheFirstBitValue.Clear();
+                channelData.CacheDataPerFrame.Clear();
+                channelData.CacheFirstBitValue.Clear();
             }
-            else if (cacheFirstBitValue.Count >= 16 && IsStentStandardFrameType(cacheFirstBitValue))
+            else if (channelData.CacheFirstBitValue.Count >= 16 && IsStentStandardFrameType(channelData.CacheFirstBitValue))
             {
                 //标准帧为16帧为一个完整包
                 //获取message ID 与data  起始位为0的第2位
@@ -508,7 +725,7 @@ namespace SentProt
                 var sumCRC = "";
                 var sumCRCValue = "";
                 var crcValue = "";
-                foreach (var signalData in this.cacheDataPerFrame)
+                foreach (var signalData in channelData.CacheDataPerFrame)
                 {
                     var bitData = Convert.ToString(Convert.ToByte(signalData.Substring(0, 2), 16), 2).PadLeft(4, '0');//4位bit
                     if (count <= 3)
@@ -544,21 +761,21 @@ namespace SentProt
                     LogHelper.Log.Info("【标准帧】校验成功 " + sumCRC);
                     //一包数据解析完成
                     //开始显示一包数据
-                    this.grid_stentSlowSignal.Invoke(new Action(() =>
+                    this.grid_stentSlowSignalCh1.Invoke(new Action(() =>
                     {
-                        this.grid_stentSlowSignal.BeginEdit();
-                        this.grid_stentSlowSignal.Rows.AddNew();
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[0].Value = slowSignalCount + 1;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[1].Value = "标准帧";
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[2].Value = messageID;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[3].Value = data;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[4].Value = crcValue;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].Cells[5].Value = sumCRCValue;
-                        this.grid_stentSlowSignal.Rows[slowSignalCount].IsSelected = true;
-                        this.grid_stentSlowSignal.TableElement.ScrollToRow(this.grid_stentSlowSignal.Rows.Count);
-                        this.grid_stentSlowSignal.EndEdit();
-                        this.grid_stentSlowSignal.Update();
-                        slowSignalCount++;
+                        this.grid_stentSlowSignalCh1.BeginEdit();
+                        this.grid_stentSlowSignalCh1.Rows.AddNew();
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "标准帧";
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCValue;
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].IsSelected = true;
+                        this.grid_stentSlowSignalCh1.TableElement.ScrollToRow(this.grid_stentSlowSignalCh1.Rows.Count);
+                        this.grid_stentSlowSignalCh1.EndEdit();
+                        this.grid_stentSlowSignalCh1.Update();
+                        channelData.SlowSignalCount++;
                     }));
                 }
                 else
@@ -566,28 +783,28 @@ namespace SentProt
                     LogHelper.Log.Info($"【标准帧】校验失败 crcValue={crcValue} sumCRCValue={sumCRCValue}");
                 }
                 //清空缓存
-                cacheDataPerFrame.Clear();
-                cacheFirstBitValue.Clear();
+                channelData.CacheDataPerFrame.Clear();
+                channelData.CacheFirstBitValue.Clear();
             }
 
             //二进制位iData = Convert.ToString(packageInfo.Data[index], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 1], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 2], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 3], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 4], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 5], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 6], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 7], 2).PadLeft(4, '0');
             return iData;
         }
 
-        private void ClearCacheSignal()
+        private void ClearCacheSignal(ChannelData channelData)
         {
-            var lastFrame = cacheDataPerFrame[cacheDataPerFrame.Count - 1];
-            if (cacheFirstBitValue[cacheFirstBitValue.Count - 1] == 1)
+            var lastFrame = channelData.CacheDataPerFrame[channelData.CacheDataPerFrame.Count - 1];
+            if (channelData.CacheFirstBitValue[channelData.CacheFirstBitValue.Count - 1] == 1)
             {
-                cacheFirstBitValue.Clear();
-                cacheDataPerFrame.Clear();
-                cacheFirstBitValue.Add(1);
-                cacheDataPerFrame.Add(lastFrame);
+                channelData.CacheFirstBitValue.Clear();
+                channelData.CacheDataPerFrame.Clear();
+                channelData.CacheFirstBitValue.Add(1);
+                channelData.CacheDataPerFrame.Add(lastFrame);
             }
             else
             {
-                cacheFirstBitValue.Clear();
-                cacheDataPerFrame.Clear();
+                channelData.CacheFirstBitValue.Clear();
+                channelData.CacheDataPerFrame.Clear();
             }
         }
 
@@ -596,45 +813,87 @@ namespace SentProt
          * 1）显示最新数据
          * 2）根据高低位顺序，重新计算数据
          */
-        private void AnalysisQuickSignal()
+        private void AnalysisQuickSignalCh1()
         {
             //将显示数据最新一条数据，按高低位排序显示
-            if (this.grid_stentCompleteSignal.RowCount < 1)
+            if (this.grid_stentCompleteSignalCh1.RowCount < 1)
                 return;
-            if (this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[2].Value == null)
+            if (this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[2].Value == null)
                 return;
-            var latestValue = this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[2].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[3].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[4].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[5].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[6].Value.ToString() + this.grid_stentCompleteSignal.Rows[this.grid_stentCompleteSignal.Rows.Count - 1].Cells[7].Value.ToString();
+            var latestValue = this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[2].Value.ToString() + this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[3].Value.ToString() + this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[4].Value.ToString() + this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[5].Value.ToString() + this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[6].Value.ToString() + this.grid_stentCompleteSignalCh1.Rows[this.grid_stentCompleteSignalCh1.Rows.Count - 1].Cells[7].Value.ToString();
             byte[] latestByte = ConvertByte.HexToByte(latestValue);
             byte[] data1 = new byte[3];
             byte[] data2 = new byte[3];
             Array.Copy(latestByte,0,data1,0,3);
             Array.Copy(latestByte,3,data2,0,3);
             //数据1
-            if (rb_highBefore1.CheckState == CheckState.Checked)
+            if (rb_highBefore1Ch1.CheckState == CheckState.Checked)
             {
 
             }
-            else if(rb_lowerBefore1.CheckState == CheckState.Checked)
+            else if(rb_lowerBefore1Ch1.CheckState == CheckState.Checked)
             {
                 data1 = data1.Reverse().ToArray();
             }
             //数据2
-            if (this.rb_highBefore2.CheckState == CheckState.Checked)
+            if (this.rb_highBefore2Ch1.CheckState == CheckState.Checked)
             {
             }
-            else if (this.rb_lowerBefore2.CheckState == CheckState.Checked)
+            else if (this.rb_lowerBefore2Ch1.CheckState == CheckState.Checked)
             {
                 data2 = data2.Reverse().ToArray();
             }
-            this.grid_stentQuickBoth.Invoke(new Action(()=>
+            this.grid_stentQuickBothCh1.Invoke(new Action(()=>
             {
                 //显示数据1与数据2
-                if (this.grid_stentQuickBoth.Rows.Count < 1)
-                    this.grid_stentQuickBoth.Rows.AddNew();
-                this.grid_stentQuickBoth.Rows[0].Cells[0].Value = BitConverter.ToString(data1).Replace("0", "").Replace("-", "");
-                this.grid_stentQuickBoth.Rows[0].Cells[1].Value = BitConverter.ToString(data2).Replace("0", "").Replace("-", "");
-                this.grid_stentQuickBoth.Rows[0].IsSelected = true;
-                this.grid_stentQuickBoth.Update();
+                if (this.grid_stentQuickBothCh1.Rows.Count < 1)
+                    this.grid_stentQuickBothCh1.Rows.AddNew();
+                this.grid_stentQuickBothCh1.Rows[0].Cells[0].Value = BitConverter.ToString(data1).Replace("0", "").Replace("-", "");
+                this.grid_stentQuickBothCh1.Rows[0].Cells[1].Value = BitConverter.ToString(data2).Replace("0", "").Replace("-", "");
+                this.grid_stentQuickBothCh1.Rows[0].IsSelected = true;
+                this.grid_stentQuickBothCh1.Update();
+            }));
+        }
+
+        private void AnalysisQuickSignalCh2()
+        {
+            //将显示数据最新一条数据，按高低位排序显示
+            if (this.grid_stentCompleteSignalCh2.RowCount < 1)
+                return;
+            if (this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[2].Value == null)
+                return;
+            var latestValue = this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[2].Value.ToString() + this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[3].Value.ToString() + this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[4].Value.ToString() + this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[5].Value.ToString() + this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[6].Value.ToString() + this.grid_stentCompleteSignalCh2.Rows[this.grid_stentCompleteSignalCh2.Rows.Count - 1].Cells[7].Value.ToString();
+            byte[] latestByte = ConvertByte.HexToByte(latestValue);
+            byte[] data1 = new byte[3];
+            byte[] data2 = new byte[3];
+            Array.Copy(latestByte, 0, data1, 0, 3);
+            Array.Copy(latestByte, 3, data2, 0, 3);
+            //数据1
+            if (rb_highBefore1Ch2.CheckState == CheckState.Checked)
+            {
+
+            }
+            else if (rb_lowerBefore1Ch2.CheckState == CheckState.Checked)
+            {
+                data1 = data1.Reverse().ToArray();
+            }
+            //数据2
+            if (this.rb_highBefore2Ch2.CheckState == CheckState.Checked)
+            {
+            }
+            else if (this.rb_lowerBefore2Ch2.CheckState == CheckState.Checked)
+            {
+                data2 = data2.Reverse().ToArray();
+            }
+            this.grid_stentQuickBothCh2.Invoke(new Action(() =>
+            {
+                //显示数据1与数据2
+                if (this.grid_stentQuickBothCh2.Rows.Count < 1)
+                    this.grid_stentQuickBothCh2.Rows.AddNew();
+                this.grid_stentQuickBothCh2.Rows[0].Cells[0].Value = BitConverter.ToString(data1).Replace("0", "").Replace("-", "");
+                this.grid_stentQuickBothCh2.Rows[0].Cells[1].Value = BitConverter.ToString(data2).Replace("0", "").Replace("-", "");
+                this.grid_stentQuickBothCh2.Rows[0].IsSelected = true;
+                this.grid_stentQuickBothCh2.Update();
             }));
         }
 
@@ -649,15 +908,24 @@ namespace SentProt
                     return;
                 }
                 //连接成功
-                if (IsAutoSend)
+                if (channelDataCh1.IsAutoSend)
                 {
-                    timer.Interval = autoSendTimeInternal;
-                    timer.Start();
+                    timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
+                    timerCh1.Start();
+                }
+                if (channelDataCh2.IsAutoSend)
+                {
+                    timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
+                    timerCh2.Start();
                 }
                 this.serverIP = AddConnection.serverIP;
                 this.serverPort = AddConnection.serverPort;
-                this.tool_start.Enabled = true;
-                this.tool_stop.Enabled = true;
+                this.tool_continue.Enabled = true;
+                this.tool_pause.Enabled = true;
+                this.tool_channel1Send.Enabled = true;
+                this.tool_channel2Send.Enabled = true;
+                this.tool_channel1stop.Enabled = true;
+                this.tool_channel2Stop.Enabled = true;
                 this.tool_connectServer.Enabled = false;
                 this.tool_disconnect.Enabled = true;
             }
@@ -741,26 +1009,57 @@ namespace SentProt
 
         private void Init()
         {
-            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentCompleteSignal,false);
-            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentSlowSignal,false);
-            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentQuickBoth, false);
-            this.grid_stentCompleteSignal.ReadOnly = true;
-            this.grid_stentSlowSignal.ReadOnly = true;
-            this.grid_stentQuickBoth.ReadOnly = true;
-            this.rb_highBefore1.CheckState = CheckState.Checked;
-            this.rb_highBefore2.CheckState = CheckState.Checked;
-            cacheDataPerFrame = new List<string>();
-            receivePackageInfoQueue = new Queue<MyPackageInfo>();
-            packageInfoQueueTemp = new Queue<MyPackageInfo>();
-            this.tool_start.Enabled = false;
-            this.tool_stop.Enabled = false;
-            this.tool_exportType.Items.Add(GridViewExport.ExportFormat.EXCEL);
-            this.tool_exportType.Items.Add(GridViewExport.ExportFormat.HTML);
-            this.tool_exportType.Items.Add(GridViewExport.ExportFormat.PDF);
-            this.tool_exportType.Items.Add(GridViewExport.ExportFormat.CSV);
-            this.tool_exportType.SelectedIndex = 0;
-            this.grid_stentSlowSignal.Columns[4].IsVisible = false;
-            this.grid_stentSlowSignal.Columns[5].IsVisible = false;
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentCompleteSignalCh1,false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentSlowSignalCh1,false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentQuickBothCh1, false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentCompleteSignalCh2, false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentSlowSignalCh2, false);
+            RadGridViewProperties.SetRadGridViewProperty(this.grid_stentQuickBothCh2, false);
+            this.grid_stentCompleteSignalCh1.ReadOnly = true;
+            this.grid_stentSlowSignalCh1.ReadOnly = true;
+            this.grid_stentQuickBothCh1.ReadOnly = true;
+            this.grid_stentCompleteSignalCh2.ReadOnly = true;
+            this.grid_stentSlowSignalCh2.ReadOnly = true;
+            this.grid_stentQuickBothCh2.ReadOnly = true;
+            this.rb_highBefore1Ch1.CheckState = CheckState.Checked;
+            this.rb_highBefore2Ch1.CheckState = CheckState.Checked;
+            this.rb_highBefore1Ch2.CheckState = CheckState.Checked;
+            this.rb_highBefore2Ch2.CheckState = CheckState.Checked;
+
+            this.tool_continue.Enabled = false;
+            this.tool_pause.Enabled = false;
+            this.tool_channel1Send.Enabled = false;
+            this.tool_channel2Send.Enabled = false;
+            this.tool_channel1stop.Enabled = false;
+            this.tool_channel2Stop.Enabled = false;
+
+            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.EXCEL);
+            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.HTML);
+            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.PDF);
+            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.CSV);
+            this.tool_channel1ExportFormat.SelectedIndex = 0;
+            //ch2
+            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.EXCEL);
+            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.HTML);
+            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.PDF);
+            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.CSV);
+            this.tool_channel2ExportFormat.SelectedIndex = 0;
+
+            this.grid_stentSlowSignalCh1.Columns[4].IsVisible = false;
+            this.grid_stentSlowSignalCh1.Columns[5].IsVisible = false;
+            this.grid_stentSlowSignalCh2.Columns[4].IsVisible = false;
+            this.grid_stentSlowSignalCh2.Columns[5].IsVisible = false;
+
+            channelDataCh1 = new ChannelData();
+            channelDataCh2 = new ChannelData();
+            channelDataCh1.CacheFirstBitValue = new List<int>();
+            channelDataCh1.CacheDataPerFrame = new List<string>();
+            channelDataCh2.CacheFirstBitValue = new List<int>();
+            channelDataCh2.CacheDataPerFrame = new List<string>();
+            channelDataCh1.ReceivePackageInfoQueue = new Queue<MyPackageInfo>();
+            channelDataCh1.PackageInfoQueueTemp = new Queue<MyPackageInfo>();
+            channelDataCh2.ReceivePackageInfoQueue = new Queue<MyPackageInfo>();
+            channelDataCh2.PackageInfoQueueTemp = new Queue<MyPackageInfo>();
             //config
             stentConfigDirectory = AppDomain.CurrentDomain.BaseDirectory + "config\\";
             if (!Directory.Exists(stentConfigDirectory))
@@ -776,12 +1075,39 @@ namespace SentProt
             var frameCount = INIFile.GetValue(STENT_CONFIG_SECTION,STENT_CONFIG_FRAME_COUNT_KEY, stentConfigPath);
             if (frameCount != "")
                 int.TryParse(frameCount,out cacheFrameNumber);
-            var timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION,STENT_CONFIG_TIME_INTERNAL,stentConfigPath);
+            if (cacheFrameNumber == 0)
+                cacheFrameNumber = 10000;
+
+            //ch1 timeInternal
+            int autoSendTimeInternal = 7000;
+            var timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_TIME_INTERNAL,stentConfigPath);
             if (timeInternal != "")
                 int.TryParse(timeInternal,out autoSendTimeInternal);
-            var isAuto = INIFile.GetValue(STENT_CONFIG_SECTION,STENT_CONFIG_IS_AUTO_KEY,stentConfigPath);
+            if (autoSendTimeInternal == 0)
+                autoSendTimeInternal = 7000;
+            channelDataCh1.AutoSendTimeInternal = autoSendTimeInternal;
+
+            //ch2 timeInternal
+            timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_TIME_INTERNAL, stentConfigPath);
+            if (timeInternal != "")
+                int.TryParse(timeInternal, out autoSendTimeInternal);
+            if (autoSendTimeInternal == 0)
+                autoSendTimeInternal = 7000;
+            channelDataCh2.AutoSendTimeInternal = autoSendTimeInternal;
+
+            //ch1 is auto send 
+            bool IsAutoSend = false;
+            var isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_IS_AUTO_KEY,stentConfigPath);
             if (isAuto != "")
                 bool.TryParse(isAuto,out IsAutoSend);
+            channelDataCh1.IsAutoSend = IsAutoSend;
+
+            //ch2 is auto send
+            isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_IS_AUTO_KEY, stentConfigPath);
+            if (isAuto != "")
+                bool.TryParse(isAuto, out IsAutoSend);
+            channelDataCh2.IsAutoSend = IsAutoSend;
+
             serverIP = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_URL, stentConfigPath);
             var port = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_PORT, stentConfigPath);
             if (port != "")
@@ -791,16 +1117,26 @@ namespace SentProt
         private void SaveStentConfig()
         {
             var stentConfigPath = stentConfigDirectory + STENT_CONFIG_FILE;
-            INIFile.SetValue(STENT_CONFIG_SECTION,STENT_CONFIG_FRAME_COUNT_KEY,cacheFrameNumber.ToString(),stentConfigPath);
-            INIFile.SetValue(STENT_CONFIG_SECTION,STENT_CONFIG_IS_AUTO_KEY,IsAutoSend.ToString(),stentConfigPath);
-            INIFile.SetValue(STENT_CONFIG_SECTION,STENT_CONFIG_TIME_INTERNAL,autoSendTimeInternal.ToString(),stentConfigPath);
+            //public
             INIFile.SetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_URL, serverIP, stentConfigPath);
             INIFile.SetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_PORT, serverPort.ToString(), stentConfigPath);
+            INIFile.SetValue(STENT_CONFIG_SECTION, STENT_CONFIG_FRAME_COUNT_KEY, cacheFrameNumber.ToString(), stentConfigPath);
+            //ch1
+            INIFile.SetValue(STENT_CONFIG_SECTION_CH1, STENT_CONFIG_IS_AUTO_KEY,channelDataCh1.IsAutoSend.ToString(),stentConfigPath);
+            INIFile.SetValue(STENT_CONFIG_SECTION_CH1, STENT_CONFIG_TIME_INTERNAL,channelDataCh1.AutoSendTimeInternal.ToString(),stentConfigPath);
+            //ch2
+            INIFile.SetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_IS_AUTO_KEY, channelDataCh2.IsAutoSend.ToString(), stentConfigPath);
+            INIFile.SetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_TIME_INTERNAL, channelDataCh2.AutoSendTimeInternal.ToString(), stentConfigPath);
         }
 
-        private void SendMessage()
+        private void SendMessageCh1()
         {
-            SuperEasyClient.SendMessage(StentSignalEnum.RequestData, new byte[0]);
+            SuperEasyClient.SendMessage(StentSignalEnum.RequestDataCh1, new byte[0]);
+        }
+
+        private void SendMessageCh2()
+        {
+            SuperEasyClient.SendMessage(StentSignalEnum.RequestDataCh2, new byte[0]);
         }
     }
 }

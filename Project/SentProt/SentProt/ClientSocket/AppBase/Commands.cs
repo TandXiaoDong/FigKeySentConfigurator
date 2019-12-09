@@ -13,10 +13,14 @@ namespace SentProt.ClientSocket.AppBase
         Login = 1,
         [Description("请求数据头")]
         RequestHead = 0Xff,
-        [Description("请求发送数据")]
-        RequestData = 0Xaa01,
-        [Description("请求停止发送数据")]
-        StopData = 0Xaa00
+        [Description("请求发送通道1数据/header")]
+        RequestDataCh1 = 0Xaa01,
+        [Description("请求发送通道2数据/header")]
+        RequestDataCh2 = 0Xaa02,
+        [Description("请求停止发送通道1数据")]
+        StopDataCh1 = 0Xbb01,
+        [Description("请求停止发送通道2数据")]
+        StopDataCh2 = 0Xbb02
     }
 
     public class DescriptionAttribute : Attribute

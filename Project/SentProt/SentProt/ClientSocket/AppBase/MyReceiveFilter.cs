@@ -16,7 +16,7 @@ namespace SentProt.ClientSocket.AppBase
         /// |  (2)  | n |                               |
         /// |       |(2)|                               |
         /// +-------+---+-------------------------------+
-        public MyReceiveFilter() : base(2)//2-header + 2-dataLen
+        public MyReceiveFilter() : base(4)//2-header + 2-dataLen
         {
             
         }

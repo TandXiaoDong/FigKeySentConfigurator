@@ -46,6 +46,11 @@ namespace SentProt
                 MessageBox.Show("请输入正整数的发送时间间隔！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (autoSendTimerInternal < 1)
+            {
+                MessageBox.Show("请输入大于0的时间间隔！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             IsApplyAutoSend = this.cb_auto.Checked;
             this.DialogResult = DialogResult.OK;
             this.Close();
