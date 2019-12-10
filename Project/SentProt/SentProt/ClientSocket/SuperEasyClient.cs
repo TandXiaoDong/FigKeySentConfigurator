@@ -47,6 +47,7 @@ namespace SentProt.ClientSocket
 
             LogHelper.Log.Info("开始连接服务...");
             client = new EasyClient<MyPackageInfo>();
+            client.ReceiveBufferSize = 4098;
             client.Initialize(new MyReceiveFilter());
             client.Connected += OnClientConnected;
             client.NewPackageReceived += OnPagckageReceived;
@@ -82,6 +83,7 @@ namespace SentProt.ClientSocket
         {
             SendNoticeMessage(e.Package);
             //LogHelper.Log.Info($"收到文本下行:{e.Package.Body}");
+
             //LogHelper.Log.Info("收到服务消息【Byte】:"+"head:"+BitConverter.ToString(e.Package.Header)+" body:"+BitConverter.ToString(e.Package.Data));
         }
 

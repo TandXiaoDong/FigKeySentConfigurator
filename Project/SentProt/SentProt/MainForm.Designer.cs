@@ -413,9 +413,9 @@
             // 
             // 
             this.splitPanel4.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel4.Size = new System.Drawing.Size(1054, 228);
-            this.splitPanel4.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.1612319F);
-            this.splitPanel4.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 85);
+            this.splitPanel4.Size = new System.Drawing.Size(1054, 196);
+            this.splitPanel4.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.09090908F);
+            this.splitPanel4.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 53);
             this.splitPanel4.TabIndex = 0;
             this.splitPanel4.TabStop = false;
             this.splitPanel4.Text = "splitPanel4";
@@ -488,22 +488,22 @@
             this.grid_stentCompleteSignalCh2.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.grid_stentCompleteSignalCh2.Name = "grid_stentCompleteSignalCh2";
             this.grid_stentCompleteSignalCh2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentCompleteSignalCh2.Size = new System.Drawing.Size(1054, 228);
+            this.grid_stentCompleteSignalCh2.Size = new System.Drawing.Size(1054, 196);
             this.grid_stentCompleteSignalCh2.TabIndex = 9;
             this.grid_stentCompleteSignalCh2.ThemeName = "TelerikMetro";
             // 
             // splitPanel5
             // 
             this.splitPanel5.Controls.Add(this.radGroupBox3);
-            this.splitPanel5.Location = new System.Drawing.Point(0, 236);
+            this.splitPanel5.Location = new System.Drawing.Point(0, 204);
             this.splitPanel5.Name = "splitPanel5";
             // 
             // 
             // 
             this.splitPanel5.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel5.Size = new System.Drawing.Size(1054, 133);
-            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.04528987F);
-            this.splitPanel5.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -25);
+            this.splitPanel5.Size = new System.Drawing.Size(1054, 120);
+            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.07359308F);
+            this.splitPanel5.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -38);
             this.splitPanel5.TabIndex = 1;
             this.splitPanel5.TabStop = false;
             this.splitPanel5.Text = "splitPanel5";
@@ -517,7 +517,7 @@
             this.radGroupBox3.HeaderText = "慢信号";
             this.radGroupBox3.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox3.Name = "radGroupBox3";
-            this.radGroupBox3.Size = new System.Drawing.Size(1054, 133);
+            this.radGroupBox3.Size = new System.Drawing.Size(1054, 120);
             this.radGroupBox3.TabIndex = 1;
             this.radGroupBox3.Text = "慢信号";
             this.radGroupBox3.ThemeName = "Breeze";
@@ -568,22 +568,22 @@
             this.grid_stentSlowSignalCh2.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.grid_stentSlowSignalCh2.Name = "grid_stentSlowSignalCh2";
             this.grid_stentSlowSignalCh2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentSlowSignalCh2.Size = new System.Drawing.Size(1050, 113);
+            this.grid_stentSlowSignalCh2.Size = new System.Drawing.Size(1050, 100);
             this.grid_stentSlowSignalCh2.TabIndex = 10;
             this.grid_stentSlowSignalCh2.ThemeName = "TelerikMetro";
             // 
             // splitPanel6
             // 
             this.splitPanel6.Controls.Add(this.radGroupBox4);
-            this.splitPanel6.Location = new System.Drawing.Point(0, 377);
+            this.splitPanel6.Location = new System.Drawing.Point(0, 332);
             this.splitPanel6.Name = "splitPanel6";
             // 
             // 
             // 
             this.splitPanel6.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel6.Size = new System.Drawing.Size(1054, 101);
-            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.115942F);
-            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -60);
+            this.splitPanel6.Size = new System.Drawing.Size(1054, 146);
+            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.01731603F);
+            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -15);
             this.splitPanel6.TabIndex = 2;
             this.splitPanel6.TabStop = false;
             this.splitPanel6.Text = "splitPanel6";
@@ -598,7 +598,7 @@
             this.radGroupBox4.HeaderText = "快信号";
             this.radGroupBox4.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox4.Name = "radGroupBox4";
-            this.radGroupBox4.Size = new System.Drawing.Size(1054, 101);
+            this.radGroupBox4.Size = new System.Drawing.Size(1054, 146);
             this.radGroupBox4.TabIndex = 0;
             this.radGroupBox4.Text = "快信号";
             this.radGroupBox4.ThemeName = "Breeze";
@@ -629,7 +629,7 @@
             this.grid_stentQuickBothCh2.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.grid_stentQuickBothCh2.Name = "grid_stentQuickBothCh2";
             this.grid_stentQuickBothCh2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentQuickBothCh2.Size = new System.Drawing.Size(1050, 34);
+            this.grid_stentQuickBothCh2.Size = new System.Drawing.Size(1050, 79);
             this.grid_stentQuickBothCh2.TabIndex = 5;
             this.grid_stentQuickBothCh2.ThemeName = "TelerikMetro";
             // 
@@ -732,6 +732,7 @@
             this.tool_channel2Stop.Name = "tool_channel2Stop";
             this.tool_channel2Stop.Size = new System.Drawing.Size(63, 25);
             this.tool_channel2Stop.Text = "停止";
+            this.tool_channel2Stop.Visible = false;
             // 
             // tool_channel2Clear
             // 
@@ -837,9 +838,9 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(1054, 228);
-            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.1612319F);
-            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 85);
+            this.splitPanel1.Size = new System.Drawing.Size(1054, 200);
+            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.09956709F);
+            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 57);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
@@ -912,22 +913,22 @@
             this.grid_stentCompleteSignalCh1.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.grid_stentCompleteSignalCh1.Name = "grid_stentCompleteSignalCh1";
             this.grid_stentCompleteSignalCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1054, 228);
+            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1054, 200);
             this.grid_stentCompleteSignalCh1.TabIndex = 9;
             this.grid_stentCompleteSignalCh1.ThemeName = "TelerikMetro";
             // 
             // splitPanel2
             // 
             this.splitPanel2.Controls.Add(this.radGroupBox2);
-            this.splitPanel2.Location = new System.Drawing.Point(0, 236);
+            this.splitPanel2.Location = new System.Drawing.Point(0, 208);
             this.splitPanel2.Name = "splitPanel2";
             // 
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(1054, 133);
-            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.04528987F);
-            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -25);
+            this.splitPanel2.Size = new System.Drawing.Size(1054, 112);
+            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.0909091F);
+            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -46);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
@@ -941,7 +942,7 @@
             this.radGroupBox2.HeaderText = "慢信号";
             this.radGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(1054, 133);
+            this.radGroupBox2.Size = new System.Drawing.Size(1054, 112);
             this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "慢信号";
             this.radGroupBox2.ThemeName = "Breeze";
@@ -992,22 +993,22 @@
             this.grid_stentSlowSignalCh1.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.grid_stentSlowSignalCh1.Name = "grid_stentSlowSignalCh1";
             this.grid_stentSlowSignalCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1050, 113);
+            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1050, 92);
             this.grid_stentSlowSignalCh1.TabIndex = 10;
             this.grid_stentSlowSignalCh1.ThemeName = "TelerikMetro";
             // 
             // splitPanel3
             // 
             this.splitPanel3.Controls.Add(this.radGroupBox1);
-            this.splitPanel3.Location = new System.Drawing.Point(0, 377);
+            this.splitPanel3.Location = new System.Drawing.Point(0, 328);
             this.splitPanel3.Name = "splitPanel3";
             // 
             // 
             // 
             this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(1054, 101);
-            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.115942F);
-            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -60);
+            this.splitPanel3.Size = new System.Drawing.Size(1054, 150);
+            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.008658019F);
+            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -11);
             this.splitPanel3.TabIndex = 2;
             this.splitPanel3.TabStop = false;
             this.splitPanel3.Text = "splitPanel3";
@@ -1022,7 +1023,7 @@
             this.radGroupBox1.HeaderText = "快信号";
             this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(1054, 101);
+            this.radGroupBox1.Size = new System.Drawing.Size(1054, 150);
             this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "快信号";
             this.radGroupBox1.ThemeName = "Breeze";
@@ -1053,7 +1054,7 @@
             this.grid_stentQuickBothCh1.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.grid_stentQuickBothCh1.Name = "grid_stentQuickBothCh1";
             this.grid_stentQuickBothCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1050, 34);
+            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1050, 83);
             this.grid_stentQuickBothCh1.TabIndex = 5;
             this.grid_stentQuickBothCh1.ThemeName = "TelerikMetro";
             // 
@@ -1156,6 +1157,7 @@
             this.tool_channel1stop.Name = "tool_channel1stop";
             this.tool_channel1stop.Size = new System.Drawing.Size(63, 25);
             this.tool_channel1stop.Text = "停止";
+            this.tool_channel1stop.Visible = false;
             // 
             // tool_channel1Clear
             // 

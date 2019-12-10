@@ -14,9 +14,9 @@ namespace SentProt.ClientSocket.AppBase
         [Description("请求数据头")]
         RequestHead = 0Xff,
         [Description("请求发送通道1数据/header")]
-        RequestDataCh1 = 0Xaa01,
+        RequestDataCh1 = 0X01aa,
         [Description("请求发送通道2数据/header")]
-        RequestDataCh2 = 0Xaa02,
+        RequestDataCh2 = 0X002aa,
         [Description("请求停止发送通道1数据")]
         StopDataCh1 = 0Xbb01,
         [Description("请求停止发送通道2数据")]

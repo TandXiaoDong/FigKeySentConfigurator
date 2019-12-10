@@ -24,17 +24,20 @@ namespace SentProt.ClientSocket.AppBase
         protected override int GetBodyLengthFromHeader(IBufferStream bufferStream, int length)
         {
             ArraySegment<byte> buffers = bufferStream.Buffers[0];
-            byte[] array = buffers.Reverse().ToArray();
-            int len = array[length - 2] * 256 + array[length - 1];//高位在前
+            byte[] array = buffers.ToArray();
+            //int len = array[length - 2] * 256 + array[length - 1];//高位在前
+            int len = array[length - 1] * 256 + array[length - 2];//长度-低位在前
             //int len = (int)array[buffers.Offset + 2] * 256 + (int)array[buffers.Offset + 3];
-            return len;
+            return len;//+ 2
         }
 
         public override MyPackageInfo ResolvePackage(IBufferStream bufferStream)
         {
             //第三个参数用0,1都可以
-            byte[] header =bufferStream.Buffers[0].Reverse().ToArray();
+            byte[] header =bufferStream.Buffers[0].ToArray();
             byte[] bodyBuffer = bufferStream.Buffers[1].ToArray();
+            
+
             //byte[] allBuffer = bufferStream.Buffers[0].Array.CloneRange(0, (int)bufferStream.Length);
             //合并所有buffer
             //byte[] allBuffer

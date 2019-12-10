@@ -20,6 +20,21 @@ namespace SentProt.Model
         private Queue<MyPackageInfo> receivePackageInfoQueue;
         private Queue<MyPackageInfo> packageInfoQueueTemp;
 
+        public enum ChannelTypeEnum
+        {
+            Channel1,
+            Channel2
+        }
+
+        public enum FrameTypeEnum
+        {
+            StandardFrame,
+            ExtendFrame
+        }
+
+        public ChannelTypeEnum ChannelType { get; set; }
+
+        public FrameTypeEnum FrameType { get; set; }
 
         public Queue<MyPackageInfo> ReceivePackageInfoQueue
         {

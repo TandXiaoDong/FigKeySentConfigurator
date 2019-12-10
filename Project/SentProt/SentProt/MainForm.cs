@@ -121,8 +121,8 @@ namespace SentProt
         private void Menu_channel1_Click(object sender, EventArgs e)
         {
             this.radDock1.AddDocument(this.documentChannel1);
-            this.documentChannel1.Show();
-            this.radDock1.ActiveWindow = this.documentChannel1;
+            //this.documentChannel1.Show();
+            //this.radDock1.ActiveWindow = this.documentChannel1;
         }
 
         private void TimerCh1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -405,7 +405,10 @@ namespace SentProt
         {
             await Task.Run(()=>
             {
-                if (BitConverter.ToInt32(packageInfo.Header, 0) == (int)StentSignalEnum.RequestDataCh1)
+                var header = BitConverter.ToInt16(packageInfo.Header, 0);
+                var headerCh1 = (int)StentSignalEnum.RequestDataCh1;
+                var headerCh2 = (int)StentSignalEnum.RequestDataCh2;
+                if (header == headerCh1)
                 {
                     channelDataCh1.ReceivePackageInfoQueue.Enqueue(packageInfo);
                     while (channelDataCh1.PackageInfoQueueTemp.Count <= 0)
@@ -438,7 +441,7 @@ namespace SentProt
                         }
                     }
                 }
-                else if (BitConverter.ToInt32(packageInfo.Header, 0) == (int)StentSignalEnum.RequestDataCh2)
+                else if (header == headerCh2)
                 {
                     channelDataCh2.ReceivePackageInfoQueue.Enqueue(packageInfo);
                     while (channelDataCh2.PackageInfoQueueTemp.Count <= 0)
@@ -485,6 +488,7 @@ namespace SentProt
                 {
                     this.grid_stentCompleteSignalCh1.Invoke(new Action(() =>
                     {
+                        channelDataCh1.ChannelType = ChannelData.ChannelTypeEnum.Channel1;
                         var iData = AnalysisSlowSignalData(packageInfo, i,channelDataCh1);
                         this.grid_stentCompleteSignalCh1.BeginEdit();
                         this.grid_stentCompleteSignalCh1.Rows.AddNew();
@@ -535,6 +539,7 @@ namespace SentProt
                 {
                     this.grid_stentCompleteSignalCh2.Invoke(new Action(() =>
                     {
+                        channelDataCh2.ChannelType = ChannelData.ChannelTypeEnum.Channel2;
                         var iData = AnalysisSlowSignalData(packageInfo, i,channelDataCh2);
                         this.grid_stentCompleteSignalCh2.BeginEdit();
                         this.grid_stentCompleteSignalCh2.Rows.AddNew();
@@ -692,20 +697,8 @@ namespace SentProt
                     LogHelper.Log.Info("【扩展帧】CRC校验成功 " + sumCRCCal);
                     //一包数据解析完成
                     //开始显示一包数据
-                    this.grid_stentSlowSignalCh1.Invoke(new Action(() =>
-                    {
-                        this.grid_stentSlowSignalCh1.Rows.AddNew();
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "扩展帧";
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCCal;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].IsSelected = true;
-                        this.grid_stentSlowSignalCh1.TableElement.ScrollToRow(this.grid_stentSlowSignalCh1.Rows.Count);
-                        this.grid_stentSlowSignalCh1.Update();
-                        channelData.SlowSignalCount++;
-                    }));
+                    channelData.FrameType = ChannelData.FrameTypeEnum.ExtendFrame;
+                    UpdateSlowSignalGridData(channelData,messageID,data,crcValue,sumCRCCal);
                 }
                 else
                 {
@@ -761,22 +754,8 @@ namespace SentProt
                     LogHelper.Log.Info("【标准帧】校验成功 " + sumCRC);
                     //一包数据解析完成
                     //开始显示一包数据
-                    this.grid_stentSlowSignalCh1.Invoke(new Action(() =>
-                    {
-                        this.grid_stentSlowSignalCh1.BeginEdit();
-                        this.grid_stentSlowSignalCh1.Rows.AddNew();
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "标准帧";
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCValue;
-                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].IsSelected = true;
-                        this.grid_stentSlowSignalCh1.TableElement.ScrollToRow(this.grid_stentSlowSignalCh1.Rows.Count);
-                        this.grid_stentSlowSignalCh1.EndEdit();
-                        this.grid_stentSlowSignalCh1.Update();
-                        channelData.SlowSignalCount++;
-                    }));
+                    channelData.FrameType = ChannelData.FrameTypeEnum.StandardFrame;
+                    UpdateSlowSignalGridData(channelData, messageID, data, crcValue, sumCRCValue);
                 }
                 else
                 {
@@ -789,6 +768,60 @@ namespace SentProt
 
             //二进制位iData = Convert.ToString(packageInfo.Data[index], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 1], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 2], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 3], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 4], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 5], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 6], 2).PadLeft(4, '0') + " " + Convert.ToString(packageInfo.Data[index + 7], 2).PadLeft(4, '0');
             return iData;
+        }
+
+        private void UpdateSlowSignalGridData(ChannelData channelData,string messageID,string data,string crcValue,string sumCRCCal)
+        {
+            if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel1)
+            {
+                this.grid_stentSlowSignalCh1.Invoke(new Action(() =>
+                {
+                    this.radDock1.ActiveWindow = this.documentChannel1;
+                    this.grid_stentSlowSignalCh1.Rows.AddNew();
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
+                    if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
+                    {
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "标准帧";
+                    }
+                    else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
+                    {
+                        this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[1].Value = "扩展帧";
+                    }
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCCal;
+                    this.grid_stentSlowSignalCh1.Rows[channelData.SlowSignalCount].IsSelected = true;
+                    this.grid_stentSlowSignalCh1.TableElement.ScrollToRow(this.grid_stentSlowSignalCh1.Rows.Count);
+                    this.grid_stentSlowSignalCh1.Update();
+                    channelData.SlowSignalCount++;
+                }));
+            }
+            else if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel2)
+            {
+                this.grid_stentSlowSignalCh2.Invoke(new Action(() =>
+                {
+                    this.radDock1.ActiveWindow = this.documentChannel2;
+                    this.grid_stentSlowSignalCh2.Rows.AddNew();
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[0].Value = channelData.SlowSignalCount + 1;
+                    if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
+                    {
+                        this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[1].Value = "标准帧";
+                    }
+                    else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
+                    {
+                        this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[1].Value = "扩展帧";
+                    }
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[2].Value = messageID;
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[3].Value = data;
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[4].Value = crcValue;
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].Cells[5].Value = sumCRCCal;
+                    this.grid_stentSlowSignalCh2.Rows[channelData.SlowSignalCount].IsSelected = true;
+                    this.grid_stentSlowSignalCh2.TableElement.ScrollToRow(this.grid_stentSlowSignalCh2.Rows.Count);
+                    this.grid_stentSlowSignalCh2.Update();
+                    channelData.SlowSignalCount++;
+                }));
+            }
         }
 
         private void ClearCacheSignal(ChannelData channelData)
