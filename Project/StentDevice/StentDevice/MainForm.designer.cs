@@ -1,4 +1,4 @@
-﻿namespace SentProt
+﻿namespace StentDevice
 {
     partial class MainForm
     {
@@ -279,7 +279,7 @@
             // 
             // tool_connectServer
             // 
-            this.tool_connectServer.Image = global::SentProt.Properties.Resources.ServerMode_16x16;
+            this.tool_connectServer.Image = global::StentDevice.Properties.Resources.ServerMode_16x16;
             this.tool_connectServer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_connectServer.Name = "tool_connectServer";
             this.tool_connectServer.Size = new System.Drawing.Size(89, 24);
@@ -287,7 +287,7 @@
             // 
             // tool_disconnect
             // 
-            this.tool_disconnect.Image = global::SentProt.Properties.Resources.Cancel_16x16;
+            this.tool_disconnect.Image = global::StentDevice.Properties.Resources.Cancel_16x16;
             this.tool_disconnect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_disconnect.Name = "tool_disconnect";
             this.tool_disconnect.Size = new System.Drawing.Size(89, 24);
@@ -295,7 +295,7 @@
             // 
             // tool_continue
             // 
-            this.tool_continue.Image = global::SentProt.Properties.Resources.Play_16x16;
+            this.tool_continue.Image = global::StentDevice.Properties.Resources.Play_16x16;
             this.tool_continue.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_continue.Name = "tool_continue";
             this.tool_continue.Size = new System.Drawing.Size(89, 24);
@@ -303,7 +303,7 @@
             // 
             // tool_pause
             // 
-            this.tool_pause.Image = global::SentProt.Properties.Resources.pause_green;
+            this.tool_pause.Image = global::StentDevice.Properties.Resources.pause_green;
             this.tool_pause.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_pause.Name = "tool_pause";
             this.tool_pause.Size = new System.Drawing.Size(89, 24);
@@ -311,7 +311,7 @@
             // 
             // tool_cacheFrameAmount
             // 
-            this.tool_cacheFrameAmount.Image = global::SentProt.Properties.Resources.DefinedPrintStyle;
+            this.tool_cacheFrameAmount.Image = global::StentDevice.Properties.Resources.DefinedPrintStyle;
             this.tool_cacheFrameAmount.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_cacheFrameAmount.Name = "tool_cacheFrameAmount";
             this.tool_cacheFrameAmount.Size = new System.Drawing.Size(89, 24);
@@ -719,7 +719,7 @@
             // 
             // tool_channel2Send
             // 
-            this.tool_channel2Send.Image = global::SentProt.Properties.Resources.Play_16x16;
+            this.tool_channel2Send.Image = global::StentDevice.Properties.Resources.Play_16x16;
             this.tool_channel2Send.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel2Send.Name = "tool_channel2Send";
             this.tool_channel2Send.Size = new System.Drawing.Size(56, 24);
@@ -727,16 +727,15 @@
             // 
             // tool_channel2Stop
             // 
-            this.tool_channel2Stop.Image = global::SentProt.Properties.Resources.Stop_16x16;
+            this.tool_channel2Stop.Image = global::StentDevice.Properties.Resources.Stop_16x16;
             this.tool_channel2Stop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel2Stop.Name = "tool_channel2Stop";
             this.tool_channel2Stop.Size = new System.Drawing.Size(56, 24);
             this.tool_channel2Stop.Text = "停止";
-            this.tool_channel2Stop.Visible = false;
             // 
             // tool_channel2Clear
             // 
-            this.tool_channel2Clear.Image = global::SentProt.Properties.Resources.ClearGrid;
+            this.tool_channel2Clear.Image = global::StentDevice.Properties.Resources.ClearGrid;
             this.tool_channel2Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel2Clear.Name = "tool_channel2Clear";
             this.tool_channel2Clear.Size = new System.Drawing.Size(56, 24);
@@ -744,7 +743,7 @@
             // 
             // tool_channel2AutoSend
             // 
-            this.tool_channel2AutoSend.Image = global::SentProt.Properties.Resources.SendAgain;
+            this.tool_channel2AutoSend.Image = global::StentDevice.Properties.Resources.SendAgain;
             this.tool_channel2AutoSend.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel2AutoSend.Name = "tool_channel2AutoSend";
             this.tool_channel2AutoSend.Size = new System.Drawing.Size(80, 24);
@@ -763,7 +762,7 @@
             // 
             // tool_channel2Export
             // 
-            this.tool_channel2Export.Image = global::SentProt.Properties.Resources.Export_16x16;
+            this.tool_channel2Export.Image = global::StentDevice.Properties.Resources.Export_16x16;
             this.tool_channel2Export.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel2Export.Name = "tool_channel2Export";
             this.tool_channel2Export.Size = new System.Drawing.Size(56, 24);
@@ -806,7 +805,7 @@
             this.documentChannel1.Location = new System.Drawing.Point(4, 54);
             this.documentChannel1.Name = "documentChannel1";
             this.documentChannel1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.documentChannel1.Size = new System.Drawing.Size(1054, 506);
+            this.documentChannel1.Size = new System.Drawing.Size(1054, 510);
             this.documentChannel1.Text = "Stent Channel 1";
             // 
             // radSplitContainer1
@@ -823,7 +822,7 @@
             // 
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer1.Size = new System.Drawing.Size(1054, 479);
+            this.radSplitContainer1.Size = new System.Drawing.Size(1054, 483);
             this.radSplitContainer1.SplitterWidth = 8;
             this.radSplitContainer1.TabIndex = 12;
             this.radSplitContainer1.TabStop = false;
@@ -838,12 +837,13 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(1054, 200);
+            this.splitPanel1.Size = new System.Drawing.Size(1054, 202);
             this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.09956709F);
             this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 57);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
+            this.splitPanel1.ThemeName = "Material";
             // 
             // grid_stentCompleteSignalCh1
             // 
@@ -912,25 +912,26 @@
             this.grid_stentCompleteSignalCh1.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.grid_stentCompleteSignalCh1.Name = "grid_stentCompleteSignalCh1";
             this.grid_stentCompleteSignalCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1054, 200);
+            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1054, 202);
             this.grid_stentCompleteSignalCh1.TabIndex = 9;
             this.grid_stentCompleteSignalCh1.ThemeName = "TelerikMetro";
             // 
             // splitPanel2
             // 
             this.splitPanel2.Controls.Add(this.radGroupBox2);
-            this.splitPanel2.Location = new System.Drawing.Point(0, 208);
+            this.splitPanel2.Location = new System.Drawing.Point(0, 210);
             this.splitPanel2.Name = "splitPanel2";
             // 
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(1054, 112);
+            this.splitPanel2.Size = new System.Drawing.Size(1054, 113);
             this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.0909091F);
             this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -46);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
+            this.splitPanel2.ThemeName = "Material";
             // 
             // radGroupBox2
             // 
@@ -940,7 +941,7 @@
             this.radGroupBox2.HeaderText = "慢信号";
             this.radGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(1054, 112);
+            this.radGroupBox2.Size = new System.Drawing.Size(1054, 113);
             this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "慢信号";
             this.radGroupBox2.ThemeName = "Breeze";
@@ -991,25 +992,26 @@
             this.grid_stentSlowSignalCh1.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.grid_stentSlowSignalCh1.Name = "grid_stentSlowSignalCh1";
             this.grid_stentSlowSignalCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1050, 92);
+            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1050, 93);
             this.grid_stentSlowSignalCh1.TabIndex = 10;
             this.grid_stentSlowSignalCh1.ThemeName = "TelerikMetro";
             // 
             // splitPanel3
             // 
             this.splitPanel3.Controls.Add(this.radGroupBox1);
-            this.splitPanel3.Location = new System.Drawing.Point(0, 328);
+            this.splitPanel3.Location = new System.Drawing.Point(0, 331);
             this.splitPanel3.Name = "splitPanel3";
             // 
             // 
             // 
             this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(1054, 151);
+            this.splitPanel3.Size = new System.Drawing.Size(1054, 152);
             this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.008658019F);
             this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -11);
             this.splitPanel3.TabIndex = 2;
             this.splitPanel3.TabStop = false;
             this.splitPanel3.Text = "splitPanel3";
+            this.splitPanel3.ThemeName = "Material";
             // 
             // radGroupBox1
             // 
@@ -1020,7 +1022,7 @@
             this.radGroupBox1.HeaderText = "快信号";
             this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(1054, 151);
+            this.radGroupBox1.Size = new System.Drawing.Size(1054, 152);
             this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "快信号";
             this.radGroupBox1.ThemeName = "Breeze";
@@ -1051,7 +1053,7 @@
             this.grid_stentQuickBothCh1.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.grid_stentQuickBothCh1.Name = "grid_stentQuickBothCh1";
             this.grid_stentQuickBothCh1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1050, 84);
+            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1050, 85);
             this.grid_stentQuickBothCh1.TabIndex = 5;
             this.grid_stentQuickBothCh1.ThemeName = "TelerikMetro";
             // 
@@ -1141,7 +1143,7 @@
             // 
             // tool_channel1Send
             // 
-            this.tool_channel1Send.Image = global::SentProt.Properties.Resources.Play_16x16;
+            this.tool_channel1Send.Image = global::StentDevice.Properties.Resources.Play_16x16;
             this.tool_channel1Send.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel1Send.Name = "tool_channel1Send";
             this.tool_channel1Send.Size = new System.Drawing.Size(56, 24);
@@ -1149,16 +1151,15 @@
             // 
             // tool_channel1stop
             // 
-            this.tool_channel1stop.Image = global::SentProt.Properties.Resources.Stop_16x16;
+            this.tool_channel1stop.Image = global::StentDevice.Properties.Resources.Stop_16x16;
             this.tool_channel1stop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel1stop.Name = "tool_channel1stop";
             this.tool_channel1stop.Size = new System.Drawing.Size(56, 24);
             this.tool_channel1stop.Text = "停止";
-            this.tool_channel1stop.Visible = false;
             // 
             // tool_channel1Clear
             // 
-            this.tool_channel1Clear.Image = global::SentProt.Properties.Resources.ClearGrid;
+            this.tool_channel1Clear.Image = global::StentDevice.Properties.Resources.ClearGrid;
             this.tool_channel1Clear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel1Clear.Name = "tool_channel1Clear";
             this.tool_channel1Clear.Size = new System.Drawing.Size(56, 24);
@@ -1166,7 +1167,7 @@
             // 
             // tool_channel1AutoSend
             // 
-            this.tool_channel1AutoSend.Image = global::SentProt.Properties.Resources.SendAgain;
+            this.tool_channel1AutoSend.Image = global::StentDevice.Properties.Resources.SendAgain;
             this.tool_channel1AutoSend.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel1AutoSend.Name = "tool_channel1AutoSend";
             this.tool_channel1AutoSend.Size = new System.Drawing.Size(80, 24);
@@ -1185,7 +1186,7 @@
             // 
             // tool_channel1Export
             // 
-            this.tool_channel1Export.Image = global::SentProt.Properties.Resources.Export_16x16;
+            this.tool_channel1Export.Image = global::StentDevice.Properties.Resources.Export_16x16;
             this.tool_channel1Export.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tool_channel1Export.Name = "tool_channel1Export";
             this.tool_channel1Export.Size = new System.Drawing.Size(56, 24);

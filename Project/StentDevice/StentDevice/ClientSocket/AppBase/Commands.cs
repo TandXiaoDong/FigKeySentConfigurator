@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SentProt.ClientSocket.AppBase
+namespace StentDevice.ClientSocket.AppBase
 {
 
 
