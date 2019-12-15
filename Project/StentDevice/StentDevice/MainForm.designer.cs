@@ -301,7 +301,7 @@
             // 
             // radDock1
             // 
-            this.radDock1.ActiveWindow = this.documentChannel2;
+            this.radDock1.ActiveWindow = this.documentChannel1;
             this.radDock1.Controls.Add(this.documentContainer1);
             this.radDock1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radDock1.IsCleanUpTarget = true;
@@ -622,7 +622,7 @@
             // 
             // 
             this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 0;
+            this.documentTabStrip1.SelectedIndex = 1;
             this.documentTabStrip1.Size = new System.Drawing.Size(1062, 568);
             this.documentTabStrip1.TabIndex = 0;
             this.documentTabStrip1.TabStop = false;

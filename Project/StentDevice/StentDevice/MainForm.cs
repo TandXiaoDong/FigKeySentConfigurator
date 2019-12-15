@@ -21,6 +21,7 @@ using System.Reflection;
 using WindowsFormTelerik.GridViewExportData;
 using WindowsFormTelerik.CommonUI;
 using StentDevice.Model;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace StentDevice
 {
@@ -495,6 +496,7 @@ namespace StentDevice
         private void Tool_channel1Export_Click(object sender, EventArgs e)
         {
             //ExportGridData(this.grid_stentCompleteSignalCh1,this.tool_channel1ExportFormat);
+            ExportListViewData(this.grid_stentCompleteSignalCh1);
         }
 
         private void Tool_channel2AutoSend_Click(object sender, EventArgs e)
@@ -1607,6 +1609,100 @@ namespace StentDevice
         private void SendMessageCh2()
         {
             SuperEasyClient.SendMessage(StentSignalEnum.RequestDataCh2, new byte[0]);
+        }
+
+        private void ExportListViewData(ListView listView)
+        {
+            if (listView.Items == null) 
+                return;
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.DefaultExt = "xls";
+            saveDialog.Filter = "Excel文件 | *.xls";
+            saveDialog.FileName = DateTime.Now.ToString("yyyy - MM - dd");
+            saveDialog.ShowDialog();
+            var saveFileName = saveDialog.FileName;
+            if (saveFileName.IndexOf(":") < 0)
+                return;
+            if (File.Exists(saveFileName)) 
+                File.Delete(saveFileName);
+            Excel.Application xlApp = new Excel.Application();
+            if (xlApp == null)
+            {
+                MessageBox.Show("无法创建Excel对象，可能您的机器未安装Excel");
+                return;
+            }
+            Excel.Workbooks workbooks = xlApp.Workbooks;
+            Excel.Workbook workbook = workbooks.Add(true);
+            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Worksheets[1];
+            xlApp.Visible = false;
+            //填充列 
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i + 1] = listView.Columns[i].Text.ToString();
+                ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[1, i + 1]).Font.Bold = true;
+            }
+            //填充数据（这里分了两种情况，1：lv带CheckedBox，2：不带CheckedBox） 
+            //带CheckedBoxes 
+            if (listView.CheckBoxes == true)
+            {
+                int tmpCnt = 0;
+                for (int i = 0; i < listView.Items.Count; i++)
+                {
+                    if (listView.Items[i].Checked == true)
+                    {
+                        for (int j = 0; j < listView.Columns.Count; j++)
+                        {
+                            if (j == 0)
+                            {
+                                worksheet.Cells[2 + tmpCnt, j + 1] = listView.Items[i].Text.ToString();
+                                ((Microsoft.Office.Interop.Excel.Range)worksheet.Cells[2 + tmpCnt, j + 1]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            }
+                            else
+                            {
+                                worksheet.Cells[2 + tmpCnt, j + 1] = listView.Items[i].SubItems[j].Text.ToString();
+                                ((Excel.Range)worksheet.Cells[2 + tmpCnt, j + 1]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            }
+                        }
+                        tmpCnt++;
+                    }
+                }
+            }
+            else //不带Checkedboxe 
+            {
+                for (int i = 0; i < listView.Items.Count; i++)
+                {
+                    for (int j = 0; j < listView.Columns.Count; j++)
+                    {
+                        if (j == 0)
+                        {
+                            worksheet.Cells[2 + i, j + 1] = listView.Items[i].Text.ToString();
+                            ((Excel.Range)worksheet.Cells[2 + i, j + 1]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                        }
+                        else
+                        {
+                            worksheet.Cells[2 + i, j + 1] = listView.Items[i].SubItems[j].Text.ToString();
+                            ((Excel.Range)worksheet.Cells[2 + i, j + 1]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                        }
+                    }
+                }
+            }
+            object missing = System.Reflection.Missing.Value;
+            try
+            {
+                workbook.Saved = true;
+                workbook.SaveAs(saveFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlXMLSpreadsheet, missing, missing, false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("导出文件时出错, 文件可能正被打开！\n" +e1.Message);
+                return;
+            }
+            finally
+            {
+                xlApp.Quit();
+                System.GC.Collect();
+            }
+            MessageBox.Show("导出Excle成功！");
         }
 
         #region temp
