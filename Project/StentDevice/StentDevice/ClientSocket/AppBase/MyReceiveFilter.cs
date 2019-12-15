@@ -26,6 +26,8 @@ namespace StentDevice.ClientSocket.AppBase
             ArraySegment<byte> buffers = bufferStream.Buffers[0];
             byte[] array = buffers.ToArray();
             //int len = array[length - 2] * 256 + array[length - 1];//高位在前
+            if (array.Length < 4)
+                return 0;
             int len = array[length - 1] * 256 + array[length - 2];//长度-低位在前
             //int len = (int)array[buffers.Offset + 2] * 256 + (int)array[buffers.Offset + 3];
             return len;//+ 2

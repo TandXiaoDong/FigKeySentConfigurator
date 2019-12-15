@@ -21,7 +21,6 @@ using System.Reflection;
 using WindowsFormTelerik.GridViewExportData;
 using WindowsFormTelerik.CommonUI;
 using StentDevice.Model;
-using WindowsFormTelerik.ControlCommon;
 
 namespace StentDevice
 {
@@ -144,6 +143,16 @@ namespace StentDevice
             this.grid_stentCompleteSignalCh1.MultiSelect = false;
             this.grid_stentCompleteSignalCh1.HeaderStyle = ColumnHeaderStyle.Clickable;
 
+            this.grid_stentCompleteSignalCh1.Columns[1].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[2].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[2].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[4].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[5].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[6].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[7].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[8].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+            this.grid_stentCompleteSignalCh1.Columns[9].Width = this.grid_stentCompleteSignalCh1.Width / 10;
+
             this.grid_stentCompleteSignalCh1.VirtualMode = true;
             #endregion
 
@@ -160,6 +169,10 @@ namespace StentDevice
             this.grid_stentSlowSignalCh1.Scrollable = true;
             this.grid_stentSlowSignalCh1.MultiSelect = false;
             this.grid_stentSlowSignalCh1.HeaderStyle = ColumnHeaderStyle.Clickable;
+            this.grid_stentSlowSignalCh1.Columns[1].Width = this.grid_stentSlowSignalCh1.Width / 5;
+            this.grid_stentSlowSignalCh1.Columns[2].Width = this.grid_stentSlowSignalCh1.Width / 5;
+            this.grid_stentSlowSignalCh1.Columns[3].Width = this.grid_stentSlowSignalCh1.Width / 5;
+            this.grid_stentSlowSignalCh1.Columns[4].Width = this.grid_stentSlowSignalCh1.Width / 5;
 
             this.grid_stentSlowSignalCh1.VirtualMode = true;
             #endregion
@@ -198,6 +211,16 @@ namespace StentDevice
             this.grid_stentCompleteSignalCh2.MultiSelect = false;
             this.grid_stentCompleteSignalCh2.HeaderStyle = ColumnHeaderStyle.Clickable;
 
+            this.grid_stentCompleteSignalCh2.Columns[1].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[2].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[2].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[4].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[5].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[6].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[7].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[8].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+            this.grid_stentCompleteSignalCh2.Columns[9].Width = this.grid_stentCompleteSignalCh2.Width / 10;
+
             this.grid_stentCompleteSignalCh2.VirtualMode = true;
             #endregion
 
@@ -214,6 +237,10 @@ namespace StentDevice
             this.grid_stentSlowSignalCh2.Scrollable = true;
             this.grid_stentSlowSignalCh2.MultiSelect = false;
             this.grid_stentSlowSignalCh2.HeaderStyle = ColumnHeaderStyle.Clickable;
+            this.grid_stentSlowSignalCh2.Columns[1].Width = this.grid_stentSlowSignalCh2.Width / 5;
+            this.grid_stentSlowSignalCh2.Columns[2].Width = this.grid_stentSlowSignalCh2.Width / 5;
+            this.grid_stentSlowSignalCh2.Columns[3].Width = this.grid_stentSlowSignalCh2.Width / 5;
+            this.grid_stentSlowSignalCh2.Columns[4].Width = this.grid_stentSlowSignalCh2.Width / 5;
 
             this.grid_stentSlowSignalCh2.VirtualMode = true;
             #endregion
@@ -239,6 +266,7 @@ namespace StentDevice
 
         public void ReSetCompleteCh1(IList<ListViewItem> list)
         {
+            this.grid_stentCompleteSignalCh1.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceCompleteCh1.Add(item);
@@ -250,6 +278,7 @@ namespace StentDevice
 
         public void ReSetSlowCh1(IList<ListViewItem> list)
         {
+            this.grid_stentSlowSignalCh1.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceSlowCh1.Add(item);
@@ -261,6 +290,7 @@ namespace StentDevice
 
         public void ReSetQuickCh1(IList<ListViewItem> list)
         {
+            this.grid_stentQuickBothCh1.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceQuickCh1.Add(item);
@@ -272,6 +302,7 @@ namespace StentDevice
 
         public void ReSetCompleteCh2(IList<ListViewItem> list)
         {
+            this.grid_stentCompleteSignalCh2.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceCompleteCh2.Add(item);
@@ -283,6 +314,7 @@ namespace StentDevice
 
         public void ReSetSlowCh2(IList<ListViewItem> list)
         {
+            this.grid_stentSlowSignalCh2.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceSlowCh2.Add(item);
@@ -294,6 +326,7 @@ namespace StentDevice
 
         public void ReSetQuickCh2(IList<ListViewItem> list)
         {
+            this.grid_stentQuickBothCh2.VirtualMode = true;
             foreach (var item in list)
             {
                 this.cacheListViewSourceQuickCh2.Add(item);
@@ -485,9 +518,14 @@ namespace StentDevice
 
         private void Tool_channel1Clear_Click(object sender, EventArgs e)
         {
+            this.grid_stentCompleteSignalCh1.VirtualMode = false;
             this.grid_stentCompleteSignalCh1.Items.Clear();
+
+            this.grid_stentQuickBothCh1.VirtualMode = false;
             this.grid_stentQuickBothCh1.Items.Clear();
+
             this.grid_stentSlowSignalCh1.Items.Clear();
+
             channelDataCh1.RevCount = 0;
             channelDataCh1.SlowSignalCount = 0;
         }
@@ -818,9 +856,8 @@ namespace StentDevice
                     for (int i = 0; i < count * 8; i += 8)
                     {
                         channelDataCh1.ChannelType = ChannelData.ChannelTypeEnum.Channel1;
-                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh1,count / 18);
+                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh1,count);
                         CacheListViewUpdateSinalCh1(packageInfo,i,count,j);
-                        AnalysisQuickSignalCh1();
                         Application.DoEvents();
                         channelDataCh1.RevCount++;
                         j++;
@@ -844,9 +881,8 @@ namespace StentDevice
                     for (int i = 0; i < count * 8; i += 8)
                     {
                         channelDataCh2.ChannelType = ChannelData.ChannelTypeEnum.Channel2;
-                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh2,count / 18);
-                        CacheListViewUpdateSinalCh1(packageInfo, i, count, j);
-                        AnalysisQuickSignalCh2();
+                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh2,count);
+                        CacheListViewUpdateSinalCh2(packageInfo, i, count, j);
                         channelDataCh2.RevCount++;
                         Application.DoEvents();
                         j++;
@@ -860,6 +896,7 @@ namespace StentDevice
         int cacheCountCh1 =1;
         int cacheCountCh2 =1;
         int cacheCountCh3 = 1;
+        int cacheCountCh4 = 1;
 
         private void CacheListViewUpdateSinalCh1(MyPackageInfo packageInfo, int i,int countPerPackage,int j)
         {
@@ -886,6 +923,7 @@ namespace StentDevice
                     ReSetCompleteCh1(cacheListPerpTempCompleteCh1);
                     this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh1.Items.Count - 1].EnsureVisible();
                     cacheCountCh1 = 0;
+                    AnalysisQuickSignalCh1();
                 }
                 else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountCompleteCh1) == (countPerPackage % 100))
                 {
@@ -895,6 +933,7 @@ namespace StentDevice
                         this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh1.Items.Count - 1].EnsureVisible();
                         cacheCountCh1 = 0;
                         cacheActualCountCompleteCh1 = 0;
+                        AnalysisQuickSignalCh1();
                     }
                 }
                 cacheCountCh1++;
@@ -908,7 +947,7 @@ namespace StentDevice
                 int[] crcList = new int[] { packageInfo.Data[i + 1], packageInfo.Data[i + 2], packageInfo.Data[i + 3], packageInfo.Data[i + 4], packageInfo.Data[i + 5], packageInfo.Data[i + 6] };
                 ListViewItem listViewItem = new ListViewItem();
                 List<string> list = new List<string>();
-                listViewItem.Text = (channelDataCh1.RevCount + 1).ToString();
+                listViewItem.Text = (channelDataCh2.RevCount + 1).ToString();
                 list.Add(packageInfo.Data[i].ToString("X2"));
                 list.Add(packageInfo.Data[i + 1].ToString("X2"));
                 list.Add(packageInfo.Data[i + 2].ToString("X2"));
@@ -926,15 +965,17 @@ namespace StentDevice
                     ReSetCompleteCh2(cacheListPerpTempCompleteCh2);
                     this.grid_stentCompleteSignalCh2.Items[this.grid_stentCompleteSignalCh2.Items.Count - 1].EnsureVisible();
                     cacheCountCh2 = 0;
+                    AnalysisQuickSignalCh2();
                 }
                 else if (channelDataCh2.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountCompleteCh2) == (countPerPackage % 100))
                 {
                     if (cacheCountCh2 == (countPerPackage % 100))
                     {
                         ReSetCompleteCh2(cacheListPerpTempCompleteCh2);
-                        this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh2.Items.Count - 1].EnsureVisible();
+                        this.grid_stentCompleteSignalCh2.Items[this.grid_stentCompleteSignalCh2.Items.Count - 1].EnsureVisible();
                         cacheCountCh2 = 0;
                         cacheActualCountCompleteCh2 = 0;
+                        AnalysisQuickSignalCh2();
                     }
                 }
                 cacheCountCh2++;
@@ -1060,7 +1101,7 @@ namespace StentDevice
                     //一包数据解析完成
                     //开始显示一包数据
                     channelData.FrameType = ChannelData.FrameTypeEnum.ExtendFrame;
-                    UpdateSlowSignalGridData(channelData,messageID,data,crcValue,sumCRCCal, countPerPackage);
+                    UpdateSlowSignalGridData(channelData,messageID,data,crcValue,sumCRCCal, countPerPackage / 18);
                 }
                 else
                 {
@@ -1117,7 +1158,7 @@ namespace StentDevice
                     //一包数据解析完成
                     //开始显示一包数据
                     channelData.FrameType = ChannelData.FrameTypeEnum.StandardFrame;
-                    UpdateSlowSignalGridData(channelData, messageID, data, crcValue, sumCRCValue, countPerPackage);
+                    UpdateSlowSignalGridData(channelData, messageID, data, crcValue, sumCRCValue, countPerPackage / 16);
                 }
                 else
                 {
@@ -1200,7 +1241,24 @@ namespace StentDevice
                     //list.Add(sumCRCCal);
                     listViewItem.SubItems.AddRange(list.ToArray());
                     cacheListPerpTempSlowCh2.Add(listViewItem);
-                    ReSetSlowCh2(cacheListPerpTempSlowCh2);
+
+                    if (cacheCountCh4 == 20)
+                    {
+                        ReSetSlowCh2(cacheListPerpTempSlowCh2);
+                        this.grid_stentSlowSignalCh2.Items[this.grid_stentSlowSignalCh2.Items.Count - 1].EnsureVisible();
+                        cacheCountCh4 = 0;
+                    }
+                    else if (channelDataCh2.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh2) == (countPerPackage % 20))
+                    {
+                        if (cacheCountCh4 == (countPerPackage % 20))
+                        {
+                            ReSetSlowCh2(cacheListPerpTempSlowCh2);
+                            this.grid_stentSlowSignalCh2.Items[this.grid_stentSlowSignalCh2.Items.Count - 1].EnsureVisible();
+                            cacheCountCh4 = 0;
+                            cacheActualCountSlowCh2 = 0;
+                        }
+                    }
+                    cacheCountCh4++;
                     channelData.SlowSignalCount++;
                 }));
             }
@@ -1265,13 +1323,16 @@ namespace StentDevice
                 this.grid_stentQuickBothCh1.Items.Clear();
                 ListViewItem lvItem = new ListViewItem();
                 List<string> list = new List<string>();
-                lvItem.Text = BitConverter.ToString(data1).Replace("0", "").Replace("-", "");
-                list.Add(BitConverter.ToString(data2).Replace("0", "").Replace("-", ""));
+                var d1 = BitConverter.ToString(data1).Replace("-", "");
+                var d2 = BitConverter.ToString(data2).Replace("-", "");
+                d1 = d1.Substring(1, 1) + d1.Substring(3, 1) + d1.Substring(5, 1);
+                d2 = d2.Substring(1, 1) + d2.Substring(3, 1) + d2.Substring(5, 1);
+                lvItem.Text = d1;
+                list.Add(d2);
                 lvItem.SubItems.AddRange(list.ToArray());
-
-                //cacheListPerpTempQuickCh1.Add(listViewItem);
-                //ReSetQuickCh1(cacheListPerpTempQuickCh1);
+                //cacheListPerpTempQuickCh1.Add(lvItem);
                 this.grid_stentQuickBothCh1.Items.Add(lvItem);
+                //ReSetQuickCh1(cacheListPerpTempQuickCh1);
             }));
         }
 
@@ -1308,15 +1369,17 @@ namespace StentDevice
             {
                 //显示数据1与数据2
                 //显示数据1与数据2
-                this.grid_stentQuickBothCh1.Items.Clear();
+                this.grid_stentQuickBothCh2.Items.Clear();
                 ListViewItem lvItem = new ListViewItem();
                 List<string> list = new List<string>();
-                lvItem.Text = BitConverter.ToString(data1).Replace("0", "").Replace("-", "");
-                list.Add(BitConverter.ToString(data2).Replace("0", "").Replace("-", ""));
+                var d1 = BitConverter.ToString(data1).Replace("-", "");
+                var d2 = BitConverter.ToString(data2).Replace("-", "");
+                d1 = d1.Substring(1,1) + d1.Substring(3,1) + d1.Substring(5,1);
+                d2 = d2.Substring(1,1) + d2.Substring(3,1) + d2.Substring(5,1);
+                lvItem.Text = d1;
+                list.Add(d2);
                 lvItem.SubItems.AddRange(list.ToArray());
 
-                //cacheListPerpTempQuickCh1.Add(listViewItem);
-                //ReSetQuickCh2(cacheListPerpTempQuickCh2);
                 this.grid_stentQuickBothCh2.Items.Add(lvItem);
             }));
         }
