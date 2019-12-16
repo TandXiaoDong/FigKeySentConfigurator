@@ -17,5 +17,11 @@ namespace StentDevice
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.radDock1.AddDocument(this.documentWindow1);
+            this.documentWindow1.Show();
+        }
     }
 }

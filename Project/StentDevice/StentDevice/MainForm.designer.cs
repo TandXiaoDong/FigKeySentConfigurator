@@ -33,7 +33,6 @@
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_connectServer = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_disconnect = new Telerik.WinControls.UI.RadMenuItem();
-            this.menu_export = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_exit = new Telerik.WinControls.UI.RadMenuItem();
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
             this.tool_help = new Telerik.WinControls.UI.RadMenuItem();
@@ -46,11 +45,6 @@
             this.tool_pause = new System.Windows.Forms.ToolStripButton();
             this.tool_cacheFrameAmount = new System.Windows.Forms.ToolStripButton();
             this.telerikMetroTheme1 = new Telerik.WinControls.Themes.TelerikMetroTheme();
-            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
-            this.menu_channel1 = new Telerik.WinControls.UI.RadMenuItem();
-            this.menu_channel2 = new Telerik.WinControls.UI.RadMenuItem();
-            this.menu_allChannel = new Telerik.WinControls.UI.RadMenuItem();
             this.radDock1 = new Telerik.WinControls.UI.Docking.RadDock();
             this.documentChannel1 = new Telerik.WinControls.UI.Docking.DocumentWindow();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
@@ -59,6 +53,8 @@
             this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             this.grid_stentSlowSignalCh1 = new System.Windows.Forms.ListView();
+            this.toolStrip4 = new System.Windows.Forms.ToolStrip();
+            this.tool_ch1ExportSlow = new System.Windows.Forms.ToolStripButton();
             this.splitPanel3 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.grid_stentQuickBothCh1 = new System.Windows.Forms.ListView();
@@ -69,13 +65,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rb_highBefore1Ch1 = new Telerik.WinControls.UI.RadRadioButton();
             this.rb_lowerBefore1Ch1 = new Telerik.WinControls.UI.RadRadioButton();
+            this.toolStrip5 = new System.Windows.Forms.ToolStrip();
+            this.tool_ch1ExportQuick = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tool_channel1Send = new System.Windows.Forms.ToolStripButton();
             this.tool_channel1stop = new System.Windows.Forms.ToolStripButton();
             this.tool_channel1Clear = new System.Windows.Forms.ToolStripButton();
             this.tool_channel1AutoSend = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tool_channel1ExportFormat = new System.Windows.Forms.ToolStripComboBox();
             this.tool_channel1Export = new System.Windows.Forms.ToolStripButton();
             this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.documentTabStrip1 = new Telerik.WinControls.UI.Docking.DocumentTabStrip();
@@ -86,6 +82,8 @@
             this.splitPanel5 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox3 = new Telerik.WinControls.UI.RadGroupBox();
             this.grid_stentSlowSignalCh2 = new System.Windows.Forms.ListView();
+            this.toolStrip6 = new System.Windows.Forms.ToolStrip();
+            this.tool_ch2ExportSlow = new System.Windows.Forms.ToolStripButton();
             this.splitPanel6 = new Telerik.WinControls.UI.SplitPanel();
             this.radGroupBox4 = new Telerik.WinControls.UI.RadGroupBox();
             this.grid_stentQuickBothCh2 = new System.Windows.Forms.ListView();
@@ -96,17 +94,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rb_highBefore1Ch2 = new Telerik.WinControls.UI.RadRadioButton();
             this.rb_lowerBefore1Ch2 = new Telerik.WinControls.UI.RadRadioButton();
+            this.toolStrip7 = new System.Windows.Forms.ToolStrip();
+            this.tool_ch2ExportQuick = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.tool_channel2Send = new System.Windows.Forms.ToolStripButton();
             this.tool_channel2Stop = new System.Windows.Forms.ToolStripButton();
             this.tool_channel2Clear = new System.Windows.Forms.ToolStripButton();
             this.tool_channel2AutoSend = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.tool_channel2ExportFormat = new System.Windows.Forms.ToolStripComboBox();
             this.tool_channel2Export = new System.Windows.Forms.ToolStripButton();
+            this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDock1)).BeginInit();
             this.radDock1.SuspendLayout();
             this.documentChannel1.SuspendLayout();
@@ -118,6 +116,7 @@
             this.splitPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
             this.radGroupBox2.SuspendLayout();
+            this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).BeginInit();
             this.splitPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
@@ -129,6 +128,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1Ch1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1Ch1)).BeginInit();
+            this.toolStrip5.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).BeginInit();
             this.documentContainer1.SuspendLayout();
@@ -143,6 +143,7 @@
             this.splitPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).BeginInit();
             this.radGroupBox3.SuspendLayout();
+            this.toolStrip6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel6)).BeginInit();
             this.splitPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox4)).BeginInit();
@@ -154,8 +155,10 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1Ch2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1Ch2)).BeginInit();
+            this.toolStrip7.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // radMenuItem1
@@ -163,7 +166,6 @@
             this.radMenuItem1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.menu_connectServer,
             this.menu_disconnect,
-            this.menu_export,
             this.menu_exit});
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "操作";
@@ -178,11 +180,6 @@
             this.menu_disconnect.Name = "menu_disconnect";
             this.menu_disconnect.Text = "断开连接";
             // 
-            // menu_export
-            // 
-            this.menu_export.Name = "menu_export";
-            this.menu_export.Text = "另存为";
-            // 
             // menu_exit
             // 
             this.menu_exit.Name = "menu_exit";
@@ -190,9 +187,9 @@
             // 
             // radStatusStrip1
             // 
-            this.radStatusStrip1.Location = new System.Drawing.Point(0, 621);
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 664);
             this.radStatusStrip1.Name = "radStatusStrip1";
-            this.radStatusStrip1.Size = new System.Drawing.Size(1062, 25);
+            this.radStatusStrip1.Size = new System.Drawing.Size(1188, 25);
             this.radStatusStrip1.TabIndex = 3;
             this.radStatusStrip1.ThemeName = "Material";
             // 
@@ -219,7 +216,7 @@
             this.tool_cacheFrameAmount});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1062, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1188, 27);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -263,45 +260,9 @@
             this.tool_cacheFrameAmount.Size = new System.Drawing.Size(89, 24);
             this.tool_cacheFrameAmount.Text = "显示帧数";
             // 
-            // radMenu1
-            // 
-            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radMenuItem1,
-            this.radMenuItem2,
-            this.tool_help});
-            this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(1062, 26);
-            this.radMenu1.TabIndex = 1;
-            this.radMenu1.ThemeName = "Breeze";
-            // 
-            // radMenuItem2
-            // 
-            this.radMenuItem2.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.menu_channel1,
-            this.menu_channel2,
-            this.menu_allChannel});
-            this.radMenuItem2.Name = "radMenuItem2";
-            this.radMenuItem2.Text = "窗口";
-            // 
-            // menu_channel1
-            // 
-            this.menu_channel1.Name = "menu_channel1";
-            this.menu_channel1.Text = "Channel 1";
-            // 
-            // menu_channel2
-            // 
-            this.menu_channel2.Name = "menu_channel2";
-            this.menu_channel2.Text = "Channel 2";
-            // 
-            // menu_allChannel
-            // 
-            this.menu_allChannel.Name = "menu_allChannel";
-            this.menu_allChannel.Text = "All Channel";
-            // 
             // radDock1
             // 
-            this.radDock1.ActiveWindow = this.documentChannel1;
+            this.radDock1.ActiveWindow = this.documentChannel2;
             this.radDock1.Controls.Add(this.documentContainer1);
             this.radDock1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radDock1.IsCleanUpTarget = true;
@@ -313,7 +274,7 @@
             // 
             // 
             this.radDock1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radDock1.Size = new System.Drawing.Size(1062, 568);
+            this.radDock1.Size = new System.Drawing.Size(1188, 611);
             this.radDock1.SplitterWidth = 8;
             this.radDock1.TabIndex = 11;
             this.radDock1.TabStop = false;
@@ -327,7 +288,7 @@
             this.documentChannel1.Location = new System.Drawing.Point(4, 54);
             this.documentChannel1.Name = "documentChannel1";
             this.documentChannel1.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.documentChannel1.Size = new System.Drawing.Size(1054, 510);
+            this.documentChannel1.Size = new System.Drawing.Size(1180, 553);
             this.documentChannel1.Text = "Stent Channel 1";
             // 
             // radSplitContainer1
@@ -344,7 +305,7 @@
             // 
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer1.Size = new System.Drawing.Size(1054, 483);
+            this.radSplitContainer1.Size = new System.Drawing.Size(1180, 526);
             this.radSplitContainer1.SplitterWidth = 8;
             this.radSplitContainer1.TabIndex = 12;
             this.radSplitContainer1.TabStop = false;
@@ -359,9 +320,9 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(1054, 202);
-            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.09956709F);
-            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 57);
+            this.splitPanel1.Size = new System.Drawing.Size(1180, 177);
+            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.01372548F);
+            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 17);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
@@ -375,22 +336,22 @@
             this.grid_stentCompleteSignalCh1.HideSelection = false;
             this.grid_stentCompleteSignalCh1.Location = new System.Drawing.Point(0, 0);
             this.grid_stentCompleteSignalCh1.Name = "grid_stentCompleteSignalCh1";
-            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1054, 202);
+            this.grid_stentCompleteSignalCh1.Size = new System.Drawing.Size(1180, 177);
             this.grid_stentCompleteSignalCh1.TabIndex = 10;
             this.grid_stentCompleteSignalCh1.UseCompatibleStateImageBehavior = false;
             // 
             // splitPanel2
             // 
             this.splitPanel2.Controls.Add(this.radGroupBox2);
-            this.splitPanel2.Location = new System.Drawing.Point(0, 210);
+            this.splitPanel2.Location = new System.Drawing.Point(0, 185);
             this.splitPanel2.Name = "splitPanel2";
             // 
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(1054, 113);
-            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.0909091F);
-            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -46);
+            this.splitPanel2.Size = new System.Drawing.Size(1180, 177);
+            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.01372548F);
+            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 4);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
@@ -400,11 +361,12 @@
             // 
             this.radGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.radGroupBox2.Controls.Add(this.grid_stentSlowSignalCh1);
+            this.radGroupBox2.Controls.Add(this.toolStrip4);
             this.radGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox2.HeaderText = "慢信号";
             this.radGroupBox2.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox2.Name = "radGroupBox2";
-            this.radGroupBox2.Size = new System.Drawing.Size(1054, 113);
+            this.radGroupBox2.Size = new System.Drawing.Size(1180, 177);
             this.radGroupBox2.TabIndex = 1;
             this.radGroupBox2.Text = "慢信号";
             this.radGroupBox2.ThemeName = "Breeze";
@@ -415,24 +377,42 @@
             this.grid_stentSlowSignalCh1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_stentSlowSignalCh1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grid_stentSlowSignalCh1.HideSelection = false;
-            this.grid_stentSlowSignalCh1.Location = new System.Drawing.Point(2, 18);
+            this.grid_stentSlowSignalCh1.Location = new System.Drawing.Point(2, 43);
             this.grid_stentSlowSignalCh1.Name = "grid_stentSlowSignalCh1";
-            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1050, 93);
-            this.grid_stentSlowSignalCh1.TabIndex = 11;
+            this.grid_stentSlowSignalCh1.Size = new System.Drawing.Size(1176, 132);
+            this.grid_stentSlowSignalCh1.TabIndex = 13;
             this.grid_stentSlowSignalCh1.UseCompatibleStateImageBehavior = false;
+            // 
+            // toolStrip4
+            // 
+            this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_ch1ExportSlow});
+            this.toolStrip4.Location = new System.Drawing.Point(2, 18);
+            this.toolStrip4.Name = "toolStrip4";
+            this.toolStrip4.Size = new System.Drawing.Size(1176, 25);
+            this.toolStrip4.TabIndex = 12;
+            this.toolStrip4.Text = "toolStrip4";
+            // 
+            // tool_ch1ExportSlow
+            // 
+            this.tool_ch1ExportSlow.Image = global::StentDevice.Properties.Resources.Export_16x16;
+            this.tool_ch1ExportSlow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_ch1ExportSlow.Name = "tool_ch1ExportSlow";
+            this.tool_ch1ExportSlow.Size = new System.Drawing.Size(52, 22);
+            this.tool_ch1ExportSlow.Text = "导出";
             // 
             // splitPanel3
             // 
             this.splitPanel3.Controls.Add(this.radGroupBox1);
-            this.splitPanel3.Location = new System.Drawing.Point(0, 331);
+            this.splitPanel3.Location = new System.Drawing.Point(0, 370);
             this.splitPanel3.Name = "splitPanel3";
             // 
             // 
             // 
             this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(1054, 152);
-            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.008658019F);
-            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -11);
+            this.splitPanel3.Size = new System.Drawing.Size(1180, 156);
+            this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.02745099F);
+            this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -21);
             this.splitPanel3.TabIndex = 2;
             this.splitPanel3.TabStop = false;
             this.splitPanel3.Text = "splitPanel3";
@@ -443,11 +423,12 @@
             this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.radGroupBox1.Controls.Add(this.grid_stentQuickBothCh1);
             this.radGroupBox1.Controls.Add(this.panel1);
+            this.radGroupBox1.Controls.Add(this.toolStrip5);
             this.radGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox1.HeaderText = "快信号";
             this.radGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(1054, 152);
+            this.radGroupBox1.Size = new System.Drawing.Size(1180, 156);
             this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "快信号";
             this.radGroupBox1.ThemeName = "Breeze";
@@ -458,10 +439,11 @@
             this.grid_stentQuickBothCh1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_stentQuickBothCh1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grid_stentQuickBothCh1.HideSelection = false;
-            this.grid_stentQuickBothCh1.Location = new System.Drawing.Point(2, 65);
+            this.grid_stentQuickBothCh1.Location = new System.Drawing.Point(2, 90);
             this.grid_stentQuickBothCh1.Name = "grid_stentQuickBothCh1";
-            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1050, 85);
-            this.grid_stentQuickBothCh1.TabIndex = 6;
+            this.grid_stentQuickBothCh1.Scrollable = false;
+            this.grid_stentQuickBothCh1.Size = new System.Drawing.Size(1176, 64);
+            this.grid_stentQuickBothCh1.TabIndex = 15;
             this.grid_stentQuickBothCh1.UseCompatibleStateImageBehavior = false;
             // 
             // panel1
@@ -469,10 +451,10 @@
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(2, 18);
+            this.panel1.Location = new System.Drawing.Point(2, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1050, 47);
-            this.panel1.TabIndex = 3;
+            this.panel1.Size = new System.Drawing.Size(1176, 47);
+            this.panel1.TabIndex = 14;
             // 
             // groupBox2
             // 
@@ -481,7 +463,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(522, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(528, 47);
+            this.groupBox2.Size = new System.Drawing.Size(654, 47);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DATA2";
@@ -530,6 +512,24 @@
             this.rb_lowerBefore1Ch1.TabIndex = 1;
             this.rb_lowerBefore1Ch1.Text = "低位在前，高位在后";
             // 
+            // toolStrip5
+            // 
+            this.toolStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_ch1ExportQuick});
+            this.toolStrip5.Location = new System.Drawing.Point(2, 18);
+            this.toolStrip5.Name = "toolStrip5";
+            this.toolStrip5.Size = new System.Drawing.Size(1176, 25);
+            this.toolStrip5.TabIndex = 13;
+            this.toolStrip5.Text = "toolStrip5";
+            // 
+            // tool_ch1ExportQuick
+            // 
+            this.tool_ch1ExportQuick.Image = global::StentDevice.Properties.Resources.Export_16x16;
+            this.tool_ch1ExportQuick.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_ch1ExportQuick.Name = "tool_ch1ExportQuick";
+            this.tool_ch1ExportQuick.Size = new System.Drawing.Size(52, 22);
+            this.tool_ch1ExportQuick.Text = "导出";
+            // 
             // toolStrip2
             // 
             this.toolStrip2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -539,12 +539,10 @@
             this.tool_channel1stop,
             this.tool_channel1Clear,
             this.tool_channel1AutoSend,
-            this.toolStripLabel1,
-            this.tool_channel1ExportFormat,
             this.tool_channel1Export});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1054, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1180, 27);
             this.toolStrip2.TabIndex = 11;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -580,17 +578,6 @@
             this.tool_channel1AutoSend.Size = new System.Drawing.Size(80, 24);
             this.tool_channel1AutoSend.Text = "自动发送";
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(68, 24);
-            this.toolStripLabel1.Text = "导出格式：";
-            // 
-            // tool_channel1ExportFormat
-            // 
-            this.tool_channel1ExportFormat.Name = "tool_channel1ExportFormat";
-            this.tool_channel1ExportFormat.Size = new System.Drawing.Size(121, 27);
-            // 
             // tool_channel1Export
             // 
             this.tool_channel1Export.Image = global::StentDevice.Properties.Resources.Export_16x16;
@@ -622,8 +609,8 @@
             // 
             // 
             this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 1;
-            this.documentTabStrip1.Size = new System.Drawing.Size(1062, 568);
+            this.documentTabStrip1.SelectedIndex = 0;
+            this.documentTabStrip1.Size = new System.Drawing.Size(1188, 611);
             this.documentTabStrip1.TabIndex = 0;
             this.documentTabStrip1.TabStop = false;
             this.documentTabStrip1.ThemeName = "Material";
@@ -636,7 +623,7 @@
             this.documentChannel2.Location = new System.Drawing.Point(4, 54);
             this.documentChannel2.Name = "documentChannel2";
             this.documentChannel2.PreviousDockState = Telerik.WinControls.UI.Docking.DockState.TabbedDocument;
-            this.documentChannel2.Size = new System.Drawing.Size(1054, 510);
+            this.documentChannel2.Size = new System.Drawing.Size(1180, 553);
             this.documentChannel2.Text = "Stent Channel 2";
             // 
             // radSplitContainer2
@@ -653,7 +640,7 @@
             // 
             // 
             this.radSplitContainer2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer2.Size = new System.Drawing.Size(1054, 483);
+            this.radSplitContainer2.Size = new System.Drawing.Size(1180, 526);
             this.radSplitContainer2.SplitterWidth = 8;
             this.radSplitContainer2.TabIndex = 13;
             this.radSplitContainer2.TabStop = false;
@@ -668,9 +655,9 @@
             // 
             // 
             this.splitPanel4.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel4.Size = new System.Drawing.Size(1054, 198);
-            this.splitPanel4.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.09090908F);
-            this.splitPanel4.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 53);
+            this.splitPanel4.Size = new System.Drawing.Size(1180, 179);
+            this.splitPanel4.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.01764705F);
+            this.splitPanel4.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 19);
             this.splitPanel4.TabIndex = 0;
             this.splitPanel4.TabStop = false;
             this.splitPanel4.Text = "splitPanel4";
@@ -684,22 +671,21 @@
             this.grid_stentCompleteSignalCh2.HideSelection = false;
             this.grid_stentCompleteSignalCh2.Location = new System.Drawing.Point(0, 0);
             this.grid_stentCompleteSignalCh2.Name = "grid_stentCompleteSignalCh2";
-            this.grid_stentCompleteSignalCh2.Size = new System.Drawing.Size(1054, 198);
+            this.grid_stentCompleteSignalCh2.Size = new System.Drawing.Size(1180, 179);
             this.grid_stentCompleteSignalCh2.TabIndex = 12;
             this.grid_stentCompleteSignalCh2.UseCompatibleStateImageBehavior = false;
             // 
             // splitPanel5
             // 
             this.splitPanel5.Controls.Add(this.radGroupBox3);
-            this.splitPanel5.Location = new System.Drawing.Point(0, 206);
+            this.splitPanel5.Location = new System.Drawing.Point(0, 187);
             this.splitPanel5.Name = "splitPanel5";
             // 
             // 
             // 
             this.splitPanel5.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel5.Size = new System.Drawing.Size(1054, 121);
-            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.07359308F);
-            this.splitPanel5.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -38);
+            this.splitPanel5.Size = new System.Drawing.Size(1180, 173);
+            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.005882343F);
             this.splitPanel5.TabIndex = 1;
             this.splitPanel5.TabStop = false;
             this.splitPanel5.Text = "splitPanel5";
@@ -709,11 +695,12 @@
             // 
             this.radGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.radGroupBox3.Controls.Add(this.grid_stentSlowSignalCh2);
+            this.radGroupBox3.Controls.Add(this.toolStrip6);
             this.radGroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox3.HeaderText = "慢信号";
             this.radGroupBox3.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox3.Name = "radGroupBox3";
-            this.radGroupBox3.Size = new System.Drawing.Size(1054, 121);
+            this.radGroupBox3.Size = new System.Drawing.Size(1180, 173);
             this.radGroupBox3.TabIndex = 1;
             this.radGroupBox3.Text = "慢信号";
             this.radGroupBox3.ThemeName = "Breeze";
@@ -724,24 +711,42 @@
             this.grid_stentSlowSignalCh2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_stentSlowSignalCh2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grid_stentSlowSignalCh2.HideSelection = false;
-            this.grid_stentSlowSignalCh2.Location = new System.Drawing.Point(2, 18);
+            this.grid_stentSlowSignalCh2.Location = new System.Drawing.Point(2, 43);
             this.grid_stentSlowSignalCh2.Name = "grid_stentSlowSignalCh2";
-            this.grid_stentSlowSignalCh2.Size = new System.Drawing.Size(1050, 101);
-            this.grid_stentSlowSignalCh2.TabIndex = 13;
+            this.grid_stentSlowSignalCh2.Size = new System.Drawing.Size(1176, 128);
+            this.grid_stentSlowSignalCh2.TabIndex = 15;
             this.grid_stentSlowSignalCh2.UseCompatibleStateImageBehavior = false;
+            // 
+            // toolStrip6
+            // 
+            this.toolStrip6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_ch2ExportSlow});
+            this.toolStrip6.Location = new System.Drawing.Point(2, 18);
+            this.toolStrip6.Name = "toolStrip6";
+            this.toolStrip6.Size = new System.Drawing.Size(1176, 25);
+            this.toolStrip6.TabIndex = 14;
+            this.toolStrip6.Text = "toolStrip6";
+            // 
+            // tool_ch2ExportSlow
+            // 
+            this.tool_ch2ExportSlow.Image = global::StentDevice.Properties.Resources.Export_16x16;
+            this.tool_ch2ExportSlow.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_ch2ExportSlow.Name = "tool_ch2ExportSlow";
+            this.tool_ch2ExportSlow.Size = new System.Drawing.Size(52, 22);
+            this.tool_ch2ExportSlow.Text = "导出";
             // 
             // splitPanel6
             // 
             this.splitPanel6.Controls.Add(this.radGroupBox4);
-            this.splitPanel6.Location = new System.Drawing.Point(0, 335);
+            this.splitPanel6.Location = new System.Drawing.Point(0, 368);
             this.splitPanel6.Name = "splitPanel6";
             // 
             // 
             // 
             this.splitPanel6.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel6.Size = new System.Drawing.Size(1054, 148);
-            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.01731603F);
-            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -15);
+            this.splitPanel6.Size = new System.Drawing.Size(1180, 158);
+            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.02352942F);
+            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -19);
             this.splitPanel6.TabIndex = 2;
             this.splitPanel6.TabStop = false;
             this.splitPanel6.Text = "splitPanel6";
@@ -752,11 +757,12 @@
             this.radGroupBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this.radGroupBox4.Controls.Add(this.grid_stentQuickBothCh2);
             this.radGroupBox4.Controls.Add(this.panel2);
+            this.radGroupBox4.Controls.Add(this.toolStrip7);
             this.radGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radGroupBox4.HeaderText = "快信号";
             this.radGroupBox4.Location = new System.Drawing.Point(0, 0);
             this.radGroupBox4.Name = "radGroupBox4";
-            this.radGroupBox4.Size = new System.Drawing.Size(1054, 148);
+            this.radGroupBox4.Size = new System.Drawing.Size(1180, 158);
             this.radGroupBox4.TabIndex = 0;
             this.radGroupBox4.Text = "快信号";
             this.radGroupBox4.ThemeName = "Breeze";
@@ -767,10 +773,11 @@
             this.grid_stentQuickBothCh2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid_stentQuickBothCh2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.grid_stentQuickBothCh2.HideSelection = false;
-            this.grid_stentQuickBothCh2.Location = new System.Drawing.Point(2, 65);
+            this.grid_stentQuickBothCh2.Location = new System.Drawing.Point(2, 90);
             this.grid_stentQuickBothCh2.Name = "grid_stentQuickBothCh2";
-            this.grid_stentQuickBothCh2.Size = new System.Drawing.Size(1050, 81);
-            this.grid_stentQuickBothCh2.TabIndex = 14;
+            this.grid_stentQuickBothCh2.Scrollable = false;
+            this.grid_stentQuickBothCh2.Size = new System.Drawing.Size(1176, 66);
+            this.grid_stentQuickBothCh2.TabIndex = 17;
             this.grid_stentQuickBothCh2.UseCompatibleStateImageBehavior = false;
             // 
             // panel2
@@ -778,10 +785,10 @@
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 18);
+            this.panel2.Location = new System.Drawing.Point(2, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1050, 47);
-            this.panel2.TabIndex = 3;
+            this.panel2.Size = new System.Drawing.Size(1176, 47);
+            this.panel2.TabIndex = 16;
             // 
             // groupBox3
             // 
@@ -790,7 +797,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(522, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(528, 47);
+            this.groupBox3.Size = new System.Drawing.Size(654, 47);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DATA2";
@@ -839,6 +846,24 @@
             this.rb_lowerBefore1Ch2.TabIndex = 1;
             this.rb_lowerBefore1Ch2.Text = "低位在前，高位在后";
             // 
+            // toolStrip7
+            // 
+            this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tool_ch2ExportQuick});
+            this.toolStrip7.Location = new System.Drawing.Point(2, 18);
+            this.toolStrip7.Name = "toolStrip7";
+            this.toolStrip7.Size = new System.Drawing.Size(1176, 25);
+            this.toolStrip7.TabIndex = 15;
+            this.toolStrip7.Text = "toolStrip7";
+            // 
+            // tool_ch2ExportQuick
+            // 
+            this.tool_ch2ExportQuick.Image = global::StentDevice.Properties.Resources.Export_16x16;
+            this.tool_ch2ExportQuick.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tool_ch2ExportQuick.Name = "tool_ch2ExportQuick";
+            this.tool_ch2ExportQuick.Size = new System.Drawing.Size(52, 22);
+            this.tool_ch2ExportQuick.Text = "导出";
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -848,12 +873,10 @@
             this.tool_channel2Stop,
             this.tool_channel2Clear,
             this.tool_channel2AutoSend,
-            this.toolStripLabel3,
-            this.tool_channel2ExportFormat,
             this.tool_channel2Export});
             this.toolStrip3.Location = new System.Drawing.Point(0, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(1054, 27);
+            this.toolStrip3.Size = new System.Drawing.Size(1180, 27);
             this.toolStrip3.TabIndex = 12;
             this.toolStrip3.Text = "toolStrip3";
             // 
@@ -889,17 +912,6 @@
             this.tool_channel2AutoSend.Size = new System.Drawing.Size(80, 24);
             this.tool_channel2AutoSend.Text = "自动发送";
             // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(68, 24);
-            this.toolStripLabel3.Text = "导出格式：";
-            // 
-            // tool_channel2ExportFormat
-            // 
-            this.tool_channel2ExportFormat.Name = "tool_channel2ExportFormat";
-            this.tool_channel2ExportFormat.Size = new System.Drawing.Size(121, 27);
-            // 
             // tool_channel2Export
             // 
             this.tool_channel2Export.Image = global::StentDevice.Properties.Resources.Export_16x16;
@@ -913,7 +925,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1062, 646);
+            this.ClientSize = new System.Drawing.Size(1188, 689);
+            // 
+            // radMenu1
+            // 
+            this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem1,
+            this.tool_help});
+            this.radMenu1.Location = new System.Drawing.Point(0, 0);
+            this.radMenu1.Name = "radMenu1";
+            this.radMenu1.Size = new System.Drawing.Size(1188, 26);
+            this.radMenu1.TabIndex = 1;
+            this.radMenu1.ThemeName = "Breeze";
             this.Controls.Add(this.radDock1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.radStatusStrip1);
@@ -930,7 +953,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDock1)).EndInit();
             this.radDock1.ResumeLayout(false);
             this.documentChannel1.ResumeLayout(false);
@@ -943,10 +965,14 @@
             this.splitPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
             this.radGroupBox2.ResumeLayout(false);
+            this.radGroupBox2.PerformLayout();
+            this.toolStrip4.ResumeLayout(false);
+            this.toolStrip4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).EndInit();
             this.splitPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
+            this.radGroupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -956,6 +982,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1Ch1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1Ch1)).EndInit();
+            this.toolStrip5.ResumeLayout(false);
+            this.toolStrip5.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).EndInit();
@@ -972,10 +1000,14 @@
             this.splitPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).EndInit();
             this.radGroupBox3.ResumeLayout(false);
+            this.radGroupBox3.PerformLayout();
+            this.toolStrip6.ResumeLayout(false);
+            this.toolStrip6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel6)).EndInit();
             this.splitPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox4)).EndInit();
             this.radGroupBox4.ResumeLayout(false);
+            this.radGroupBox4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -985,8 +1017,11 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_highBefore1Ch2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_lowerBefore1Ch2)).EndInit();
+            this.toolStrip7.ResumeLayout(false);
+            this.toolStrip7.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1011,8 +1046,6 @@
         private System.Windows.Forms.ToolStripButton tool_pause;
         private Telerik.WinControls.Themes.TelerikMetroTheme telerikMetroTheme1;
         private System.Windows.Forms.ToolStripButton tool_cacheFrameAmount;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
-        private Telerik.WinControls.UI.RadMenuItem menu_export;
         private Telerik.WinControls.UI.Docking.RadDock radDock1;
         private Telerik.WinControls.UI.Docking.DocumentWindow documentChannel2;
         private Telerik.WinControls.UI.Docking.DocumentContainer documentContainer1;
@@ -1021,8 +1054,6 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tool_channel1Send;
         private System.Windows.Forms.ToolStripButton tool_channel1stop;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripComboBox tool_channel1ExportFormat;
         private System.Windows.Forms.ToolStripButton tool_channel1Export;
         private System.Windows.Forms.ToolStripButton tool_channel1Clear;
         private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
@@ -1031,13 +1062,6 @@
         private Telerik.WinControls.UI.RadGroupBox radGroupBox2;
         private Telerik.WinControls.UI.SplitPanel splitPanel3;
         private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private Telerik.WinControls.UI.RadRadioButton rb_highBefore2Ch1;
-        private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore2Ch1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private Telerik.WinControls.UI.RadRadioButton rb_highBefore1Ch1;
-        private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore1Ch1;
         private System.Windows.Forms.ToolStripButton tool_channel1AutoSend;
         private Telerik.WinControls.UI.RadSplitContainer radSplitContainer2;
         private Telerik.WinControls.UI.SplitPanel splitPanel4;
@@ -1045,6 +1069,30 @@
         private Telerik.WinControls.UI.RadGroupBox radGroupBox3;
         private Telerik.WinControls.UI.SplitPanel splitPanel6;
         private Telerik.WinControls.UI.RadGroupBox radGroupBox4;
+        private System.Windows.Forms.ToolStrip toolStrip3;
+        private System.Windows.Forms.ToolStripButton tool_channel2Send;
+        private System.Windows.Forms.ToolStripButton tool_channel2Stop;
+        private System.Windows.Forms.ToolStripButton tool_channel2Clear;
+        private System.Windows.Forms.ToolStripButton tool_channel2AutoSend;
+        private System.Windows.Forms.ToolStripButton tool_channel2Export;
+        private System.Windows.Forms.ListView grid_stentCompleteSignalCh1;
+        private System.Windows.Forms.ListView grid_stentCompleteSignalCh2;
+        private System.Windows.Forms.ToolStrip toolStrip4;
+        private System.Windows.Forms.ListView grid_stentSlowSignalCh1;
+        private System.Windows.Forms.ToolStripButton tool_ch1ExportSlow;
+        private System.Windows.Forms.ListView grid_stentQuickBothCh1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private Telerik.WinControls.UI.RadRadioButton rb_highBefore2Ch1;
+        private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore2Ch1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Telerik.WinControls.UI.RadRadioButton rb_highBefore1Ch1;
+        private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore1Ch1;
+        private System.Windows.Forms.ToolStrip toolStrip5;
+        private System.Windows.Forms.ToolStripButton tool_ch1ExportQuick;
+        private System.Windows.Forms.ListView grid_stentSlowSignalCh2;
+        private System.Windows.Forms.ToolStrip toolStrip6;
+        private System.Windows.Forms.ToolStripButton tool_ch2ExportSlow;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private Telerik.WinControls.UI.RadRadioButton rb_highBefore2Ch2;
@@ -1052,23 +1100,9 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private Telerik.WinControls.UI.RadRadioButton rb_highBefore1Ch2;
         private Telerik.WinControls.UI.RadRadioButton rb_lowerBefore1Ch2;
-        private System.Windows.Forms.ToolStrip toolStrip3;
-        private System.Windows.Forms.ToolStripButton tool_channel2Send;
-        private System.Windows.Forms.ToolStripButton tool_channel2Stop;
-        private System.Windows.Forms.ToolStripButton tool_channel2Clear;
-        private System.Windows.Forms.ToolStripButton tool_channel2AutoSend;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripComboBox tool_channel2ExportFormat;
-        private System.Windows.Forms.ToolStripButton tool_channel2Export;
-        private Telerik.WinControls.UI.RadMenuItem radMenuItem2;
-        private Telerik.WinControls.UI.RadMenuItem menu_channel1;
-        private Telerik.WinControls.UI.RadMenuItem menu_channel2;
-        private Telerik.WinControls.UI.RadMenuItem menu_allChannel;
-        private System.Windows.Forms.ListView grid_stentCompleteSignalCh1;
-        private System.Windows.Forms.ListView grid_stentSlowSignalCh1;
-        private System.Windows.Forms.ListView grid_stentQuickBothCh1;
-        private System.Windows.Forms.ListView grid_stentCompleteSignalCh2;
-        private System.Windows.Forms.ListView grid_stentSlowSignalCh2;
+        private System.Windows.Forms.ToolStrip toolStrip7;
+        private System.Windows.Forms.ToolStripButton tool_ch2ExportQuick;
         private System.Windows.Forms.ListView grid_stentQuickBothCh2;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
     }
 }

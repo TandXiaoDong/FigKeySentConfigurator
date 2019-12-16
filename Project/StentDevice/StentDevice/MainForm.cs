@@ -43,7 +43,7 @@ namespace StentDevice
         private string serverIP;
         private int serverPort;
         private string stentConfigDirectory;
-        private int cacheFrameNumber;//显示帧数
+        private int cacheFrameNumber = 10000;//显示帧数
         #endregion
 
         #region 常量
@@ -89,6 +89,11 @@ namespace StentDevice
         private int cacheActualCountCompleteCh2;
         private int cacheActualCountSlowCh2;
         private int cacheActualCountQuickCh2;
+
+        private int cacheCountCh1 = 1;
+        private int cacheCountCh2 = 1;
+        private int cacheCountCh3 = 1;
+        private int cacheCountCh4 = 1;
 
         public MainForm()
         {
@@ -162,7 +167,7 @@ namespace StentDevice
             this.grid_stentSlowSignalCh1.Columns.Add("帧类型");
             this.grid_stentSlowSignalCh1.Columns.Add("MessageID");
             this.grid_stentSlowSignalCh1.Columns.Add("DATA");
-            this.grid_stentSlowSignalCh1.Columns.Add("CRC");
+            //this.grid_stentSlowSignalCh1.Columns.Add("CRC");
 
             this.grid_stentSlowSignalCh1.GridLines = false;
             this.grid_stentSlowSignalCh1.FullRowSelect = true;
@@ -170,10 +175,9 @@ namespace StentDevice
             this.grid_stentSlowSignalCh1.Scrollable = true;
             this.grid_stentSlowSignalCh1.MultiSelect = false;
             this.grid_stentSlowSignalCh1.HeaderStyle = ColumnHeaderStyle.Clickable;
-            this.grid_stentSlowSignalCh1.Columns[1].Width = this.grid_stentSlowSignalCh1.Width / 5;
-            this.grid_stentSlowSignalCh1.Columns[2].Width = this.grid_stentSlowSignalCh1.Width / 5;
-            this.grid_stentSlowSignalCh1.Columns[3].Width = this.grid_stentSlowSignalCh1.Width / 5;
-            this.grid_stentSlowSignalCh1.Columns[4].Width = this.grid_stentSlowSignalCh1.Width / 5;
+            this.grid_stentSlowSignalCh1.Columns[1].Width = this.grid_stentSlowSignalCh1.Width / 4;
+            this.grid_stentSlowSignalCh1.Columns[2].Width = this.grid_stentSlowSignalCh1.Width / 4;
+            this.grid_stentSlowSignalCh1.Columns[3].Width = this.grid_stentSlowSignalCh1.Width / 4;
 
             this.grid_stentSlowSignalCh1.VirtualMode = true;
             #endregion
@@ -188,8 +192,8 @@ namespace StentDevice
             this.grid_stentQuickBothCh1.Scrollable = true;
             this.grid_stentQuickBothCh1.MultiSelect = false;
             this.grid_stentQuickBothCh1.HeaderStyle = ColumnHeaderStyle.Clickable;
-            this.grid_stentQuickBothCh1.Columns[0].Width = this.grid_stentQuickBothCh1.Width / 2;
-            this.grid_stentQuickBothCh1.Columns[1].Width = this.grid_stentQuickBothCh1.Width / 2;
+            this.grid_stentQuickBothCh1.Columns[0].Width = this.grid_stentQuickBothCh1.Width / 2 - 10;
+            this.grid_stentQuickBothCh1.Columns[1].Width = this.grid_stentQuickBothCh1.Width / 2 - 10;
             //this.grid_stentQuickBothCh1.VirtualMode = true;
             #endregion
 
@@ -230,7 +234,7 @@ namespace StentDevice
             this.grid_stentSlowSignalCh2.Columns.Add("帧类型");
             this.grid_stentSlowSignalCh2.Columns.Add("MessageID");
             this.grid_stentSlowSignalCh2.Columns.Add("DATA");
-            this.grid_stentSlowSignalCh2.Columns.Add("CRC");
+            //this.grid_stentSlowSignalCh2.Columns.Add("CRC");
 
             this.grid_stentSlowSignalCh2.GridLines = false;
             this.grid_stentSlowSignalCh2.FullRowSelect = true;
@@ -238,10 +242,9 @@ namespace StentDevice
             this.grid_stentSlowSignalCh2.Scrollable = true;
             this.grid_stentSlowSignalCh2.MultiSelect = false;
             this.grid_stentSlowSignalCh2.HeaderStyle = ColumnHeaderStyle.Clickable;
-            this.grid_stentSlowSignalCh2.Columns[1].Width = this.grid_stentSlowSignalCh2.Width / 5;
-            this.grid_stentSlowSignalCh2.Columns[2].Width = this.grid_stentSlowSignalCh2.Width / 5;
-            this.grid_stentSlowSignalCh2.Columns[3].Width = this.grid_stentSlowSignalCh2.Width / 5;
-            this.grid_stentSlowSignalCh2.Columns[4].Width = this.grid_stentSlowSignalCh2.Width / 5;
+            this.grid_stentSlowSignalCh2.Columns[1].Width = this.grid_stentSlowSignalCh2.Width / 4;
+            this.grid_stentSlowSignalCh2.Columns[2].Width = this.grid_stentSlowSignalCh2.Width / 4;
+            this.grid_stentSlowSignalCh2.Columns[3].Width = this.grid_stentSlowSignalCh2.Width / 4;
 
             this.grid_stentSlowSignalCh2.VirtualMode = true;
             #endregion
@@ -256,8 +259,8 @@ namespace StentDevice
             this.grid_stentQuickBothCh2.Scrollable = true;
             this.grid_stentQuickBothCh2.MultiSelect = false;
             this.grid_stentQuickBothCh2.HeaderStyle = ColumnHeaderStyle.Clickable;
-            this.grid_stentQuickBothCh2.Columns[0].Width = this.grid_stentQuickBothCh2.Width / 2;
-            this.grid_stentQuickBothCh2.Columns[1].Width = this.grid_stentQuickBothCh2.Width / 2;
+            this.grid_stentQuickBothCh2.Columns[0].Width = this.grid_stentQuickBothCh2.Width / 2 - 10;
+            this.grid_stentQuickBothCh2.Columns[1].Width = this.grid_stentQuickBothCh2.Width / 2 - 10;
 
             //this.grid_stentQuickBothCh2.VirtualMode = true;
             #endregion
@@ -273,7 +276,20 @@ namespace StentDevice
                 this.cacheListViewSourceCompleteCh1.Add(item);
                 cacheActualCountCompleteCh1++;
             }
-            cacheListPerpTempCompleteCh1.Clear();
+            //判断是否超过最大显示数量
+            if (this.cacheListViewSourceCompleteCh1.Count >= this.cacheFrameNumber)
+            {
+                int delRow = this.cacheListViewSourceCompleteCh1.Count - this.cacheFrameNumber;
+                this.cacheListViewSourceCompleteCh1.RemoveRange(0,delRow);
+                int i = 0;
+                foreach (var lvItem in this.cacheListViewSourceCompleteCh1)
+                {
+                    lvItem.SubItems[0].Text = (i + 1).ToString();
+                    i++;
+                }
+                this.grid_stentCompleteSignalCh1.Refresh();
+            }
+            this.cacheListPerpTempCompleteCh1.Clear();
             this.grid_stentCompleteSignalCh1.VirtualListSize = this.cacheListViewSourceCompleteCh1.Count;
         }
 
@@ -284,6 +300,19 @@ namespace StentDevice
             {
                 this.cacheListViewSourceSlowCh1.Add(item);
                 cacheActualCountSlowCh1++;
+            }
+            //判断是否超过最大显示数量
+            if (this.cacheListViewSourceSlowCh1.Count >= this.cacheFrameNumber)
+            {
+                int delRow = this.cacheListViewSourceSlowCh1.Count - this.cacheFrameNumber;
+                this.cacheListViewSourceSlowCh1.RemoveRange(0, delRow);
+                int i = 0;
+                foreach (var lvItem in this.cacheListViewSourceSlowCh1)
+                {
+                    lvItem.SubItems[0].Text = (i + 1).ToString();
+                    i++;
+                }
+                this.grid_stentSlowSignalCh1.Refresh();
             }
             cacheListPerpTempSlowCh1.Clear();
             this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
@@ -309,6 +338,19 @@ namespace StentDevice
                 this.cacheListViewSourceCompleteCh2.Add(item);
                 cacheActualCountCompleteCh2++;
             }
+            //判断是否超过最大显示数量
+            if (this.cacheListViewSourceCompleteCh2.Count >= this.cacheFrameNumber)
+            {
+                int delRow = this.cacheListViewSourceCompleteCh2.Count - this.cacheFrameNumber;
+                this.cacheListViewSourceCompleteCh2.RemoveRange(0, delRow);
+                int i = 0;
+                foreach (var lvItem in this.cacheListViewSourceCompleteCh2)
+                {
+                    lvItem.SubItems[0].Text = (i + 1).ToString();
+                    i++;
+                }
+                this.grid_stentCompleteSignalCh2.Refresh();
+            }
             cacheListPerpTempCompleteCh2.Clear();
             this.grid_stentCompleteSignalCh2.VirtualListSize = this.cacheListViewSourceCompleteCh2.Count;
         }
@@ -321,7 +363,20 @@ namespace StentDevice
                 this.cacheListViewSourceSlowCh2.Add(item);
                 cacheActualCountSlowCh2++;
             }
-            cacheListPerpTempSlowCh2.Clear();
+            //判断是否超过最大显示数量
+            if (this.cacheListViewSourceSlowCh2.Count >= this.cacheFrameNumber)
+            {
+                int delRow = this.cacheListViewSourceSlowCh2.Count - this.cacheFrameNumber;
+                this.cacheListViewSourceSlowCh2.RemoveRange(0, delRow);
+                int i = 0;
+                foreach (var lvItem in this.cacheListViewSourceSlowCh2)
+                {
+                    lvItem.SubItems[0].Text = (i + 1).ToString();
+                    i++;
+                }
+                this.grid_stentSlowSignalCh2.Refresh();
+            }
+            this.cacheListPerpTempSlowCh2.Clear();
             this.grid_stentSlowSignalCh2.VirtualListSize = this.cacheListViewSourceSlowCh2.Count;
         }
 
@@ -350,10 +405,9 @@ namespace StentDevice
             this.menu_connectServer.Click += Menu_connectServer_Click;
             this.menu_exit.Click += Menu_exit_Click;
             this.menu_disconnect.Click += Menu_disconnect_Click;
-            this.menu_export.Click += Menu_export_Click;
-            this.menu_channel1.Click += Menu_channel1_Click;
-            this.menu_channel2.Click += Menu_channel2_Click;
-            this.menu_allChannel.Click += Menu_allChannel_Click;
+            //this.menu_channel1.Click += Menu_channel1_Click;
+            //this.menu_channel2.Click += Menu_channel2_Click;
+            //this.menu_allChannel.Click += Menu_allChannel_Click;
             #endregion
 
             #region this is tool strip event
@@ -371,8 +425,14 @@ namespace StentDevice
             this.tool_channel2Clear.Click += Tool_channel2Clear_Click;
             this.tool_channel1AutoSend.Click += Tool_channel1AutoSend_Click;
             this.tool_channel2AutoSend.Click += Tool_channel2AutoSend_Click;
+
             this.tool_channel1Export.Click += Tool_channel1Export_Click;
+            this.tool_ch1ExportSlow.Click += Tool_ch1ExportSlow_Click;
+            this.tool_ch1ExportQuick.Click += Tool_ch1ExportQuick_Click;
+
             this.tool_channel2Export.Click += Tool_channel2Export_Click;
+            this.tool_ch2ExportSlow.Click += Tool_ch2ExportSlow_Click;
+            this.tool_ch2ExportQuick.Click += Tool_ch2ExportQuick_Click;
             #endregion
 
             #region this is listView event
@@ -473,9 +533,10 @@ namespace StentDevice
 
         private void Menu_channel1_Click(object sender, EventArgs e)
         {
-            this.radDock1.AddDocument(this.documentChannel1);
-            //this.documentChannel1.Show();
-            //this.radDock1.ActiveWindow = this.documentChannel1;
+            //this.radDock1.AddDocument(this.documentChannel1);
+
+            this.radDock1.AddDocument(documentChannel1);
+            this.documentChannel1.Show();
         }
 
         private void TimerCh1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -488,15 +549,36 @@ namespace StentDevice
             SendMessageCh2();
         }
 
+        private void Tool_ch2ExportQuick_Click(object sender, EventArgs e)
+        {
+            DoExportListView(this.grid_stentQuickBothCh2, "quickSignalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
+        private void Tool_ch2ExportSlow_Click(object sender, EventArgs e)
+        {
+            DoExportListView(this.grid_stentSlowSignalCh2, "slowSignalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
+        private void Tool_ch1ExportQuick_Click(object sender, EventArgs e)
+        {
+            DoExportListView(this.grid_stentQuickBothCh1, "quickSignalData_ch1" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
+        private void Tool_ch1ExportSlow_Click(object sender, EventArgs e)
+        {
+            DoExportListView(this.grid_stentSlowSignalCh1, "slowSignalData_ch1" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
         private void Tool_channel2Export_Click(object sender, EventArgs e)
         {
             //ExportGridData(this.grid_stentCompleteSignalCh2, this.tool_channel2ExportFormat);
+            DoExportListView(this.grid_stentCompleteSignalCh2, "signalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
         }
 
         private void Tool_channel1Export_Click(object sender, EventArgs e)
         {
             //ExportGridData(this.grid_stentCompleteSignalCh1,this.tool_channel1ExportFormat);
-            ExportListViewData(this.grid_stentCompleteSignalCh1);
+            DoExportListView(this.grid_stentCompleteSignalCh1, "signalData_ch1_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
         }
 
         private void Tool_channel2AutoSend_Click(object sender, EventArgs e)
@@ -511,9 +593,17 @@ namespace StentDevice
 
         private void Tool_channel2Clear_Click(object sender, EventArgs e)
         {
-            this.grid_stentCompleteSignalCh2.Items.Clear();
+            this.grid_stentCompleteSignalCh2.VirtualMode = false;
+            this.cacheListViewSourceCompleteCh2.Clear();
+            this.grid_stentCompleteSignalCh2.VirtualListSize = this.cacheListViewSourceCompleteCh2.Count;
+
+            this.grid_stentSlowSignalCh2.VirtualMode = false;
+            this.cacheListViewSourceSlowCh2.Clear();
+            this.grid_stentQuickBothCh2.VirtualListSize = this.cacheListViewSourceSlowCh2.Count;
+
+            this.grid_stentQuickBothCh2.VirtualMode = false;
             this.grid_stentQuickBothCh2.Items.Clear();
-            this.grid_stentSlowSignalCh2.Items.Clear();
+
             channelDataCh2.RevCount = 0;
             channelDataCh2.SlowSignalCount = 0;
         }
@@ -521,12 +611,15 @@ namespace StentDevice
         private void Tool_channel1Clear_Click(object sender, EventArgs e)
         {
             this.grid_stentCompleteSignalCh1.VirtualMode = false;
-            this.grid_stentCompleteSignalCh1.Items.Clear();
+            this.cacheListViewSourceCompleteCh1.Clear();
+            this.grid_stentCompleteSignalCh1.VirtualListSize = this.cacheListViewSourceCompleteCh1.Count;
+
+            this.grid_stentSlowSignalCh1.VirtualMode = false;
+            this.cacheListViewSourceSlowCh1.Clear();
+            this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
 
             this.grid_stentQuickBothCh1.VirtualMode = false;
             this.grid_stentQuickBothCh1.Items.Clear();
-
-            this.grid_stentSlowSignalCh1.Items.Clear();
 
             channelDataCh1.RevCount = 0;
             channelDataCh1.SlowSignalCount = 0;
@@ -537,6 +630,8 @@ namespace StentDevice
             //停止请求数据
             timerCh2.Stop();
             channelDataCh2.IsAutoSend = false;
+            this.tool_channel2Send.Enabled = true;
+            this.tool_channel2Stop.Enabled = false;
         }
 
         private void Tool_channel1stop_Click(object sender, EventArgs e)
@@ -544,6 +639,8 @@ namespace StentDevice
             //停止请求数据
             timerCh1.Stop();
             channelDataCh1.IsAutoSend = false;
+            this.tool_channel1Send.Enabled = true;
+            this.tool_channel1stop.Enabled = false;
         }
 
         private void Tool_channel2Send_Click(object sender, EventArgs e)
@@ -564,6 +661,18 @@ namespace StentDevice
                 return;
             //请求发送数据
             SuperEasyClient.SendMessage(stentSignalEnum, new byte[] { });
+            //ch1
+            if (stentSignalEnum == StentSignalEnum.RequestDataCh1)
+            {
+                this.tool_channel1Send.Enabled = false;
+                this.tool_channel1stop.Enabled = true;
+            }
+            //ch2
+            if (stentSignalEnum == StentSignalEnum.RequestDataCh2)
+            {
+                this.tool_channel2Send.Enabled = false;
+                this.tool_channel2Stop.Enabled = true;
+            }
         }
 
         private void Menu_exit_Click(object sender, EventArgs e)
@@ -575,14 +684,6 @@ namespace StentDevice
         {
             Helper helper = new Helper();
             helper.Show();
-        }
-
-        private void Menu_export_Click(object sender, EventArgs e)
-        {
-            //if(this.radDock1.ActiveWindow == this.documentChannel1)
-            //    ExportGridData(this.grid_stentCompleteSignalCh1, this.tool_channel1ExportFormat);
-            //else if(this.radDock1.ActiveWindow == this.documentChannel2)
-            //    ExportGridData(this.grid_stentCompleteSignalCh2, this.tool_channel2ExportFormat);
         }
 
         private void ExportGridData(RadGridView radGridView,ToolStripComboBox cbFormat)
@@ -858,10 +959,11 @@ namespace StentDevice
                     for (int i = 0; i < count * 8; i += 8)
                     {
                         channelDataCh1.ChannelType = ChannelData.ChannelTypeEnum.Channel1;
-                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh1,count);
+                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh1,count,j);
                         CacheListViewUpdateSinalCh1(packageInfo,i,count,j);
                         Application.DoEvents();
-                        channelDataCh1.RevCount++;
+                        if(channelDataCh1.RevCount < cacheFrameNumber)
+                            channelDataCh1.RevCount++;
                         j++;
                     }
                 }));
@@ -883,10 +985,11 @@ namespace StentDevice
                     for (int i = 0; i < count * 8; i += 8)
                     {
                         channelDataCh2.ChannelType = ChannelData.ChannelTypeEnum.Channel2;
-                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh2,count);
+                        var iData = AnalysisSlowSignalData(packageInfo, i, channelDataCh2,count,j);
                         CacheListViewUpdateSinalCh2(packageInfo, i, count, j);
-                        channelDataCh2.RevCount++;
                         Application.DoEvents();
+                        if (channelDataCh2.RevCount < this.cacheFrameNumber)
+                            channelDataCh2.RevCount++;
                         j++;
                     }
                 }));
@@ -894,11 +997,6 @@ namespace StentDevice
             channelDataCh2.IsAnalysisComplete = true;
             return true;
         }
-
-        int cacheCountCh1 =1;
-        int cacheCountCh2 =1;
-        int cacheCountCh3 = 1;
-        int cacheCountCh4 = 1;
 
         private void CacheListViewUpdateSinalCh1(MyPackageInfo packageInfo, int i,int countPerPackage,int j)
         {
@@ -924,6 +1022,8 @@ namespace StentDevice
                 {
                     ReSetCompleteCh1(cacheListPerpTempCompleteCh1);
                     this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh1.Items.Count - 1].EnsureVisible();
+                    //this.grid_stentCompleteSignalCh1.Items[this.cacheListViewSourceCompleteCh1.Count - 1].Selected = true;
+
                     cacheCountCh1 = 0;
                     AnalysisQuickSignalCh1();
                 }
@@ -984,40 +1084,13 @@ namespace StentDevice
             }));
         }
 
-        private bool IsStentStandardFrameType(List<int> result)
+        private string AnalysisSlowSignalData(MyPackageInfo packageInfo,int index,ChannelData channelData,int countPerPackage,int indexPerPackage)
         {
-            int[] standFrameList = new int[] { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-            //判断标准帧
-            int i = 0;
-            foreach (var frame in result)
+            if (indexPerPackage == 0)
             {
-                if (frame != standFrameList[i])
-                    return false;
-                i++;
+                channelData.CacheFirstBitValue.Clear();
+                channelData.CacheDataPerFrame.Clear();
             }
-            return true;
-        }
-
-        private bool IsStentExtentFrameType(List<int> result)
-        {
-            int[] extendFrameList = new int[] { 1, 1, 1, 1, 1, 1, 0, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 0 };
-            //判断扩展帧
-            //7/13/18帧对应值为0，1-6帧对应值为1
-            int i = 0;
-            foreach (var frame in result)
-            {
-                if ((i >= 0 && i <= 5) || i == 6 || i == 12 || i == 17)
-                {
-                    if (frame != extendFrameList[i])
-                        return false;
-                }
-                i++;
-            }
-            return true;
-        }
-
-        private string AnalysisSlowSignalData(MyPackageInfo packageInfo,int index,ChannelData channelData,int countPerPackage)
-        {
             var iData = packageInfo.Data[index].ToString("X2") + "-" + packageInfo.Data[index + 1].ToString("X2") + "-" + packageInfo.Data[index + 2].ToString("X2") + "-" + packageInfo.Data[index + 3].ToString("X2") + "-" + packageInfo.Data[index + 4].ToString("X2") + "-" + packageInfo.Data[index + 5].ToString("X2") + "-" + packageInfo.Data[index + 6].ToString("X2") + "-" + packageInfo.Data[index + 7].ToString("X2");
             var firstByteString = Convert.ToString(packageInfo.Data[index], 2).PadLeft(4, '0');
             var firstBit = firstByteString.Substring(firstByteString.Length - 4, 1);//从右往左数，起始位为0，第3位
@@ -1103,11 +1176,11 @@ namespace StentDevice
                     //一包数据解析完成
                     //开始显示一包数据
                     channelData.FrameType = ChannelData.FrameTypeEnum.ExtendFrame;
-                    UpdateSlowSignalGridData(channelData,messageID,data,crcValue,sumCRCCal, countPerPackage / 18);
+                    UpdateSlowSignalGridData(channelData, messageID, data, crcValue, sumCRCCal, countPerPackage / 18);
                 }
                 else
                 {
-                    LogHelper.Log.Info($"【扩展帧】CRC校验失败 sumCRCCal={sumCRCCal} crcValue={crcValue}");
+                    LogHelper.Log.Info($"【扩展帧】CRC校验失败 sumCRCCal={sumCRCCal} crcValue={crcValue}  ");
                 }
                 //清空缓存
                 channelData.CacheDataPerFrame.Clear();
@@ -1153,7 +1226,7 @@ namespace StentDevice
                 //sumCRC = string.Format("{0:X4}",Convert.ToInt32(sumCRC, 2));
 
                 sumCRCValue = Crc4_Cal(crcCheckArray);
-                crcValue = string.Format("{0:X4}", Convert.ToInt32(crcValue,2));
+                crcValue = string.Format("{0:X4}", Convert.ToInt32(crcValue, 2));
                 if (sumCRCValue == crcValue)
                 {
                     LogHelper.Log.Info("【标准帧】校验成功 " + sumCRC);
@@ -1196,7 +1269,7 @@ namespace StentDevice
                     }
                     list.Add(messageID);
                     list.Add(data);
-                    list.Add(crcValue);
+                    //list.Add(crcValue);
                     listViewItem.SubItems.AddRange(list.ToArray());
                     this.cacheListPerpTempSlowCh1.Add(listViewItem);
 
@@ -1208,7 +1281,7 @@ namespace StentDevice
                     }
                     else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh1) == (countPerPackage % 20))
                     {
-                        if (cacheCountCh3 == (countPerPackage % 20))
+                        if ((cacheCountCh3 == (countPerPackage % 20)))
                         {
                             ReSetSlowCh1(cacheListPerpTempSlowCh1);
                             this.grid_stentSlowSignalCh1.Items[this.grid_stentSlowSignalCh1.Items.Count - 1].EnsureVisible();
@@ -1217,7 +1290,8 @@ namespace StentDevice
                         }
                     }
                     cacheCountCh3++;
-                    channelData.SlowSignalCount++;
+                    if(channelData.SlowSignalCount < this.cacheFrameNumber)
+                        channelData.SlowSignalCount++;
                 }));
             }
             else if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel2)
@@ -1239,7 +1313,7 @@ namespace StentDevice
                     }
                     list.Add(messageID);
                     list.Add(data);
-                    list.Add(crcValue);
+                    //list.Add(crcValue);
                     //list.Add(sumCRCCal);
                     listViewItem.SubItems.AddRange(list.ToArray());
                     cacheListPerpTempSlowCh2.Add(listViewItem);
@@ -1261,7 +1335,8 @@ namespace StentDevice
                         }
                     }
                     cacheCountCh4++;
-                    channelData.SlowSignalCount++;
+                    if(channelData.SlowSignalCount < this.cacheFrameNumber)
+                        channelData.SlowSignalCount++;
                 }));
             }
         }
@@ -1283,6 +1358,7 @@ namespace StentDevice
             }
         }
 
+        #region quick signal 
         /*
          * 【快信号】
          * 1）显示最新数据
@@ -1332,9 +1408,7 @@ namespace StentDevice
                 lvItem.Text = d1;
                 list.Add(d2);
                 lvItem.SubItems.AddRange(list.ToArray());
-                //cacheListPerpTempQuickCh1.Add(lvItem);
                 this.grid_stentQuickBothCh1.Items.Add(lvItem);
-                //ReSetQuickCh1(cacheListPerpTempQuickCh1);
             }));
         }
 
@@ -1381,11 +1455,13 @@ namespace StentDevice
                 lvItem.Text = d1;
                 list.Add(d2);
                 lvItem.SubItems.AddRange(list.ToArray());
-
                 this.grid_stentQuickBothCh2.Items.Add(lvItem);
             }));
         }
 
+        #endregion
+
+        #region connect server
         private void ConnectServerView()
         {
             AddConnection addConnection = new AddConnection(this.serverIP,this.serverPort);
@@ -1418,6 +1494,41 @@ namespace StentDevice
                 this.tool_connectServer.Enabled = false;
                 this.tool_disconnect.Enabled = true;
             }
+        }
+        #endregion
+
+        #region stent signal cal function
+
+        private bool IsStentStandardFrameType(List<int> result)
+        {
+            int[] standFrameList = new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            //判断标准帧
+            int i = 0;
+            foreach (var frame in result)
+            {
+                if (frame != standFrameList[i])
+                    return false;
+                i++;
+            }
+            return true;
+        }
+
+        private bool IsStentExtentFrameType(List<int> result)
+        {
+            int[] extendFrameList = new int[] { 1, 1, 1, 1, 1, 1, 0, -1, -1, -1, -1, -1, 0, -1, -1, -1, -1, 0 };
+            //判断扩展帧
+            //7/13/18帧对应值为0，1-6帧对应值为1
+            int i = 0;
+            foreach (var frame in result)
+            {
+                if ((i >= 0 && i <= 5) || i == 6 || i == 12 || i == 17)
+                {
+                    if (frame != extendFrameList[i])
+                        return false;
+                }
+                i++;
+            }
+            return true;
         }
 
         private int[] Add6Bit2Array(string crcSum)
@@ -1495,7 +1606,9 @@ namespace StentDevice
             }
             return string.Format("{0:X4}", result);
         }
+        #endregion
 
+        #region init 
         private void Init()
         {
             this.rb_highBefore1Ch1.CheckState = CheckState.Checked;
@@ -1509,18 +1622,6 @@ namespace StentDevice
             this.tool_channel2Send.Enabled = false;
             this.tool_channel1stop.Enabled = false;
             this.tool_channel2Stop.Enabled = false;
-
-            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.EXCEL);
-            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.HTML);
-            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.PDF);
-            this.tool_channel1ExportFormat.Items.Add(GridViewExport.ExportFormat.CSV);
-            this.tool_channel1ExportFormat.SelectedIndex = 0;
-            //ch2
-            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.EXCEL);
-            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.HTML);
-            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.PDF);
-            this.tool_channel2ExportFormat.Items.Add(GridViewExport.ExportFormat.CSV);
-            this.tool_channel2ExportFormat.SelectedIndex = 0;
 
             channelDataCh1 = new ChannelData();
             channelDataCh2 = new ChannelData();
@@ -1538,7 +1639,9 @@ namespace StentDevice
                 Directory.CreateDirectory(stentConfigDirectory);
             ReadConfig();
         }
+        #endregion
 
+        #region ini config params
         private void ReadConfig()
         {
             var stentConfigPath = stentConfigDirectory + STENT_CONFIG_FILE;
@@ -1600,7 +1703,9 @@ namespace StentDevice
             INIFile.SetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_IS_AUTO_KEY, channelDataCh2.IsAutoSend.ToString(), stentConfigPath);
             INIFile.SetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_TIME_INTERNAL, channelDataCh2.AutoSendTimeInternal.ToString(), stentConfigPath);
         }
+        #endregion
 
+        #region sendMessage
         private void SendMessageCh1()
         {
             SuperEasyClient.SendMessage(StentSignalEnum.RequestDataCh1, new byte[0]);
@@ -1610,7 +1715,9 @@ namespace StentDevice
         {
             SuperEasyClient.SendMessage(StentSignalEnum.RequestDataCh2, new byte[0]);
         }
+        #endregion
 
+        #region export listView data
         private void ExportListViewData(ListView listView)
         {
             if (listView.Items == null) 
@@ -1618,7 +1725,7 @@ namespace StentDevice
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.DefaultExt = "xls";
             saveDialog.Filter = "Excel文件 | *.xls";
-            saveDialog.FileName = DateTime.Now.ToString("yyyy - MM - dd");
+            saveDialog.FileName = "data_"+DateTime.Now.ToString("yyyyMMddHHmmss");
             saveDialog.ShowDialog();
             var saveFileName = saveDialog.FileName;
             if (saveFileName.IndexOf(":") < 0)
@@ -1669,9 +1776,9 @@ namespace StentDevice
             }
             else //不带Checkedboxe 
             {
-                for (int i = 0; i < listView.Items.Count; i++)
+                for (int j = 0; j < listView.Columns.Count; j++)
                 {
-                    for (int j = 0; j < listView.Columns.Count; j++)
+                    for (int i = 0; i < listView.Items.Count; i++)
                     {
                         if (j == 0)
                         {
@@ -1690,7 +1797,7 @@ namespace StentDevice
             try
             {
                 workbook.Saved = true;
-                workbook.SaveAs(saveFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlXMLSpreadsheet, missing, missing, false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
+                workbook.SaveAs(saveFileName, Excel.XlFileFormat.xlXMLSpreadsheet, missing, missing, false, false, Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
             }
             catch (Exception e1)
             {
@@ -1704,6 +1811,73 @@ namespace StentDevice
             }
             MessageBox.Show("导出Excle成功！");
         }
+
+        private async void  DoExportListView(ListView listView,string saveFileName)
+        {
+            int rowNum = listView.Items.Count;
+            if (rowNum == 0)
+            {
+                MessageBox.Show("没有可以导出的数据！","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.DefaultExt = "xls";
+            saveDialog.Filter = "Excel文件 | *.xls";
+            saveDialog.FileName = saveFileName;
+            saveDialog.ShowDialog();
+            var strFileName = saveDialog.FileName;
+            if (strFileName.IndexOf(":") < 0)
+                return;
+            if (string.IsNullOrEmpty(strFileName))
+                return;
+            if (File.Exists(strFileName))
+                File.Delete(strFileName);
+
+            int columnNum = listView.Items[0].SubItems.Count;
+            int rowIndex = 1;
+            int columnIndex = 0;
+
+            await Task.Run(()=>
+            {
+                if (rowNum > 0)
+                {
+                    Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+                    if (xlApp == null)
+                    {
+                        MessageBox.Show("无法创建excel对象，可能您系统没有安装excel");
+                        return;
+                    }
+                    xlApp.DefaultFilePath = "";
+                    xlApp.DisplayAlerts = true;
+                    xlApp.SheetsInNewWorkbook = 1;
+                    Excel.Workbook xlBook = xlApp.Workbooks.Add(true);
+                    //将ListView中的列名导入Excel表第一行
+                    foreach (ColumnHeader dc in listView.Columns)
+                    {
+                        columnIndex++;
+                        xlApp.Cells[rowIndex, columnIndex] = dc.Text;
+                    }
+                    for (int i = 0; i < rowNum; i++)
+                    {
+                        rowIndex++;
+                        columnIndex = 0;
+                        for (int j = 0; j < columnNum; j++)
+                        {
+                            columnIndex++;
+                            //注意这个在导出的时候加了"\t"的目的是避免导出的数据显示为科学计数法，可以放在每行的首尾
+                            xlApp.Cells[rowIndex, columnIndex] = Convert.ToString(listView.Items[i].SubItems[j].Text) + "\t";
+                        }
+                    }
+                    xlBook.SaveAs(strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                    xlApp = null;
+                    xlBook.Close();
+                    xlBook = null;
+                }
+            });
+            MessageBox.Show("导出数据完成！","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+
+        #endregion
 
         #region temp
         private void UpdateSinalCh1(MyPackageInfo packageInfo, int i, int countPerPackage, int j)
