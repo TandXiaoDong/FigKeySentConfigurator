@@ -12,13 +12,15 @@ namespace StentDevice
     public partial class FrameShow : Telerik.WinControls.UI.RadForm
     {
         public static int frameNumber = 10000;
-        public FrameShow(int frame)
+        private int currentFrame;
+        public FrameShow(int frame,int currenFrameValue)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             frameNumber = frame;
+            this.currentFrame = currenFrameValue;
             this.tb_frameNumber.Text = frameNumber.ToString();
             this.btn_apply.Click += Btn_apply_Click;
             this.btn_cancel.Click += Btn_cancel_Click;
@@ -49,6 +51,11 @@ namespace StentDevice
                     MessageBox.Show("请输入大于0的显示帧数！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+            }
+            if (frameNumber < currentFrame)
+            {
+
+                return;
             }
             this.DialogResult = DialogResult.OK;
             this.Close();

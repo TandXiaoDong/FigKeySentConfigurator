@@ -11,6 +11,8 @@ using CommonUtils.ByteHelper;
 using CommonUtils.Logger;
 using StentDevice.ClientSocket.AppBase;
 using System.Configuration;
+using SuperSocket.SocketBase.Protocol;
+using SuperSocket.ProtoBase;
 
 namespace StentDevice.ClientSocket
 {

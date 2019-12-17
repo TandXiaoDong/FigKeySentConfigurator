@@ -157,6 +157,13 @@
     <Compile Include="ClientSocket\AppBase\MyReceiveFilter.cs" />
     <Compile Include="ClientSocket\SocketClient.cs" />
     <Compile Include="ClientSocket\SuperEasyClient.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\AppBase\MyReceiveFilter.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\AppBase\MyRequestInfo.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\AppBase\MyServer.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\AppBase\MySession.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\SocketServerControl.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\StartServerOfConfig.cs" />
+    <Compile Include="ClientSocket\SuperSocketServer\SuperSocketConfig.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

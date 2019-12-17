@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CommonUtils.Excel;
+using CommonUtils.SCVFile;
 
 namespace StentDevice
 {
@@ -43,7 +45,25 @@ namespace StentDevice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RefreshData();
+            var dt = ExportExcel();
+            //ExcelHelper.DataTable2Excel(dt);
+            CsvHelper.dt2csv(dt, @"F:\exel.csv","heksl","id,data");
+            MessageBox.Show("ok");
+        }
+
+        private DataTable ExportExcel()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id");
+            dt.Columns.Add("data");
+            for (int i = 0; i < 1000; i++)
+            {
+                DataRow dr = dt.NewRow();
+                dr["id"] = i + 1;
+                dr["data"] = i+"_data";
+                dt.Rows.Add(dr);
+            }
+            return dt;
         }
     }
 }

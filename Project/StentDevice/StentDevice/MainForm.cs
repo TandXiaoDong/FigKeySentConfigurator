@@ -14,6 +14,7 @@ using CommonUtils.Logger;
 using WindowsFormTelerik.ControlCommon;
 using CommonUtils.ByteHelper;
 using CommonUtils.FileHelper;
+using CommonUtils.SCVFile;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
@@ -102,6 +103,8 @@ namespace StentDevice
             Init();
             InitListView();
             EventHandlers();
+            this.radDock1.ActiveWindow = this.documentChannel1;
+            this.tool_disconnect.Enabled = false;
         }
 
         private void SetControlDoubleBuffer()
@@ -140,7 +143,7 @@ namespace StentDevice
             this.grid_stentCompleteSignalCh1.Columns.Add("DATA5");
             this.grid_stentCompleteSignalCh1.Columns.Add("DATA6");
             this.grid_stentCompleteSignalCh1.Columns.Add("CRC");
-            this.grid_stentCompleteSignalCh1.Columns.Add("CAL_CRC");
+            this.grid_stentCompleteSignalCh1.Columns.Add("CAL_CRC"); 
 
             this.grid_stentCompleteSignalCh1.GridLines = false;
             this.grid_stentCompleteSignalCh1.FullRowSelect = true;
@@ -159,14 +162,14 @@ namespace StentDevice
             this.grid_stentCompleteSignalCh1.Columns[8].Width = this.grid_stentCompleteSignalCh1.Width / 10;
             this.grid_stentCompleteSignalCh1.Columns[9].Width = this.grid_stentCompleteSignalCh1.Width / 10;
 
-            this.grid_stentCompleteSignalCh1.VirtualMode = true;
+            //this.grid_stentCompleteSignalCh1.VirtualMode = true;
             #endregion
 
             #region grid_stentSlowSignalCh1
             this.grid_stentSlowSignalCh1.Columns.Add("序号");
             this.grid_stentSlowSignalCh1.Columns.Add("帧类型");
             this.grid_stentSlowSignalCh1.Columns.Add("MessageID");
-            this.grid_stentSlowSignalCh1.Columns.Add("DATA");
+            this.grid_stentSlowSignalCh1.Columns.Add("DATA"); 
             //this.grid_stentSlowSignalCh1.Columns.Add("CRC");
 
             this.grid_stentSlowSignalCh1.GridLines = false;
@@ -270,52 +273,68 @@ namespace StentDevice
 
         public void ReSetCompleteCh1(IList<ListViewItem> list)
         {
-            this.grid_stentCompleteSignalCh1.VirtualMode = true;
-            foreach (var item in list)
+            try
             {
-                this.cacheListViewSourceCompleteCh1.Add(item);
-                cacheActualCountCompleteCh1++;
-            }
-            //判断是否超过最大显示数量
-            if (this.cacheListViewSourceCompleteCh1.Count >= this.cacheFrameNumber)
-            {
-                int delRow = this.cacheListViewSourceCompleteCh1.Count - this.cacheFrameNumber;
-                this.cacheListViewSourceCompleteCh1.RemoveRange(0,delRow);
-                int i = 0;
-                foreach (var lvItem in this.cacheListViewSourceCompleteCh1)
+                this.grid_stentCompleteSignalCh1.VirtualMode = true;
+                foreach (var item in list)
                 {
-                    lvItem.SubItems[0].Text = (i + 1).ToString();
-                    i++;
+                    this.cacheListViewSourceCompleteCh1.Add(item);
+                    cacheActualCountCompleteCh1++;
                 }
-                this.grid_stentCompleteSignalCh1.Refresh();
+                //判断是否超过最大显示数量
+                if (this.cacheListViewSourceCompleteCh1.Count >= this.cacheFrameNumber)
+                {
+                    int delRow = this.cacheListViewSourceCompleteCh1.Count - this.cacheFrameNumber;
+                    this.cacheListViewSourceCompleteCh1.RemoveRange(0, delRow);
+                    int i = 0;
+                    foreach (var lvItem in this.cacheListViewSourceCompleteCh1)
+                    {
+                        lvItem.SubItems[0].Text = (i + 1).ToString();
+                        i++;
+                    }
+                    this.grid_stentCompleteSignalCh1.Refresh();
+                }
+                this.cacheListPerpTempCompleteCh1.Clear();
+                this.grid_stentCompleteSignalCh1.VirtualListSize = this.cacheListViewSourceCompleteCh1.Count;
+                this.grid_stentCompleteSignalCh1.Items[this.cacheListViewSourceCompleteCh1.Count -1].EnsureVisible();
             }
-            this.cacheListPerpTempCompleteCh1.Clear();
-            this.grid_stentCompleteSignalCh1.VirtualListSize = this.cacheListViewSourceCompleteCh1.Count;
+            catch (Exception ex)
+            {
+                LogHelper.Log.Error("reset ch1 complete "+ex.Message+ex.StackTrace);
+            }
         }
 
         public void ReSetSlowCh1(IList<ListViewItem> list)
         {
-            this.grid_stentSlowSignalCh1.VirtualMode = true;
-            foreach (var item in list)
+            try
             {
-                this.cacheListViewSourceSlowCh1.Add(item);
-                cacheActualCountSlowCh1++;
-            }
-            //判断是否超过最大显示数量
-            if (this.cacheListViewSourceSlowCh1.Count >= this.cacheFrameNumber)
-            {
-                int delRow = this.cacheListViewSourceSlowCh1.Count - this.cacheFrameNumber;
-                this.cacheListViewSourceSlowCh1.RemoveRange(0, delRow);
-                int i = 0;
-                foreach (var lvItem in this.cacheListViewSourceSlowCh1)
+                this.grid_stentSlowSignalCh1.VirtualMode = true;
+                foreach (var item in list)
                 {
-                    lvItem.SubItems[0].Text = (i + 1).ToString();
-                    i++;
+                    this.cacheListViewSourceSlowCh1.Add(item);
+                    cacheActualCountSlowCh1++;
                 }
-                this.grid_stentSlowSignalCh1.Refresh();
+                //判断是否超过最大显示数量
+                if (this.cacheListViewSourceSlowCh1.Count >= this.cacheFrameNumber)
+                {
+                    int delRow = this.cacheListViewSourceSlowCh1.Count - this.cacheFrameNumber;
+                    this.cacheListViewSourceSlowCh1.RemoveRange(0, delRow);
+                    int i = 0;
+                    foreach (var lvItem in this.cacheListViewSourceSlowCh1)
+                    {
+                        lvItem.SubItems[0].Text = (i + 1).ToString();
+                        i++;
+                    }
+                    this.grid_stentSlowSignalCh1.Refresh();
+                }
+                cacheListPerpTempSlowCh1.Clear();
+                this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
+                this.grid_stentSlowSignalCh1.Items[this.cacheListViewSourceSlowCh1.Count - 1].EnsureVisible();
             }
-            cacheListPerpTempSlowCh1.Clear();
-            this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
+            catch (Exception ex)
+            {
+                LogHelper.Log.Error("reset ch1 slow " + ex.Message + ex.StackTrace);
+            }
         }
 
         public void ReSetQuickCh1(IList<ListViewItem> list)
@@ -413,8 +432,8 @@ namespace StentDevice
             #region this is tool strip event
             this.tool_connectServer.Click += Tool_connectServer_Click;
             this.tool_disconnect.Click += Tool_disconnect_Click;
-            this.tool_continue.Click += Tool_continue_Click;
-            this.tool_pause.Click += Tool_pause_Click;
+            //this.tool_continue.Click += Tool_continue_Click;
+            //this.tool_pause.Click += Tool_pause_Click;
             this.tool_cacheFrameAmount.Click += Tool_cacheFrameAmount_Click;
             this.tool_help.Click += Tool_help_Click;
             this.tool_channel1Send.Click += Tool_channel1Send_Click;
@@ -459,15 +478,6 @@ namespace StentDevice
         }
 
         #region listView RetireVirtualItem event
-        private void Grid_stentCompleteSignalCh1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
-        {
-            if (this.cacheListViewSourceCompleteCh1 == null || this.cacheListViewSourceCompleteCh1.Count == 0)
-            {
-                return;
-            }
-            ListViewItem lv = this.cacheListViewSourceCompleteCh1[e.ItemIndex];
-            e.Item = lv;
-        }
 
         private void Grid_stentQuickBothCh2_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
@@ -511,12 +521,36 @@ namespace StentDevice
 
         private void Grid_stentSlowSignalCh1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
-            if (this.cacheListViewSourceSlowCh1 == null || this.cacheListViewSourceSlowCh1.Count == 0)
+            try
             {
-                return;
+                if (this.cacheListViewSourceSlowCh1 == null || this.cacheListViewSourceSlowCh1.Count == 0)
+                {
+                    return;
+                }
+                ListViewItem lv = this.cacheListViewSourceSlowCh1[e.ItemIndex];
+                e.Item = lv;
             }
-            ListViewItem lv = this.cacheListViewSourceSlowCh1[e.ItemIndex];
-            e.Item = lv;
+            catch (Exception ex)
+            {
+                MessageBox.Show("ch1slow " + ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void Grid_stentCompleteSignalCh1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        {
+            try
+            {
+                if (this.cacheListViewSourceCompleteCh1 == null || this.cacheListViewSourceCompleteCh1.Count == 0)
+                {
+                    return;
+                }
+                ListViewItem lv = this.cacheListViewSourceCompleteCh1[e.ItemIndex];
+                e.Item = lv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ch1complete " + ex.Message + ex.StackTrace + " "+e.ItemIndex);
+            }
         }
 
         #endregion
@@ -551,34 +585,50 @@ namespace StentDevice
 
         private void Tool_ch2ExportQuick_Click(object sender, EventArgs e)
         {
-            DoExportListView(this.grid_stentQuickBothCh2, "quickSignalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "quickSignalData_ch2_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "DATA1,DATA2";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentQuickBothCh2, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Tool_ch2ExportSlow_Click(object sender, EventArgs e)
         {
-            DoExportListView(this.grid_stentSlowSignalCh2, "slowSignalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "slowSignalData_ch2_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "序号,帧类型,MessageID,DATA";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentSlowSignalCh2, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Tool_ch1ExportQuick_Click(object sender, EventArgs e)
         {
-            DoExportListView(this.grid_stentQuickBothCh1, "quickSignalData_ch1" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "quickSignalData_ch1_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "DATA1,DATA2";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentQuickBothCh1, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Tool_ch1ExportSlow_Click(object sender, EventArgs e)
         {
-            DoExportListView(this.grid_stentSlowSignalCh1, "slowSignalData_ch1" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "slowSignalData_ch1_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "序号,帧类型,MessageID,DATA";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentSlowSignalCh1, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Tool_channel2Export_Click(object sender, EventArgs e)
         {
-            //ExportGridData(this.grid_stentCompleteSignalCh2, this.tool_channel2ExportFormat);
-            DoExportListView(this.grid_stentCompleteSignalCh2, "signalData_ch2" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "signalData_ch2_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "STATUS,DATA1,DATA2,DATA3,DATA4,DATA5,DATA6,CRC,CAL_CRC";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentCompleteSignalCh2, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Tool_channel1Export_Click(object sender, EventArgs e)
         {
-            //ExportGridData(this.grid_stentCompleteSignalCh1,this.tool_channel1ExportFormat);
-            DoExportListView(this.grid_stentCompleteSignalCh1, "signalData_ch1_" + DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var saveFileName = "signalData_ch1_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            var columns = "STATUS,DATA1,DATA2,DATA3,DATA4,DATA5,DATA6,CRC,CAL_CRC";
+            if (CsvHelper.SaveListViewSCV(this.grid_stentCompleteSignalCh1, saveFileName, "", columns))
+                MessageBox.Show("数据导出完成！","INFO",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void Tool_channel2AutoSend_Click(object sender, EventArgs e)
@@ -593,11 +643,11 @@ namespace StentDevice
 
         private void Tool_channel2Clear_Click(object sender, EventArgs e)
         {
-            this.grid_stentCompleteSignalCh2.VirtualMode = false;
+            //this.grid_stentCompleteSignalCh2.VirtualMode = false;
             this.cacheListViewSourceCompleteCh2.Clear();
             this.grid_stentCompleteSignalCh2.VirtualListSize = this.cacheListViewSourceCompleteCh2.Count;
 
-            this.grid_stentSlowSignalCh2.VirtualMode = false;
+            //this.grid_stentSlowSignalCh2.VirtualMode = false;
             this.cacheListViewSourceSlowCh2.Clear();
             this.grid_stentQuickBothCh2.VirtualListSize = this.cacheListViewSourceSlowCh2.Count;
 
@@ -610,11 +660,11 @@ namespace StentDevice
 
         private void Tool_channel1Clear_Click(object sender, EventArgs e)
         {
-            this.grid_stentCompleteSignalCh1.VirtualMode = false;
+            //this.grid_stentCompleteSignalCh1.VirtualMode = false;
             this.cacheListViewSourceCompleteCh1.Clear();
             this.grid_stentCompleteSignalCh1.VirtualListSize = this.cacheListViewSourceCompleteCh1.Count;
 
-            this.grid_stentSlowSignalCh1.VirtualMode = false;
+            //this.grid_stentSlowSignalCh1.VirtualMode = false;
             this.cacheListViewSourceSlowCh1.Clear();
             this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
 
@@ -632,6 +682,7 @@ namespace StentDevice
             channelDataCh2.IsAutoSend = false;
             this.tool_channel2Send.Enabled = true;
             this.tool_channel2Stop.Enabled = false;
+            this.tool_channel2Export.Enabled = true;
         }
 
         private void Tool_channel1stop_Click(object sender, EventArgs e)
@@ -641,6 +692,7 @@ namespace StentDevice
             channelDataCh1.IsAutoSend = false;
             this.tool_channel1Send.Enabled = true;
             this.tool_channel1stop.Enabled = false;
+            this.tool_channel1Export.Enabled = true;
         }
 
         private void Tool_channel2Send_Click(object sender, EventArgs e)
@@ -666,12 +718,14 @@ namespace StentDevice
             {
                 this.tool_channel1Send.Enabled = false;
                 this.tool_channel1stop.Enabled = true;
+                this.tool_channel1Export.Enabled = false;
             }
             //ch2
             if (stentSignalEnum == StentSignalEnum.RequestDataCh2)
             {
                 this.tool_channel2Send.Enabled = false;
                 this.tool_channel2Stop.Enabled = true;
+                this.tool_channel2Export.Enabled = false;
             }
         }
 
@@ -722,13 +776,21 @@ namespace StentDevice
                 {
                     this.tool_connectServer.Enabled = false;
                     this.tool_disconnect.Enabled = true;
+                    this.tool_channel1Send.Enabled = true;
+                    this.tool_channel1stop.Enabled = false;
+                    this.tool_channel2Send.Enabled = true;
+                    this.tool_channel2Stop.Enabled = false;
                 }
                 else
                 {
                     this.tool_connectServer.Enabled = true;
                     this.tool_disconnect.Enabled = false;
-                    this.tool_continue.Enabled = false;
-                    this.tool_pause.Enabled = false;
+                    //this.tool_continue.Enabled = false;
+                    //this.tool_pause.Enabled = false;
+                    this.tool_channel1Send.Enabled = false;
+                    this.tool_channel1stop.Enabled = false;
+                    this.tool_channel2Send.Enabled = false;
+                    this.tool_channel2Stop.Enabled = false;
                 }
             }));
         }
@@ -740,60 +802,95 @@ namespace StentDevice
 
         private void SetAutoSendSet()
         {
-            int autoSendTimeInternal = 0;
-            bool IsAutoSend = false;
-            if (this.radDock1.ActiveWindow == this.documentChannel1)
+            Task.Run(()=>
             {
-                autoSendTimeInternal = channelDataCh1.AutoSendTimeInternal;
-                IsAutoSend = channelDataCh1.IsAutoSend;
-            }
-            else if (this.radDock1.ActiveWindow == this.documentChannel2)
-            {
-                autoSendTimeInternal = channelDataCh2.AutoSendTimeInternal;
-                IsAutoSend = channelDataCh2.IsAutoSend;
-            }
-            SendSet sendSet = new SendSet(autoSendTimeInternal,IsAutoSend);
-            if (sendSet.ShowDialog() == DialogResult.OK)
-            {
-                if (this.radDock1.ActiveWindow == this.documentChannel1)
+                this.BeginInvoke(new Action(() =>
                 {
-                    channelDataCh1.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
-                    channelDataCh1.IsAutoSend = SendSet.IsApplyAutoSend;
-                }
-                else if (this.radDock1.ActiveWindow == this.documentChannel2)
-                {
-                    channelDataCh2.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
-                    channelDataCh2.IsAutoSend = SendSet.IsApplyAutoSend;
-                }
-                //已设置自动发送
-                if (channelDataCh1.IsAutoSend)
-                {
-                    timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
-                    timerCh1.Start();
-                }
-                else
-                {
-                    timerCh1.Stop();
-                }
-                if (channelDataCh2.IsAutoSend)
-                {
-                    timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
-                    timerCh2.Start();
-                }
-                else
-                {
-                    timerCh2.Stop();
-                }
-            }
+                    int autoSendTimeInternal = 0;
+                    bool IsAutoSend = false;
+                    if (this.radDock1.ActiveWindow == this.documentChannel1)
+                    {
+                        autoSendTimeInternal = channelDataCh1.AutoSendTimeInternal;
+                        IsAutoSend = channelDataCh1.IsAutoSend;
+                    }
+                    else if (this.radDock1.ActiveWindow == this.documentChannel2)
+                    {
+                        autoSendTimeInternal = channelDataCh2.AutoSendTimeInternal;
+                        IsAutoSend = channelDataCh2.IsAutoSend;
+                    }
+                    SendSet sendSet = new SendSet(autoSendTimeInternal, IsAutoSend);
+                    if (sendSet.ShowDialog() == DialogResult.OK)
+                    {
+                        if (this.radDock1.ActiveWindow == this.documentChannel1)
+                        {
+                            channelDataCh1.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
+                            channelDataCh1.IsAutoSend = SendSet.IsApplyAutoSend;
+                            if (SuperEasyClient.client != null)
+                            {
+                                if (SuperEasyClient.client.IsConnected && channelDataCh1.IsAutoSend)
+                                {
+                                    this.tool_channel1Send.Enabled = false;
+                                    this.tool_channel1stop.Enabled = true;
+                                }
+                            }
+                        }
+                        else if (this.radDock1.ActiveWindow == this.documentChannel2)
+                        {
+                            channelDataCh2.AutoSendTimeInternal = SendSet.autoSendTimerInternal;
+                            channelDataCh2.IsAutoSend = SendSet.IsApplyAutoSend;
+                            if (SuperEasyClient.client != null)
+                            {
+                                if (SuperEasyClient.client.IsConnected && channelDataCh2.IsAutoSend)
+                                {
+                                    this.tool_channel2Send.Enabled = false;
+                                    this.tool_channel2Stop.Enabled = true;
+                                }
+                            }
+                        }
+                        //已设置自动发送
+                        if (channelDataCh1.IsAutoSend)
+                        {
+                            timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
+                            timerCh1.Start();
+                        }
+                        else
+                        {
+                            timerCh1.Stop();
+                        }
+                        if (channelDataCh2.IsAutoSend)
+                        {
+                            timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
+                            timerCh2.Start();
+                        }
+                        else
+                        {
+                            timerCh2.Stop();
+                        }
+                    }
+                }));
+            });
         }
 
         private void Tool_cacheFrameAmount_Click(object sender, EventArgs e)
         {
-            FrameShow frameShow = new FrameShow(cacheFrameNumber);
-            if (frameShow.ShowDialog() == DialogResult.OK)
+            Task.Run(()=>
             {
-                cacheFrameNumber = FrameShow.frameNumber;
-            }
+                this.Invoke(new Action(() =>
+                {
+                    var currentFrameCh1 = this.grid_stentCompleteSignalCh1.Items.Count;
+                    var currentFrameCh2 = this.grid_stentCompleteSignalCh2.Items.Count;
+                    var currentFrame = 0;
+                    if (currentFrameCh1 > currentFrameCh2)
+                        currentFrame = currentFrameCh1;
+                    else
+                        currentFrame = currentFrameCh2;
+                    FrameShow frameShow = new FrameShow(cacheFrameNumber, currentFrame);
+                    if (frameShow.ShowDialog() == DialogResult.OK)
+                    {
+                        cacheFrameNumber = FrameShow.frameNumber;
+                    }
+                }));
+            });
         }
 
         private void Rb_highBefore2Ch2_CheckStateChanged(object sender, EventArgs e)
@@ -851,8 +948,8 @@ namespace StentDevice
                 //已断开连接
                 this.tool_disconnect.Enabled = false;
                 this.tool_connectServer.Enabled = true;
-                this.tool_continue.Enabled = false;
-                this.tool_pause.Enabled = false;
+                //this.tool_continue.Enabled = false;
+                //this.tool_pause.Enabled = false;
             }
         }
 
@@ -888,7 +985,8 @@ namespace StentDevice
                             if (channelDataCh1.IsFirstReceive)
                             {
                                 channelDataCh1.IsFirstReceive = !channelDataCh1.IsFirstReceive;
-                                AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
+                                if (channelDataCh1.PackageInfoQueueTemp.Count > 0)
+                                    AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
                             }
                             else
                             {
@@ -898,7 +996,8 @@ namespace StentDevice
                                     if (channelDataCh1.IsAnalysisComplete)
                                     {
                                         channelDataCh1.IsAnalysisComplete = !channelDataCh1.IsAnalysisComplete;
-                                        AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
+                                        if(channelDataCh1.PackageInfoQueueTemp.Count > 0)
+                                            AnalysisUsualSignalCh1(channelDataCh1.PackageInfoQueueTemp.Dequeue());
                                         break;
                                     }
                                 }
@@ -921,7 +1020,8 @@ namespace StentDevice
                             if (channelDataCh2.IsFirstReceive)
                             {
                                 channelDataCh2.IsFirstReceive = !channelDataCh2.IsFirstReceive;
-                                AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
+                                if(channelDataCh2.PackageInfoQueueTemp.Count > 0)
+                                    AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
                             }
                             else
                             {
@@ -931,7 +1031,8 @@ namespace StentDevice
                                     if (channelDataCh2.IsAnalysisComplete)
                                     {
                                         channelDataCh2.IsAnalysisComplete = !channelDataCh2.IsAnalysisComplete;
-                                        AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
+                                        if(channelDataCh2.PackageInfoQueueTemp.Count > 0)
+                                            AnalysisUsualSignalCh2(channelDataCh2.PackageInfoQueueTemp.Dequeue());
                                         break;
                                     }
                                 }
@@ -1002,43 +1103,46 @@ namespace StentDevice
         {
             this.Invoke(new Action(() =>
             {
-                int[] crcList = new int[] { packageInfo.Data[i + 1], packageInfo.Data[i + 2], packageInfo.Data[i + 3], packageInfo.Data[i + 4], packageInfo.Data[i + 5], packageInfo.Data[i + 6] };
-                ListViewItem listViewItem = new ListViewItem();
-                List<string> list = new List<string>();
-                listViewItem.Text = (channelDataCh1.RevCount + 1).ToString();
-                list.Add(packageInfo.Data[i].ToString("X2"));
-                list.Add(packageInfo.Data[i + 1].ToString("X2"));
-                list.Add(packageInfo.Data[i + 2].ToString("X2"));
-                list.Add(packageInfo.Data[i + 3].ToString("X2"));
-                list.Add(packageInfo.Data[i + 4].ToString("X2"));
-                list.Add(packageInfo.Data[i + 5].ToString("X2"));
-                list.Add(packageInfo.Data[i + 6].ToString("X2"));
-                list.Add(packageInfo.Data[i + 7].ToString("X2"));
-                list.Add(Crc4_Cal(crcList));
-                listViewItem.SubItems.AddRange(list.ToArray());
-
-                cacheListPerpTempCompleteCh1.Add(listViewItem);
-                if (cacheCountCh1 == 100)
+                try
                 {
-                    ReSetCompleteCh1(cacheListPerpTempCompleteCh1);
-                    this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh1.Items.Count - 1].EnsureVisible();
-                    //this.grid_stentCompleteSignalCh1.Items[this.cacheListViewSourceCompleteCh1.Count - 1].Selected = true;
+                    int[] crcList = new int[] { packageInfo.Data[i + 1], packageInfo.Data[i + 2], packageInfo.Data[i + 3], packageInfo.Data[i + 4], packageInfo.Data[i + 5], packageInfo.Data[i + 6] };
+                    ListViewItem listViewItem = new ListViewItem();
+                    List<string> list = new List<string>();
+                    listViewItem.Text = (channelDataCh1.RevCount + 1).ToString();
+                    list.Add(packageInfo.Data[i].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 1].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 2].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 3].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 4].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 5].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 6].ToString("X2"));
+                    list.Add(packageInfo.Data[i + 7].ToString("X2"));
+                    list.Add(Crc4_Cal(crcList));
+                    listViewItem.SubItems.AddRange(list.ToArray());
 
-                    cacheCountCh1 = 0;
-                    AnalysisQuickSignalCh1();
-                }
-                else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountCompleteCh1) == (countPerPackage % 100))
-                {
-                    if (cacheCountCh1 == (countPerPackage % 100))
+                    cacheListPerpTempCompleteCh1.Add(listViewItem);
+                    if (cacheCountCh1 == 100)
                     {
                         ReSetCompleteCh1(cacheListPerpTempCompleteCh1);
-                        this.grid_stentCompleteSignalCh1.Items[this.grid_stentCompleteSignalCh1.Items.Count - 1].EnsureVisible();
                         cacheCountCh1 = 0;
-                        cacheActualCountCompleteCh1 = 0;
                         AnalysisQuickSignalCh1();
                     }
+                    else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountCompleteCh1) == (countPerPackage % 100))
+                    {
+                        if (cacheCountCh1 == (countPerPackage % 100))
+                        {
+                            ReSetCompleteCh1(cacheListPerpTempCompleteCh1);
+                            cacheCountCh1 = 0;
+                            cacheActualCountCompleteCh1 = 0;
+                            AnalysisQuickSignalCh1();
+                        }
+                    }
+                    cacheCountCh1++;
                 }
-                cacheCountCh1++;
+                catch (Exception ex)
+                {
+                    LogHelper.Log.Error("updatech1complete " + ex.Message + ex.StackTrace);
+                }
             }));
         }
 
@@ -1250,94 +1354,99 @@ namespace StentDevice
 
         private void UpdateSlowSignalGridData(ChannelData channelData,string messageID,string data,string crcValue,string sumCRCCal,int countPerPackage)
         {
-            if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel1)
+            try
             {
-                this.Invoke(new Action(() =>
+                if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel1)
                 {
-                    this.radDock1.ActiveWindow = this.documentChannel1;
+                    this.Invoke(new Action(() =>
+                    {
+                        this.radDock1.ActiveWindow = this.documentChannel1;
 
-                    ListViewItem listViewItem = new ListViewItem();
-                    List<string> list = new List<string>();
-                    listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
-                    if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
-                    {
-                        list.Add("标准帧");
-                    }
-                    else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
-                    {
-                        list.Add("扩展帧");
-                    }
-                    list.Add(messageID);
-                    list.Add(data);
-                    //list.Add(crcValue);
-                    listViewItem.SubItems.AddRange(list.ToArray());
-                    this.cacheListPerpTempSlowCh1.Add(listViewItem);
+                        ListViewItem listViewItem = new ListViewItem();
+                        List<string> list = new List<string>();
+                        listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
+                        if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
+                        {
+                            list.Add("标准帧");
+                        }
+                        else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
+                        {
+                            list.Add("扩展帧");
+                        }
+                        list.Add(messageID);
+                        list.Add(data);
+                        //list.Add(crcValue);
+                        listViewItem.SubItems.AddRange(list.ToArray());
+                        this.cacheListPerpTempSlowCh1.Add(listViewItem);
 
-                    if (cacheCountCh3 == 20)
-                    {
-                        ReSetSlowCh1(cacheListPerpTempSlowCh1);
-                        this.grid_stentSlowSignalCh1.Items[this.grid_stentSlowSignalCh1.Items.Count - 1].EnsureVisible();
-                        cacheCountCh3 = 0;
-                    }
-                    else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh1) == (countPerPackage % 20))
-                    {
-                        if ((cacheCountCh3 == (countPerPackage % 20)))
+                        if (cacheCountCh3 == 20)
                         {
                             ReSetSlowCh1(cacheListPerpTempSlowCh1);
-                            this.grid_stentSlowSignalCh1.Items[this.grid_stentSlowSignalCh1.Items.Count - 1].EnsureVisible();
                             cacheCountCh3 = 0;
-                            cacheActualCountSlowCh1 = 0;
                         }
-                    }
-                    cacheCountCh3++;
-                    if(channelData.SlowSignalCount < this.cacheFrameNumber)
-                        channelData.SlowSignalCount++;
-                }));
-            }
-            else if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel2)
-            {
-                this.Invoke(new Action(() =>
+                        else if (channelDataCh1.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh1) == (countPerPackage % 20))
+                        {
+                            if ((cacheCountCh3 == (countPerPackage % 20)))
+                            {
+                                ReSetSlowCh1(cacheListPerpTempSlowCh1);
+                                cacheCountCh3 = 0;
+                                cacheActualCountSlowCh1 = 0;
+                            }
+                        }
+                        cacheCountCh3++;
+                        if (channelData.SlowSignalCount < this.cacheFrameNumber)
+                            channelData.SlowSignalCount++;
+                    }));
+                }
+                else if (channelData.ChannelType == ChannelData.ChannelTypeEnum.Channel2)
                 {
-                    this.radDock1.ActiveWindow = this.documentChannel2;
+                    this.Invoke(new Action(() =>
+                    {
+                        this.radDock1.ActiveWindow = this.documentChannel2;
 
-                    ListViewItem listViewItem = new ListViewItem();
-                    List<string> list = new List<string>();
-                    listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
-                    if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
-                    {
-                        list.Add("标准帧");
-                    }
-                    else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
-                    {
-                        list.Add("扩展帧");
-                    }
-                    list.Add(messageID);
-                    list.Add(data);
-                    //list.Add(crcValue);
-                    //list.Add(sumCRCCal);
-                    listViewItem.SubItems.AddRange(list.ToArray());
-                    cacheListPerpTempSlowCh2.Add(listViewItem);
+                        ListViewItem listViewItem = new ListViewItem();
+                        List<string> list = new List<string>();
+                        listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
+                        if (channelData.FrameType == ChannelData.FrameTypeEnum.StandardFrame)
+                        {
+                            list.Add("标准帧");
+                        }
+                        else if (channelData.FrameType == ChannelData.FrameTypeEnum.ExtendFrame)
+                        {
+                            list.Add("扩展帧");
+                        }
+                        list.Add(messageID);
+                        list.Add(data);
+                        //list.Add(crcValue);
+                        //list.Add(sumCRCCal);
+                        listViewItem.SubItems.AddRange(list.ToArray());
+                        cacheListPerpTempSlowCh2.Add(listViewItem);
 
-                    if (cacheCountCh4 == 20)
-                    {
-                        ReSetSlowCh2(cacheListPerpTempSlowCh2);
-                        this.grid_stentSlowSignalCh2.Items[this.grid_stentSlowSignalCh2.Items.Count - 1].EnsureVisible();
-                        cacheCountCh4 = 0;
-                    }
-                    else if (channelDataCh2.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh2) == (countPerPackage % 20))
-                    {
-                        if (cacheCountCh4 == (countPerPackage % 20))
+                        if (cacheCountCh4 == 20)
                         {
                             ReSetSlowCh2(cacheListPerpTempSlowCh2);
                             this.grid_stentSlowSignalCh2.Items[this.grid_stentSlowSignalCh2.Items.Count - 1].EnsureVisible();
                             cacheCountCh4 = 0;
-                            cacheActualCountSlowCh2 = 0;
                         }
-                    }
-                    cacheCountCh4++;
-                    if(channelData.SlowSignalCount < this.cacheFrameNumber)
-                        channelData.SlowSignalCount++;
-                }));
+                        else if (channelDataCh2.ReceivePackageInfoQueue.Count <= 1 && (countPerPackage - cacheActualCountSlowCh2) == (countPerPackage % 20))
+                        {
+                            if (cacheCountCh4 == (countPerPackage % 20))
+                            {
+                                ReSetSlowCh2(cacheListPerpTempSlowCh2);
+                                this.grid_stentSlowSignalCh2.Items[this.grid_stentSlowSignalCh2.Items.Count - 1].EnsureVisible();
+                                cacheCountCh4 = 0;
+                                cacheActualCountSlowCh2 = 0;
+                            }
+                        }
+                        cacheCountCh4++;
+                        if (channelData.SlowSignalCount < this.cacheFrameNumber)
+                            channelData.SlowSignalCount++;
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log.Error("updatech1slow " + ex.Message + ex.StackTrace);
             }
         }
 
@@ -1485,14 +1594,6 @@ namespace StentDevice
                 }
                 this.serverIP = AddConnection.serverIP;
                 this.serverPort = AddConnection.serverPort;
-                this.tool_continue.Enabled = true;
-                this.tool_pause.Enabled = true;
-                this.tool_channel1Send.Enabled = true;
-                this.tool_channel2Send.Enabled = true;
-                this.tool_channel1stop.Enabled = true;
-                this.tool_channel2Stop.Enabled = true;
-                this.tool_connectServer.Enabled = false;
-                this.tool_disconnect.Enabled = true;
             }
         }
         #endregion
@@ -1616,8 +1717,8 @@ namespace StentDevice
             this.rb_highBefore1Ch2.CheckState = CheckState.Checked;
             this.rb_highBefore2Ch2.CheckState = CheckState.Checked;
 
-            this.tool_continue.Enabled = false;
-            this.tool_pause.Enabled = false;
+            //this.tool_continue.Enabled = false;
+            //this.tool_pause.Enabled = false;
             this.tool_channel1Send.Enabled = false;
             this.tool_channel2Send.Enabled = false;
             this.tool_channel1stop.Enabled = false;

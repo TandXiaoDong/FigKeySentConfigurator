@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SuperSocket.ProtoBase;
+//using SuperSocket.Facility.Protocol;
 
 namespace StentDevice.ClientSocket.AppBase
 {
-   public  class MyReceiveFilter:FixedHeaderReceiveFilter<MyPackageInfo>
+   public  class MyReceiveFilter:FixedHeaderReceiveFilter<MyPackageInfo> 
     {
 
         /// +-------+---+-------------------------------+
@@ -20,6 +21,17 @@ namespace StentDevice.ClientSocket.AppBase
         {
             
         }
+
+        //protected override int GetBodyLengthFromHeader(byte[] header, int offset, int length)
+        //{
+        //    return (int)header[offset + 2] * 256 + (int)header[offset + 3];
+        //}
+
+        //protected override MyPackageInfo ResolveRequestInfo(ArraySegment<byte> header, byte[] bodyBuffer, int offset, int length)
+        //{
+        //    var body = bodyBuffer.Skip(offset).Take(length).ToArray();
+        //    return new MyPackageInfo(header.Array, body);
+        //}
 
         protected override int GetBodyLengthFromHeader(IBufferStream bufferStream, int length)
         {
@@ -36,11 +48,11 @@ namespace StentDevice.ClientSocket.AppBase
         public override MyPackageInfo ResolvePackage(IBufferStream bufferStream)
         {
             //第三个参数用0,1都可以
-            byte[] header =bufferStream.Buffers[0].ToArray();
+            byte[] header = bufferStream.Buffers[0].ToArray();
             if (bufferStream.Buffers.Count > 1)
             {
                 byte[] bodyBuffer = bufferStream.Buffers[1].ToArray();
-                return new MyPackageInfo(header,bodyBuffer);
+                return new MyPackageInfo(header, bodyBuffer);
             }
             //byte[] allBuffer = bufferStream.Buffers[0].Array.CloneRange(0, (int)bufferStream.Length);
             //合并所有buffer
