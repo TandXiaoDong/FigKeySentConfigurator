@@ -649,9 +649,9 @@ namespace StentDevice
 
             //this.grid_stentSlowSignalCh2.VirtualMode = false;
             this.cacheListViewSourceSlowCh2.Clear();
-            this.grid_stentQuickBothCh2.VirtualListSize = this.cacheListViewSourceSlowCh2.Count;
+            this.grid_stentSlowSignalCh2.VirtualListSize = this.cacheListViewSourceSlowCh2.Count;
 
-            this.grid_stentQuickBothCh2.VirtualMode = false;
+            //this.grid_stentQuickBothCh2.VirtualMode = false;
             this.grid_stentQuickBothCh2.Items.Clear();
 
             channelDataCh2.RevCount = 0;
@@ -668,7 +668,7 @@ namespace StentDevice
             this.cacheListViewSourceSlowCh1.Clear();
             this.grid_stentSlowSignalCh1.VirtualListSize = this.cacheListViewSourceSlowCh1.Count;
 
-            this.grid_stentQuickBothCh1.VirtualMode = false;
+            //this.grid_stentQuickBothCh1.VirtualMode = false;
             this.grid_stentQuickBothCh1.Items.Clear();
 
             channelDataCh1.RevCount = 0;
@@ -683,6 +683,8 @@ namespace StentDevice
             this.tool_channel2Send.Enabled = true;
             this.tool_channel2Stop.Enabled = false;
             this.tool_channel2Export.Enabled = true;
+            this.tool_ch2ExportQuick.Enabled = true;
+            this.tool_ch2ExportSlow.Enabled = true;
         }
 
         private void Tool_channel1stop_Click(object sender, EventArgs e)
@@ -693,6 +695,8 @@ namespace StentDevice
             this.tool_channel1Send.Enabled = true;
             this.tool_channel1stop.Enabled = false;
             this.tool_channel1Export.Enabled = true;
+            this.tool_ch1ExportQuick.Enabled = true;
+            this.tool_ch1ExportSlow.Enabled = true;
         }
 
         private void Tool_channel2Send_Click(object sender, EventArgs e)
@@ -719,6 +723,8 @@ namespace StentDevice
                 this.tool_channel1Send.Enabled = false;
                 this.tool_channel1stop.Enabled = true;
                 this.tool_channel1Export.Enabled = false;
+                this.tool_ch1ExportQuick.Enabled = false;
+                this.tool_ch1ExportSlow.Enabled = false;
             }
             //ch2
             if (stentSignalEnum == StentSignalEnum.RequestDataCh2)
@@ -726,6 +732,8 @@ namespace StentDevice
                 this.tool_channel2Send.Enabled = false;
                 this.tool_channel2Stop.Enabled = true;
                 this.tool_channel2Export.Enabled = false;
+                this.tool_ch2ExportQuick.Enabled = false;
+                this.tool_ch2ExportSlow.Enabled = false;
             }
         }
 
@@ -768,6 +776,21 @@ namespace StentDevice
             //GridViewExport.ExportGridViewData(currentExportType, radGridView);
         }
 
+        #region connect server
+        private void ConnectServerView()
+        {
+            AddConnection addConnection = new AddConnection(this.serverIP, this.serverPort);
+            if (addConnection.ShowDialog() == DialogResult.OK)
+            {
+                if (!SuperEasyClient.client.IsConnected)
+                {
+                    MessageBox.Show("连接服务失败！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+            }
+        }
+        #endregion
         private void SuperEasyClient_NoticeConnectEvent(bool IsConnect)
         {
             this.BeginInvoke(new Action(() =>
@@ -780,13 +803,35 @@ namespace StentDevice
                     this.tool_channel1stop.Enabled = false;
                     this.tool_channel2Send.Enabled = true;
                     this.tool_channel2Stop.Enabled = false;
+
+                    //连接成功
+                    if (channelDataCh1.IsAutoSend)
+                    {
+                        timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
+                        timerCh1.Start();
+                        this.tool_channel1Send.Enabled = false;
+                        this.tool_channel1stop.Enabled = true;
+                        this.tool_channel1Export.Enabled = false;
+                        this.tool_ch1ExportSlow.Enabled = false;
+                        this.tool_ch1ExportQuick.Enabled = false;
+                    }
+                    if (channelDataCh2.IsAutoSend)
+                    {
+                        timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
+                        timerCh2.Start();
+                        this.tool_channel1Send.Enabled = false;
+                        this.tool_channel1stop.Enabled = true;
+                        this.tool_channel1Export.Enabled = false;
+                        this.tool_ch1ExportSlow.Enabled = false;
+                        this.tool_ch1ExportQuick.Enabled = false;
+                    }
+                    this.serverIP = AddConnection.serverIP;
+                    this.serverPort = AddConnection.serverPort;
                 }
                 else
                 {
                     this.tool_connectServer.Enabled = true;
                     this.tool_disconnect.Enabled = false;
-                    //this.tool_continue.Enabled = false;
-                    //this.tool_pause.Enabled = false;
                     this.tool_channel1Send.Enabled = false;
                     this.tool_channel1stop.Enabled = false;
                     this.tool_channel2Send.Enabled = false;
@@ -831,6 +876,9 @@ namespace StentDevice
                                 {
                                     this.tool_channel1Send.Enabled = false;
                                     this.tool_channel1stop.Enabled = true;
+                                    this.tool_channel1Export.Enabled = false;
+                                    this.tool_ch1ExportQuick.Enabled = false;
+                                    this.tool_ch1ExportSlow.Enabled = false;
                                 }
                             }
                         }
@@ -844,6 +892,9 @@ namespace StentDevice
                                 {
                                     this.tool_channel2Send.Enabled = false;
                                     this.tool_channel2Stop.Enabled = true;
+                                    this.tool_channel2Export.Enabled = false;
+                                    this.tool_ch2ExportQuick.Enabled = false;
+                                    this.tool_ch2ExportSlow.Enabled = false;
                                 }
                             }
                         }
@@ -1360,8 +1411,6 @@ namespace StentDevice
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.radDock1.ActiveWindow = this.documentChannel1;
-
                         ListViewItem listViewItem = new ListViewItem();
                         List<string> list = new List<string>();
                         listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
@@ -1402,8 +1451,6 @@ namespace StentDevice
                 {
                     this.Invoke(new Action(() =>
                     {
-                        this.radDock1.ActiveWindow = this.documentChannel2;
-
                         ListViewItem listViewItem = new ListViewItem();
                         List<string> list = new List<string>();
                         listViewItem.Text = (channelData.SlowSignalCount + 1).ToString();
@@ -1568,34 +1615,6 @@ namespace StentDevice
             }));
         }
 
-        #endregion
-
-        #region connect server
-        private void ConnectServerView()
-        {
-            AddConnection addConnection = new AddConnection(this.serverIP,this.serverPort);
-            if (addConnection.ShowDialog() == DialogResult.OK)
-            {
-                if (!SuperEasyClient.client.IsConnected)
-                {
-                    MessageBox.Show("连接服务失败！","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    return;
-                }
-                //连接成功
-                if (channelDataCh1.IsAutoSend)
-                {
-                    timerCh1.Interval = channelDataCh1.AutoSendTimeInternal;
-                    timerCh1.Start();
-                }
-                if (channelDataCh2.IsAutoSend)
-                {
-                    timerCh2.Interval = channelDataCh2.AutoSendTimeInternal;
-                    timerCh2.Start();
-                }
-                this.serverIP = AddConnection.serverIP;
-                this.serverPort = AddConnection.serverPort;
-            }
-        }
         #endregion
 
         #region stent signal cal function
