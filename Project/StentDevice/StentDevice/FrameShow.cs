@@ -54,9 +54,10 @@ namespace StentDevice
             }
             if (frameNumber < currentFrame)
             {
-
                 return;
             }
+            //if (frameNumber > 5000)
+            //    return;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

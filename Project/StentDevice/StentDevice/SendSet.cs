@@ -13,17 +13,14 @@ namespace StentDevice
     public partial class SendSet : RadForm
     {
         public static int autoSendTimerInternal;
-        public static bool IsApplyAutoSend;
-        public SendSet(int timerInternal,bool IsAuto)
+        public SendSet(int timerInternal)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             autoSendTimerInternal = timerInternal;
-            IsApplyAutoSend = IsAuto;
             this.tb_timerInternal.Text = autoSendTimerInternal.ToString();
-            this.cb_auto.Checked = IsAuto;
             this.btn_apply.Click += Btn_apply_Click;
             this.btn_cancel.Click += Btn_cancel_Click;
         }
@@ -51,7 +48,6 @@ namespace StentDevice
                 MessageBox.Show("请输入大于0的时间间隔！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            IsApplyAutoSend = this.cb_auto.Checked;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

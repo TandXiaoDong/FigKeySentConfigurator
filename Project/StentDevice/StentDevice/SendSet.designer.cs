@@ -35,20 +35,18 @@
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.tb_timerInternal = new Telerik.WinControls.UI.RadTextBox();
-            this.cb_auto = new Telerik.WinControls.UI.RadCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.btn_cancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_apply)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_timerInternal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cb_auto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_cancel.Location = new System.Drawing.Point(180, 141);
+            this.btn_cancel.Location = new System.Drawing.Point(180, 122);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(101, 33);
             this.btn_cancel.TabIndex = 22;
@@ -58,7 +56,7 @@
             // btn_apply
             // 
             this.btn_apply.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_apply.Location = new System.Drawing.Point(42, 141);
+            this.btn_apply.Location = new System.Drawing.Point(42, 122);
             this.btn_apply.Name = "btn_apply";
             this.btn_apply.Size = new System.Drawing.Size(107, 33);
             this.btn_apply.TabIndex = 21;
@@ -92,22 +90,12 @@
             this.tb_timerInternal.Text = "3000";
             this.tb_timerInternal.ThemeName = "Material";
             // 
-            // cb_auto
-            // 
-            this.cb_auto.Location = new System.Drawing.Point(42, 99);
-            this.cb_auto.Name = "cb_auto";
-            this.cb_auto.Size = new System.Drawing.Size(57, 19);
-            this.cb_auto.TabIndex = 25;
-            this.cb_auto.Text = "启用";
-            this.cb_auto.ThemeName = "Material";
-            // 
             // SendSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(332, 186);
-            this.Controls.Add(this.cb_auto);
             this.Controls.Add(this.tb_timerInternal);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.btn_cancel);
@@ -126,7 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_timerInternal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cb_auto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -141,6 +128,5 @@
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadTextBox tb_timerInternal;
-        private Telerik.WinControls.UI.RadCheckBox cb_auto;
     }
 }

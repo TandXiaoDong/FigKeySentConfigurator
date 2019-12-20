@@ -14,7 +14,7 @@ namespace StentDevice.Model
         private List<string> cacheDataPerFrame;
         private List<int> cacheFirstBitValue;
         private int autoSendTimeInternal;
-        private bool isAutoSend;
+        //private bool isAutoSend = true;
         private bool isAnalysisComplete;
         private bool isFirstReceive = true;
         private Queue<MyPackageInfo> receivePackageInfoQueue;
@@ -77,11 +77,11 @@ namespace StentDevice.Model
             set { this.autoSendTimeInternal = value; }
         }
 
-        public bool IsAutoSend
-        {
-            get { return this.isAutoSend; }
-            set { this.isAutoSend = value; }
-        }
+        //public bool IsAutoSend
+        //{
+        //    get { return this.isAutoSend; }
+        //    set { this.isAutoSend = value; }
+        //}
 
         public bool IsAnalysisComplete
         {

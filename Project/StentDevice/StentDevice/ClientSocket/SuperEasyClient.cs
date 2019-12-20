@@ -49,7 +49,7 @@ namespace StentDevice.ClientSocket
 
             LogHelper.Log.Info("开始连接服务...");
             client = new EasyClient<MyPackageInfo>();
-            client.ReceiveBufferSize = 4098;
+            client.ReceiveBufferSize = 4100;
             client.Initialize(new MyReceiveFilter());
             client.Connected += OnClientConnected;
             client.NewPackageReceived += OnPagckageReceived;
