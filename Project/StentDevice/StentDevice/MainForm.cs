@@ -11,6 +11,7 @@ using Telerik.WinControls.UI;
 using StentDevice.ClientSocket;
 using StentDevice.ClientSocket.AppBase;
 using CommonUtils.Logger;
+using CommonUtils.DEncrypt;
 using WindowsFormTelerik.ControlCommon;
 using CommonUtils.ByteHelper;
 using CommonUtils.FileHelper;
@@ -101,6 +102,7 @@ namespace StentDevice
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             Init();
+            CheckRegister();
             InitListView();
             EventHandlers();
             this.radDock1.ActiveWindow = this.documentChannel1;
@@ -2036,5 +2038,47 @@ namespace StentDevice
             //cacheCountCh2++;
         }
         #endregion
+
+        private void CheckRegister()
+        {
+            try
+            {
+                DateTime daytime = DateTime.Parse(System.DateTime.Now.ToLongDateString());
+                var path = AppDomain.CurrentDomain.BaseDirectory + "rs.ini";
+                if (!File.Exists(path))
+                {
+                    DateTime usetime = daytime.AddDays(30);
+                    var date = usetime.ToString("yyyy-MM-dd HH:mm:ss");
+                    date = MySecurity.EncodeBase64(date);
+                    INIFile.SetValue("s", "k",date , path);
+                    FileInfo fileInfo = new FileInfo(path);
+                    fileInfo.Attributes = FileAttributes.Hidden;
+                    MessageBox.Show("感谢您使用本软件，您将有30天的试用期！", "提示",MessageBoxButtons.OK);
+                }
+                else
+                {
+                    //判断剩余天数
+                    var date = INIFile.GetValue("s", "k", path);
+                    date = MySecurity.DecodeBase64(date);
+                    var currentDate = DateTime.Parse(date);
+                    TimeSpan ts = currentDate - daytime;
+                    int day = ts.Days;
+                    if (day <= 0)
+                    {
+                        if (MessageBox.Show("软件试用期已到，请联系系统管理员！", "提示", MessageBoxButtons.OK) == DialogResult.OK)
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("本软件的试用期还有" + day.ToString() + "天！", "提示");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+            }
+        }
     }
 }
