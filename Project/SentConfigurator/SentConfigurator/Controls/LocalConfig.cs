@@ -50,17 +50,17 @@ namespace SentConfigurator.Controls
         {
             try
             {
-                sentCfg.StorageDataType = (Storage_Data_Type)Enum.Parse(typeof(Storage_Data_Type), INIFile.GetValue(DATA_TYPE, STORAGE_DATA_TYPE, path));
+                sentCfg.StorageDataType = (Storage_Data_Type)Enum.Parse(typeof(Storage_Data_Type), INIFile.GetValue(DATA_TYPE, STORAGE_DATA_TYPE, path).ToString());
 
-                basecfg.DataType = INIFile.GetValue(BASE_SIG, BASE_DATA_TYPE, path);
-                basecfg.BatteryState = INIFile.GetValue(BASE_SIG, BASE_BATTERY_STATE, path);
-                basecfg.SerialMsg = INIFile.GetValue(BASE_SIG, BASE_SERIAL_MSG, path);
-                basecfg.TimeLong = INIFile.GetValue(BASE_SIG, BASE_TIME_LEN, path);
+                basecfg.DataType = INIFile.GetValue(BASE_SIG, BASE_DATA_TYPE, path).ToString();
+                basecfg.BatteryState = INIFile.GetValue(BASE_SIG, BASE_BATTERY_STATE, path).ToString();
+                basecfg.SerialMsg = INIFile.GetValue(BASE_SIG, BASE_SERIAL_MSG, path).ToString();
+                basecfg.TimeLong = INIFile.GetValue(BASE_SIG, BASE_TIME_LEN, path).ToString();
 
                 int groupCount = 0;
                 if (sentCfg.StorageDataType == Storage_Data_Type.HEX)
                 {
-                    groupCount = Convert.ToInt32(INIFile.GetValue(SLOW_SIG, SLOW_GROUP_COUNT, path).ToLower().Replace("0x", ""), 16);
+                    groupCount = Convert.ToInt32(INIFile.GetValue(SLOW_SIG, SLOW_GROUP_COUNT, path).ToString().ToLower().Replace("0x", ""), 16);
                 }
                 else if (sentCfg.StorageDataType == Storage_Data_Type.DEC)
                 {
@@ -71,17 +71,17 @@ namespace SentConfigurator.Controls
                 for (int i = 0; i < groupCount; i++)
                 {
                     SentConfig.SlowSigConfig slowCfg = new SentConfig.SlowSigConfig();
-                    slowCfg.GroupOrder = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_ORDER + "_" + i, path);
-                    slowCfg.GroupCount = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_COUNT, path);
-                    slowCfg.GroupSerialID = INIFile.GetValue(SLOW_SIG,SLOW_GROUP_SERIAL_ID+"_"+i,path);
-                    slowCfg.GroupData = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_DATA + "_" + i, path);
+                    slowCfg.GroupOrder = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_ORDER + "_" + i, path).ToString();
+                    slowCfg.GroupCount = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_COUNT, path).ToString();
+                    slowCfg.GroupSerialID = INIFile.GetValue(SLOW_SIG,SLOW_GROUP_SERIAL_ID+"_"+i,path).ToString();
+                    slowCfg.GroupData = INIFile.GetValue(SLOW_SIG, SLOW_GROUP_DATA + "_" + i, path).ToString();
                     cfgList.Add(slowCfg);
                 }
 
-                quickCfg.QuickSigType = INIFile.GetValue(QUICK_SIG, QUICK_DATA_TYPE, path);
-                quickCfg.QuickSigData1 = INIFile.GetValue(QUICK_SIG, QUICK_SIG_DATA1, path);
-                quickCfg.QuickSigData2 = INIFile.GetValue(QUICK_SIG, QUICK_SIG_DATA2, path);
-                quickCfg.QuickDataCheck = (SentConfig.QuickDataOrder)Enum.Parse(typeof(SentConfig.QuickDataOrder), INIFile.GetValue(QUICK_SIG, QUICK_DATA2_CHECK, path));
+                quickCfg.QuickSigType = INIFile.GetValue(QUICK_SIG, QUICK_DATA_TYPE, path).ToString();
+                quickCfg.QuickSigData1 = INIFile.GetValue(QUICK_SIG, QUICK_SIG_DATA1, path).ToString();
+                quickCfg.QuickSigData2 = INIFile.GetValue(QUICK_SIG, QUICK_SIG_DATA2, path).ToString();
+                quickCfg.QuickDataCheck = (SentConfig.QuickDataOrder)Enum.Parse(typeof(SentConfig.QuickDataOrder), INIFile.GetValue(QUICK_SIG, QUICK_DATA2_CHECK, path).ToString());
 
             }
             catch (Exception ex)

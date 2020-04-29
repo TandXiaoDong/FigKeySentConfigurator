@@ -1760,7 +1760,7 @@ namespace SentConfigurator
             quickCfg = new SentConfig.QuickSigConfig();
             sysCfgPath = AppDomain.CurrentDomain.BaseDirectory+"Config\\";
             //读配置信息
-            string lastSentPath = INIFile.GetValue(LocalConfig.SENT_PATH_HEAD,LocalConfig.SENT_CONFIG_LAST_PATH,sysCfgPath+LocalConfig.SENT_CONFIG_INI_NAME);
+            string lastSentPath = INIFile.GetValue(LocalConfig.SENT_PATH_HEAD,LocalConfig.SENT_CONFIG_LAST_PATH,sysCfgPath+LocalConfig.SENT_CONFIG_INI_NAME).ToString();
             if (string.IsNullOrEmpty(lastSentPath))
                 return;
             if (!File.Exists(lastSentPath))

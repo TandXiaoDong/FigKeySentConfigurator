@@ -2067,7 +2067,7 @@ namespace StentDevice
                     {
                         if (MessageBox.Show("软件试用期已到，请联系系统管理员！", "提示", MessageBoxButtons.OK) == DialogResult.OK)
                         {
-                            Environment.Exit(0);
+                            //Environment.Exit(0);
                         }
                     }
                     else
