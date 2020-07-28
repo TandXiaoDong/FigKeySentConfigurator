@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -69,27 +69,15 @@
             this.btn_sig_cfg_read = new System.Windows.Forms.Button();
             this.btn_sig_cfg_set = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btn_open = new System.Windows.Forms.Button();
-            this.cb_handshake = new System.Windows.Forms.ComboBox();
-            this.cb_stop = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbx_recon = new System.Windows.Forms.CheckBox();
-            this.cb_check = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ledControl1 = new LEDLib.LEDControl();
-            this.cb_data = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cb_port = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cb_baud = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.rdb_dec = new Telerik.WinControls.UI.RadRadioButton();
-            this.rdb_hex = new Telerik.WinControls.UI.RadRadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btn_exportMode = new System.Windows.Forms.Button();
+            this.btn_startQSigTest = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.check_while = new System.Windows.Forms.CheckBox();
+            this.btn_importQInfo = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel5 = new Telerik.WinControls.UI.RadLabel();
@@ -112,6 +100,26 @@
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.cob_serial_msg = new System.Windows.Forms.ComboBox();
             this.lbx_ticksLimit = new Telerik.WinControls.UI.RadLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdb_dec = new Telerik.WinControls.UI.RadRadioButton();
+            this.rdb_hex = new Telerik.WinControls.UI.RadRadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btn_open = new System.Windows.Forms.Button();
+            this.cb_handshake = new System.Windows.Forms.ComboBox();
+            this.cb_stop = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbx_recon = new System.Windows.Forms.CheckBox();
+            this.cb_check = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ledControl1 = new LEDLib.LEDControl();
+            this.cb_data = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cb_port = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cb_baud = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_help = new Telerik.WinControls.UI.RadMenuItem();
             this.menu_abort = new Telerik.WinControls.UI.RadMenuItem();
@@ -127,11 +135,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_groupdata.MasterTemplate)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdb_dec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdb_hex)).BeginInit();
+            this.panel1.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel5)).BeginInit();
@@ -146,6 +152,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbx_ticksLimit)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdb_dec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdb_hex)).BeginInit();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,9 +174,9 @@
             this.status_sendcount,
             this.toolStripStatusLabel2,
             this.status_receivecount});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 889);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 740);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(830, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1167, 22);
             this.statusStrip1.TabIndex = 27;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -287,7 +297,7 @@
             this.tool_writecfg});
             this.toolStrip1.Location = new System.Drawing.Point(0, 20);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(830, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1167, 25);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -336,7 +346,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 45);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(830, 844);
+            this.tabControl1.Size = new System.Drawing.Size(1167, 695);
             this.tabControl1.TabIndex = 30;
             // 
             // tabPage2
@@ -347,7 +357,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(822, 818);
+            this.tabPage2.Size = new System.Drawing.Size(1159, 669);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "SENT配置";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -356,25 +366,23 @@
             // 
             this.panel5.Controls.Add(this.groupBox5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 310);
+            this.panel5.Location = new System.Drawing.Point(3, 333);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(816, 462);
+            this.panel5.Size = new System.Drawing.Size(1153, 290);
             this.panel5.TabIndex = 30;
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.lbx_group_count_limit);
             this.groupBox5.Controls.Add(this.btn_cleardgv);
             this.groupBox5.Controls.Add(this.dgv_groupdata);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.cob_group_num);
-            this.groupBox5.Location = new System.Drawing.Point(3, 3);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(808, 456);
-            this.groupBox5.TabIndex = 0;
+            this.groupBox5.Size = new System.Drawing.Size(1153, 290);
+            this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "慢信号";
             // 
@@ -390,13 +398,12 @@
             // btn_cleardgv
             // 
             this.btn_cleardgv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cleardgv.Location = new System.Drawing.Point(731, 15);
+            this.btn_cleardgv.Location = new System.Drawing.Point(1076, 15);
             this.btn_cleardgv.Name = "btn_cleardgv";
             this.btn_cleardgv.Size = new System.Drawing.Size(71, 26);
             this.btn_cleardgv.TabIndex = 34;
             this.btn_cleardgv.Text = "清空";
             this.btn_cleardgv.UseVisualStyleBackColor = true;
-            this.btn_cleardgv.Click += new System.EventHandler(this.Btn_cleardgv_Click);
             // 
             // dgv_groupdata
             // 
@@ -407,9 +414,9 @@
             // 
             // 
             // 
-            this.dgv_groupdata.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.dgv_groupdata.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.dgv_groupdata.Name = "dgv_groupdata";
-            this.dgv_groupdata.Size = new System.Drawing.Size(806, 408);
+            this.dgv_groupdata.Size = new System.Drawing.Size(1151, 242);
             this.dgv_groupdata.TabIndex = 33;
             // 
             // label9
@@ -434,18 +441,19 @@
             this.panel4.Controls.Add(this.btn_sig_cfg_read);
             this.panel4.Controls.Add(this.btn_sig_cfg_set);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(3, 772);
+            this.panel4.Location = new System.Drawing.Point(3, 623);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(816, 43);
+            this.panel4.Size = new System.Drawing.Size(1153, 43);
             this.panel4.TabIndex = 30;
             // 
             // btn_sig_cfg_read
             // 
             this.btn_sig_cfg_read.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_sig_cfg_read.Location = new System.Drawing.Point(638, 6);
+            this.btn_sig_cfg_read.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_sig_cfg_read.Location = new System.Drawing.Point(900, 9);
             this.btn_sig_cfg_read.Name = "btn_sig_cfg_read";
-            this.btn_sig_cfg_read.Size = new System.Drawing.Size(75, 23);
+            this.btn_sig_cfg_read.Size = new System.Drawing.Size(86, 23);
             this.btn_sig_cfg_read.TabIndex = 0;
             this.btn_sig_cfg_read.Text = "读取配置";
             this.btn_sig_cfg_read.UseVisualStyleBackColor = true;
@@ -455,9 +463,10 @@
             // 
             this.btn_sig_cfg_set.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_sig_cfg_set.Location = new System.Drawing.Point(730, 6);
+            this.btn_sig_cfg_set.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_sig_cfg_set.Location = new System.Drawing.Point(1004, 9);
             this.btn_sig_cfg_set.Name = "btn_sig_cfg_set";
-            this.btn_sig_cfg_set.Size = new System.Drawing.Size(75, 23);
+            this.btn_sig_cfg_set.Size = new System.Drawing.Size(87, 23);
             this.btn_sig_cfg_set.TabIndex = 3;
             this.btn_sig_cfg_set.Text = "设置配置";
             this.btn_sig_cfg_set.UseVisualStyleBackColor = true;
@@ -465,15 +474,358 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.groupBox6);
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.groupBox4);
-            this.panel3.Controls.Add(this.groupBox8);
-            this.panel3.Controls.Add(this.groupBox7);
+            this.panel3.Controls.Add(this.groupBox6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(816, 307);
+            this.panel3.Size = new System.Drawing.Size(1153, 330);
             this.panel3.TabIndex = 30;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox8);
+            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 137);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1153, 193);
+            this.panel1.TabIndex = 6;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btn_exportMode);
+            this.groupBox8.Controls.Add(this.btn_startQSigTest);
+            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Controls.Add(this.numericUpDown1);
+            this.groupBox8.Controls.Add(this.label7);
+            this.groupBox8.Controls.Add(this.check_while);
+            this.groupBox8.Controls.Add(this.btn_importQInfo);
+            this.groupBox8.Controls.Add(this.tableLayoutPanel6);
+            this.groupBox8.Controls.Add(this.lbx_hexorder_notes);
+            this.groupBox8.Controls.Add(this.chx_hex_order);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox8.Location = new System.Drawing.Point(399, 0);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(754, 193);
+            this.groupBox8.TabIndex = 4;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "快信号";
+            // 
+            // btn_exportMode
+            // 
+            this.btn_exportMode.Location = new System.Drawing.Point(467, 97);
+            this.btn_exportMode.Name = "btn_exportMode";
+            this.btn_exportMode.Size = new System.Drawing.Size(75, 23);
+            this.btn_exportMode.TabIndex = 22;
+            this.btn_exportMode.Text = "导出模板";
+            this.btn_exportMode.UseVisualStyleBackColor = true;
+            // 
+            // btn_startQSigTest
+            // 
+            this.btn_startQSigTest.Enabled = false;
+            this.btn_startQSigTest.Location = new System.Drawing.Point(467, 135);
+            this.btn_startQSigTest.Name = "btn_startQSigTest";
+            this.btn_startQSigTest.Size = new System.Drawing.Size(75, 23);
+            this.btn_startQSigTest.TabIndex = 21;
+            this.btn_startQSigTest.Text = "开始测试";
+            this.btn_startQSigTest.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(593, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 12);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "ms";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(467, 26);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
+            this.numericUpDown1.TabIndex = 19;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(396, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "时间间隔：";
+            // 
+            // check_while
+            // 
+            this.check_while.AutoSize = true;
+            this.check_while.Location = new System.Drawing.Point(467, 57);
+            this.check_while.Name = "check_while";
+            this.check_while.Size = new System.Drawing.Size(72, 16);
+            this.check_while.TabIndex = 17;
+            this.check_while.Text = "是否循环";
+            this.check_while.UseVisualStyleBackColor = true;
+            // 
+            // btn_importQInfo
+            // 
+            this.btn_importQInfo.Location = new System.Drawing.Point(568, 97);
+            this.btn_importQInfo.Name = "btn_importQInfo";
+            this.btn_importQInfo.Size = new System.Drawing.Size(75, 23);
+            this.btn_importQInfo.TabIndex = 16;
+            this.btn_importQInfo.Text = "导入";
+            this.btn_importQInfo.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 3;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.61512F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.38488F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel6.Controls.Add(this.radLabel8, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.radLabel5, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.lbx_quickd2_limit, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.tbx_quicksig_data2, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.cob_quicksig_type, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tbx_quicksig_data1, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.lbx_quickd1_limit, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.radLabel10, 2, 2);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(6, 17);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(366, 125);
+            this.tableLayoutPanel6.TabIndex = 15;
+            // 
+            // radLabel8
+            // 
+            this.radLabel8.Location = new System.Drawing.Point(3, 3);
+            this.radLabel8.Name = "radLabel8";
+            this.radLabel8.Size = new System.Drawing.Size(65, 18);
+            this.radLabel8.TabIndex = 9;
+            this.radLabel8.Text = "快信号类型";
+            // 
+            // radLabel5
+            // 
+            this.radLabel5.Location = new System.Drawing.Point(3, 44);
+            this.radLabel5.Name = "radLabel5";
+            this.radLabel5.Size = new System.Drawing.Size(70, 18);
+            this.radLabel5.TabIndex = 10;
+            this.radLabel5.Text = "快信号data1";
+            // 
+            // lbx_quickd2_limit
+            // 
+            this.lbx_quickd2_limit.Location = new System.Drawing.Point(3, 85);
+            this.lbx_quickd2_limit.Name = "lbx_quickd2_limit";
+            this.lbx_quickd2_limit.Size = new System.Drawing.Size(70, 18);
+            this.lbx_quickd2_limit.TabIndex = 12;
+            this.lbx_quickd2_limit.Text = "快信号data2";
+            // 
+            // tbx_quicksig_data2
+            // 
+            this.tbx_quicksig_data2.Location = new System.Drawing.Point(94, 85);
+            this.tbx_quicksig_data2.Name = "tbx_quicksig_data2";
+            this.tbx_quicksig_data2.Size = new System.Drawing.Size(193, 21);
+            this.tbx_quicksig_data2.TabIndex = 13;
+            // 
+            // cob_quicksig_type
+            // 
+            this.cob_quicksig_type.FormattingEnabled = true;
+            this.cob_quicksig_type.Location = new System.Drawing.Point(94, 3);
+            this.cob_quicksig_type.Name = "cob_quicksig_type";
+            this.cob_quicksig_type.Size = new System.Drawing.Size(193, 20);
+            this.cob_quicksig_type.TabIndex = 8;
+            // 
+            // tbx_quicksig_data1
+            // 
+            this.tbx_quicksig_data1.Location = new System.Drawing.Point(94, 44);
+            this.tbx_quicksig_data1.Name = "tbx_quicksig_data1";
+            this.tbx_quicksig_data1.Size = new System.Drawing.Size(193, 21);
+            this.tbx_quicksig_data1.TabIndex = 11;
+            // 
+            // lbx_quickd1_limit
+            // 
+            this.lbx_quickd1_limit.ForeColor = System.Drawing.Color.Blue;
+            this.lbx_quickd1_limit.Location = new System.Drawing.Point(293, 44);
+            this.lbx_quickd1_limit.Name = "lbx_quickd1_limit";
+            this.lbx_quickd1_limit.Size = new System.Drawing.Size(52, 18);
+            this.lbx_quickd1_limit.TabIndex = 14;
+            this.lbx_quickd1_limit.Text = "0-0X0FFF";
+            // 
+            // radLabel10
+            // 
+            this.radLabel10.ForeColor = System.Drawing.Color.Blue;
+            this.radLabel10.Location = new System.Drawing.Point(293, 85);
+            this.radLabel10.Name = "radLabel10";
+            this.radLabel10.Size = new System.Drawing.Size(52, 18);
+            this.radLabel10.TabIndex = 15;
+            this.radLabel10.Text = "0-0X0FFF";
+            // 
+            // lbx_hexorder_notes
+            // 
+            this.lbx_hexorder_notes.AutoSize = true;
+            this.lbx_hexorder_notes.Location = new System.Drawing.Point(2, 172);
+            this.lbx_hexorder_notes.Name = "lbx_hexorder_notes";
+            this.lbx_hexorder_notes.Size = new System.Drawing.Size(335, 12);
+            this.lbx_hexorder_notes.TabIndex = 14;
+            this.lbx_hexorder_notes.Text = "快信号data2说明：勾选后表示配置SENT时低位在前，高位在后";
+            // 
+            // chx_hex_order
+            // 
+            this.chx_hex_order.Location = new System.Drawing.Point(92, 149);
+            this.chx_hex_order.Name = "chx_hex_order";
+            this.chx_hex_order.Size = new System.Drawing.Size(127, 18);
+            this.chx_hex_order.TabIndex = 2;
+            this.chx_hex_order.Text = "低位在前，高位在后";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox7.Location = new System.Drawing.Point(0, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(399, 193);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "基础信号";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.22034F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.77966F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel5.Controls.Add(this.tbx_timeframe, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.radLabel2, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.cob_dataframe_type, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.radLabel4, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.cob_battery_state, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.radLabel3, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.radLabel1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.cob_serial_msg, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lbx_ticksLimit, 2, 3);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 173);
+            this.tableLayoutPanel5.TabIndex = 11;
+            // 
+            // tbx_timeframe
+            // 
+            this.tbx_timeframe.Location = new System.Drawing.Point(160, 132);
+            this.tbx_timeframe.Name = "tbx_timeframe";
+            this.tbx_timeframe.Size = new System.Drawing.Size(131, 21);
+            this.tbx_timeframe.TabIndex = 14;
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.Location = new System.Drawing.Point(3, 46);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(104, 18);
+            this.radLabel2.TabIndex = 2;
+            this.radLabel2.Text = "SENT空闲电平状态";
+            // 
+            // cob_dataframe_type
+            // 
+            this.cob_dataframe_type.FormattingEnabled = true;
+            this.cob_dataframe_type.Location = new System.Drawing.Point(160, 3);
+            this.cob_dataframe_type.Name = "cob_dataframe_type";
+            this.cob_dataframe_type.Size = new System.Drawing.Size(131, 20);
+            this.cob_dataframe_type.TabIndex = 6;
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.Location = new System.Drawing.Point(3, 132);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(148, 18);
+            this.radLabel4.TabIndex = 4;
+            this.radLabel4.Text = "SENT一帧时间(ppTicks个数)";
+            // 
+            // cob_battery_state
+            // 
+            this.cob_battery_state.FormattingEnabled = true;
+            this.cob_battery_state.Location = new System.Drawing.Point(160, 46);
+            this.cob_battery_state.Name = "cob_battery_state";
+            this.cob_battery_state.Size = new System.Drawing.Size(131, 20);
+            this.cob_battery_state.TabIndex = 5;
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.Location = new System.Drawing.Point(3, 89);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(104, 18);
+            this.radLabel3.TabIndex = 3;
+            this.radLabel3.Text = "SENT扩展串行消息";
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Location = new System.Drawing.Point(3, 3);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(92, 18);
+            this.radLabel1.TabIndex = 0;
+            this.radLabel1.Text = "SENT数据帧类型";
+            // 
+            // cob_serial_msg
+            // 
+            this.cob_serial_msg.FormattingEnabled = true;
+            this.cob_serial_msg.Location = new System.Drawing.Point(160, 89);
+            this.cob_serial_msg.Name = "cob_serial_msg";
+            this.cob_serial_msg.Size = new System.Drawing.Size(131, 20);
+            this.cob_serial_msg.TabIndex = 1;
+            // 
+            // lbx_ticksLimit
+            // 
+            this.lbx_ticksLimit.ForeColor = System.Drawing.Color.Blue;
+            this.lbx_ticksLimit.Location = new System.Drawing.Point(297, 132);
+            this.lbx_ticksLimit.Name = "lbx_ticksLimit";
+            this.lbx_ticksLimit.Size = new System.Drawing.Size(83, 18);
+            this.lbx_ticksLimit.TabIndex = 15;
+            this.lbx_ticksLimit.Text = "0X0110-0X0FFF";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rdb_dec);
+            this.groupBox4.Controls.Add(this.rdb_hex);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(0, 95);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1153, 42);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "输入类型";
+            // 
+            // rdb_dec
+            // 
+            this.rdb_dec.Location = new System.Drawing.Point(168, 17);
+            this.rdb_dec.Name = "rdb_dec";
+            this.rdb_dec.Size = new System.Drawing.Size(56, 18);
+            this.rdb_dec.TabIndex = 1;
+            this.rdb_dec.Text = "十进制";
+            // 
+            // rdb_hex
+            // 
+            this.rdb_hex.Location = new System.Drawing.Point(86, 17);
+            this.rdb_hex.Name = "rdb_hex";
+            this.rdb_hex.Size = new System.Drawing.Size(68, 18);
+            this.rdb_hex.TabIndex = 0;
+            this.rdb_hex.Text = "十六进制";
             // 
             // groupBox6
             // 
@@ -493,9 +845,10 @@
             this.groupBox6.Controls.Add(this.cb_baud);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Location = new System.Drawing.Point(5, 3);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox6.Location = new System.Drawing.Point(0, 0);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(806, 95);
+            this.groupBox6.Size = new System.Drawing.Size(1153, 95);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "串口配置";
@@ -504,7 +857,7 @@
             // 
             this.btn_open.Location = new System.Drawing.Point(126, 66);
             this.btn_open.Name = "btn_open";
-            this.btn_open.Size = new System.Drawing.Size(45, 23);
+            this.btn_open.Size = new System.Drawing.Size(72, 23);
             this.btn_open.TabIndex = 38;
             this.btn_open.Text = "打开";
             this.btn_open.UseVisualStyleBackColor = true;
@@ -661,257 +1014,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "校验位：";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.rdb_dec);
-            this.groupBox4.Controls.Add(this.rdb_hex);
-            this.groupBox4.Location = new System.Drawing.Point(3, 104);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(808, 42);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "输入类型";
-            // 
-            // rdb_dec
-            // 
-            this.rdb_dec.Location = new System.Drawing.Point(168, 17);
-            this.rdb_dec.Name = "rdb_dec";
-            this.rdb_dec.Size = new System.Drawing.Size(56, 18);
-            this.rdb_dec.TabIndex = 1;
-            this.rdb_dec.Text = "十进制";
-            // 
-            // rdb_hex
-            // 
-            this.rdb_hex.Location = new System.Drawing.Point(86, 17);
-            this.rdb_hex.Name = "rdb_hex";
-            this.rdb_hex.Size = new System.Drawing.Size(68, 18);
-            this.rdb_hex.TabIndex = 0;
-            this.rdb_hex.Text = "十六进制";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.tableLayoutPanel6);
-            this.groupBox8.Controls.Add(this.lbx_hexorder_notes);
-            this.groupBox8.Controls.Add(this.chx_hex_order);
-            this.groupBox8.Location = new System.Drawing.Point(439, 152);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(374, 152);
-            this.groupBox8.TabIndex = 2;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "快信号";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.46715F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.53284F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.tableLayoutPanel6.Controls.Add(this.radLabel8, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.radLabel5, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.lbx_quickd2_limit, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.tbx_quicksig_data2, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.cob_quicksig_type, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tbx_quicksig_data1, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.lbx_quickd1_limit, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.radLabel10, 2, 2);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(6, 17);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(366, 88);
-            this.tableLayoutPanel6.TabIndex = 15;
-            // 
-            // radLabel8
-            // 
-            this.radLabel8.Location = new System.Drawing.Point(3, 3);
-            this.radLabel8.Name = "radLabel8";
-            this.radLabel8.Size = new System.Drawing.Size(65, 18);
-            this.radLabel8.TabIndex = 9;
-            this.radLabel8.Text = "快信号类型";
-            // 
-            // radLabel5
-            // 
-            this.radLabel5.Location = new System.Drawing.Point(3, 32);
-            this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(70, 18);
-            this.radLabel5.TabIndex = 10;
-            this.radLabel5.Text = "快信号data1";
-            // 
-            // lbx_quickd2_limit
-            // 
-            this.lbx_quickd2_limit.Location = new System.Drawing.Point(3, 61);
-            this.lbx_quickd2_limit.Name = "lbx_quickd2_limit";
-            this.lbx_quickd2_limit.Size = new System.Drawing.Size(70, 18);
-            this.lbx_quickd2_limit.TabIndex = 12;
-            this.lbx_quickd2_limit.Text = "快信号data2";
-            // 
-            // tbx_quicksig_data2
-            // 
-            this.tbx_quicksig_data2.Location = new System.Drawing.Point(86, 61);
-            this.tbx_quicksig_data2.Name = "tbx_quicksig_data2";
-            this.tbx_quicksig_data2.Size = new System.Drawing.Size(203, 21);
-            this.tbx_quicksig_data2.TabIndex = 13;
-            // 
-            // cob_quicksig_type
-            // 
-            this.cob_quicksig_type.FormattingEnabled = true;
-            this.cob_quicksig_type.Location = new System.Drawing.Point(86, 3);
-            this.cob_quicksig_type.Name = "cob_quicksig_type";
-            this.cob_quicksig_type.Size = new System.Drawing.Size(203, 20);
-            this.cob_quicksig_type.TabIndex = 8;
-            // 
-            // tbx_quicksig_data1
-            // 
-            this.tbx_quicksig_data1.Location = new System.Drawing.Point(86, 32);
-            this.tbx_quicksig_data1.Name = "tbx_quicksig_data1";
-            this.tbx_quicksig_data1.Size = new System.Drawing.Size(203, 21);
-            this.tbx_quicksig_data1.TabIndex = 11;
-            // 
-            // lbx_quickd1_limit
-            // 
-            this.lbx_quickd1_limit.ForeColor = System.Drawing.Color.Blue;
-            this.lbx_quickd1_limit.Location = new System.Drawing.Point(295, 32);
-            this.lbx_quickd1_limit.Name = "lbx_quickd1_limit";
-            this.lbx_quickd1_limit.Size = new System.Drawing.Size(52, 18);
-            this.lbx_quickd1_limit.TabIndex = 14;
-            this.lbx_quickd1_limit.Text = "0-0X0FFF";
-            // 
-            // radLabel10
-            // 
-            this.radLabel10.ForeColor = System.Drawing.Color.Blue;
-            this.radLabel10.Location = new System.Drawing.Point(295, 61);
-            this.radLabel10.Name = "radLabel10";
-            this.radLabel10.Size = new System.Drawing.Size(52, 18);
-            this.radLabel10.TabIndex = 15;
-            this.radLabel10.Text = "0-0X0FFF";
-            // 
-            // lbx_hexorder_notes
-            // 
-            this.lbx_hexorder_notes.AutoSize = true;
-            this.lbx_hexorder_notes.Location = new System.Drawing.Point(7, 128);
-            this.lbx_hexorder_notes.Name = "lbx_hexorder_notes";
-            this.lbx_hexorder_notes.Size = new System.Drawing.Size(335, 12);
-            this.lbx_hexorder_notes.TabIndex = 14;
-            this.lbx_hexorder_notes.Text = "快信号data2说明：勾选后表示配置SENT时低位在前，高位在后";
-            // 
-            // chx_hex_order
-            // 
-            this.chx_hex_order.Location = new System.Drawing.Point(97, 105);
-            this.chx_hex_order.Name = "chx_hex_order";
-            this.chx_hex_order.Size = new System.Drawing.Size(127, 18);
-            this.chx_hex_order.TabIndex = 2;
-            this.chx_hex_order.Text = "低位在前，高位在后";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox7.Location = new System.Drawing.Point(3, 152);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(433, 152);
-            this.groupBox7.TabIndex = 1;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "基础信号";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.57143F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.42857F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tableLayoutPanel5.Controls.Add(this.tbx_timeframe, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.radLabel2, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.cob_dataframe_type, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.radLabel4, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.cob_battery_state, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.radLabel3, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.radLabel1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.cob_serial_msg, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lbx_ticksLimit, 2, 3);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 17);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 4;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(427, 132);
-            this.tableLayoutPanel5.TabIndex = 11;
-            // 
-            // tbx_timeframe
-            // 
-            this.tbx_timeframe.Location = new System.Drawing.Point(163, 102);
-            this.tbx_timeframe.Name = "tbx_timeframe";
-            this.tbx_timeframe.Size = new System.Drawing.Size(164, 21);
-            this.tbx_timeframe.TabIndex = 14;
-            // 
-            // radLabel2
-            // 
-            this.radLabel2.Location = new System.Drawing.Point(3, 36);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(104, 18);
-            this.radLabel2.TabIndex = 2;
-            this.radLabel2.Text = "SENT空闲电平状态";
-            // 
-            // cob_dataframe_type
-            // 
-            this.cob_dataframe_type.FormattingEnabled = true;
-            this.cob_dataframe_type.Location = new System.Drawing.Point(163, 3);
-            this.cob_dataframe_type.Name = "cob_dataframe_type";
-            this.cob_dataframe_type.Size = new System.Drawing.Size(164, 20);
-            this.cob_dataframe_type.TabIndex = 6;
-            // 
-            // radLabel4
-            // 
-            this.radLabel4.Location = new System.Drawing.Point(3, 102);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(148, 18);
-            this.radLabel4.TabIndex = 4;
-            this.radLabel4.Text = "SENT一帧时间(ppTicks个数)";
-            // 
-            // cob_battery_state
-            // 
-            this.cob_battery_state.FormattingEnabled = true;
-            this.cob_battery_state.Location = new System.Drawing.Point(163, 36);
-            this.cob_battery_state.Name = "cob_battery_state";
-            this.cob_battery_state.Size = new System.Drawing.Size(164, 20);
-            this.cob_battery_state.TabIndex = 5;
-            // 
-            // radLabel3
-            // 
-            this.radLabel3.Location = new System.Drawing.Point(3, 69);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(104, 18);
-            this.radLabel3.TabIndex = 3;
-            this.radLabel3.Text = "SENT扩展串行消息";
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Location = new System.Drawing.Point(3, 3);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(92, 18);
-            this.radLabel1.TabIndex = 0;
-            this.radLabel1.Text = "SENT数据帧类型";
-            // 
-            // cob_serial_msg
-            // 
-            this.cob_serial_msg.FormattingEnabled = true;
-            this.cob_serial_msg.Location = new System.Drawing.Point(163, 69);
-            this.cob_serial_msg.Name = "cob_serial_msg";
-            this.cob_serial_msg.Size = new System.Drawing.Size(164, 20);
-            this.cob_serial_msg.TabIndex = 1;
-            // 
-            // lbx_ticksLimit
-            // 
-            this.lbx_ticksLimit.ForeColor = System.Drawing.Color.Blue;
-            this.lbx_ticksLimit.Location = new System.Drawing.Point(333, 102);
-            this.lbx_ticksLimit.Name = "lbx_ticksLimit";
-            this.lbx_ticksLimit.Size = new System.Drawing.Size(83, 18);
-            this.lbx_ticksLimit.TabIndex = 15;
-            this.lbx_ticksLimit.Text = "0X0110-0X0FFF";
-            // 
             // radMenuItem11
             // 
             this.radMenuItem11.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -941,14 +1043,15 @@
             this.radMenuItem11});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
-            this.radMenu1.Size = new System.Drawing.Size(830, 20);
+            this.radMenu1.Size = new System.Drawing.Size(1167, 20);
             this.radMenu1.TabIndex = 33;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 911);
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(1167, 762);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.radMenu1);
@@ -971,14 +1074,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_groupdata)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdb_dec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdb_hex)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).EndInit();
@@ -995,6 +1094,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbx_ticksLimit)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdb_dec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdb_hex)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1022,25 +1127,6 @@
         private System.Windows.Forms.ToolStripButton tool_readcfg;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cob_group_num;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private Telerik.WinControls.UI.RadLabel radLabel1;
-        private Telerik.WinControls.UI.RadLabel radLabel2;
-        private System.Windows.Forms.ComboBox cob_dataframe_type;
-        private Telerik.WinControls.UI.RadLabel radLabel4;
-        private System.Windows.Forms.ComboBox cob_battery_state;
-        private System.Windows.Forms.ComboBox cob_serial_msg;
-        private Telerik.WinControls.UI.RadLabel radLabel3;
-        private System.Windows.Forms.TextBox tbx_quicksig_data2;
-        private Telerik.WinControls.UI.RadLabel lbx_quickd2_limit;
-        private System.Windows.Forms.TextBox tbx_quicksig_data1;
-        private Telerik.WinControls.UI.RadLabel radLabel5;
-        private Telerik.WinControls.UI.RadLabel radLabel8;
-        private System.Windows.Forms.ComboBox cob_quicksig_type;
         private System.Windows.Forms.Button btn_sig_cfg_set;
         private System.Windows.Forms.Button btn_sig_cfg_read;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -1048,25 +1134,12 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private Telerik.WinControls.UI.RadGridView dgv_groupdata;
         private Telerik.WinControls.UI.RadMenuItem menu_app_exist;
         private Telerik.WinControls.UI.RadMenuItem menu_sent_cfg_write;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem11;
         private Telerik.WinControls.UI.RadMenuItem menu_help;
         private Telerik.WinControls.UI.RadMenuItem menu_abort;
         private System.Windows.Forms.ToolStripButton tool_writecfg;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private Telerik.WinControls.UI.RadCheckBox chx_hex_order;
-        private Telerik.WinControls.UI.RadRadioButton rdb_dec;
-        private Telerik.WinControls.UI.RadRadioButton rdb_hex;
-        private System.Windows.Forms.TextBox tbx_timeframe;
-        private System.Windows.Forms.Label lbx_hexorder_notes;
-        private System.Windows.Forms.Button btn_cleardgv;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private Telerik.WinControls.UI.RadLabel lbx_quickd1_limit;
-        private Telerik.WinControls.UI.RadLabel lbx_ticksLimit;
-        private Telerik.WinControls.UI.RadLabel radLabel10;
-        private Telerik.WinControls.UI.RadLabel lbx_group_count_limit;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label3;
         private LEDLib.LEDControl ledControl1;
@@ -1087,6 +1160,46 @@
         private Telerik.WinControls.UI.RadMenu radMenu1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel tool_dev_status;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btn_exportMode;
+        private System.Windows.Forms.Button btn_startQSigTest;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox check_while;
+        private System.Windows.Forms.Button btn_importQInfo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private Telerik.WinControls.UI.RadLabel radLabel8;
+        private Telerik.WinControls.UI.RadLabel radLabel5;
+        private Telerik.WinControls.UI.RadLabel lbx_quickd2_limit;
+        private System.Windows.Forms.TextBox tbx_quicksig_data2;
+        private System.Windows.Forms.ComboBox cob_quicksig_type;
+        private System.Windows.Forms.TextBox tbx_quicksig_data1;
+        private Telerik.WinControls.UI.RadLabel lbx_quickd1_limit;
+        private Telerik.WinControls.UI.RadLabel radLabel10;
+        private System.Windows.Forms.Label lbx_hexorder_notes;
+        private Telerik.WinControls.UI.RadCheckBox chx_hex_order;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TextBox tbx_timeframe;
+        private Telerik.WinControls.UI.RadLabel radLabel2;
+        private System.Windows.Forms.ComboBox cob_dataframe_type;
+        private Telerik.WinControls.UI.RadLabel radLabel4;
+        private System.Windows.Forms.ComboBox cob_battery_state;
+        private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadLabel radLabel1;
+        private System.Windows.Forms.ComboBox cob_serial_msg;
+        private Telerik.WinControls.UI.RadLabel lbx_ticksLimit;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private Telerik.WinControls.UI.RadRadioButton rdb_dec;
+        private Telerik.WinControls.UI.RadRadioButton rdb_hex;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private Telerik.WinControls.UI.RadLabel lbx_group_count_limit;
+        private System.Windows.Forms.Button btn_cleardgv;
+        private Telerik.WinControls.UI.RadGridView dgv_groupdata;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cob_group_num;
     }
 }
 

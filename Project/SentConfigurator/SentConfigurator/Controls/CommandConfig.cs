@@ -113,7 +113,7 @@ namespace SentConfigurator.Controls
                 MessageBox.Show("帧时间次数不能为空", "提示");
                 return false;
             }
-            LogHelper.Log.Info("基础信号："+cmdbase);
+            //LogHelper.Log.Info("基础信号："+cmdbase);
             return true;
             #endregion
         }
@@ -164,7 +164,7 @@ namespace SentConfigurator.Controls
                     }
                     cmdslowSig += groupData.Substring(2, 2) + "|" + groupData.Substring(0, 2)+"|";
                 }
-                LogHelper.Log.Info(" 慢信号：" + cmdslowSig);
+                //LogHelper.Log.Info(" 慢信号：" + cmdslowSig);
                 return true;
             }
             catch (Exception ex)
@@ -253,7 +253,7 @@ namespace SentConfigurator.Controls
                 MessageBox.Show("快信号data2不能为空", "提示");
                 return false;
             }
-            LogHelper.Log.Info("快信号："+cmdQuickSig);
+            //LogHelper.Log.Info("快信号："+cmdQuickSig);
             return true;
             #endregion
         }
@@ -305,7 +305,7 @@ namespace SentConfigurator.Controls
             {
                 sumRes = Convert.ToString(sum, 16);
             }
-            LogHelper.Log.Info("校验和（int）："+sum+" hex:"+sumRes);
+            //LogHelper.Log.Info("校验和（int）："+sum+" hex:"+sumRes);
             return sumRes;
         }
         #endregion
@@ -323,7 +323,7 @@ namespace SentConfigurator.Controls
             {
                 sendData = new byte[strArray.Length];
                 ConvertByte.HexStringToByte(sendData, strArray, 0);
-                LogHelper.Log.Info(BitConverter.ToString(sendData));
+                //LogHelper.Log.Info(BitConverter.ToString(sendData));
                 return sendData;
             }
             catch (Exception ex)

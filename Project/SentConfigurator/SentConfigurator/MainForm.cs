@@ -26,6 +26,7 @@ using CommonUtils.CalculateAndString;
 using LEDLib;
 //using Sunisoft.IrisSkin;
 using SentConfigurator.Model;
+using SentConfigurator.Common;
 
 
 namespace SentConfigurator
@@ -64,6 +65,8 @@ namespace SentConfigurator
         private delegate void MessageDelegate(byte[] msg);
 
         #endregion
+
+        private bool IsStartQuickSig;
 
         public MainForm()
         {
@@ -105,7 +108,97 @@ namespace SentConfigurator
             timerOnLine.AutoReset = true;
             timerOnLine.Interval = 2000;
             timerOnLine.Elapsed += TimerOnLine_Elapsed;
-            timerOnLine.Enabled = true; 
+            timerOnLine.Enabled = true;
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (this.IsStartQuickSig && this.check_while.Checked)
+                    {
+                        StartQuickSigTest();
+                    }
+                    Task.Delay(1).Wait();
+                }
+            });
+
+            this.btn_exportMode.Click += Btn_exportMode_Click;
+            this.btn_importQInfo.Click += Btn_importQInfo_Click;
+            this.btn_startQSigTest.Click += Btn_startQSigTest_Click;
+            this.check_while.CheckedChanged += Check_while_CheckedChanged;
+        }
+
+        private void Check_while_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!this.check_while.Checked)
+            {
+                this.btn_startQSigTest.Enabled = true;
+            }
+        }
+
+        private void Btn_startQSigTest_Click(object sender, EventArgs e)
+        {
+            this.IsStartQuickSig = true;
+            this.btn_startQSigTest.Enabled = false;
+            if (!this.check_while.Checked)
+            {
+                StartQuickSigTest();
+            }
+        }
+
+        private void StartQuickSigTest()
+        {
+            if (!this.serialPort.IsOpen)
+                return;
+            var data = QuickSigData.quickSigData;
+            if (data == null)
+                return;
+            if (data.Rows.Count <= 0)
+                return;
+            int delay = (int)this.numericUpDown1.Value;
+            foreach (DataRow dr in data.Rows)
+            {
+                lock (this)
+                {
+                    var data1 = dr[0].ToString().Trim();
+                    var data2 = dr[1].ToString().Trim();
+                    if (data1 == "" || data2 == "")
+                        continue;
+                    int data1Dec, data2Dec;
+                    if (!int.TryParse(data1, out data1Dec))
+                        continue;
+                    if (!int.TryParse(data2, out data2Dec))
+                        continue;
+                    this.Invoke(new Action(() =>
+                    {
+                        if (this.rdb_dec.IsChecked)
+                        {
+                            this.tbx_quicksig_data1.Text = data1Dec.ToString();
+                            this.tbx_quicksig_data2.Text = data2Dec.ToString();
+                        }
+                        if (this.rdb_hex.IsChecked)
+                        {
+                            this.tbx_quicksig_data1.Text = "0X" + Convert.ToString(data1Dec, 16).PadLeft(2, '0');
+                            this.tbx_quicksig_data2.Text = "0X" + Convert.ToString(data2Dec, 16).PadLeft(2, '0');
+                        }
+                    }));
+                    SendWriteConfig();
+                    Task.Delay(delay).Wait();
+                }
+            }
+        }
+
+        private void Btn_importQInfo_Click(object sender, EventArgs e)
+        {
+            if (QuickSigData.ImportQuickSigData())
+            {
+                this.btn_startQSigTest.Enabled = true;
+            }
+        }
+
+        private void Btn_exportMode_Click(object sender, EventArgs e)
+        {
+            QuickSigData.ExportQuickSigMode();
         }
 
         #region 定时检测是否断开连接
@@ -251,7 +344,7 @@ namespace SentConfigurator
                 stringBuilder.AppendFormat("{0:X2} ", str);
             }
             string[] hexStr = stringBuilder.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            LogHelper.Log.Info(" 【接收设备返回值HEX】" + stringBuilder.ToString());
+            //LogHelper.Log.Info(" 【接收设备返回值HEX】" + stringBuilder.ToString());
             btn_sig_cfg_read.Enabled = true;
             btn_sig_cfg_set.Enabled = true;
             AnalysisReceiveData(hexStr, stringBuilder.ToString());
@@ -267,18 +360,19 @@ namespace SentConfigurator
 
                 if (hexStr[2].Equals("01"))
                 {
-                    LogHelper.Log.Info(" 【设置命令】接收设备返回值HEX】" + strRec);
-                    MessageBox.Show("SENT配置设置成功！", "提示");
+                    //LogHelper.Log.Info(" 【设置命令】接收设备返回值HEX】" + strRec);
+                    //MessageBox.Show("SENT配置设置成功！", "提示");
                 }
                 else if (hexStr[2].Equals("00"))
                 {
-                    LogHelper.Log.Info(" 【设置命令】接收设备返回值HEX】" + strRec);
+                    //LogHelper.Log.Info(" 【设置命令】接收设备返回值HEX】" + strRec);
                     MessageBox.Show("SENT配置设置失败！", "提示");
                 }
+                this.btn_startQSigTest.Enabled = true;
             }
             else if (hexStr.Length > 5)
             {
-                LogHelper.Log.Info(" 【读取命令】接收设备返回值HEX】" + strRec);
+                //LogHelper.Log.Info(" 【读取命令】接收设备返回值HEX】" + strRec);
                 //更新界面配置
                 UpdateReceiveConfig(hexStr);
                 //MessageBox.Show("SENT配置更新成功", "提示");
@@ -300,7 +394,7 @@ namespace SentConfigurator
             if (hexStr[0] == "FF" && hexStr.Length == 1)
             {
                 cacheString = strRev;
-                LogHelper.Log.Info("返回指令只包含FF，拼接下一包数据！");
+                //LogHelper.Log.Info("返回指令只包含FF，拼接下一包数据！");
                 return;
             }
             else if (hexStr[0] == "EE" && hexStr.Length > 1)
@@ -314,13 +408,13 @@ namespace SentConfigurator
                     {
                         //不完整
                         surPlusLen = dataCodeLen - (hexStr.Length - 3) + 1;
-                        LogHelper.Log.Info("拼接上一包数据只包含FF的情况，本次拼接仍不完整，计算剩余数据长度为"+surPlusLen);
+                        //LogHelper.Log.Info("拼接上一包数据只包含FF的情况，本次拼接仍不完整，计算剩余数据长度为"+surPlusLen);
                         return;
                     }
                     else
                     {
                         //接收指令正确
-                        LogHelper.Log.Info("拼接上一包数据只包含FF的情况，本地拼接完成！\r\n");
+                        //LogHelper.Log.Info("拼接上一包数据只包含FF的情况，本地拼接完成！\r\n");
                         ReturnResult(hexStr, strRev);//判断返回结果
                     }
                 }
@@ -336,7 +430,7 @@ namespace SentConfigurator
                         {
                             //不完整
                             surPlusLen = dataCodeLen - (hexStr.Length - 3) + 1;
-                            LogHelper.Log.Info("FF EE第一包数据不完整，待下一包数据拼接；剩余数据长度为"+surPlusLen);
+                            //LogHelper.Log.Info("FF EE第一包数据不完整，待下一包数据拼接；剩余数据长度为"+surPlusLen);
                             //下一包接收长度（剩余长度） = 计算数据理论长度-(实际数据长度=接收总长度-3)+1
                             cacheString = strRev;
                             return;
@@ -344,7 +438,7 @@ namespace SentConfigurator
                         else
                         {
                             //接收指令正确
-                            LogHelper.Log.Info("FF EE 第一包数据信息完整！\r\n");
+                            //LogHelper.Log.Info("FF EE 第一包数据信息完整！\r\n");
                             ReturnResult(hexStr, strRev);//判断返回结果
                         }
                     }
@@ -365,13 +459,13 @@ namespace SentConfigurator
                             {
                                 //不完整
                                 surPlusLen = dataCodeLen - (hexStr.Length - 3) + 1;
-                                LogHelper.Log.Info("FF EE+下一包数据拼接信息不完整，剩余数据长度为"+surPlusLen);
+                                //LogHelper.Log.Info("FF EE+下一包数据拼接信息不完整，剩余数据长度为"+surPlusLen);
                                 return;
                             }
                             else
                             {
                                 //接收指令正确
-                                LogHelper.Log.Info("FF EE+下一包数据拼接信息正确！\r\n");
+                               // LogHelper.Log.Info("FF EE+下一包数据拼接信息正确！\r\n");
                                 ReturnResult(hexStr, strRev);//判断返回结果
                             }
                         }
@@ -754,8 +848,9 @@ namespace SentConfigurator
             try
             {
                 //发送指令前校验串口配置
-                TestSerialConfig();
                 byte[] cmdSendMsg = comandCfg.HexToByte(strArray);
+                //LogHelper.Log.Error("发送指令："+BitConverter.ToString(cmdSendMsg));
+                TestSerialConfig();
                 status_sendcount.Text = cmdSendMsg.Length.ToString();
 
                 if (cmdSendMsg.Length < 1)
@@ -767,7 +862,7 @@ namespace SentConfigurator
                     if (serialPort.IsOpen)
                     {
                         serialPort.Write(cmdSendMsg, 0, cmdSendMsg.Length);
-                        LogHelper.Log.Info("【发送指令成功！】" + BitConverter.ToString(cmdSendMsg));
+                        //LogHelper.Log.Info("【发送指令成功！】" + BitConverter.ToString(cmdSendMsg));
                         IsSendMsg = true;
                     }
                     else
@@ -1263,6 +1358,7 @@ namespace SentConfigurator
             btn_sig_cfg_set.Enabled = false;
             SendWriteConfig();
         }
+
         private void SendWriteConfig()
         {
             if (!JudgeInputLimit())
@@ -1272,7 +1368,7 @@ namespace SentConfigurator
                 inputType = SignalConfig.InputStringType.HEX;
             else if (rdb_dec.CheckState == CheckState.Checked)
                 inputType = SignalConfig.InputStringType.DEC;
-            comandCfg.CalInitParams(groupNum,inputType);
+            comandCfg.CalInitParams(groupNum, inputType);
             if (!comandCfg.UnionBaseCommand(cob_dataframe_type, cob_battery_state, cob_serial_msg, tbx_timeframe))
                 return;
             if (!comandCfg.UnionSlowCommand(dgv_groupdata, cob_group_num.Text.Trim()))
@@ -1563,8 +1659,8 @@ namespace SentConfigurator
                         MessageBox.Show("请输入十六进制data1数据！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
-
-                    if (ExamineInputFormat.IsDecimal(tbx_quicksig_data2.Text))
+                    var strData2 = this.tbx_quicksig_data2.Text;
+                    if (ExamineInputFormat.IsHexadecimal(strData2))
                     {
                         int data2 = Convert.ToInt32(tbx_quicksig_data2.Text.Trim().ToLower().Replace("0X",""), 16);
                         if (data2 > (int)SignalConfig.InputLimit.QUICK_DATA_MAX)

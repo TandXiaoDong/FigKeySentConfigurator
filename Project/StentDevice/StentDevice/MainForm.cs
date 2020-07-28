@@ -1715,7 +1715,7 @@ namespace StentDevice
             var stentConfigPath = stentConfigDirectory + STENT_CONFIG_FILE;
             if (!File.Exists(stentConfigPath))
                 return;
-            var frameCount = INIFile.GetValue(STENT_CONFIG_SECTION,STENT_CONFIG_FRAME_COUNT_KEY, stentConfigPath);
+            var frameCount = INIFile.GetValue(STENT_CONFIG_SECTION,STENT_CONFIG_FRAME_COUNT_KEY, stentConfigPath).ToString();
             if (frameCount != "")
                 int.TryParse(frameCount,out cacheFrameNumber);
             if (cacheFrameNumber == 0)
@@ -1723,7 +1723,7 @@ namespace StentDevice
 
             //ch1 timeInternal
             int autoSendTimeInternal = 7000;
-            var timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_TIME_INTERNAL,stentConfigPath);
+            var timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_TIME_INTERNAL,stentConfigPath).ToString();
             if (timeInternal != "")
                 int.TryParse(timeInternal,out autoSendTimeInternal);
             if (autoSendTimeInternal == 0)
@@ -1731,7 +1731,7 @@ namespace StentDevice
             channelDataCh1.AutoSendTimeInternal = autoSendTimeInternal;
 
             //ch2 timeInternal
-            timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_TIME_INTERNAL, stentConfigPath);
+            timeInternal = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_TIME_INTERNAL, stentConfigPath).ToString();
             if (timeInternal != "")
                 int.TryParse(timeInternal, out autoSendTimeInternal);
             if (autoSendTimeInternal == 0)
@@ -1740,17 +1740,17 @@ namespace StentDevice
 
             //ch1 is auto send 
             bool IsAutoSend = false;
-            var isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_IS_AUTO_KEY,stentConfigPath);
+            var isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH1,STENT_CONFIG_IS_AUTO_KEY,stentConfigPath).ToString();
             if (isAuto != "")
                 bool.TryParse(isAuto,out IsAutoSend);
 
             //ch2 is auto send
-            isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_IS_AUTO_KEY, stentConfigPath);
+            isAuto = INIFile.GetValue(STENT_CONFIG_SECTION_CH2, STENT_CONFIG_IS_AUTO_KEY, stentConfigPath).ToString();
             if (isAuto != "")
                 bool.TryParse(isAuto, out IsAutoSend);
 
-            serverIP = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_URL, stentConfigPath);
-            var port = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_PORT, stentConfigPath);
+            serverIP = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_URL, stentConfigPath).ToString();
+            var port = INIFile.GetValue(STENT_CONFIG_SECTION, STENT_CONFIG_SERVER_PORT, stentConfigPath).ToString();
             if (port != "")
                 int.TryParse(port, out serverPort);
         }
@@ -2058,7 +2058,7 @@ namespace StentDevice
                 else
                 {
                     //判断剩余天数
-                    var date = INIFile.GetValue("s", "k", path);
+                    var date = INIFile.GetValue("s", "k", path).ToString();
                     date = MySecurity.DecodeBase64(date);
                     var currentDate = DateTime.Parse(date);
                     TimeSpan ts = currentDate - daytime;
