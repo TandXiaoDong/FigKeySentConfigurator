@@ -71,29 +71,25 @@ namespace SentConfigurator
         public MainForm()
         {
             InitializeComponent();
-            //LoadSkin();
-            Control.CheckForIllegalCrossThreadCalls = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.dgv_groupdata.EnableHotTracking = true;
-            this.dgv_groupdata.EnableAlternatingRowColor = true;
-            //ThemeResolutionService.ApplicationThemeName = office2013DarkTheme1.ThemeName;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
+            //this.StartPosition = FormStartPosition.CenterScreen;
+            //this.dgv_groupdata.EnableHotTracking = true;
+            //this.dgv_groupdata.EnableAlternatingRowColor = true;
             //ThemeResolutionService.ApplicationThemeName = office2013LightTheme1;
-            
-            ThemeResolutionService.AllowAnimations = true;
+            //ThemeResolutionService.AllowAnimations = true;
             InitSerial();
 
             this.FormClosed += Form1_FormClosed;
             this.serialPort.DataReceived += SerialPort_DataReceived;
             DataReceiveTask();
-
             InitSentConfig();
             signalConfig = new SignalConfig(dgv_groupdata, groupNum);
             comandCfg = new CommandConfig();
-            InitSentControlConfig();
+            //InitSentControlConfig();
             //刷新界面参数
             UpdateUIConfig();
             dgv_groupdata.BringToFront();

@@ -36,7 +36,7 @@ namespace SentConfigurator
             var fileName = "";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Microsoft Excel files(*.xls)|*.xls;*.xlsx";
-            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.InitialDirectory = "D:\\";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
             openFileDialog.AddExtension = true;

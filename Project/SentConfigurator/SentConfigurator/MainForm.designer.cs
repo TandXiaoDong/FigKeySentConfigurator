@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -414,7 +414,7 @@
             // 
             // 
             // 
-            this.dgv_groupdata.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.dgv_groupdata.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.dgv_groupdata.Name = "dgv_groupdata";
             this.dgv_groupdata.Size = new System.Drawing.Size(1151, 242);
             this.dgv_groupdata.TabIndex = 33;
@@ -591,7 +591,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.61512F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.38488F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanel6.Controls.Add(this.radLabel8, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.radLabel5, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.lbx_quickd2_limit, 0, 2);
@@ -637,7 +637,7 @@
             // 
             this.tbx_quicksig_data2.Location = new System.Drawing.Point(94, 85);
             this.tbx_quicksig_data2.Name = "tbx_quicksig_data2";
-            this.tbx_quicksig_data2.Size = new System.Drawing.Size(193, 21);
+            this.tbx_quicksig_data2.Size = new System.Drawing.Size(192, 21);
             this.tbx_quicksig_data2.TabIndex = 13;
             // 
             // cob_quicksig_type
@@ -645,20 +645,20 @@
             this.cob_quicksig_type.FormattingEnabled = true;
             this.cob_quicksig_type.Location = new System.Drawing.Point(94, 3);
             this.cob_quicksig_type.Name = "cob_quicksig_type";
-            this.cob_quicksig_type.Size = new System.Drawing.Size(193, 20);
+            this.cob_quicksig_type.Size = new System.Drawing.Size(192, 20);
             this.cob_quicksig_type.TabIndex = 8;
             // 
             // tbx_quicksig_data1
             // 
             this.tbx_quicksig_data1.Location = new System.Drawing.Point(94, 44);
             this.tbx_quicksig_data1.Name = "tbx_quicksig_data1";
-            this.tbx_quicksig_data1.Size = new System.Drawing.Size(193, 21);
+            this.tbx_quicksig_data1.Size = new System.Drawing.Size(192, 21);
             this.tbx_quicksig_data1.TabIndex = 11;
             // 
             // lbx_quickd1_limit
             // 
             this.lbx_quickd1_limit.ForeColor = System.Drawing.Color.Blue;
-            this.lbx_quickd1_limit.Location = new System.Drawing.Point(293, 44);
+            this.lbx_quickd1_limit.Location = new System.Drawing.Point(292, 44);
             this.lbx_quickd1_limit.Name = "lbx_quickd1_limit";
             this.lbx_quickd1_limit.Size = new System.Drawing.Size(52, 18);
             this.lbx_quickd1_limit.TabIndex = 14;
@@ -667,7 +667,7 @@
             // radLabel10
             // 
             this.radLabel10.ForeColor = System.Drawing.Color.Blue;
-            this.radLabel10.Location = new System.Drawing.Point(293, 85);
+            this.radLabel10.Location = new System.Drawing.Point(292, 85);
             this.radLabel10.Name = "radLabel10";
             this.radLabel10.Size = new System.Drawing.Size(52, 18);
             this.radLabel10.TabIndex = 15;
@@ -706,7 +706,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.22034F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.77966F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel5.Controls.Add(this.tbx_timeframe, 1, 3);
             this.tableLayoutPanel5.Controls.Add(this.radLabel2, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.cob_dataframe_type, 1, 0);
@@ -729,7 +729,7 @@
             // 
             // tbx_timeframe
             // 
-            this.tbx_timeframe.Location = new System.Drawing.Point(160, 132);
+            this.tbx_timeframe.Location = new System.Drawing.Point(159, 132);
             this.tbx_timeframe.Name = "tbx_timeframe";
             this.tbx_timeframe.Size = new System.Drawing.Size(131, 21);
             this.tbx_timeframe.TabIndex = 14;
@@ -745,7 +745,7 @@
             // cob_dataframe_type
             // 
             this.cob_dataframe_type.FormattingEnabled = true;
-            this.cob_dataframe_type.Location = new System.Drawing.Point(160, 3);
+            this.cob_dataframe_type.Location = new System.Drawing.Point(159, 3);
             this.cob_dataframe_type.Name = "cob_dataframe_type";
             this.cob_dataframe_type.Size = new System.Drawing.Size(131, 20);
             this.cob_dataframe_type.TabIndex = 6;
@@ -761,7 +761,7 @@
             // cob_battery_state
             // 
             this.cob_battery_state.FormattingEnabled = true;
-            this.cob_battery_state.Location = new System.Drawing.Point(160, 46);
+            this.cob_battery_state.Location = new System.Drawing.Point(159, 46);
             this.cob_battery_state.Name = "cob_battery_state";
             this.cob_battery_state.Size = new System.Drawing.Size(131, 20);
             this.cob_battery_state.TabIndex = 5;
@@ -785,7 +785,7 @@
             // cob_serial_msg
             // 
             this.cob_serial_msg.FormattingEnabled = true;
-            this.cob_serial_msg.Location = new System.Drawing.Point(160, 89);
+            this.cob_serial_msg.Location = new System.Drawing.Point(159, 89);
             this.cob_serial_msg.Name = "cob_serial_msg";
             this.cob_serial_msg.Size = new System.Drawing.Size(131, 20);
             this.cob_serial_msg.TabIndex = 1;
@@ -793,7 +793,7 @@
             // lbx_ticksLimit
             // 
             this.lbx_ticksLimit.ForeColor = System.Drawing.Color.Blue;
-            this.lbx_ticksLimit.Location = new System.Drawing.Point(297, 132);
+            this.lbx_ticksLimit.Location = new System.Drawing.Point(296, 132);
             this.lbx_ticksLimit.Name = "lbx_ticksLimit";
             this.lbx_ticksLimit.Size = new System.Drawing.Size(83, 18);
             this.lbx_ticksLimit.TabIndex = 15;
@@ -1058,6 +1058,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sent Configurator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
