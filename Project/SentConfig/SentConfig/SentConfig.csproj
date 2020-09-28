@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ch.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,16 +86,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelEntity.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper.designer.cs">
+      <DependentUpon>Helper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialPortDevice.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper.resx">
+      <DependentUpon>Helper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,6 +131,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\串口1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\串口3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关于.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\刷新.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\通道.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\通道 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ch.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ch.ico" />
+    <None Include="Resources\fg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

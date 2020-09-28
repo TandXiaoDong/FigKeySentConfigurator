@@ -335,7 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\CommonRepository\MyCommonLibrary001\CommonUtils\CommonUtils\CommonUtils.csproj">
-      <Project>{5c32467d-d861-4721-87c7-42f8b903fffb}</Project>
+      <Project>{6e5f5107-6425-4b39-a6a7-86d9fa77a7db}</Project>
       <Name>CommonUtils</Name>
     </ProjectReference>
   </ItemGroup>
