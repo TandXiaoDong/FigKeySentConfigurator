@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using System.IO;
 
 namespace SentConfig
 {
@@ -23,7 +24,7 @@ namespace SentConfig
         {
             this.radDock1.DocumentTabsVisible = false;
             this.radDock1.RemoveAllDocumentWindows();
-            this.radDock1.AddDocument(this.dw_channel3);
+            //this.radDock1.AddDocument(this.dw_channel3);
             this.radDock1.AddDocument(this.dw_channel2);
             this.radDock1.AddDocument(this.dw_channel1);
             this.radDock1.ActiveWindow = this.dw_channel1;
@@ -82,6 +83,7 @@ namespace SentConfig
         private void Btn_cfg_ch3_Click(object sender, EventArgs e)
         {
             ChannelEntity entity = new ChannelEntity();
+            entity.ChannelIndex = 2;
             if (this.tg_send_ch3.Value)
             {
                 entity.SendEnable = 1;
@@ -120,19 +122,16 @@ namespace SentConfig
 
             if (!CheckDataValid(this.tb_f1_ch3))
                 return;
-            if (!CheckDataValid(this.tb_f1_ch3))
+            if (!CheckDataValid(this.tb_f2_ch3))
                 return;
-            var f1 = this.tb_f1_ch3.Text.Trim();
-            var f2 = this.tb_f2_ch3.Text.Trim();
-            if (f1.ToLower().Contains("0x"))
-                f1 = f1.Replace("0x", "").Trim();
-            if (f2.ToLower().Contains("0x"))
-                f2 = f2.Replace("0x", "").Trim();
+            var f1 = this.tb_f1_ch3.Text.Trim().ToLower().Replace("0x", "");
+            var f2 = this.tb_f2_ch3.Text.Trim().ToLower().Replace("0x", "");
             f1 = f1.PadLeft(4, '0');
             f2 = f2.PadLeft(4, '0');
-            entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
-            entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
-
+            //entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
+            //entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
+            entity.UsartF1 = f1;
+            entity.UsartF2 = f2;
             if (this.tg_sync_ch3.Value)
             {
                 entity.SyncErr = 1;
@@ -182,6 +181,7 @@ namespace SentConfig
         private void Btn_cfg_ch2_Click(object sender, EventArgs e)
         {
             ChannelEntity entity = new ChannelEntity();
+            entity.ChannelIndex = 1;
             if (this.tg_send_ch2.Value)
             {
                 entity.SendEnable = 1;
@@ -208,20 +208,20 @@ namespace SentConfig
             {
                 entity.CANEnable = 0;
             }
-            if (!CheckDataValid(this.tb_f2_ch1))
+            entity.DAEnable = 0;
+
+            if (!CheckDataValid(this.tb_f2_ch2))
                 return;
-            if (!CheckDataValid(this.tb_f2_ch1))
+            if (!CheckDataValid(this.tb_f2_ch2))
                 return;
-            var f1 = this.tb_f1_ch2.Text.Trim();
-            var f2 = this.tb_f2_ch2.Text.Trim();
-            if (f1.ToLower().Contains("0x"))
-                f1 = f1.Replace("0x", "").Trim();
-            if (f2.ToLower().Contains("0x"))
-                f2 = f2.Replace("0x", "").Trim();
+            var f1 = this.tb_f1_ch2.Text.Trim().ToLower().Replace("0x", "");
+            var f2 = this.tb_f2_ch2.Text.Trim().ToLower().Replace("0x", "");
             f1 = f1.PadLeft(4, '0');
             f2 = f2.PadLeft(4, '0');
-            entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
-            entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
+            //entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
+            //entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
+            entity.UsartF1 = f1;
+            entity.UsartF2 = f2;
 
             if (this.tg_sync_ch2.Value)
             {
@@ -272,6 +272,7 @@ namespace SentConfig
         private void Btn_cfg_ch1_Click(object sender, EventArgs e)
         {
             ChannelEntity entity = new ChannelEntity();
+            entity.ChannelIndex = 0;
             if (this.tg_send_ch1.Value)
             {
                 entity.SendEnable = 1;
@@ -298,20 +299,28 @@ namespace SentConfig
             {
                 entity.CANEnable = 0;
             }
+
+            if (this.tg_DA_ch1.Value)
+            {
+                entity.DAEnable = 1;
+            }
+            else
+            {
+                entity.DAEnable = 0;
+            }
+
             if (!CheckDataValid(this.tb_f1_ch1))
                 return;
             if (!CheckDataValid(this.tb_f2_ch1))
                 return;
-            var f1 = this.tb_f1_ch1.Text.Trim();
-            var f2 = this.tb_f2_ch1.Text.Trim();
-            if (f1.ToLower().Contains("0x"))
-                f1 = f1.Replace("0x", "").Trim();
-            if (f2.ToLower().Contains("0x"))
-                f2 = f2.Replace("0x", "").Trim();
+            var f1 = this.tb_f1_ch1.Text.Trim().ToLower().Replace("0x", "");
+            var f2 = this.tb_f2_ch1.Text.Trim().ToLower().Replace("0x", "");
             f1 = f1.PadLeft(4, '0');
             f2 = f2.PadLeft(4, '0');
-            entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
-            entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
+            //entity.UsartF1 = f1.Substring(2, 2) + f1.Substring(0, 2);
+            //entity.UsartF2 = f2.Substring(2, 2) + f2.Substring(0, 2);
+            entity.UsartF1 = f1;
+            entity.UsartF2 = f2;
 
             if (this.tg_sync_ch1.Value)
             {
@@ -375,6 +384,7 @@ namespace SentConfig
             }
             catch (Exception ex)
             {
+                text.Focus();
                 MessageBox.Show("格式错误！" + ex.Message, "Err", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -391,38 +401,69 @@ namespace SentConfig
             {
                 this.serialDev = new SerialPortDevice();
             }
-           this.serialDev.OpenSerialPort(this.tool_serialNames.Text.Trim());
+           var openStatus = this.serialDev.OpenSerialPort(this.tool_serialNames.Text.Trim());
+            if (openStatus)
+            {
+                this.tool_open.Enabled = false;
+                this.tool_close.Enabled = true;
+            }
         }
 
         private void Tool_close_Click(object sender, EventArgs e)
         {
-            this.serialDev.CloseSerialPort();
+            if (this.serialDev.CloseSerialPort())
+            {
+                this.tool_open.Enabled = true;
+                this.tool_close.Enabled = false;
+            }
         }
 
-        private void SendConfig(ChannelEntity entity)
+        private bool SendConfig(ChannelEntity entity)
         {
-            byte[] buffer = new byte[8];
+            byte[] buffer = new byte[9];
             buffer[0] = 0x55;
             buffer[1] = 0xaa;
-            string byte2 = "0000" + entity.DataSource.ToString() +  entity.CANEnable.ToString() + "00";
+            string _4bitCh = ReverString(Convert.ToString(entity.ChannelIndex, 2).PadLeft(4, '0'));
+            string byte2 = _4bitCh + entity.DataSource.ToString() +  entity.CANEnable.ToString() + entity.DAEnable +"0";
+            byte2 = ReverString(byte2);
             buffer[2] = Convert.ToByte(byte2, 2);
             string byte3 = "00" + entity.ChangeF2.ToString() + entity.IdleSt.ToString() + 
                 entity.UsTick.ToString() + entity.CrcErr.ToString() + entity.SyncErr.ToString() + 
                 entity.SendEnable.ToString();
+            byte3 = ReverString(byte3);
             buffer[3] = Convert.ToByte(byte3, 2);
-            var bitF1 = Convert.ToString(Convert.ToInt32(entity.UsartF1, 16), 2).PadLeft(16, '0');
-            bitF1 = Convert.ToString(Convert.ToInt32(bitF1.Substring(4), 2), 16).PadLeft(4, '0');
-            buffer[4] = Convert.ToByte(bitF1.Substring(0, 2), 16);
-            buffer[5] = Convert.ToByte(bitF1.Substring(0, 2), 16);
-            var bitF2 = Convert.ToString(Convert.ToInt32(entity.UsartF2, 16), 2).PadLeft(16, '0');
-            bitF2 = Convert.ToString(Convert.ToInt32(bitF2.Substring(4), 2), 16).PadLeft(4, '0');
-            buffer[6] = Convert.ToByte(bitF2.Substring(0, 2), 16);
-            buffer[7] = Convert.ToByte(bitF2.Substring(0, 2), 16);
-            var crc = (buffer[2] + buffer[3] + buffer[4] + buffer[5] + buffer[6] + buffer[7]) & 0xff;
+            //var bitF1 = Convert.ToString(Convert.ToInt32(entity.UsartF1, 16), 2).PadLeft(16, '0');
+            //bitF1 = Convert.ToString(Convert.ToInt32(bitF1.Substring(4), 2), 16).PadLeft(4, '0');
+            var bitF1 = Convert.ToInt32(entity.UsartF1, 16);
+            buffer[4] = (byte)(bitF1 & 0xff);
+            buffer[5] = (byte)((bitF1 >> 8) & 0xff);
 
+            var bitF2 = Convert.ToInt32(entity.UsartF2, 16);
+            buffer[6] = (byte)(bitF2 & 0xff);
+            buffer[7] = (byte)((bitF2 >> 8) & 0xff);
+            //buffer[4] = Convert.ToByte(bitF1.Substring(0, 2), 16);
+            //buffer[5] = Convert.ToByte(bitF1.Substring(0, 2), 16);
+            //var bitF2 = Convert.ToString(Convert.ToInt32(entity.UsartF2, 16), 2).PadLeft(16, '0');
+            //bitF2 = Convert.ToString(Convert.ToInt32(bitF2.Substring(4), 2), 16).PadLeft(4, '0');
+            //buffer[6] = Convert.ToByte(bitF2.Substring(0, 2), 16);
+            //buffer[7] = Convert.ToByte(bitF2.Substring(0, 2), 16);
+            var crc = (buffer[2] + buffer[3] + buffer[4] + buffer[5] + buffer[6] + buffer[7]) & 0xff;
+            buffer[8] = (byte)crc; 
             if (this.serialDev == null)
-                return;
-            this.serialDev.WriteSerialPort(buffer);
+                return false;
+            WriteLog(BitConverter.ToString(buffer));
+            return this.serialDev.WriteSerialPort(buffer);
+        }
+
+        private string ReverString(string bitstr)
+        {
+            var chArr = bitstr.ToCharArray();
+            string str = "";
+            for (int i = chArr.Length - 1; i >= 0; i--)
+            {
+                str += chArr[i];
+            }
+            return str;
         }
 
         private void SearchSerial()
@@ -432,6 +473,25 @@ namespace SentConfig
             {
                 this.tool_serialNames.Items.Clear();
                 this.tool_serialNames.Items.AddRange(comNames);
+                this.tool_serialNames.SelectedIndex = 0;
+                this.tool_open.Enabled = true;
+                this.tool_close.Enabled = false;
+            }
+        }
+
+        private void WriteLog(string content)
+        {
+            var dirPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\";
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+            using (FileStream fs = new FileStream(dirPath + System.DateTime.Now.ToString("yyyyMMddHH") + ".txt", FileMode.Append))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "   " + content);
+                }
             }
         }
     }

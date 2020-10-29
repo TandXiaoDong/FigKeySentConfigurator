@@ -8,6 +8,11 @@ namespace SentConfig
 {
     public class ChannelEntity
     {
+        /// <summary>
+        /// 0-1-2
+        /// </summary>
+        public int ChannelIndex { get; set; }
+
         public int DataSource { get; set; }
 
         public int CANEnable { get; set; }

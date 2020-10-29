@@ -56,7 +56,9 @@ namespace SentConfig
             if (this.serialPort == null)
                 return false;
             this.serialPort.Close();
-            return this.serialPort.IsOpen;
+            if (this.serialPort.IsOpen)
+                return false;//close failed
+            return true;//close success
         }
 
         public bool WriteSerialPort(byte[] buffer)

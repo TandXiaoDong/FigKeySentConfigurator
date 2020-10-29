@@ -111,6 +111,8 @@
             this.radLabel19 = new Telerik.WinControls.UI.RadLabel();
             this.tg_send_ch2 = new Telerik.WinControls.UI.RadToggleSwitch();
             this.radLabel20 = new Telerik.WinControls.UI.RadLabel();
+            this.tg_DA_ch1 = new Telerik.WinControls.UI.RadToggleSwitch();
+            this.radLabel32 = new Telerik.WinControls.UI.RadLabel();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radDock1)).BeginInit();
             this.radDock1.SuspendLayout();
@@ -186,15 +188,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tg_send_ch2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tg_DA_ch1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel32)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tool_open,
-            this.tool_serialNames,
             this.tool_refresh,
+            this.tool_serialNames,
+            this.tool_open,
             this.tool_close,
             this.tool_channel1,
             this.tool_channel2,
@@ -258,6 +262,7 @@
             this.tool_channel3.Name = "tool_channel3";
             this.tool_channel3.Size = new System.Drawing.Size(65, 24);
             this.tool_channel3.Text = "通道3";
+            this.tool_channel3.Visible = false;
             // 
             // tool_abort
             // 
@@ -269,7 +274,7 @@
             // 
             // radDock1
             // 
-            this.radDock1.ActiveWindow = this.dw_channel1;
+            this.radDock1.ActiveWindow = this.dw_channel2;
             this.radDock1.Controls.Add(this.documentContainer2);
             this.radDock1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radDock1.IsCleanUpTarget = true;
@@ -290,6 +295,8 @@
             // dw_channel1
             // 
             this.dw_channel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(129)))), ((int)(((byte)(131)))));
+            this.dw_channel1.Controls.Add(this.tg_DA_ch1);
+            this.dw_channel1.Controls.Add(this.radLabel32);
             this.dw_channel1.Controls.Add(this.btn_cfg_ch1);
             this.dw_channel1.Controls.Add(this.tb_f2_ch1);
             this.dw_channel1.Controls.Add(this.tb_f1_ch1);
@@ -320,34 +327,39 @@
             // 
             // btn_cfg_ch1
             // 
-            this.btn_cfg_ch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(194)))), ((int)(((byte)(197)))));
+            this.btn_cfg_ch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(174)))), ((int)(((byte)(197)))));
+            this.btn_cfg_ch1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_cfg_ch1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_cfg_ch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_cfg_ch1.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.btn_cfg_ch1.Location = new System.Drawing.Point(547, 382);
             this.btn_cfg_ch1.Name = "btn_cfg_ch1";
             this.btn_cfg_ch1.Size = new System.Drawing.Size(94, 32);
             this.btn_cfg_ch1.TabIndex = 20;
             this.btn_cfg_ch1.Text = "配置";
+            this.btn_cfg_ch1.ThemeName = "HighContrastBlack";
             // 
             // tb_f2_ch1
             // 
             this.tb_f2_ch1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_f2_ch1.Location = new System.Drawing.Point(197, 291);
+            this.tb_f2_ch1.Location = new System.Drawing.Point(194, 319);
             this.tb_f2_ch1.Name = "tb_f2_ch1";
             this.tb_f2_ch1.Size = new System.Drawing.Size(100, 27);
             this.tb_f2_ch1.TabIndex = 19;
+            this.tb_f2_ch1.Text = "0";
             // 
             // tb_f1_ch1
             // 
             this.tb_f1_ch1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_f1_ch1.Location = new System.Drawing.Point(96, 291);
+            this.tb_f1_ch1.Location = new System.Drawing.Point(93, 319);
             this.tb_f1_ch1.Name = "tb_f1_ch1";
             this.tb_f1_ch1.Size = new System.Drawing.Size(100, 27);
             this.tb_f1_ch1.TabIndex = 18;
+            this.tb_f1_ch1.Text = "0";
             // 
             // radLabel10
             // 
-            this.radLabel10.Location = new System.Drawing.Point(197, 264);
+            this.radLabel10.Location = new System.Drawing.Point(194, 298);
             this.radLabel10.Name = "radLabel10";
             this.radLabel10.Size = new System.Drawing.Size(83, 21);
             this.radLabel10.TabIndex = 17;
@@ -356,7 +368,7 @@
             // 
             // radLabel9
             // 
-            this.radLabel9.Location = new System.Drawing.Point(96, 264);
+            this.radLabel9.Location = new System.Drawing.Point(93, 298);
             this.radLabel9.Name = "radLabel9";
             this.radLabel9.Size = new System.Drawing.Size(83, 21);
             this.radLabel9.TabIndex = 16;
@@ -366,7 +378,7 @@
             // tg_exchange_ch1
             // 
             this.tg_exchange_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_exchange_ch1.Location = new System.Drawing.Point(547, 296);
+            this.tg_exchange_ch1.Location = new System.Drawing.Point(547, 311);
             this.tg_exchange_ch1.Name = "tg_exchange_ch1";
             this.tg_exchange_ch1.OffText = "Normal";
             this.tg_exchange_ch1.OnText = "Val";
@@ -377,7 +389,7 @@
             // 
             // radLabel8
             // 
-            this.radLabel8.Location = new System.Drawing.Point(453, 310);
+            this.radLabel8.Location = new System.Drawing.Point(453, 325);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(88, 21);
             this.radLabel8.TabIndex = 14;
@@ -387,7 +399,7 @@
             // tg_ldle_ch1
             // 
             this.tg_ldle_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_ldle_ch1.Location = new System.Drawing.Point(547, 233);
+            this.tg_ldle_ch1.Location = new System.Drawing.Point(547, 247);
             this.tg_ldle_ch1.Name = "tg_ldle_ch1";
             this.tg_ldle_ch1.OffText = "Low";
             this.tg_ldle_ch1.OnText = "High";
@@ -398,7 +410,7 @@
             // 
             // radLabel7
             // 
-            this.radLabel7.Location = new System.Drawing.Point(497, 247);
+            this.radLabel7.Location = new System.Drawing.Point(497, 261);
             this.radLabel7.Name = "radLabel7";
             this.radLabel7.Size = new System.Drawing.Size(44, 21);
             this.radLabel7.TabIndex = 12;
@@ -408,7 +420,7 @@
             // tg_tick_ch1
             // 
             this.tg_tick_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_tick_ch1.Location = new System.Drawing.Point(547, 169);
+            this.tg_tick_ch1.Location = new System.Drawing.Point(547, 183);
             this.tg_tick_ch1.Name = "tg_tick_ch1";
             this.tg_tick_ch1.OffText = "3usTick";
             this.tg_tick_ch1.OnText = "5usTick";
@@ -419,7 +431,7 @@
             // 
             // radLabel6
             // 
-            this.radLabel6.Location = new System.Drawing.Point(506, 183);
+            this.radLabel6.Location = new System.Drawing.Point(506, 197);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(35, 21);
             this.radLabel6.TabIndex = 10;
@@ -429,7 +441,7 @@
             // tg_crc_ch1
             // 
             this.tg_crc_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_crc_ch1.Location = new System.Drawing.Point(547, 108);
+            this.tg_crc_ch1.Location = new System.Drawing.Point(547, 120);
             this.tg_crc_ch1.Name = "tg_crc_ch1";
             this.tg_crc_ch1.OffText = "Normal";
             this.tg_crc_ch1.OnText = "Crc";
@@ -440,7 +452,7 @@
             // 
             // radLabel5
             // 
-            this.radLabel5.Location = new System.Drawing.Point(494, 120);
+            this.radLabel5.Location = new System.Drawing.Point(494, 134);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(47, 21);
             this.radLabel5.TabIndex = 8;
@@ -450,7 +462,7 @@
             // tg_sync_ch1
             // 
             this.tg_sync_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_sync_ch1.Location = new System.Drawing.Point(547, 49);
+            this.tg_sync_ch1.Location = new System.Drawing.Point(547, 54);
             this.tg_sync_ch1.Name = "tg_sync_ch1";
             this.tg_sync_ch1.OffText = "Normal";
             this.tg_sync_ch1.OnText = "Sync";
@@ -461,7 +473,7 @@
             // 
             // radLabel4
             // 
-            this.radLabel4.Location = new System.Drawing.Point(484, 63);
+            this.radLabel4.Location = new System.Drawing.Point(484, 68);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(57, 21);
             this.radLabel4.TabIndex = 6;
@@ -471,7 +483,7 @@
             // tg_CAN_ch1
             // 
             this.tg_CAN_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_CAN_ch1.Location = new System.Drawing.Point(159, 169);
+            this.tg_CAN_ch1.Location = new System.Drawing.Point(159, 183);
             this.tg_CAN_ch1.Name = "tg_CAN_ch1";
             this.tg_CAN_ch1.Size = new System.Drawing.Size(94, 35);
             this.tg_CAN_ch1.TabIndex = 5;
@@ -480,7 +492,7 @@
             // 
             // radLabel3
             // 
-            this.radLabel3.Location = new System.Drawing.Point(93, 183);
+            this.radLabel3.Location = new System.Drawing.Point(93, 197);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(60, 21);
             this.radLabel3.TabIndex = 4;
@@ -490,7 +502,7 @@
             // tg_data_ch1
             // 
             this.tg_data_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_data_ch1.Location = new System.Drawing.Point(159, 108);
+            this.tg_data_ch1.Location = new System.Drawing.Point(159, 120);
             this.tg_data_ch1.Name = "tg_data_ch1";
             this.tg_data_ch1.OffText = "AD";
             this.tg_data_ch1.OnText = "PC";
@@ -501,7 +513,7 @@
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(98, 120);
+            this.radLabel2.Location = new System.Drawing.Point(98, 132);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(55, 21);
             this.radLabel2.TabIndex = 2;
@@ -511,7 +523,7 @@
             // tg_send_ch1
             // 
             this.tg_send_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_send_ch1.Location = new System.Drawing.Point(159, 49);
+            this.tg_send_ch1.Location = new System.Drawing.Point(159, 54);
             this.tg_send_ch1.Name = "tg_send_ch1";
             this.tg_send_ch1.Size = new System.Drawing.Size(94, 35);
             this.tg_send_ch1.TabIndex = 1;
@@ -520,7 +532,7 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(82, 63);
+            this.radLabel1.Location = new System.Drawing.Point(82, 68);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(71, 21);
             this.radLabel1.TabIndex = 0;
@@ -551,7 +563,7 @@
             // 
             // 
             this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 2;
+            this.documentTabStrip1.SelectedIndex = 1;
             this.documentTabStrip1.Size = new System.Drawing.Size(710, 493);
             this.documentTabStrip1.TabIndex = 0;
             this.documentTabStrip1.TabStop = false;
@@ -855,34 +867,37 @@
             // 
             // btn_cfg_ch2
             // 
-            this.btn_cfg_ch2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(194)))), ((int)(((byte)(197)))));
+            this.btn_cfg_ch2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(174)))), ((int)(((byte)(197)))));
             this.btn_cfg_ch2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_cfg_ch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_cfg_ch2.Location = new System.Drawing.Point(547, 383);
+            this.btn_cfg_ch2.Location = new System.Drawing.Point(547, 382);
             this.btn_cfg_ch2.Name = "btn_cfg_ch2";
             this.btn_cfg_ch2.Size = new System.Drawing.Size(94, 32);
             this.btn_cfg_ch2.TabIndex = 41;
             this.btn_cfg_ch2.Text = "配置";
+            this.btn_cfg_ch2.ThemeName = "HighContrastBlack";
             // 
             // tb_f2_ch2
             // 
             this.tb_f2_ch2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_f2_ch2.Location = new System.Drawing.Point(198, 310);
+            this.tb_f2_ch2.Location = new System.Drawing.Point(194, 319);
             this.tb_f2_ch2.Name = "tb_f2_ch2";
             this.tb_f2_ch2.Size = new System.Drawing.Size(100, 27);
             this.tb_f2_ch2.TabIndex = 40;
+            this.tb_f2_ch2.Text = "0";
             // 
             // tb_f1_ch2
             // 
             this.tb_f1_ch2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_f1_ch2.Location = new System.Drawing.Point(97, 310);
+            this.tb_f1_ch2.Location = new System.Drawing.Point(93, 319);
             this.tb_f1_ch2.Name = "tb_f1_ch2";
             this.tb_f1_ch2.Size = new System.Drawing.Size(100, 27);
             this.tb_f1_ch2.TabIndex = 39;
+            this.tb_f1_ch2.Text = "0";
             // 
             // radLabel11
             // 
-            this.radLabel11.Location = new System.Drawing.Point(198, 283);
+            this.radLabel11.Location = new System.Drawing.Point(194, 298);
             this.radLabel11.Name = "radLabel11";
             this.radLabel11.Size = new System.Drawing.Size(83, 21);
             this.radLabel11.TabIndex = 38;
@@ -891,7 +906,7 @@
             // 
             // radLabel12
             // 
-            this.radLabel12.Location = new System.Drawing.Point(97, 283);
+            this.radLabel12.Location = new System.Drawing.Point(93, 298);
             this.radLabel12.Name = "radLabel12";
             this.radLabel12.Size = new System.Drawing.Size(83, 21);
             this.radLabel12.TabIndex = 37;
@@ -901,7 +916,7 @@
             // tg_exchange_ch2
             // 
             this.tg_exchange_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_exchange_ch2.Location = new System.Drawing.Point(547, 296);
+            this.tg_exchange_ch2.Location = new System.Drawing.Point(547, 311);
             this.tg_exchange_ch2.Name = "tg_exchange_ch2";
             this.tg_exchange_ch2.OffText = "Normal";
             this.tg_exchange_ch2.OnText = "Val";
@@ -912,7 +927,7 @@
             // 
             // radLabel13
             // 
-            this.radLabel13.Location = new System.Drawing.Point(453, 310);
+            this.radLabel13.Location = new System.Drawing.Point(453, 325);
             this.radLabel13.Name = "radLabel13";
             this.radLabel13.Size = new System.Drawing.Size(88, 21);
             this.radLabel13.TabIndex = 35;
@@ -922,7 +937,7 @@
             // tg_ldle_ch2
             // 
             this.tg_ldle_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_ldle_ch2.Location = new System.Drawing.Point(547, 233);
+            this.tg_ldle_ch2.Location = new System.Drawing.Point(547, 247);
             this.tg_ldle_ch2.Name = "tg_ldle_ch2";
             this.tg_ldle_ch2.OffText = "Low";
             this.tg_ldle_ch2.OnText = "High";
@@ -933,7 +948,7 @@
             // 
             // radLabel14
             // 
-            this.radLabel14.Location = new System.Drawing.Point(494, 247);
+            this.radLabel14.Location = new System.Drawing.Point(497, 261);
             this.radLabel14.Name = "radLabel14";
             this.radLabel14.Size = new System.Drawing.Size(44, 21);
             this.radLabel14.TabIndex = 33;
@@ -943,7 +958,7 @@
             // tg_tick_ch2
             // 
             this.tg_tick_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_tick_ch2.Location = new System.Drawing.Point(547, 173);
+            this.tg_tick_ch2.Location = new System.Drawing.Point(547, 183);
             this.tg_tick_ch2.Name = "tg_tick_ch2";
             this.tg_tick_ch2.OffText = "3usTick";
             this.tg_tick_ch2.OnText = "5usTick";
@@ -954,7 +969,7 @@
             // 
             // radLabel15
             // 
-            this.radLabel15.Location = new System.Drawing.Point(506, 187);
+            this.radLabel15.Location = new System.Drawing.Point(506, 197);
             this.radLabel15.Name = "radLabel15";
             this.radLabel15.Size = new System.Drawing.Size(35, 21);
             this.radLabel15.TabIndex = 31;
@@ -964,7 +979,7 @@
             // tg_crc_ch2
             // 
             this.tg_crc_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_crc_ch2.Location = new System.Drawing.Point(547, 110);
+            this.tg_crc_ch2.Location = new System.Drawing.Point(547, 120);
             this.tg_crc_ch2.Name = "tg_crc_ch2";
             this.tg_crc_ch2.OffText = "Normal";
             this.tg_crc_ch2.OnText = "Crc";
@@ -975,7 +990,7 @@
             // 
             // radLabel16
             // 
-            this.radLabel16.Location = new System.Drawing.Point(494, 124);
+            this.radLabel16.Location = new System.Drawing.Point(494, 134);
             this.radLabel16.Name = "radLabel16";
             this.radLabel16.Size = new System.Drawing.Size(47, 21);
             this.radLabel16.TabIndex = 29;
@@ -985,7 +1000,7 @@
             // tg_sync_ch2
             // 
             this.tg_sync_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_sync_ch2.Location = new System.Drawing.Point(547, 44);
+            this.tg_sync_ch2.Location = new System.Drawing.Point(547, 54);
             this.tg_sync_ch2.Name = "tg_sync_ch2";
             this.tg_sync_ch2.OffText = "Normal";
             this.tg_sync_ch2.OnText = "Sync";
@@ -996,7 +1011,7 @@
             // 
             // radLabel17
             // 
-            this.radLabel17.Location = new System.Drawing.Point(484, 58);
+            this.radLabel17.Location = new System.Drawing.Point(484, 68);
             this.radLabel17.Name = "radLabel17";
             this.radLabel17.Size = new System.Drawing.Size(57, 21);
             this.radLabel17.TabIndex = 27;
@@ -1006,7 +1021,7 @@
             // tg_CAN_ch2
             // 
             this.tg_CAN_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_CAN_ch2.Location = new System.Drawing.Point(159, 173);
+            this.tg_CAN_ch2.Location = new System.Drawing.Point(159, 183);
             this.tg_CAN_ch2.Name = "tg_CAN_ch2";
             this.tg_CAN_ch2.Size = new System.Drawing.Size(94, 35);
             this.tg_CAN_ch2.TabIndex = 26;
@@ -1015,7 +1030,7 @@
             // 
             // radLabel18
             // 
-            this.radLabel18.Location = new System.Drawing.Point(93, 187);
+            this.radLabel18.Location = new System.Drawing.Point(93, 197);
             this.radLabel18.Name = "radLabel18";
             this.radLabel18.Size = new System.Drawing.Size(60, 21);
             this.radLabel18.TabIndex = 25;
@@ -1025,7 +1040,7 @@
             // tg_data_ch2
             // 
             this.tg_data_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_data_ch2.Location = new System.Drawing.Point(159, 110);
+            this.tg_data_ch2.Location = new System.Drawing.Point(159, 120);
             this.tg_data_ch2.Name = "tg_data_ch2";
             this.tg_data_ch2.OffText = "AD";
             this.tg_data_ch2.OnText = "PC";
@@ -1036,7 +1051,7 @@
             // 
             // radLabel19
             // 
-            this.radLabel19.Location = new System.Drawing.Point(98, 124);
+            this.radLabel19.Location = new System.Drawing.Point(98, 132);
             this.radLabel19.Name = "radLabel19";
             this.radLabel19.Size = new System.Drawing.Size(55, 21);
             this.radLabel19.TabIndex = 23;
@@ -1046,7 +1061,7 @@
             // tg_send_ch2
             // 
             this.tg_send_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tg_send_ch2.Location = new System.Drawing.Point(159, 44);
+            this.tg_send_ch2.Location = new System.Drawing.Point(159, 54);
             this.tg_send_ch2.Name = "tg_send_ch2";
             this.tg_send_ch2.Size = new System.Drawing.Size(94, 35);
             this.tg_send_ch2.TabIndex = 22;
@@ -1055,12 +1070,31 @@
             // 
             // radLabel20
             // 
-            this.radLabel20.Location = new System.Drawing.Point(82, 58);
+            this.radLabel20.Location = new System.Drawing.Point(82, 68);
             this.radLabel20.Name = "radLabel20";
             this.radLabel20.Size = new System.Drawing.Size(71, 21);
             this.radLabel20.TabIndex = 21;
             this.radLabel20.Text = "发送使能";
             this.radLabel20.ThemeName = "Material";
+            // 
+            // tg_DA_ch1
+            // 
+            this.tg_DA_ch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tg_DA_ch1.Location = new System.Drawing.Point(159, 247);
+            this.tg_DA_ch1.Name = "tg_DA_ch1";
+            this.tg_DA_ch1.Size = new System.Drawing.Size(94, 35);
+            this.tg_DA_ch1.TabIndex = 45;
+            this.tg_DA_ch1.ThemeName = "HighContrastBlack";
+            this.tg_DA_ch1.ThumbTickness = 15;
+            // 
+            // radLabel32
+            // 
+            this.radLabel32.Location = new System.Drawing.Point(103, 261);
+            this.radLabel32.Name = "radLabel32";
+            this.radLabel32.Size = new System.Drawing.Size(49, 21);
+            this.radLabel32.TabIndex = 44;
+            this.radLabel32.Text = "DA-EN";
+            this.radLabel32.ThemeName = "Material";
             // 
             // Form1
             // 
@@ -1154,6 +1188,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tg_send_ch2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tg_DA_ch1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel32)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1242,6 +1278,8 @@
         private System.Windows.Forms.ToolStripButton tool_channel1;
         private System.Windows.Forms.ToolStripButton tool_channel2;
         private System.Windows.Forms.ToolStripButton tool_channel3;
+        private Telerik.WinControls.UI.RadToggleSwitch tg_DA_ch1;
+        private Telerik.WinControls.UI.RadLabel radLabel32;
     }
 }
 
