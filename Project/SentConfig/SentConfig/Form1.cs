@@ -181,7 +181,7 @@ namespace SentConfig
         private void Btn_cfg_ch2_Click(object sender, EventArgs e)
         {
             ChannelEntity entity = new ChannelEntity();
-            entity.ChannelIndex = 1;
+            entity.ChannelIndex = 2;
             if (this.tg_send_ch2.Value)
             {
                 entity.SendEnable = 1;
@@ -193,11 +193,11 @@ namespace SentConfig
 
             if (this.tg_data_ch2.Value)
             {
-                entity.DataSource = 0;
+                entity.DataSource = 1;
             }
             else
             {
-                entity.DataSource = 1;
+                entity.DataSource = 0;
             }
 
             if (this.tg_CAN_ch2.Value)
@@ -266,13 +266,16 @@ namespace SentConfig
             {
                 entity.ChangeF2 = 0;
             }
-            SendConfig(entity);
+            if (!SendConfig(entity))
+            {
+                MessageBox.Show("发送失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void Btn_cfg_ch1_Click(object sender, EventArgs e)
         {
             ChannelEntity entity = new ChannelEntity();
-            entity.ChannelIndex = 0;
+            entity.ChannelIndex = 1;
             if (this.tg_send_ch1.Value)
             {
                 entity.SendEnable = 1;
@@ -284,11 +287,11 @@ namespace SentConfig
 
             if (this.tg_data_ch1.Value)
             {
-                entity.DataSource = 0;
+                entity.DataSource = 1;
             }
             else
             {
-                entity.DataSource = 1;
+                entity.DataSource = 0;
             }
 
             if (this.tg_CAN_ch1.Value)
@@ -365,7 +368,10 @@ namespace SentConfig
             {
                 entity.ChangeF2 = 0;
             }
-            SendConfig(entity);
+            if (!SendConfig(entity))
+            {
+                MessageBox.Show("发送失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private bool CheckDataValid(RadTextBox text)
@@ -406,6 +412,13 @@ namespace SentConfig
             {
                 this.tool_open.Enabled = false;
                 this.tool_close.Enabled = true;
+                this.btn_cfg_ch1.Enabled = true;
+                this.btn_cfg_ch2.Enabled = true;
+            }
+            else
+            {
+                this.btn_cfg_ch1.Enabled = false;
+                this.btn_cfg_ch2.Enabled = false;
             }
         }
 
@@ -415,6 +428,13 @@ namespace SentConfig
             {
                 this.tool_open.Enabled = true;
                 this.tool_close.Enabled = false;
+                this.btn_cfg_ch1.Enabled = false;
+                this.btn_cfg_ch2.Enabled = false;
+            }
+            else
+            {
+                this.btn_cfg_ch1.Enabled = true;
+                this.btn_cfg_ch2.Enabled = true;
             }
         }
 

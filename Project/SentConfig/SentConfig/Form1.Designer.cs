@@ -274,7 +274,7 @@
             // 
             // radDock1
             // 
-            this.radDock1.ActiveWindow = this.dw_channel2;
+            this.radDock1.ActiveWindow = this.dw_channel1;
             this.radDock1.Controls.Add(this.documentContainer2);
             this.radDock1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radDock1.IsCleanUpTarget = true;
@@ -329,6 +329,7 @@
             // 
             this.btn_cfg_ch1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(174)))), ((int)(((byte)(197)))));
             this.btn_cfg_ch1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_cfg_ch1.Enabled = false;
             this.btn_cfg_ch1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_cfg_ch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_cfg_ch1.ImeMode = System.Windows.Forms.ImeMode.Alpha;
@@ -386,6 +387,10 @@
             this.tg_exchange_ch1.TabIndex = 15;
             this.tg_exchange_ch1.ThemeName = "HighContrastBlack";
             this.tg_exchange_ch1.ThumbTickness = 15;
+            this.tg_exchange_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch1.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel8
             // 
@@ -407,6 +412,10 @@
             this.tg_ldle_ch1.TabIndex = 13;
             this.tg_ldle_ch1.ThemeName = "HighContrastBlack";
             this.tg_ldle_ch1.ThumbTickness = 15;
+            this.tg_ldle_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch1.GetChildAt(0).GetChildAt(1))).Text = "Low";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel7
             // 
@@ -428,6 +437,10 @@
             this.tg_tick_ch1.TabIndex = 11;
             this.tg_tick_ch1.ThemeName = "HighContrastBlack";
             this.tg_tick_ch1.ThumbTickness = 15;
+            this.tg_tick_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch1.GetChildAt(0).GetChildAt(1))).Text = "3usTick";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel6
             // 
@@ -449,6 +462,10 @@
             this.tg_crc_ch1.TabIndex = 9;
             this.tg_crc_ch1.ThemeName = "HighContrastBlack";
             this.tg_crc_ch1.ThumbTickness = 15;
+            this.tg_crc_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch1.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel5
             // 
@@ -470,6 +487,10 @@
             this.tg_sync_ch1.TabIndex = 7;
             this.tg_sync_ch1.ThemeName = "HighContrastBlack";
             this.tg_sync_ch1.ThumbTickness = 15;
+            this.tg_sync_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch1.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel4
             // 
@@ -489,6 +510,9 @@
             this.tg_CAN_ch1.TabIndex = 5;
             this.tg_CAN_ch1.ThemeName = "HighContrastBlack";
             this.tg_CAN_ch1.ThumbTickness = 15;
+            this.tg_CAN_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_CAN_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_CAN_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel3
             // 
@@ -510,6 +534,10 @@
             this.tg_data_ch1.TabIndex = 3;
             this.tg_data_ch1.ThemeName = "HighContrastBlack";
             this.tg_data_ch1.ThumbTickness = 15;
+            this.tg_data_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch1.GetChildAt(0).GetChildAt(1))).Text = "AD";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel2
             // 
@@ -529,6 +557,9 @@
             this.tg_send_ch1.TabIndex = 1;
             this.tg_send_ch1.ThemeName = "HighContrastBlack";
             this.tg_send_ch1.ThumbTickness = 15;
+            this.tg_send_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_send_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_send_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel1
             // 
@@ -563,7 +594,7 @@
             // 
             // 
             this.documentTabStrip1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.documentTabStrip1.SelectedIndex = 1;
+            this.documentTabStrip1.SelectedIndex = 2;
             this.documentTabStrip1.Size = new System.Drawing.Size(710, 493);
             this.documentTabStrip1.TabIndex = 0;
             this.documentTabStrip1.TabStop = false;
@@ -868,6 +899,7 @@
             // btn_cfg_ch2
             // 
             this.btn_cfg_ch2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(174)))), ((int)(((byte)(197)))));
+            this.btn_cfg_ch2.Enabled = false;
             this.btn_cfg_ch2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_cfg_ch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_cfg_ch2.Location = new System.Drawing.Point(547, 382);
@@ -924,6 +956,10 @@
             this.tg_exchange_ch2.TabIndex = 36;
             this.tg_exchange_ch2.ThemeName = "HighContrastBlack";
             this.tg_exchange_ch2.ThumbTickness = 15;
+            this.tg_exchange_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch2.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_exchange_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel13
             // 
@@ -945,6 +981,10 @@
             this.tg_ldle_ch2.TabIndex = 34;
             this.tg_ldle_ch2.ThemeName = "HighContrastBlack";
             this.tg_ldle_ch2.ThumbTickness = 15;
+            this.tg_ldle_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch2.GetChildAt(0).GetChildAt(1))).Text = "Low";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_ldle_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel14
             // 
@@ -961,11 +1001,15 @@
             this.tg_tick_ch2.Location = new System.Drawing.Point(547, 183);
             this.tg_tick_ch2.Name = "tg_tick_ch2";
             this.tg_tick_ch2.OffText = "3usTick";
-            this.tg_tick_ch2.OnText = "5usTick";
+            this.tg_tick_ch2.OnText = "1.5usTick";
             this.tg_tick_ch2.Size = new System.Drawing.Size(94, 35);
             this.tg_tick_ch2.TabIndex = 32;
             this.tg_tick_ch2.ThemeName = "HighContrastBlack";
             this.tg_tick_ch2.ThumbTickness = 15;
+            this.tg_tick_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch2.GetChildAt(0).GetChildAt(1))).Text = "3usTick";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_tick_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel15
             // 
@@ -987,6 +1031,10 @@
             this.tg_crc_ch2.TabIndex = 30;
             this.tg_crc_ch2.ThemeName = "HighContrastBlack";
             this.tg_crc_ch2.ThumbTickness = 15;
+            this.tg_crc_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch2.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_crc_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel16
             // 
@@ -1008,6 +1056,10 @@
             this.tg_sync_ch2.TabIndex = 28;
             this.tg_sync_ch2.ThemeName = "HighContrastBlack";
             this.tg_sync_ch2.ThumbTickness = 15;
+            this.tg_sync_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch2.GetChildAt(0).GetChildAt(1))).Text = "Normal";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_sync_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel17
             // 
@@ -1027,6 +1079,9 @@
             this.tg_CAN_ch2.TabIndex = 26;
             this.tg_CAN_ch2.ThemeName = "HighContrastBlack";
             this.tg_CAN_ch2.ThumbTickness = 15;
+            this.tg_CAN_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_CAN_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_CAN_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel18
             // 
@@ -1048,6 +1103,10 @@
             this.tg_data_ch2.TabIndex = 24;
             this.tg_data_ch2.ThemeName = "HighContrastBlack";
             this.tg_data_ch2.ThumbTickness = 15;
+            this.tg_data_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch2.GetChildAt(0).GetChildAt(1))).Text = "AD";
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_data_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel19
             // 
@@ -1063,10 +1122,17 @@
             this.tg_send_ch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tg_send_ch2.Location = new System.Drawing.Point(159, 54);
             this.tg_send_ch2.Name = "tg_send_ch2";
+            // 
+            // 
+            // 
+            this.tg_send_ch2.RootElement.ShadowColor = System.Drawing.SystemColors.ControlDark;
             this.tg_send_ch2.Size = new System.Drawing.Size(94, 35);
             this.tg_send_ch2.TabIndex = 22;
             this.tg_send_ch2.ThemeName = "HighContrastBlack";
             this.tg_send_ch2.ThumbTickness = 15;
+            this.tg_send_ch2.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_send_ch2.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_send_ch2.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel20
             // 
@@ -1086,6 +1152,9 @@
             this.tg_DA_ch1.TabIndex = 45;
             this.tg_DA_ch1.ThemeName = "HighContrastBlack";
             this.tg_DA_ch1.ThumbTickness = 15;
+            this.tg_DA_ch1.Value = false;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_DA_ch1.GetChildAt(0).GetChildAt(1))).ForeColor = System.Drawing.Color.Black;
+            ((Telerik.WinControls.UI.ToggleSwitchPartElement)(this.tg_DA_ch1.GetChildAt(0).GetChildAt(1))).BackColor = System.Drawing.SystemColors.ControlDark;
             // 
             // radLabel32
             // 
