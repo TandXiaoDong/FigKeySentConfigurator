@@ -193,11 +193,11 @@ namespace SentConfig
 
             if (this.tg_data_ch2.Value)
             {
-                entity.DataSource = 1;
+                entity.DataSource = 0;
             }
             else
             {
-                entity.DataSource = 0;
+                entity.DataSource = 1;
             }
 
             if (this.tg_CAN_ch2.Value)
@@ -287,11 +287,11 @@ namespace SentConfig
 
             if (this.tg_data_ch1.Value)
             {
-                entity.DataSource = 1;
+                entity.DataSource = 0;
             }
             else
             {
-                entity.DataSource = 0;
+                entity.DataSource = 1;
             }
 
             if (this.tg_CAN_ch1.Value)

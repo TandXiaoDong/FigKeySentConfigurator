@@ -89,7 +89,7 @@
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(29, 18);
             this.radLabel3.TabIndex = 14;
-            this.radLabel3.Text = "1.0.0";
+            this.radLabel3.Text = "1.0.1";
             // 
             // radLabel4
             // 
